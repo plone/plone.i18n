@@ -6,5 +6,12 @@ plone.i18n.egg-info/SOURCES.txt
 plone.i18n.egg-info/entry_points.txt
 plone.i18n.egg-info/namespace_packages.txt
 plone.i18n.egg-info/not-zip-safe
+plone.i18n.egg-info/paster_plugins.txt
 plone.i18n.egg-info/top_level.txt
+plone/i18n/HISTORY.txt
+plone/i18n/LICENSE.GPL
+plone/i18n/LICENSE.txt
+plone/i18n/README.txt
 plone/i18n/__init__.py
+plone/i18n/configure.zcml
+plone/i18n/version.txt
