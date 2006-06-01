@@ -25,4 +25,3 @@ setup(name='plone.i18n',
       # -*- Entry points: -*-
       """,
       )
-      

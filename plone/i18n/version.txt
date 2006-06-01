@@ -1,1 +1,1 @@
-0.1 (svn/unreleased)
+0.1dev
