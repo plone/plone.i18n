@@ -4,7 +4,7 @@ from plone.i18n.interfaces.normalizer import IURLNormalizer
 from zope.component import queryUtility
 from zope.interface import implements
 
-class IDNormalizer():
+class IDNormalizer(object):
     """
     This normalizer can normalize any unicode string and returns a
     version that only contains of ASCII characters allowed in a typical
@@ -38,7 +38,7 @@ class IDNormalizer():
         return text
 
 
-class URLNormalizer():
+class URLNormalizer(object):
     """
     This normalizer can normalize any unicode string and returns a URL-safe
     version that only contains of ASCII characters allowed in a URL.
