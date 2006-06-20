@@ -75,6 +75,7 @@ def testLocaleAwareURLNormalizer():
 def test_suite():
     return unittest.TestSuite((
         DocTestSuite('plone.i18n.normalizer'),
+        DocTestSuite('plone.i18n.normalizer.de'),
         DocTestSuite(setUp=configurationSetUp,
                      tearDown=tearDown,
                      optionflags=doctest.ELLIPSIS | doctest.NORMALIZE_WHITESPACE),
