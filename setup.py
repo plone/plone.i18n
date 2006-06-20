@@ -18,9 +18,10 @@ setup(name='plone.i18n',
       namespace_packages=['plone'],
       include_package_data=True,
       zip_safe=False,
-      install_requires=[
-          # -*- Extra requirements: -*-
-      ],
+      tests_require = ['zope.testing'],
+      install_requires=['zope.component',
+                        'zope.interface',
+                       ],
       entry_points="""
       # -*- Entry points: -*-
       """,
