@@ -7,6 +7,11 @@
 
   <utility
       provides=".interfaces.normalizer.IURLNormalizer"
-      component=".normalizer.urlNormalizer" />
+      component=".normalizer.urlnormalizer" />
+
+  <utility
+      name="de"
+      provides=".interfaces.normalizer.IURLNormalizer"
+      component=".normalizer.de.urlnormalizer" />
 
 </configure>
