@@ -1,0 +1,32 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope">
+
+  <utility
+      provides=".interfaces.IIDNormalizer"
+      component=".idnormalizer" />
+
+  <utility
+      provides=".interfaces.IURLNormalizer"
+      component=".urlnormalizer" />
+
+  <utility
+      name="de"
+      provides=".interfaces.IURLNormalizer"
+      component=".de.urlnormalizer" />
+
+  <utility
+      name="el"
+      provides=".interfaces.IURLNormalizer"
+      component=".el.urlnormalizer" />
+
+  <utility
+      name="ru"
+      provides=".interfaces.IURLNormalizer"
+      component=".ru.urlnormalizer" />
+
+  <utility
+      name="tr"
+      provides=".interfaces.IURLNormalizer"
+      component=".tr.urlnormalizer" />
+
+</configure>

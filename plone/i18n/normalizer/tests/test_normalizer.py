@@ -5,9 +5,9 @@
 
 import unittest
 
-import plone.i18n
-from plone.i18n.interfaces.normalizer import IIDNormalizer
-from plone.i18n.interfaces.normalizer import IURLNormalizer
+import plone.i18n.normalizer
+from plone.i18n.normalizer.interfaces import IIDNormalizer
+from plone.i18n.normalizer.interfaces import IURLNormalizer
 
 import zope.component
 from zope.component import queryUtility
@@ -19,7 +19,7 @@ from zope.testing.doctestunit import DocTestSuite
 def configurationSetUp(self):
     setUp()
     XMLConfig('meta.zcml', zope.component)()
-    XMLConfig('configure.zcml', plone.i18n)()
+    XMLConfig('configure.zcml', plone.i18n.normalizer)()
 
 def testIDNormalizer():
     """
@@ -28,10 +28,10 @@ def testIDNormalizer():
       <plone.i18n.normalizer.IDNormalizer object at ...>
 
       >>> util.normalize(u'simpleandsafe')
-      u'simpleandsafe'
+      'simpleandsafe'
 
       >>> util.normalize(u' Whitespace and capital Letters  ')
-      u'whitespace-and-capital-letters'
+      'whitespace-and-capital-letters'
     """
 
 def testURLNormalizer():
@@ -41,10 +41,10 @@ def testURLNormalizer():
       <plone.i18n.normalizer.URLNormalizer object at ...>
       
       >>> util.normalize(u'simpleandsafe')
-      u'simpleandsafe'
+      'simpleandsafe'
 
       >>> util.normalize(u' Whitespace and capital Letters  ')
-      u'whitespace and capital letters'
+      'Whitespace and capital Letters'
     """
 
 def testLocaleAwareURLNormalizer():
@@ -54,28 +54,31 @@ def testLocaleAwareURLNormalizer():
       <plone.i18n.normalizer.URLNormalizer object at ...>
 
       >>> util.normalize(u'simpleandsafe', locale='de')
-      u'simpleandsafe'
+      'simpleandsafe'
 
       >>> util.normalize(unicode('text with umläut', 'utf-8'), locale='de')
-      u'text with umlaeut'
+      'text with umlaeut'
 
     Make sure we get the de normalizer as there's no special one for de_DE
     registered.
        
       >>> util.normalize(unicode('text with umläut', 'utf-8'), locale='de_DE')
-      u'text with umlaeut'
+      'text with umlaeut'
 
       >>> util.normalize(u'simpleandsafe', locale='pt_BR')
-      u'simpleandsafe'
+      'simpleandsafe'
 
       >>> util.normalize(u'simpleandsafe', locale='sr@Latn')
-      u'simpleandsafe'
+      'simpleandsafe'
     """
 
 def test_suite():
     return unittest.TestSuite((
         DocTestSuite('plone.i18n.normalizer'),
         DocTestSuite('plone.i18n.normalizer.de'),
+        DocTestSuite('plone.i18n.normalizer.el'),
+        DocTestSuite('plone.i18n.normalizer.ru'),
+        DocTestSuite('plone.i18n.normalizer.tr'),
         DocTestSuite(setUp=configurationSetUp,
                      tearDown=tearDown,
                      optionflags=doctest.ELLIPSIS | doctest.NORMALIZE_WHITESPACE),

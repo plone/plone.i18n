@@ -4,10 +4,9 @@ from plone.i18n.normalizer.interfaces import IURLNormalizer
 from zope.interface import implements
 from plone.i18n.normalizer.base import mapUnicode
 
-# German character mapping
+# Turkish character mapping
 mapping = {
-    196 : 'AE', 198 : 'AE', 214 : 'OE', 220 : 'UE', 223 : 'ss', 224 : 'a',
-    228 : 'ae', 230 : 'ae', 246 : 'oe', 252 : 'ue'
+    286 : 'G', 287 : 'g', 304 : 'I', 305 : 'i', 350 : 'S', 351 : 's'
 }
 
 class URLNormalizer(object):

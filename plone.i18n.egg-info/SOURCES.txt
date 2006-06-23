@@ -16,9 +16,13 @@ plone/i18n/README.txt
 plone/i18n/__init__.py
 plone/i18n/configure.zcml
 plone/i18n/version.txt
-plone/i18n/interfaces/__init__.py
-plone/i18n/interfaces/normalizer.py
 plone/i18n/normalizer/__init__.py
+plone/i18n/normalizer/base.py
+plone/i18n/normalizer/configure.zcml
 plone/i18n/normalizer/de.py
-plone/i18n/tests/__init__.py
-plone/i18n/tests/test_normalizer.py
+plone/i18n/normalizer/el.py
+plone/i18n/normalizer/interfaces.py
+plone/i18n/normalizer/ru.py
+plone/i18n/normalizer/tr.py
+plone/i18n/normalizer/tests/__init__.py
+plone/i18n/normalizer/tests/test_normalizer.py

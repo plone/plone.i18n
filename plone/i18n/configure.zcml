@@ -1,17 +1,6 @@
 <configure
     xmlns="http://namespaces.zope.org/zope">
 
-  <utility
-      provides=".interfaces.normalizer.IIDNormalizer"
-      component=".normalizer.idnormalizer" />
-
-  <utility
-      provides=".interfaces.normalizer.IURLNormalizer"
-      component=".normalizer.urlnormalizer" />
-
-  <utility
-      name="de"
-      provides=".interfaces.normalizer.IURLNormalizer"
-      component=".normalizer.de.urlnormalizer" />
+    <include package=".normalizer" />
 
 </configure>

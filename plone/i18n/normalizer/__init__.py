@@ -1,8 +1,17 @@
-from plone.i18n.interfaces.normalizer import IIDNormalizer
-from plone.i18n.interfaces.normalizer import IURLNormalizer
+import re
+
+from plone.i18n.normalizer.base import baseNormalize
+from plone.i18n.normalizer.interfaces import IIDNormalizer
+from plone.i18n.normalizer.interfaces import IURLNormalizer
 
 from zope.component import queryUtility
 from zope.interface import implements
+
+# Define and compile static regexes
+FILENAME_REGEX = re.compile(r"^(.+)\.(\w{,4})$")
+NON_WORD_REGEX = re.compile(r"[\W\-]+")
+DANGEROUS_CHARS_REGEX = re.compile(r"[?&/:\\#]+")
+EXTRA_DASHES_REGEX = re.compile(r"(^\-+)|(\-+$)")
 
 class IDNormalizer(object):
     """
@@ -35,8 +44,25 @@ class IDNormalizer(object):
             if util is not None:
                 return util.normalize(text, locale=locale)
 
-        text = text.strip().lower().replace(' ', '-')
-        return text
+        text = baseNormalize(text)
+
+        # lowercase text
+        base = text.lower()
+        ext  = ''
+
+        # replace whitespace and punctuation, but preserve filename extensions
+        m = FILENAME_REGEX.match(text)
+        if m is not None:
+            base = m.groups()[0]
+            ext  = m.groups()[1]
+
+        base = NON_WORD_REGEX.sub('-', base)
+        base = EXTRA_DASHES_REGEX.sub('', base)
+
+        if ext != '':
+            base = base + '.' + ext
+
+        return base
 
 
 class URLNormalizer(object):
@@ -68,8 +94,22 @@ class URLNormalizer(object):
             if util is not None:
                 return util.normalize(text, locale=locale)
 
-        text = text.strip().lower()
-        return text
+        # Replace whitespace and punctuation, but preserve filename extensions
+        base = baseNormalize(text)
+        ext  = ''
+
+        m = FILENAME_REGEX.match(text)
+        if m is not None:
+            base = m.groups()[0]
+            ext  = m.groups()[1]
+
+        base = DANGEROUS_CHARS_REGEX.sub('-', base)
+        base = EXTRA_DASHES_REGEX.sub('', base)
+
+        if ext != '':
+            base = base + '.' + ext
+
+        return base
 
 idnormalizer = IDNormalizer()
 urlnormalizer = URLNormalizer()
