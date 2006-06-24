@@ -1,66 +1,52 @@
 # -*- coding: UTF-8 -*-
 
 from plone.i18n.locales.interfaces import IContentLanguageAvailability
-from plone.i18n.locales.interfaces import ILanguage
 from plone.i18n.locales.interfaces import IMetadataLanguageAvailability
-
 from zope.interface import implements
 
-class Language(object):
-    """
-    This object has some basic information about a language.
+class ContentLanguageAvailability(object):
+    """A list of available content languages.
 
     Let's make sure that this implementation actually fulfills the API.
 
       >>> from zope.interface.verify import verifyClass
-      >>> verifyClass(ILanguage, Language)
+      >>> verifyClass(IContentLanguageAvailability, ContentLanguageAvailability)
       True
-
-      >>> de = Language(u'de', u'German', native = u'Deutsch',
-      ...               flag='/@@/country-flags/de.gif')
-      >>> de.code
-      u'de'
-      >>> de.name
-      u'German'
-      >>> de.native
-      u'Deutsch'
-      >>> de.flag
-      '/@@/country-flags/de.gif'
     """
-    implements(ILanguage)
-
-    def __init__(self, code, name, native=u'', flag=None):
-        self.code = code
-        self.native = native
-        self.name = name
-        self.flag = flag
-
-
-class ContentLanguageAvailability(object):
-    """A list of available content languages."""
     implements(IContentLanguageAvailability)
 
-    def getAvailableLanguages():
+    def getAvailableLanguages(self):
         """Return a sequence of language tags for available languages.
         """
+        return _languagelist.keys()
 
-    def getLanguages():
+    def getLanguages(self):
         """Return a sequence of Language objects for available languages.
         """
+        return _languagelist.copy()
 
 contentlanguages = ContentLanguageAvailability()
 
 class MetadataLanguageAvailability(object):
-    """A list of available metadata languages."""
+    """A list of available metadata languages.
+
+    Let's make sure that this implementation actually fulfills the API.
+
+      >>> from zope.interface.verify import verifyClass
+      >>> verifyClass(IMetadataLanguageAvailability, MetadataLanguageAvailability)
+      True
+    """
     implements(IMetadataLanguageAvailability)
 
-    def getAvailableLanguages():
+    def getAvailableLanguages(self):
         """Return a sequence of language tags for available languages.
         """
+        return _languagelist.keys()
 
-    def getLanguages():
+    def getLanguages(self):
         """Return a sequence of Language objects for available languages.
         """
+        return _languagelist.copy()
 
 metadatalanguages = MetadataLanguageAvailability()
 

@@ -1,51 +1,28 @@
 # -*- coding: UTF-8 -*-
 
-from plone.i18n.locales.interfaces import ICountry
 from plone.i18n.locales.interfaces import ICountryAvailability
-
 from zope.interface import implements
 
-class Country(object):
-    """
-    This object has some basic information about a country.
+class CountryAvailability(object):
+    """A list of available coutries.
 
     Let's make sure that this implementation actually fulfills the API.
 
       >>> from zope.interface.verify import verifyClass
-      >>> verifyClass(ICountry, Country)
+      >>> verifyClass(ICountryAvailability, CountryAvailability)
       True
-
-      >>> de = Country(u'de', u'Germany', native = u'Deutschland',
-      ...               flag='/@@/country-flags/de.gif')
-      >>> de.code
-      u'de'
-      >>> de.name
-      u'Germany'
-      >>> de.native
-      u'Deutschland'
-      >>> de.flag
-      '/@@/country-flags/de.gif'
     """
-    implements(ICountry)
-
-    def __init__(self, code, name, native=u'', flag=None):
-        self.code = code
-        self.native = native
-        self.name = name
-        self.flag = flag
-
-
-class CountryAvailability(object):
-    """A list of available coutries."""
     implements(ICountryAvailability)
 
-    def getAvailableCountries():
+    def getAvailableCountries(self):
         """Return a sequence of country tags for available countries.
         """
+        return _countrylist.keys()
 
-    def getCountries():
+    def getCountries(self):
         """Return a sequence of Country objects for available countries.
         """
+        return _countrylist.copy()
 
 countries = CountryAvailability()
 
@@ -69,7 +46,7 @@ _countrylist = {
 'at' : {'name' : 'Austria', 'flag' : '/@@/country-flags/at.gif'},
 'au' : {'name' : 'Australia', 'flag' : '/@@/country-flags/au.gif'},
 'aw' : {'name' : 'Aruba', 'flag' : '/@@/country-flags/aw.gif'},
-'ax' : {'name' : 'Åland Islands', 'flag' : '/@@/country-flags/ax.gif'},
+'ax' : {'name' : 'Oland Islands', 'flag' : '/@@/country-flags/ax.gif'},
 'az' : {'name' : 'Azerbaijan', 'flag' : '/@@/country-flags/az.gif'},
 'ba' : {'name' : 'Bosnia and Herzegovina', 'flag' : '/@@/country-flags/ba.gif'},
 'bb' : {'name' : 'Barbados', 'flag' : '/@@/country-flags/bb.gif'},

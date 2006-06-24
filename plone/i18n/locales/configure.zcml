@@ -3,14 +3,6 @@
 
     <include package=".browser" />
 
-    <class class=".countries.Country">
-        <allow interface=".interfaces.ICountry" />
-    </class>
-
-    <class class=".languages.Language">
-        <allow interface=".interfaces.ILanguage" />
-    </class>
-
     <utility
         provides=".interfaces.ICountryAvailability"
         component=".countries.countries" />

@@ -6,12 +6,12 @@
 import unittest
 
 import plone.i18n.locales
-from plone.i18n.locales.interfaces import ILanguage
-from plone.i18n.locales.languages import Language
+from plone.i18n.locales.interfaces import IContentLanguageAvailability
+from plone.i18n.locales.interfaces import IMetadataLanguageAvailability
 
-import zope.app.component
 import zope.app.publisher.browser
-
+import zope.component
+from zope.component import queryUtility
 from zope.component.testing import setUp, tearDown
 from zope.configuration.xmlconfig import XMLConfig
 from zope.testing import doctest
@@ -19,33 +19,66 @@ from zope.testing.doctestunit import DocTestSuite
 
 def configurationSetUp(self):
     setUp()
-    XMLConfig('meta.zcml', zope.app.component)()
+    XMLConfig('meta.zcml', zope.component)()
     XMLConfig('meta.zcml', zope.app.publisher.browser)()
     XMLConfig('configure.zcml', plone.i18n.locales)()
 
-def testLanguage():
+def testContentLanguageAvailability():
     """
-      >>> en = Language(u'en', u'English', native=u'English',
-      ...               flag='/@@/country-flags/en.gif')
-      >>> en.code
-      u'en'
-      >>> en.name
-      u'English'
-      >>> en.native
-      u'English'
-      >>> en.flag
-      '/@@/country-flags/en.gif'
+      >>> util = queryUtility(IContentLanguageAvailability)
+      >>> util
+      <plone.i18n.locales.languages.ContentLanguageAvailability object at ...>
 
-      >>> pt_BR = Language(u'pt-br', u'Brazilian Portuguese',
-      ...                  native=unicode('Português (Brasil)', 'utf-8'),
-      ...                  flag='/@@/country-flags/br.gif')
-      >>> pt_BR.code
-      u'pt-br'
-      >>> pt_BR.native == u'Portugu\xeas (Brasil)'
+      >>> languagecodes = util.getAvailableLanguages()
+      >>> len(languagecodes)
+      147
+
+      >>> 'de' in languagecodes
       True
-      >>> pt_BR.flag
-      '/@@/country-flags/br.gif'
+
+      >>> languages = util.getLanguages()
+      >>> len(languages)
+      147
+
+      >>> de = languages['de']
+      >>> de['name']
+      'German'
+
+      >>> de['native']
+      'Deutsch'
+
+      >>> de['flag']
+      '/@@/country-flags/de.gif'
     """
+
+def testMetadataLanguageAvailability():
+    """
+      >>> util = queryUtility(IMetadataLanguageAvailability)
+      >>> util
+      <plone.i18n.locales.languages.MetadataLanguageAvailability object at ...>
+
+      >>> languagecodes = util.getAvailableLanguages()
+      >>> len(languagecodes)
+      147
+
+      >>> 'de' in languagecodes
+      True
+
+      >>> languages = util.getLanguages()
+      >>> len(languages)
+      147
+
+      >>> de = languages['de']
+      >>> de['name']
+      'German'
+
+      >>> de['native']
+      'Deutsch'
+
+      >>> de['flag']
+      '/@@/country-flags/de.gif'
+    """
+
 
 def test_suite():
     return unittest.TestSuite((

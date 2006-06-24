@@ -6,12 +6,11 @@
 import unittest
 
 import plone.i18n.locales
-from plone.i18n.locales.interfaces import ICountry
-from plone.i18n.locales.countries import Country
+from plone.i18n.locales.interfaces import ICountryAvailability
 
-import zope.app.component
 import zope.app.publisher.browser
-
+import zope.component
+from zope.component import queryUtility
 from zope.component.testing import setUp, tearDown
 from zope.configuration.xmlconfig import XMLConfig
 from zope.testing import doctest
@@ -19,20 +18,33 @@ from zope.testing.doctestunit import DocTestSuite
 
 def configurationSetUp(self):
     setUp()
-    XMLConfig('meta.zcml', zope.app.component)()
+    XMLConfig('meta.zcml', zope.component)()
     XMLConfig('meta.zcml', zope.app.publisher.browser)()
     XMLConfig('configure.zcml', plone.i18n.locales)()
 
-def testCountry():
+def testAvailableCountries():
     """
-      >>> br = Country(u'BR', u'Brazil',
-      ...              flag='/@@/country-flags/br.gif')
-      >>> br.code
-      u'BR'
-      >>> br.name
-      u'Brazil'
-      >>> br.flag
-      '/@@/country-flags/br.gif'
+      >>> util = queryUtility(ICountryAvailability)
+      >>> util
+      <plone.i18n.locales.countries.CountryAvailability object at ...>
+
+      >>> countrycodes = util.getAvailableCountries()
+      >>> len(countrycodes)
+      243
+
+      >>> 'de' in countrycodes
+      True
+
+      >>> countries = util.getCountries()
+      >>> len(countries)
+      243
+
+      >>> de = countries['de']
+      >>> de['name']
+      'Germany'
+
+      >>> de['flag']
+      '/@@/country-flags/de.gif'
     """
 
 def test_suite():
