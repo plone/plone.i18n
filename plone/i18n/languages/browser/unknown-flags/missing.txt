@@ -1,0 +1,13 @@
+Flags for these countries listed in ISO 3166 are currently missing:
+
+ax - ÅLAND ISLANDS
+cy - CYPRUS
+gg - GUERNSEY
+gs - SOUTH GEORGIA AND THE SOUTH SANDWICH ISLANDS
+im - ISLE OF MAN
+je - JERSEY
+np - NEPAL
+
+The other files in this folder are flags for codes that does not exit in
+ISO 3166. Need investigation if they are only misnamed or what they actually
+symbolize.

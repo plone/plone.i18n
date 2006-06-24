@@ -1,2 +1,1 @@
-zope.component
-zope.interface
+zope.app

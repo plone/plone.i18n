@@ -1,6 +1,8 @@
 <configure
     xmlns="http://namespaces.zope.org/zope">
 
+    <include package=".languages" />
+
     <include package=".normalizer" />
 
 </configure>
