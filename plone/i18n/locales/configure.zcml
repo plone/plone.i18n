@@ -1,0 +1,14 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope">
+
+    <include package=".browser" />
+
+    <class class=".Country">
+        <allow interface=".interfaces.ICountry" />
+    </class>
+
+    <class class=".Language">
+        <allow interface=".interfaces.ILanguage" />
+    </class>
+
+</configure>
