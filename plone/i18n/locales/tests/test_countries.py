@@ -7,7 +7,7 @@ import unittest
 
 import plone.i18n.locales
 from plone.i18n.locales.interfaces import ICountry
-from plone.i18n.locales import Country
+from plone.i18n.locales.countries import Country
 
 import zope.app.component
 import zope.app.publisher.browser
@@ -37,6 +37,7 @@ def testCountry():
 
 def test_suite():
     return unittest.TestSuite((
+        DocTestSuite('plone.i18n.locales.countries'),
         DocTestSuite(setUp=configurationSetUp,
                      tearDown=tearDown,
                      optionflags=doctest.ELLIPSIS | doctest.NORMALIZE_WHITESPACE),

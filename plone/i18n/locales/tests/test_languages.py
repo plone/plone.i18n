@@ -6,8 +6,8 @@
 import unittest
 
 import plone.i18n.locales
-from plone.i18n.locales import Language
 from plone.i18n.locales.interfaces import ILanguage
+from plone.i18n.locales.languages import Language
 
 import zope.app.component
 import zope.app.publisher.browser
@@ -49,6 +49,7 @@ def testLanguage():
 
 def test_suite():
     return unittest.TestSuite((
+        DocTestSuite('plone.i18n.locales.languages'),
         DocTestSuite(setUp=configurationSetUp,
                      tearDown=tearDown,
                      optionflags=doctest.ELLIPSIS | doctest.NORMALIZE_WHITESPACE),

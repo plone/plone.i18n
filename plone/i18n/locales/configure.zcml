@@ -3,12 +3,24 @@
 
     <include package=".browser" />
 
-    <class class=".Country">
+    <class class=".countries.Country">
         <allow interface=".interfaces.ICountry" />
     </class>
 
-    <class class=".Language">
+    <class class=".languages.Language">
         <allow interface=".interfaces.ILanguage" />
     </class>
+
+    <utility
+        provides=".interfaces.ICountryAvailability"
+        component=".countries.countries" />
+
+    <utility
+        provides=".interfaces.IContentLanguageAvailability"
+        component=".languages.contentlanguages" />
+
+    <utility
+        provides=".interfaces.IMetadataLanguageAvailability"
+        component=".languages.metadatalanguages" />
 
 </configure>

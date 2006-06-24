@@ -19,7 +19,9 @@ plone/i18n/version.txt
 plone/i18n/locales/README.txt
 plone/i18n/locales/__init__.py
 plone/i18n/locales/configure.zcml
+plone/i18n/locales/countries.py
 plone/i18n/locales/interfaces.py
+plone/i18n/locales/languages.py
 plone/i18n/locales/browser/__init__.py
 plone/i18n/locales/browser/configure.zcml
 plone/i18n/locales/browser/country-flags/ad.gif
@@ -272,7 +274,6 @@ plone/i18n/locales/browser/unknown-flags/zr.gif
 plone/i18n/locales/tests/__init__.py
 plone/i18n/locales/tests/test_countries.py
 plone/i18n/locales/tests/test_languages.py
-plone/i18n/locales/tests/test_locales.py
 plone/i18n/normalizer/__init__.py
 plone/i18n/normalizer/base.py
 plone/i18n/normalizer/configure.zcml
