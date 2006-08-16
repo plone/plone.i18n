@@ -25,3 +25,17 @@ class IMetadataLanguageAvailability(ILanguageAvailability):
     def getLanguages():
         """Return a sequence of Language objects for available languages.
         """
+
+class IModifiableLanguageAvailability(ILanguageAvailability):
+    """A modifiable list of available languages."""
+
+    def setAvailableLanguages(languages):
+        """Set a list of available language tags.
+        """
+
+class IModifiableCountryAvailability(ICountryAvailability):
+    """A modifiable list of available countries."""
+
+    def setAvailableCountries(countries):
+        """Set a list of available country tags.
+        """
