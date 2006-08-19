@@ -1,5 +1,6 @@
 from zope.interface import Interface
-from zope.i18n.interfaces import ILanguageAvailability
+from zope.i18n.interfaces import ILanguageAvailability as \
+    IBaseLanguageAvailability
 
 class ICountryAvailability(Interface):
     """A list of available coutries."""
@@ -16,27 +17,22 @@ class ICountryAvailability(Interface):
         """Return a sequence of country code and country name tuples.
         """
 
+class ILanguageAvailability(IBaseLanguageAvailability):
+    """A list of available languages."""
+
+    def getLanguages(combined=False):
+        """Return a sequence of Language objects for available languages.
+        """
+
+    def getLanguageListing(combined=False):
+        """Return a sequence of language code and language name tuples.
+        """
+
 class IContentLanguageAvailability(ILanguageAvailability):
     """A list of available content languages."""
 
-    def getLanguages():
-        """Return a sequence of Language objects for available languages.
-        """
-
-    def getLanguageListing():
-        """Return a sequence of language code and language name tuples.
-        """
-
 class IMetadataLanguageAvailability(ILanguageAvailability):
     """A list of available metadata languages."""
-
-    def getLanguages():
-        """Return a sequence of Language objects for available languages.
-        """
-
-    def getLanguageListing():
-        """Return a sequence of language code and language name tuples.
-        """
 
 class IModifiableLanguageAvailability(ILanguageAvailability):
     """A modifiable list of available languages."""

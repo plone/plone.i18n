@@ -4,7 +4,36 @@ from plone.i18n.locales.interfaces import IContentLanguageAvailability
 from plone.i18n.locales.interfaces import IMetadataLanguageAvailability
 from zope.interface import implements
 
-class ContentLanguageAvailability(object):
+class LanguageAvailability(object):
+    """A list of available languages.
+    """
+
+    def getAvailableLanguages(self, combined=False):
+        """Return a sequence of language tags for available languages.
+        """
+        languages = _languagelist.keys()
+        if combined:
+            languages.extend(_combinedlanguagelist.keys())
+        return languages
+
+    def getLanguages(self, combined=False):
+        """Return a sequence of Language objects for available languages.
+        """
+        languages = _languagelist.copy()
+        if combined:
+            languages.update(_combinedlanguagelist.copy())
+        return languages
+
+    def getLanguageListing(self, combined=False):
+        """Return a sequence of language code and language name tuples.
+        """
+        languages = _languagelist.copy()
+        if combined:
+            languages.update(_combinedlanguagelist.copy())
+        return [(code, languages[code][u'name']) for code in languages]
+
+
+class ContentLanguageAvailability(LanguageAvailability):
     """A list of available content languages.
 
     Let's make sure that this implementation actually fulfills the API.
@@ -15,24 +44,9 @@ class ContentLanguageAvailability(object):
     """
     implements(IContentLanguageAvailability)
 
-    def getAvailableLanguages(self):
-        """Return a sequence of language tags for available languages.
-        """
-        return _languagelist.keys()
-
-    def getLanguages(self):
-        """Return a sequence of Language objects for available languages.
-        """
-        return _languagelist.copy()
-
-    def getLanguageListing(self):
-        """Return a sequence of language code and language name tuples.
-        """
-        return [(code, _languagelist[code][u'name']) for code in _languagelist]
-
 contentlanguages = ContentLanguageAvailability()
 
-class MetadataLanguageAvailability(object):
+class MetadataLanguageAvailability(LanguageAvailability):
     """A list of available metadata languages.
 
     Let's make sure that this implementation actually fulfills the API.
@@ -42,21 +56,6 @@ class MetadataLanguageAvailability(object):
       True
     """
     implements(IMetadataLanguageAvailability)
-
-    def getAvailableLanguages(self):
-        """Return a sequence of language tags for available languages.
-        """
-        return _languagelist.keys()
-
-    def getLanguages(self):
-        """Return a sequence of Language objects for available languages.
-        """
-        return _languagelist.copy()
-
-    def getLanguageListing(self):
-        """Return a sequence of language code and language name tuples.
-        """
-        return [(code, _languagelist[code][u'name']) for code in _languagelist]
 
 metadatalanguages = MetadataLanguageAvailability()
 
