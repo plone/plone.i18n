@@ -3,30 +3,36 @@
 
   <utility
       provides=".interfaces.IIDNormalizer"
-      component=".idnormalizer" />
+      component=".idnormalizer"
+      permission="zope.Public" />
 
   <utility
       provides=".interfaces.IURLNormalizer"
-      component=".urlnormalizer" />
+      component=".urlnormalizer"
+      permission="zope.Public" />
 
   <utility
       name="de"
       provides=".interfaces.IURLNormalizer"
-      component=".de.urlnormalizer" />
+      component=".de.urlnormalizer"
+      permission="zope.Public" />
 
   <utility
       name="el"
       provides=".interfaces.IURLNormalizer"
-      component=".el.urlnormalizer" />
+      component=".el.urlnormalizer"
+      permission="zope.Public" />
 
   <utility
       name="ru"
       provides=".interfaces.IURLNormalizer"
-      component=".ru.urlnormalizer" />
+      component=".ru.urlnormalizer"
+      permission="zope.Public" />
 
   <utility
       name="tr"
       provides=".interfaces.IURLNormalizer"
-      component=".tr.urlnormalizer" />
+      component=".tr.urlnormalizer"
+      permission="zope.Public" />
 
 </configure>

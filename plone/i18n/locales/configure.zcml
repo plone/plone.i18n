@@ -5,14 +5,17 @@
 
     <utility
         provides=".interfaces.ICountryAvailability"
-        component=".countries.countries" />
+        component=".countries.countries"
+        permission="zope.Public" />
 
     <utility
         provides=".interfaces.IContentLanguageAvailability"
-        component=".languages.contentlanguages" />
+        component=".languages.contentlanguages"
+        permission="zope.Public" />
 
     <utility
         provides=".interfaces.IMetadataLanguageAvailability"
-        component=".languages.metadatalanguages" />
+        component=".languages.metadatalanguages"
+        permission="zope.Public" />
 
 </configure>
