@@ -25,6 +25,11 @@ class ContentLanguageAvailability(object):
         """
         return _languagelist.copy()
 
+    def getLanguageListing(self):
+        """Return a sequence of language code and language name tuples.
+        """
+        return [(code, _languagelist[code][u'name']) for code in _languagelist]
+
 contentlanguages = ContentLanguageAvailability()
 
 class MetadataLanguageAvailability(object):
@@ -47,6 +52,11 @@ class MetadataLanguageAvailability(object):
         """Return a sequence of Language objects for available languages.
         """
         return _languagelist.copy()
+
+    def getLanguageListing(self):
+        """Return a sequence of language code and language name tuples.
+        """
+        return [(code, _languagelist[code][u'name']) for code in _languagelist]
 
 metadatalanguages = MetadataLanguageAvailability()
 

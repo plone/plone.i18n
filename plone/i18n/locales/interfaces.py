@@ -12,6 +12,10 @@ class ICountryAvailability(Interface):
         """Return a sequence of Country objects for available countries.
         """
 
+    def getCountryListing():
+        """Return a sequence of country code and country name tuples.
+        """
+
 class IContentLanguageAvailability(ILanguageAvailability):
     """A list of available content languages."""
 
@@ -19,11 +23,19 @@ class IContentLanguageAvailability(ILanguageAvailability):
         """Return a sequence of Language objects for available languages.
         """
 
+    def getLanguageListing():
+        """Return a sequence of language code and language name tuples.
+        """
+
 class IMetadataLanguageAvailability(ILanguageAvailability):
     """A list of available metadata languages."""
 
     def getLanguages():
         """Return a sequence of Language objects for available languages.
+        """
+
+    def getLanguageListing():
+        """Return a sequence of language code and language name tuples.
         """
 
 class IModifiableLanguageAvailability(ILanguageAvailability):

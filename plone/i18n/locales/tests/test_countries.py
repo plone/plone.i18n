@@ -45,6 +45,13 @@ def testAvailableCountries():
 
       >>> de[u'flag']
       u'/@@/country-flags/de.gif'
+
+      >>> countries = util.getCountryListing()
+      >>> len(countries)
+      243
+
+      >>> (u'de', u'Germany') in countries
+      True
     """
 
 def test_suite():

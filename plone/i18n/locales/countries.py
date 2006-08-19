@@ -24,6 +24,11 @@ class CountryAvailability(object):
         """
         return _countrylist.copy()
 
+    def getCountryListing(self):
+        """Return a sequence of country code and country name tuples.
+        """
+        return [(code, _countrylist[code][u'name']) for code in _countrylist]
+
 countries = CountryAvailability()
 
 # This is a dictionary of dictonaries:
