@@ -162,7 +162,7 @@ u'pl' : {u'native' : 'Polski', u'name' : 'Polish', u'flag' : u'/@@/country-flags
 u'ps' : {u'native' : 'پښتو', u'name' : 'Pashto'},
 u'pt' : {u'native' : 'Português', u'name' : 'Portuguese', u'flag' : u'/@@/country-flags/pt.gif'},
 u'qu' : {u'native' : 'Quechua', u'name' : 'Quechua'},
-u'rm' : {u'native' : 'Rhaeto-Romance', u'name' : ''},
+u'rm' : {u'native' : 'Rhaeto-Romance', u'name' : 'Rhaeto-Romance'},
 u'rn' : {u'native' : 'Kirundi', u'name' : 'Kirundi'},
 u'ro' : {u'native' : 'Română', u'name' : 'Romanian', u'flag' : u'/@@/country-flags/ro.gif'},
 u'ru' : {u'native' : 'Русский', u'name' : 'Russian', u'flag' : u'/@@/country-flags/ru.gif'},
