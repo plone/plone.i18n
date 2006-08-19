@@ -33,22 +33,22 @@ def testContentLanguageAvailability():
       >>> len(languagecodes)
       147
 
-      >>> 'de' in languagecodes
+      >>> u'de' in languagecodes
       True
 
       >>> languages = util.getLanguages()
       >>> len(languages)
       147
 
-      >>> de = languages['de']
-      >>> de['name']
-      'German'
+      >>> de = languages[u'de']
+      >>> de[u'name']
+      u'German'
 
-      >>> de['native']
-      'Deutsch'
+      >>> de[u'native']
+      u'Deutsch'
 
-      >>> de['flag']
-      '/@@/country-flags/de.gif'
+      >>> de[u'flag']
+      u'/@@/country-flags/de.gif'
     """
 
 def testMetadataLanguageAvailability():
@@ -61,22 +61,22 @@ def testMetadataLanguageAvailability():
       >>> len(languagecodes)
       147
 
-      >>> 'de' in languagecodes
+      >>> u'de' in languagecodes
       True
 
       >>> languages = util.getLanguages()
       >>> len(languages)
       147
 
-      >>> de = languages['de']
-      >>> de['name']
-      'German'
+      >>> de = languages[u'de']
+      >>> de[u'name']
+      u'German'
 
-      >>> de['native']
-      'Deutsch'
+      >>> de[u'native']
+      u'Deutsch'
 
-      >>> de['flag']
-      '/@@/country-flags/de.gif'
+      >>> de[u'flag']
+      u'/@@/country-flags/de.gif'
     """
 
 
