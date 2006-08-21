@@ -32,6 +32,9 @@ def testIDNormalizer():
 
       >>> util.normalize(u' Whitespace and capital Letters  ')
       'whitespace-and-capital-letters'
+
+      >>> util.normalize(u">here's another!")
+      'heres-another'
     """
 
 def testURLNormalizer():
@@ -45,6 +48,9 @@ def testURLNormalizer():
 
       >>> util.normalize(u' Whitespace and capital Letters  ')
       'Whitespace and capital Letters'
+
+      >>> util.normalize(u">here's another!")
+      'heres another'
     """
 
 def testLocaleAwareURLNormalizer():

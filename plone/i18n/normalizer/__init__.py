@@ -9,8 +9,9 @@ from zope.interface import implements
 
 # Define and compile static regexes
 FILENAME_REGEX = re.compile(r"^(.+)\.(\w{,4})$")
+IGNORE_REGEX = re.compile(r"[']")
 NON_WORD_REGEX = re.compile(r"[\W\-]+")
-DANGEROUS_CHARS_REGEX = re.compile(r"[?&/:\\#]+")
+DANGEROUS_CHARS_REGEX = re.compile(r"[?&/:\\#<>!$%^*()]+")
 EXTRA_DASHES_REGEX = re.compile(r"(^\-+)|(\-+$)")
 
 class IDNormalizer(object):
@@ -56,6 +57,7 @@ class IDNormalizer(object):
             base = m.groups()[0]
             ext  = m.groups()[1]
 
+        base = IGNORE_REGEX.sub('', base)
         base = NON_WORD_REGEX.sub('-', base)
         base = EXTRA_DASHES_REGEX.sub('', base)
 
@@ -103,6 +105,7 @@ class URLNormalizer(object):
             base = m.groups()[0]
             ext  = m.groups()[1]
 
+        base = IGNORE_REGEX.sub('', base)
         base = DANGEROUS_CHARS_REGEX.sub('-', base)
         base = EXTRA_DASHES_REGEX.sub('', base)
 
