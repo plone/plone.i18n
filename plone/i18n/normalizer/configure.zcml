@@ -35,4 +35,10 @@
       component=".tr.urlnormalizer"
       permission="zope.Public" />
 
+  <adapter
+      for="zope.publisher.interfaces.http.IHTTPRequest"
+      provides=".interfaces.IUserPreferredURLNormalizer"
+      factory=".adapters.UserPreferredURLNormalizer"
+      />
+
 </configure>

@@ -275,6 +275,7 @@ plone/i18n/locales/tests/__init__.py
 plone/i18n/locales/tests/test_countries.py
 plone/i18n/locales/tests/test_languages.py
 plone/i18n/normalizer/__init__.py
+plone/i18n/normalizer/adapters.py
 plone/i18n/normalizer/base.py
 plone/i18n/normalizer/configure.zcml
 plone/i18n/normalizer/de.py

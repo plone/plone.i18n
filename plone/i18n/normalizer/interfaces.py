@@ -24,3 +24,15 @@ class IURLNormalizer(INormalizer):
        URL-safe version that only contains of ASCII characters allowed in a URL.
     """
 
+class IUserPreferredNormalizer(Interface):
+    """An adapter for the HTTPRequest to provide user preferred language
+       dependent normalization.
+    """
+
+    def normalize(text):
+        """Returns a normalized Unicode string."""
+
+class IUserPreferredURLNormalizer(IUserPreferredNormalizer):
+    """An adapter for the HTTPRequest to provide user preferred language
+       dependent normalization, based on an URL normalizer.
+    """
