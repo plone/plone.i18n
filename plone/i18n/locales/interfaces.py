@@ -37,13 +37,13 @@ class IMetadataLanguageAvailability(ILanguageAvailability):
 class IModifiableLanguageAvailability(ILanguageAvailability):
     """A modifiable list of available languages."""
 
-    def setAvailableLanguages(languages):
+    def setAvailableLanguages(languages, combined=False):
         """Set a list of available language tags.
         """
 
 class IModifiableCountryAvailability(ICountryAvailability):
     """A modifiable list of available countries."""
 
-    def setAvailableCountries(countries, combined=False):
+    def setAvailableCountries(countries):
         """Set a list of available country tags.
         """
