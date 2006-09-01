@@ -44,6 +44,6 @@ class IModifiableLanguageAvailability(ILanguageAvailability):
 class IModifiableCountryAvailability(ICountryAvailability):
     """A modifiable list of available countries."""
 
-    def setAvailableCountries(countries):
+    def setAvailableCountries(countries, combined=False):
         """Set a list of available country tags.
         """

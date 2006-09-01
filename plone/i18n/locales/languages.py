@@ -2,11 +2,19 @@
 
 from plone.i18n.locales.interfaces import IContentLanguageAvailability
 from plone.i18n.locales.interfaces import IMetadataLanguageAvailability
+from plone.i18n.locales.interfaces import ILanguageAvailability
 from zope.interface import implements
 
 class LanguageAvailability(object):
     """A list of available languages.
+
+    Let's make sure that this implementation actually fulfills the API.
+
+      >>> from zope.interface.verify import verifyClass
+      >>> verifyClass(ILanguageAvailability, LanguageAvailability)
+      True
     """
+    implements(ILanguageAvailability)
 
     def getAvailableLanguages(self, combined=False):
         """Return a sequence of language tags for available languages.
