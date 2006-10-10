@@ -55,7 +55,7 @@ def testContentLanguageAvailability():
       u'Deutsch'
 
       >>> de[u'flag']
-      u'/@@/country-flags/de.gif'
+      u'/++resource++country-flags/de.gif'
 
       >>> languages = util.getLanguageListing()
       >>> len(languages)
@@ -105,7 +105,7 @@ def testMetadataLanguageAvailability():
       u'Deutsch'
 
       >>> de[u'flag']
-      u'/@@/country-flags/de.gif'
+      u'/++resource++country-flags/de.gif'
 
       >>> languages = util.getLanguageListing()
       >>> len(languages)

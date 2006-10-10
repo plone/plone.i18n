@@ -44,7 +44,7 @@ def testAvailableCountries():
       u'Germany'
 
       >>> de[u'flag']
-      u'/@@/country-flags/de.gif'
+      u'/++resource++country-flags/de.gif'
 
       >>> countries = util.getCountryListing()
       >>> len(countries)
