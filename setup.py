@@ -1,14 +1,13 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = '0.1'
+version = '1.0a3'
 
 setup(name='plone.i18n',
       version=version,
       description="Advanced i18n/l10n features",
       long_description="""\
 """,
-      # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=['Framework :: Zope2',
                    'Framework :: Zope3'],
       keywords='i18n l10n Plone',
@@ -20,7 +19,9 @@ setup(name='plone.i18n',
       namespace_packages=['plone'],
       include_package_data=True,
       zip_safe=False,
-      install_requires=[],
+      install_requires=[
+        'setuptools',
+      ],
       entry_points="""
       # -*- Entry points: -*-
       """,
