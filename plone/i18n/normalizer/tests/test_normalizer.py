@@ -47,7 +47,7 @@ def testURLNormalizer():
       'simpleandsafe'
 
       >>> util.normalize(u' Whitespace and capital Letters  ')
-      'Whitespace-and-capital-Letters'
+      'whitespace-and-capital-letters'
 
       >>> util.normalize(u">here's another!")
       'heres-another'
