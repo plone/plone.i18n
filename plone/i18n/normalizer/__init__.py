@@ -108,6 +108,7 @@ class URLNormalizer(object):
         base = IGNORE_REGEX.sub('', base)
         base = DANGEROUS_CHARS_REGEX.sub('-', base)
         base = EXTRA_DASHES_REGEX.sub('', base)
+        base = base.replace(' ', '-')
 
         if ext != '':
             base = base + '.' + ext
