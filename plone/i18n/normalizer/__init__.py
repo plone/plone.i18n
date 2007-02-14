@@ -96,13 +96,10 @@ class URLNormalizer(object):
             if util is not None:
                 return util.normalize(text, locale=locale)
 
-        text = baseNormalize(text)
-
-        # lowercase text
-        base = text.lower()
+        # Preserve filename extensions
+        base = baseNormalize(text)
         ext  = ''
 
-        # Replace whitespace and punctuation, but preserve filename extensions
         m = FILENAME_REGEX.match(text)
         if m is not None:
             base = m.groups()[0]
@@ -111,7 +108,6 @@ class URLNormalizer(object):
         base = IGNORE_REGEX.sub('', base)
         base = DANGEROUS_CHARS_REGEX.sub('-', base)
         base = EXTRA_DASHES_REGEX.sub('', base)
-        base = base.replace(' ', '-')
 
         if ext != '':
             base = base + '.' + ext
