@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 
-from plone.i18n.normalizer.interfaces import IURLNormalizer
+from plone.i18n.normalizer.interfaces import INormalizer
 from zope.interface import implements
 from plone.i18n.normalizer.base import mapUnicode
 
@@ -9,18 +9,18 @@ mapping = {
     286 : 'G', 287 : 'g', 304 : 'I', 305 : 'i', 350 : 'S', 351 : 's'
 }
 
-class URLNormalizer(object):
+class Normalizer(object):
     """
-    This normalizer can normalize any unicode string and returns a URL-safe
-    version that only contains of ASCII characters allowed in a URL.
+    This normalizer can normalize any unicode string and returns a version
+    that only contains of ASCII characters.
 
     Let's make sure that this implementation actually fulfills the API.
 
       >>> from zope.interface.verify import verifyClass
-      >>> verifyClass(IURLNormalizer, URLNormalizer)
+      >>> verifyClass(INormalizer, Normalizer)
       True
     """
-    implements(IURLNormalizer)
+    implements(INormalizer)
 
     def normalize(self, text, locale=None):
         """
@@ -28,4 +28,4 @@ class URLNormalizer(object):
         """
         return mapUnicode(text, mapping=mapping)
 
-urlnormalizer = URLNormalizer()
+normalizer = Normalizer()

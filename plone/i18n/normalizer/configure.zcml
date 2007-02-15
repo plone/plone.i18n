@@ -7,33 +7,68 @@
       permission="zope.Public" />
 
   <utility
+      provides=".interfaces.IFileNameNormalizer"
+      component=".filenamenormalizer"
+      permission="zope.Public" />
+
+  <utility
       provides=".interfaces.IURLNormalizer"
       component=".urlnormalizer"
       permission="zope.Public" />
 
   <utility
       name="de"
+      provides=".interfaces.IFileNameNormalizer"
+      component=".de.normalizer"
+      permission="zope.Public" />
+
+  <utility
+      name="de"
       provides=".interfaces.IURLNormalizer"
-      component=".de.urlnormalizer"
+      component=".de.normalizer"
+      permission="zope.Public" />
+
+  <utility
+      name="el"
+      provides=".interfaces.IFileNameNormalizer"
+      component=".el.normalizer"
       permission="zope.Public" />
 
   <utility
       name="el"
       provides=".interfaces.IURLNormalizer"
-      component=".el.urlnormalizer"
+      component=".el.normalizer"
+      permission="zope.Public" />
+
+  <utility
+      name="ru"
+      provides=".interfaces.IFileNameNormalizer"
+      component=".ru.normalizer"
       permission="zope.Public" />
 
   <utility
       name="ru"
       provides=".interfaces.IURLNormalizer"
-      component=".ru.urlnormalizer"
+      component=".ru.normalizer"
+      permission="zope.Public" />
+
+  <utility
+      name="tr"
+      provides=".interfaces.IFileNameNormalizer"
+      component=".tr.normalizer"
       permission="zope.Public" />
 
   <utility
       name="tr"
       provides=".interfaces.IURLNormalizer"
-      component=".tr.urlnormalizer"
+      component=".tr.normalizer"
       permission="zope.Public" />
+
+  <adapter
+      for="zope.publisher.interfaces.http.IHTTPRequest"
+      provides=".interfaces.IUserPreferredFileNameNormalizer"
+      factory=".adapters.UserPreferredFileNameNormalizer"
+      />
 
   <adapter
       for="zope.publisher.interfaces.http.IHTTPRequest"
