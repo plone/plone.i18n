@@ -160,7 +160,7 @@ u'na' : {u'native' : 'Nauru', u'name' : 'Nauruan', u'flag' : u'/++resource++coun
 u'ne' : {u'native' : 'नेपाली', u'name' : 'Nepali'},
 u'nl' : {u'native' : 'Nederlands', u'name' : 'Dutch', u'flag' : u'/++resource++country-flags/nl.gif'},
 u'no' : {u'native' : 'Norsk', u'name' : 'Norwegian', u'flag' : u'/++resource++country-flags/no.gif'},
-u'nn' : {u'native' : 'Nynorsk', u'name' : 'Norwegian Nynorsk', u'flag' : u'/++resource++country-flags/no.gif'},
+u'nn' : {u'native' : 'Nynorsk', u'name' : 'Nynorsk', u'flag' : u'/++resource++country-flags/no.gif'},
 u'oc' : {u'native' : 'Occitan', u'name' : 'Occitan'},
 u'om' : {u'native' : 'Oromo', u'name' : 'Oromo'},
 u'or' : {u'native' : 'ଓଡ଼ିଆ', u'name' : 'Oriya'},
