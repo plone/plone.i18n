@@ -2,8 +2,7 @@ Changelog for plone.i18n
 
     (name of developer listed in brackets)
 
-plone.i18n - 1.0a3 Unreleased
+plone.i18n - 1.0b1 Released March 5, 2007
 
-    - Initial package structure.
+    - Initial implementation.
       [hannosch]
-
