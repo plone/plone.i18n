@@ -2,6 +2,21 @@ from zope.interface import Interface
 from zope.i18n.interfaces import ILanguageAvailability as \
     IBaseLanguageAvailability
 
+class ICcTLDInformation(Interface):
+    """A list of country code top level domains their relevant languages."""
+
+    def getAvailableTLDs():
+        """Return a sequence of country code top level domains.
+        """
+
+    def getTLDs():
+        """Return a sequence of ccTLDs and their languages.
+        """
+
+    def getLanguagesForTLD(tld):
+        """Return the relevant languages for a top level domain.
+        """
+
 class ICountryAvailability(Interface):
     """A list of available coutries."""
 

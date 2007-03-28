@@ -18,4 +18,8 @@
         component=".languages.metadatalanguages"
         permission="zope.Public" />
 
+    <utility
+        provides=".interfaces.ICcTLDInformation"
+        component=".cctld.ccTLDInformation"
+        permission="zope.Public" />
 </configure>
