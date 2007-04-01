@@ -39,6 +39,26 @@ def testIDNormalizer():
 
       >>> util.normalize(u">>>here'!--s yet another!!!")
       'here-s-yet-another'
+
+      >>> from plone.i18n.normalizer import MAX_LENGTH
+      
+      >>> testString = u"thissentenceiswaytolongtobecroppedwithoutcuttedbythenormalizemethodbecauseithasnoplacetocrop"
+      >>> util.normalize(testString)
+      'thissentenceiswaytolongtobecroppedwithoutcuttedbyt'
+      >>> len(util.normalize(testString)) == MAX_LENGTH
+      True
+
+      >>> testString = u"thissentenceisacropped-by-the-normalize-method-because-it-has-many-places-to-crop"
+      >>> util.normalize(testString)
+      'thissentenceisacropped-by-the-normalize-method'
+      >>> len(util.normalize(testString)) <= MAX_LENGTH
+      True
+
+      >>> testString = u"this-sentence-is-way-to-long-but-can-be-cropped-by-the-normalize-method-because-it-has-many-places-to-crop"
+      >>> util.normalize(testString)
+      'this-sentence-is-way-to-long-but-can-be-cropped-by'
+      >>> len(util.normalize(testString)) <= MAX_LENGTH
+      True      
     """
 
 

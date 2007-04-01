@@ -15,6 +15,25 @@ NON_WORD_REGEX = re.compile(r"[\W\-]+")
 DANGEROUS_CHARS_REGEX = re.compile(r"[?&/:\\#<>!$%^*()]+")
 MULTIPLE_DASHES_REGEX = re.compile(r"\-+")
 EXTRA_DASHES_REGEX = re.compile(r"(^\-+)|(\-+$)")
+#Define static constraints
+MAX_LENGTH = 50
+
+
+def cropName(base, maxLength=MAX_LENGTH):
+    baseLength = len(base)
+
+    index = baseLength
+    while index > maxLength:
+        index = base.rfind('-', 0, index)
+
+    if index == -1 and baseLength > maxLength:
+        base = base[: maxLength]
+
+    elif index > 0:
+        base = base[: index]
+
+    return base
+
 
 class IDNormalizer(object):
     """
@@ -64,6 +83,8 @@ class IDNormalizer(object):
         base = MULTIPLE_DASHES_REGEX.sub('-', base)
         base = EXTRA_DASHES_REGEX.sub('', base)
 
+        base = cropName(base)
+        
         if ext != '':
             base = base + '.' + ext
 
@@ -112,6 +133,8 @@ class FileNameNormalizer(object):
         base = DANGEROUS_CHARS_REGEX.sub('-', base)
         base = EXTRA_DASHES_REGEX.sub('', base)
         base = MULTIPLE_DASHES_REGEX.sub('-', base)
+
+        base = cropName(base)
 
         if ext != '':
             base = base + '.' + ext
@@ -164,6 +187,8 @@ class URLNormalizer(object):
         base = DANGEROUS_CHARS_REGEX.sub('-', base)
         base = EXTRA_DASHES_REGEX.sub('', base)
         base = MULTIPLE_DASHES_REGEX.sub('-', base)
+
+        base = cropName(base)
 
         if ext != '':
             base = base + '.' + ext
