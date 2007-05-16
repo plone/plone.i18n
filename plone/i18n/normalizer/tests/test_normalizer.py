@@ -79,6 +79,9 @@ def testFileNameNormalizer():
 
       >>> util.normalize(u">>>here'!--s yet another!!!")
       'here-s yet another'
+
+      >>> util.normalize("pseudo_filename,pot.doc")
+      'pseudo-filename-pot.doc'
     """
 
 
@@ -99,6 +102,9 @@ def testURLNormalizer():
 
       >>> util.normalize(u">>>here'!--s yet another!!!")
       'here-s-yet-another'
+
+      >>> util.normalize(u"Doe, Joe")
+      'doe-joe'
     """
 
 
