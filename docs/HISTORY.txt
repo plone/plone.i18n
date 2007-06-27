@@ -4,6 +4,9 @@ Changelog for plone.i18n
 
 plone.i18n - 1.0b2 Unreleased
 
+    - Added the reference to the Faroese flag.
+      [deo]
+
     - Remove more punctuation characters as for example using a comma in the
       title results in a not so friendly ID. This closes
       http://dev.plone.org/plone/ticket/6585.
