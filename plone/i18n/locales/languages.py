@@ -105,7 +105,7 @@ u'eu' : {u'native' : 'Euskara', u'name' : 'Basque', u'flag' : '/++resource++lang
 u'fa' : {u'native' : 'فارسی', u'name' : 'Persian'},
 u'fi' : {u'native' : 'Suomi', u'name' : 'Finnish', u'flag' : u'/++resource++country-flags/fi.gif'},
 u'fj' : {u'native' : 'Fiji', u'name' : 'Fiji', u'flag' : u'/++resource++country-flags/fj.gif'},
-u'fo' : {u'native' : 'Føroyska', u'name' : 'Faroese'},
+u'fo' : {u'native' : 'Føroyska', u'name' : 'Faroese', u'flag' : u'/++resource++country-flags/fo.gif'},
 u'fr' : {u'native' : 'Français', u'name' : 'French', u'flag' : u'/++resource++country-flags/fr.gif'},
 u'fy' : {u'native' : 'Frysk', u'name' : 'Frisian'},
 u'ga' : {u'native' : 'Gaeilge', u'name' : 'Irish Gaelic'},
