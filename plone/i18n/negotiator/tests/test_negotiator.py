@@ -89,6 +89,7 @@ def testBrowserNegotiator():
       'ro'
     """
 
+
 def testAvailableLanguagesBrowserNegotiator():
     """
       >>> negotiator = Negotiator()
@@ -117,6 +118,7 @@ def testAvailableLanguagesBrowserNegotiator():
       u'da'
       u'en'
     """
+
 
 def test_suite():
     return unittest.TestSuite((
