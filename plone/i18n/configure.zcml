@@ -3,6 +3,8 @@
 
     <include package=".locales" />
 
+    <include package=".negotiator" />
+
     <include package=".normalizer" />
 
 </configure>
