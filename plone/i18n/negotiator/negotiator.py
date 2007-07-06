@@ -20,10 +20,15 @@ class Negotiator(PersistentList):
         self.append(DefaultLanguage)
 
     def getLanguage(self, langs, request):
-        # langs are the available translation domains
+        # langs are the available languages from the translation domains
+        userlangs = []
 
-        plugin = self[0](request)
-        userlangs = plugin.getPreferredLanguages()
+        for plugin_registration in self:
+            plugin = plugin_registration(request)
+            userlangs = plugin.getPreferredLanguages()
+            # Stop once we got a result from a plugin
+            if userlangs is not None:
+                break
 
         # Restrict the languages based on site-wide policy
         available = queryUtility(ILanguageAvailability)
