@@ -6,8 +6,8 @@ class DefaultLanguage(object):
     
     implements(IUserPreferredLanguages)
 
-    def __init__(self, env):
-        self.env = env
+    def __init__(self, request):
+        self.request = request
 
     def getPreferredLanguages(self):
         """Return a sequence of user preferred languages."""

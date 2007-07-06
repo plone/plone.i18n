@@ -1,13 +1,11 @@
 from zope.component import queryUtility
-
-from zope.i18n.interfaces import ILanguageAvailability
 from zope.i18n.interfaces import INegotiator
 from zope.i18n.negotiator import normalize_langs
-
 from zope.interface import implements
 
 from persistent.list import PersistentList
 
+from plone.i18n.locales.interfaces import IContentLanguageAvailability
 from plone.i18n.negotiator.default import DefaultLanguage
 
 
@@ -30,10 +28,13 @@ class Negotiator(PersistentList):
             if userlangs is not None:
                 break
 
+        if userlangs is None:
+            return None
+
         # Restrict the languages based on site-wide policy
-        available = queryUtility(ILanguageAvailability)
+        available = queryUtility(IContentLanguageAvailability)
         if available is not None:
-            langs = available.getAvailableLanguages()
+            langs = [str(lang) for lang in available.getAvailableLanguages()]
 
         langs = normalize_langs(langs)
 

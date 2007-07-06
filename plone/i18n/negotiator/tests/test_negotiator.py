@@ -96,14 +96,14 @@ def testAvailableLanguagesBrowserNegotiator():
       >>> from zope.publisher.browser import BrowserLanguages
       >>> negotiator[0] = BrowserLanguages
 
-      >>> from zope.i18n.interfaces import ILanguageAvailability
+      >>> from plone.i18n.locales.interfaces import IContentLanguageAvailability
       >>> from plone.i18n.locales.languages import LanguageAvailability
 
       >>> from zope.component import getSiteManager
       >>> lang_avail = LanguageAvailability()
 
       >>> sm = getSiteManager()
-      >>> sm.registerUtility(lang_avail, provided=ILanguageAvailability)
+      >>> sm.registerUtility(lang_avail, provided=IContentLanguageAvailability)
 
       >>> data = [
       ...    (('xy', ),  ('da, en, pt')),
@@ -114,9 +114,9 @@ def testAvailableLanguagesBrowserNegotiator():
       >>> for langs, req in data:
       ...    request = TestRequest(req)
       ...    negotiator.getLanguage(langs, request)
-      u'da'
-      u'da'
-      u'en'
+      'da'
+      'da'
+      'en'
     """
 
 
