@@ -15,8 +15,9 @@ from zope.testing.doctestunit import DocTestSuite
 
 class TestRequest(dict):
 
-    def __init__(self, host):
-        self["HTTP_HOST"] = host
+    def __init__(self, cookie):
+        self.cookies = {}
+        self.cookies['I18N_LANGUAGE'] = cookie
 
 
 def configurationSetUp(self):
@@ -24,39 +25,33 @@ def configurationSetUp(self):
     XMLConfig('meta.zcml', zope.component)()
 
 
-def testTldNegotiator():
+def testCookieNegotiator():
     """
       >>> from plone.i18n.negotiator.negotiator import Negotiator
       >>> negotiator = Negotiator()
-      >>> from plone.i18n.negotiator.tld import TldLanguage
-      >>> negotiator[0] = TldLanguage
+      >>> from plone.i18n.negotiator.cookie import CookieLanguage
+      >>> negotiator[0] = CookieLanguage
 
-      >>> from plone.i18n.locales.interfaces import ICcTLDInformation
       >>> from plone.i18n.locales.interfaces import ILanguageAvailability
-      >>> from plone.i18n.locales.cctld import CcTLDInformation
       >>> from plone.i18n.locales.languages import LanguageAvailability
 
       >>> from zope.component import getSiteManager
       >>> lang_avail = LanguageAvailability()
-      >>> cctld = CcTLDInformation()
 
       >>> sm = getSiteManager()
       >>> sm.registerUtility(lang_avail, provided=ILanguageAvailability)
-      >>> sm.registerUtility(cctld, provided=ICcTLDInformation)
 
       >>> data = [
-      ...    (('de', 'en'),  'www.plone.org'),
-      ...    (('en', 'fi'), 'www.plone.fi'),
-      ...    (('ca', 'pt'), 'www.plone.pt'),
-      ...    (('ca', 'pt'), 'www.plone.pt:8081'),
+      ...    (('de', 'en'),  'de'),
+      ...    (('en', 'fi'), 'fi'),
+      ...    (('ca', 'pt'), 'pt_BR'),
       ... ]
 
-      >>> for langs, host in data:
-      ...    request = TestRequest(host)
+      >>> for langs, cookie in data:
+      ...    request = TestRequest(cookie)
       ...    negotiator.getLanguage(langs, request)
+      'de'
       'fi'
-      'pt'
-      'pt'
     """
 
 
