@@ -10,6 +10,7 @@ from persistent.list import PersistentList
 
 from plone.i18n.negotiator.default import DefaultLanguage
 
+
 class Negotiator(PersistentList):
 
     implements(INegotiator)
