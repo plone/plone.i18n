@@ -5,13 +5,9 @@
 
 import unittest
 
-from plone.i18n.negotiator.negotiator import Negotiator
-
 import zope.component
 from zope.component.testing import setUp, tearDown
 from zope.configuration.xmlconfig import XMLConfig
-from zope.i18n.interfaces import IUserPreferredLanguages
-from zope.interface import implements
 
 from zope.testing import doctest
 from zope.testing.doctestunit import DocTestSuite
@@ -30,6 +26,7 @@ def configurationSetUp(self):
 
 def testPathNegotiator():
     """
+      >>> from plone.i18n.negotiator.negotiator import Negotiator
       >>> negotiator = Negotiator()
       >>> from plone.i18n.negotiator.path import PathLanguage
       >>> negotiator[0] = PathLanguage
