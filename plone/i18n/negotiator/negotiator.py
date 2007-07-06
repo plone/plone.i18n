@@ -21,7 +21,6 @@ class Negotiator(PersistentList):
 
     def getLanguage(self, langs, request):
         # langs are the available translation domains
-        # env is the request
 
         plugin = self[0](request)
         userlangs = plugin.getPreferredLanguages()
@@ -36,6 +35,12 @@ class Negotiator(PersistentList):
         for lang in userlangs:
             if lang in langs:
                 return langs.get(lang)
+
+            # XXX Have this more configurable. For example pt is not a
+            # fallback for pt-br. Have a list of allowed fallbacks somewhere
+            # in the same way we had PTS X-is-fallback-for headers in po files
+            # before.
+
             # If the user asked for a specific variation, but we don't
             # have it available we may serve the most generic one,
             # according to the spec (eg: user asks for ('en-us',
