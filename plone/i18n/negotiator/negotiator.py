@@ -7,6 +7,7 @@ from persistent.list import PersistentList
 
 from plone.i18n.locales.interfaces import IContentLanguageAvailability
 from plone.i18n.negotiator.default import DefaultLanguage
+from plone.i18n.negotiator.interfaces import ILanguageFallback
 
 
 class Negotiator(PersistentList):
@@ -32,27 +33,26 @@ class Negotiator(PersistentList):
             return None
 
         # Restrict the languages based on site-wide policy
-        available = queryUtility(IContentLanguageAvailability)
-        if available is not None:
-            langs = [str(lang) for lang in available.getAvailableLanguages()]
+        allowed = queryUtility(IContentLanguageAvailability)
+        if allowed is not None:
+            langs = [str(lang) for lang in allowed.getAvailableLanguages()]
 
         langs = normalize_langs(langs)
+        fallback = queryUtility(ILanguageFallback)
 
         for lang in userlangs:
             if lang in langs:
                 return langs.get(lang)
-
-            # XXX Have this more configurable. For example pt is not a
-            # fallback for pt-br. Have a list of allowed fallbacks somewhere
-            # in the same way we had PTS X-is-fallback-for headers in po files
-            # before.
 
             # If the user asked for a specific variation, but we don't
             # have it available we may serve the most generic one,
             # according to the spec (eg: user asks for ('en-us',
             # 'de'), but we don't have 'en-us', then 'en' is preferred
             # to 'de').
-            parts = lang.split('-')
-            if len(parts) > 1 and parts[0] in langs:
-                return langs.get(parts[0])
+            if fallback is not None:
+                fallbacks = fallback.fallback(lang)
+                for fb in fallbacks:
+                    if fb in langs:
+                        return fb
+
         return None

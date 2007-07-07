@@ -18,12 +18,12 @@ class TldLanguage(object):
         langs = []
 
         host = self.request.get('HTTP_HOST', None)
-        util = queryUtility(ICcTLDInformation)
-        if host is None or util is None:
+        tlds = queryUtility(ICcTLDInformation)
+        if host is None or tlds is None:
             return None
 
         tld = host.split(":")[0].lower().split(".")[-1]
-        wanted = util.getTLDs().get(tld, [])
+        wanted = tlds.getTLDs().get(tld, [])
 
         available = queryUtility(ILanguageAvailability)
         if available is not None:

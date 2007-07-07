@@ -3,7 +3,7 @@ from zope.interface import implements
 
 
 class DefaultLanguage(object):
-    
+
     implements(IUserPreferredLanguages)
 
     def __init__(self, request):

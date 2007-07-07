@@ -14,14 +14,12 @@ class PathLanguage(object):
     def getPreferredLanguages(self):
         """Return a sequence of user preferred languages."""
         langs = []
-        items = self.request.get('TraversalRequestNameStack')
+        paths = self.request.get('TraversalRequestNameStack')
 
         available = queryUtility(ILanguageAvailability)
         if available is not None:
             langs = [str(lang) for lang in available.getAvailableLanguages()]
 
-        for item in items:
-            if item in langs:
-                return [item]
+        langs = [path for path in paths if path in langs]
 
-        return None
+        return langs and langs or None

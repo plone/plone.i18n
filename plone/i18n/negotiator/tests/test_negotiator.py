@@ -14,6 +14,7 @@ from zope.interface import implements
 from zope.testing import doctest
 from zope.testing.doctestunit import DocTestSuite
 
+import plone.i18n.negotiator
 from plone.i18n.negotiator.negotiator import Negotiator
 
 
@@ -36,7 +37,7 @@ class TestRequest(dict):
 def configurationSetUp(self):
     setUp()
     XMLConfig('meta.zcml', zope.component)()
-
+    XMLConfig('configure.zcml', plone.i18n.negotiator)()
 
 def testDefaultNegotiator():
     """
@@ -47,7 +48,6 @@ def testDefaultNegotiator():
       ...    (('en','de'), ('en','de','fr'),  'en'),
       ...    (('en'),      ('it','de','fr'),  None),
       ...    (('pt-br','de'), ('pt_BR','de','fr'),  'pt_BR'),
-      ...    (('pt-br','en'), ('pt', 'en', 'fr'),  'pt'),
       ...    (('pt-br','en-us', 'de'), ('de', 'en', 'fr'),  'en'),
       ...    )
 
@@ -59,7 +59,30 @@ def testDefaultNegotiator():
       True
       True
       True
-      True
+    """
+
+
+def testFallbackOnDefaultNegotiator():
+    """
+      >>> negotiator = Negotiator()
+
+      >>> from zope.publisher.browser import BrowserLanguages
+      >>> negotiator[0] = BrowserLanguages
+
+      >>> data = [
+      ...    (('pt', 'en'),  ('pt_BR, en')),
+      ...    (('en-us', 'da'), ('da, en;q=.9, en-gb;q=1.0, en-us')),
+      ...    (('en', 'pt-br'), ('pt_BR; q=0.6, pt_PT; q = .7, en-gb')),
+      ...    (('en-gb', 'en-us'), ('en-us, en_GB;q=0.9, en, pt_BR; q=1.0')),
+      ...    ]
+
+      >>> for langs, req in data:
+      ...    request = TestRequest(req)
+      ...    negotiator.getLanguage(langs, request)
+      'en'
+      'da'
+      'en'
+      'en-us'
     """
 
 
