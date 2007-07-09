@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = '1.0b3'
+version = '1.0rc1'
 
 setup(name='plone.i18n',
       version=version,
@@ -25,7 +25,4 @@ setup(name='plone.i18n',
       install_requires=[
         'setuptools',
       ],
-      entry_points="""
-      # -*- Entry points: -*-
-      """,
       )

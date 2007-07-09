@@ -2,7 +2,12 @@ Changelog for plone.i18n
 
     (name of developer listed in brackets)
 
-plone.i18n - 1.0b2 Unreleased
+plone.i18n - 1.0rc1 Released July 9, 2007
+
+    - Merged udg-sprint branch. This adds a Zope3-based configurable language
+      negotiator with similar functionality as PloneLanguageTool. It is not
+      enabled by default.
+      [hannosch]
 
     - Added the reference to the Faroese flag.
       [deo]
