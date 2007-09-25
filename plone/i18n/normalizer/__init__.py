@@ -121,7 +121,7 @@ class FileNameNormalizer(object):
                 text = util.normalize(text, locale=locale)
 
         # Preserve filename extensions
-        base = baseNormalize(text)
+        base = text = baseNormalize(text)
         ext  = ''
 
         m = FILENAME_REGEX.match(text)

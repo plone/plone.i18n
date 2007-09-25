@@ -1,4 +1,4 @@
-# -*- coding: UTF-8 -*-
+# -*- coding: utf-8 -*-
 """
     Normalizer tests.
 """
@@ -39,6 +39,9 @@ def testIDNormalizer():
 
       >>> util.normalize(u">>>here'!--s yet another!!!")
       'here-s-yet-another'
+
+      >>> util.normalize(unicode("umläut.doc", 'utf-8'))
+      'umlaut.doc'
 
       >>> from plone.i18n.normalizer import MAX_LENGTH
       
@@ -82,6 +85,9 @@ def testFileNameNormalizer():
 
       >>> util.normalize("pseudo_filename,pot.doc")
       'pseudo-filename-pot.doc'
+
+      >>> util.normalize(unicode("umläut.doc", 'utf-8'))
+      'umlaut.doc'
     """
 
 
@@ -105,6 +111,9 @@ def testURLNormalizer():
 
       >>> util.normalize(u"Doe, Joe")
       'doe-joe'
+
+      >>> util.normalize(unicode("umläut.doc", 'utf-8'))
+      'umlaut.doc'
     """
 
 
