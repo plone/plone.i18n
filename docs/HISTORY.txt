@@ -2,6 +2,12 @@ Changelog for plone.i18n
 
     (name of developer listed in brackets)
 
+plone.i18n - 1.0.1 unreleased
+
+    - Extend polish normalizer 'Ł' to L. This closes
+      http://dev.plone.org/plone/ticket/6845.
+      [hannosch]
+
 plone.i18n - 1.0 Released August 13, 2007
 
     - Added Polish normalizer which normalizes 'ł' to l. This fixes

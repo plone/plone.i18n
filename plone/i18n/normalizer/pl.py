@@ -6,7 +6,7 @@ from plone.i18n.normalizer.base import mapUnicode
 
 # Polish character mapping
 mapping = {
-    322 : 'l',
+    321 : 'L', 322 : 'l',
 }
 
 class Normalizer(object):
