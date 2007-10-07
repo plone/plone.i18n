@@ -2,11 +2,15 @@ Changelog for plone.i18n
 
     (name of developer listed in brackets)
 
-plone.i18n - 1.0.1 unreleased
+plone.i18n - 1.0.1 Released October 7, 2007
 
     - Extend polish normalizer 'Ł' to L. This closes
       http://dev.plone.org/plone/ticket/6845.
       [hannosch]
+
+    - Added test for filename with non-ascii character and extension. Fixes
+      http://dev.plone.org/plone/ticket/7128.
+      [dreamcatcher]
 
 plone.i18n - 1.0 Released August 13, 2007
 
