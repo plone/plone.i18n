@@ -4,6 +4,12 @@ Changelog for plone.i18n
 
 plone.i18n - 1.0.1 Released October 7, 2007
 
+    - Increase the maximum filename size to 1023 and make it independently
+      configurable.
+      [hannosch]
+
+plone.i18n - 1.0.1 Released October 7, 2007
+
     - Extend polish normalizer 'Ł' to L. This closes
       http://dev.plone.org/plone/ticket/6845.
       [hannosch]

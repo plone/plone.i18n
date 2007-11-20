@@ -88,6 +88,9 @@ def testFileNameNormalizer():
 
       >>> util.normalize(unicode("umläut.doc", 'utf-8'))
       'umlaut.doc'
+
+      >>> len(util.normalize(u'aa-' * 2000))
+      1022
     """
 
 

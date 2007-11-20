@@ -17,6 +17,7 @@ MULTIPLE_DASHES_REGEX = re.compile(r"\-+")
 EXTRA_DASHES_REGEX = re.compile(r"(^\-+)|(\-+$)")
 #Define static constraints
 MAX_LENGTH = 50
+MAX_FILENAME_LENGTH = 1023
 
 
 def cropName(base, maxLength=MAX_LENGTH):
@@ -134,7 +135,7 @@ class FileNameNormalizer(object):
         base = EXTRA_DASHES_REGEX.sub('', base)
         base = MULTIPLE_DASHES_REGEX.sub('-', base)
 
-        base = cropName(base)
+        base = cropName(base, maxLength=MAX_FILENAME_LENGTH)
 
         if ext != '':
             base = base + '.' + ext
