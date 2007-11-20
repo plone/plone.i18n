@@ -2,7 +2,10 @@ Changelog for plone.i18n
 
     (name of developer listed in brackets)
 
-plone.i18n - 1.0.1 Released October 7, 2007
+plone.i18n - 1.0.2 Unreleased
+
+    - Remove those [] brackets from file names as well.
+      [hannosch]
 
     - Increase the maximum filename size to 1023 and make it independently
       configurable.

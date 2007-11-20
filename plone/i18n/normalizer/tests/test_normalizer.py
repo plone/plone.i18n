@@ -83,6 +83,9 @@ def testFileNameNormalizer():
       >>> util.normalize(u">>>here'!--s yet another!!!")
       'here-s yet another'
 
+      >>> util.normalize(u"{[(me too)]}")
+      'me too'
+
       >>> util.normalize("pseudo_filename,pot.doc")
       'pseudo-filename-pot.doc'
 

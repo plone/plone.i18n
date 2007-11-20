@@ -12,7 +12,7 @@ from zope.interface import implements
 FILENAME_REGEX = re.compile(r"^(.+)\.(\w{,4})$")
 IGNORE_REGEX = re.compile(r"[']")
 NON_WORD_REGEX = re.compile(r"[\W\-]+")
-DANGEROUS_CHARS_REGEX = re.compile(r"[!#$%&()*+,/:;<=>?@\\^_{|}~]+")
+DANGEROUS_CHARS_REGEX = re.compile(r"[!#$%&()*+,/:;<=>?@\\^_{|}\[\]~]+")
 MULTIPLE_DASHES_REGEX = re.compile(r"\-+")
 EXTRA_DASHES_REGEX = re.compile(r"(^\-+)|(\-+$)")
 #Define static constraints
