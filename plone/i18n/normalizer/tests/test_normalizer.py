@@ -120,6 +120,12 @@ def testURLNormalizer():
 
       >>> util.normalize(unicode("umläut.doc", 'utf-8'))
       'umlaut.doc'
+
+      >>> util.normalize('quote "this"!')
+      'quote-this'
+
+      >>> util.normalize("quote 'this'!")
+      'quote-this'
     """
 
 

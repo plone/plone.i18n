@@ -2,6 +2,12 @@ Changelog for plone.i18n
 
     (name of developer listed in brackets)
 
+plone.i18n - 1.0.3 Unreleased
+
+    - Don't allow double quotes in normalized urls.
+      This closes http://dev.plone.org/archetypes/ticket/764.
+      [hannosch]
+
 plone.i18n - 1.0.2 Released November 24, 2007
 
     - Remove those [] brackets from file names as well.
