@@ -35,6 +35,10 @@ class Normalizer(object):
       >>> from zope.interface.verify import verifyClass
       >>> verifyClass(INormalizer, Normalizer)
       True
+
+      >>> norm = Normalizer()
+      >>> norm.normalize(u'\u0429')
+      'SCH'
     """
     implements(INormalizer)
 

@@ -27,6 +27,10 @@ class Normalizer(object):
       >>> from zope.interface.verify import verifyClass
       >>> verifyClass(INormalizer, Normalizer)
       True
+
+      >>> norm = Normalizer()
+      >>> norm.normalize(u'\u03b9')
+      'i'
     """
     implements(INormalizer)
 

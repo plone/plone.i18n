@@ -4,6 +4,12 @@ Changelog for plone.i18n
 
 plone.i18n - 1.0.3 Unreleased
 
+    - Added more tests.
+      [hannosch]
+
+    - Removed unused and untested 'native' from country information.
+      [hannosch]
+
     - Don't allow double quotes in normalized urls.
       This closes http://dev.plone.org/archetypes/ticket/764.
       [hannosch]

@@ -33,7 +33,7 @@ countries = CountryAvailability()
 
 # This is a dictionary of dictonaries:
 #
-# 'country-code' : {u'name' : 'English name', u'native' : 'Native name', u'flag' : u'/++resource++country-flags/*.gif'}
+# 'country-code' : {u'name' : 'English name', u'flag' : u'/++resource++country-flags/*.gif'}
 
 _countrylist = {
 u'ad' : {u'name' : 'Andorra', u'flag' : u'/++resource++country-flags/ad.gif'},
@@ -286,5 +286,3 @@ for code in _countrylist:
     value = _countrylist[code]
     if u'name' in value:
         value[u'name'] = unicode(value[u'name'], 'utf-8')
-    if u'native' in value:
-        value[u'native'] = unicode(value[u'native'], 'utf-8')

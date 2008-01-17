@@ -39,12 +39,10 @@ def testccTLDs():
       >>> len(tlds)
       266
 
-      >>> nl = tlds[u'nl']
-      >>> nl
+      >>> util.getLanguagesForTLD(u'nl')
       [u'nl']
 
-      >>> be = tlds[u'be']
-      >>> be
+      >>> util.getLanguagesForTLD(u'be')
       [u'nl', u'fr']
     """
 

@@ -36,6 +36,10 @@ def testTldNegotiator():
       >>> from plone.i18n.locales.cctld import CcTLDInformation
       >>> from plone.i18n.locales.languages import LanguageAvailability
 
+      >>> request = TestRequest('www.plone.de')
+      >>> negotiator.getLanguage(('de', ), request) is None
+      True
+
       >>> from zope.component import getSiteManager
       >>> lang_avail = LanguageAvailability()
       >>> cctld = CcTLDInformation()

@@ -20,6 +20,10 @@ class Normalizer(object):
       >>> from zope.interface.verify import verifyClass
       >>> verifyClass(INormalizer, Normalizer)
       True
+
+      >>> norm = Normalizer()
+      >>> norm.normalize(u'\xe4')
+      'ae'
     """
     implements(INormalizer)
 

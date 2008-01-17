@@ -35,6 +35,10 @@ def testCookieNegotiator():
       >>> from plone.i18n.locales.interfaces import ILanguageAvailability
       >>> from plone.i18n.locales.languages import LanguageAvailability
 
+      >>> request = TestRequest('de')
+      >>> negotiator.getLanguage(('de', ), request) is None
+      True
+
       >>> from zope.component import getSiteManager
       >>> lang_avail = LanguageAvailability()
 

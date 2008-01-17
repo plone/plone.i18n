@@ -97,6 +97,32 @@ def testFileNameNormalizer():
     """
 
 
+def testLocaleAwareFileNameNormalizer():
+    """
+    >>> util = queryUtility(IFileNameNormalizer)
+    >>> util
+    <plone.i18n.normalizer.FileNameNormalizer object at ...>
+
+      >>> util.normalize(u'simpleandsafe', locale='de')
+      'simpleandsafe'
+
+      >>> util.normalize(unicode('text with umläut', 'utf-8'), locale='de')
+      'text with umlaeut'
+
+    Make sure we get the de normalizer as there's no special one for de_DE
+    registered.
+       
+      >>> util.normalize(unicode('text with umläut', 'utf-8'), locale='de_DE')
+      'text with umlaeut'
+
+      >>> util.normalize(u'simpleandsafe', locale='pt_BR')
+      'simpleandsafe'
+
+      >>> util.normalize(u'simpleandsafe', locale='sr@Latn')
+      'simpleandsafe'
+    """
+
+
 def testURLNormalizer():
     """
       >>> util = queryUtility(IURLNormalizer)
