@@ -61,7 +61,40 @@ def testIDNormalizer():
       >>> util.normalize(testString)
       'this-sentence-is-way-to-long-but-can-be-cropped-by'
       >>> len(util.normalize(testString)) <= MAX_LENGTH
-      True      
+      True
+    """
+
+
+def testLocaleAwareIDNormalizer():
+    """
+      >>> util = queryUtility(IIDNormalizer)
+      >>> util
+      <plone.i18n.normalizer.IDNormalizer object at ...>
+
+    Register the German file name normalizer as an id normalizer as well, to
+    test the locale-aware id normalization logic:
+
+      >>> de_util = queryUtility(IFileNameNormalizer, name='de')
+      >>> sm = zope.component.getGlobalSiteManager()
+      >>> sm.registerUtility(de_util, IIDNormalizer, name='de')
+
+      >>> util.normalize(u'simpleandsafe', locale='de')
+      'simpleandsafe'
+
+      >>> util.normalize(unicode('text with umläut', 'utf-8'), locale='de')
+      'text-with-umlaeut'
+
+    Make sure we get the de normalizer as there's no special one for de_DE
+    registered.
+       
+      >>> util.normalize(unicode('text with umläut', 'utf-8'), locale='de_DE')
+      'text-with-umlaeut'
+
+      >>> util.normalize(u'simpleandsafe', locale='pt_BR')
+      'simpleandsafe'
+
+      >>> util.normalize(u'simpleandsafe', locale='sr@Latn')
+      'simpleandsafe'
     """
 
 
@@ -99,9 +132,9 @@ def testFileNameNormalizer():
 
 def testLocaleAwareFileNameNormalizer():
     """
-    >>> util = queryUtility(IFileNameNormalizer)
-    >>> util
-    <plone.i18n.normalizer.FileNameNormalizer object at ...>
+      >>> util = queryUtility(IFileNameNormalizer)
+      >>> util
+      <plone.i18n.normalizer.FileNameNormalizer object at ...>
 
       >>> util.normalize(u'simpleandsafe', locale='de')
       'simpleandsafe'
@@ -185,6 +218,7 @@ def test_suite():
         DocTestSuite('plone.i18n.normalizer'),
         DocTestSuite('plone.i18n.normalizer.de'),
         DocTestSuite('plone.i18n.normalizer.el'),
+        DocTestSuite('plone.i18n.normalizer.pl'),
         DocTestSuite('plone.i18n.normalizer.ru'),
         DocTestSuite('plone.i18n.normalizer.tr'),
         DocTestSuite(setUp=configurationSetUp,

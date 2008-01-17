@@ -4,6 +4,9 @@ Changelog for plone.i18n
 
 plone.i18n - 1.0.3 Unreleased
 
+    - Wrote tests for the locale-aware id normalizer and fixed a bug in it.
+      [hannosch]
+
     - Added more tests.
       [hannosch]
 

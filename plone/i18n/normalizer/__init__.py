@@ -58,12 +58,12 @@ class IDNormalizer(object):
         """
         if locale is not None:
             # Try to get a normalizer for the locale
-            util = queryUtility(IDNormalizer, name=locale)
+            util = queryUtility(IIDNormalizer, name=locale)
             parts = locale.split('_')
             if util is None and len(parts) > 1:
                 # Try to get a normalizer for the base language if we asked
                 # for one for a language/country combination and found none
-                util = queryUtility(IDNormalizer, name=parts[0])
+                util = queryUtility(IIDNormalizer, name=parts[0])
             if util is not None:
                 text = util.normalize(text, locale=locale)
 
