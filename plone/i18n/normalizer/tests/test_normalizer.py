@@ -216,6 +216,7 @@ def testLocaleAwareURLNormalizer():
 def test_suite():
     return unittest.TestSuite((
         DocTestSuite('plone.i18n.normalizer'),
+        DocTestSuite('plone.i18n.normalizer.base'),
         DocTestSuite('plone.i18n.normalizer.de'),
         DocTestSuite('plone.i18n.normalizer.el'),
         DocTestSuite('plone.i18n.normalizer.pl'),

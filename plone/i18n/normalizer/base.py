@@ -41,6 +41,15 @@ def baseNormalize(text):
     This method is used for normalization of unicode characters to the base ASCII
     letters. Output is ASCII encoded string (or char) with only ASCII letters,
     digits, punctuation and whitespace characters. Case is preserved.
+
+      >>> baseNormalize(123)
+      '123'
+
+      >>> baseNormalize(u'\u0fff')
+      'fff'
+
+      >>> baseNormalize(u"foo\N{LATIN CAPITAL LETTER I WITH CARON}")
+      'fooI'
     """
     if not isinstance(text, basestring):
         # This most surely ends up in something the user does not expect
