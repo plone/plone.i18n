@@ -4,6 +4,10 @@ Changelog for plone.i18n
 
 plone.i18n - 1.0.3 Unreleased
 
+    - Added tests for the filename and url request adapters. We have now 100%
+      test coverage.
+      [hannosch]
+
     - Wrote tests for the locale-aware id normalizer and fixed a bug in it.
       [hannosch]
 

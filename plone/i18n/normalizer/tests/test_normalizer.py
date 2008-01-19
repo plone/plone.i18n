@@ -17,10 +17,12 @@ from zope.configuration.xmlconfig import XMLConfig
 from zope.testing import doctest
 from zope.testing.doctestunit import DocTestSuite
 
+
 def configurationSetUp(self):
     setUp()
     XMLConfig('meta.zcml', zope.component)()
     XMLConfig('configure.zcml', plone.i18n.normalizer)()
+
 
 def testIDNormalizer():
     """
