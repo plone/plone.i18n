@@ -29,6 +29,12 @@ The following logic is used with the language/flag mapping:
   textual links in these cases, but if you are 100% sure that flags are OK,
   this is what will happen.
 
+- In special cases where we have been told by independent sources that there
+  is a flag that represents the collection of countries or grouping that use
+  the language, we have included a "language-specific flag" if it exists.
+  Examples: Arabic (ar), Esperanto (eo). We still recommend textual links in
+  these cases.
+
 There might still be mappings that are wrong, but we have tried to check as 
 many of them as possible. If you find any problems, please contact the 
 Internationalization list at http://plone.org/support.
