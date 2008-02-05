@@ -4,6 +4,15 @@ Changelog for plone.i18n
 
 plone.i18n - 1.0.3 Unreleased
 
+    - Updating the flag/language listings. Updating readme to include the flag
+      mapping logic. This closes http://dev.plone.org/plone/ticket/7441.
+      [limi]
+
+    - Adding all the Arabic-speaking countries with their respective flags, and
+      adding a generic flag to represent Arabic in general (verified to be OK with
+      two independent, native residents).
+      [limi]
+
     - Added tests for the filename and url request adapters. We have now 100%
       test coverage.
       [hannosch]
