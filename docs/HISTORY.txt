@@ -2,6 +2,9 @@ Changelog for plone.i18n
 
     (name of developer listed in brackets)
 
+plone.i18n - 1.0.4 Unreleased
+
+
 plone.i18n - 1.0.3 Released February 13, 2008
 
     - Updating the flag/language listings. Updating readme to include the flag
