@@ -187,6 +187,12 @@ def testURLNormalizer():
 
       >>> util.normalize("quote 'this'!")
       'quote-this'
+
+      >>> util.normalize("I'm not a FILE.txt")
+      'im-not-a-file.txt'
+
+      >>> util.normalize("I'm a big file.TXT")
+      'im-a-big-file.txt'
     """
 
 

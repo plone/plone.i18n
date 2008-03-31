@@ -4,6 +4,9 @@ Changelog for plone.i18n
 
 plone.i18n - 1.0.4 Unreleased
 
+    - If a dot was used in a url, the url was not be lowercased. This closes
+      http://dev.plone.org/plone/ticket/7961.
+      [hannosch]
 
 plone.i18n - 1.0.3 Released February 13, 2008
 

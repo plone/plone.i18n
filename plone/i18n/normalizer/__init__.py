@@ -178,7 +178,7 @@ class URLNormalizer(object):
         base = text.lower()
         ext  = ''
 
-        m = FILENAME_REGEX.match(text)
+        m = FILENAME_REGEX.match(base)
         if m is not None:
             base = m.groups()[0]
             ext  = m.groups()[1]
