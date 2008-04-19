@@ -2,6 +2,10 @@ Changelog for plone.i18n
 
     (name of developer listed in brackets)
 
+plone.i18n - 1.0.5 Unreleased
+
+
+
 plone.i18n - 1.0.4 Released April 19, 2008
 
     - If a dot was used in a url, the url was not lowercased. This closes
