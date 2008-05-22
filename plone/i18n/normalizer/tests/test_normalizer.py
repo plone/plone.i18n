@@ -64,6 +64,9 @@ def testIDNormalizer():
       'this-sentence-is-way-to-long-but-can-be-cropped-by'
       >>> len(util.normalize(testString)) <= MAX_LENGTH
       True
+
+      >>> util.normalize(unicode("rest `n` peace", 'utf-8'))
+      'rest-n-peace'
     """
 
 
@@ -129,6 +132,9 @@ def testFileNameNormalizer():
 
       >>> len(util.normalize(u'aa-' * 2000))
       1022
+
+      >>> util.normalize(unicode("rest `n` peace", 'utf-8'))
+      'rest -n- peace'
     """
 
 
@@ -193,6 +199,9 @@ def testURLNormalizer():
 
       >>> util.normalize("I'm a big file.TXT")
       'im-a-big-file.txt'
+
+      >>> util.normalize(unicode("rest `n` peace", 'utf-8'))
+      'rest-n-peace'
     """
 
 
