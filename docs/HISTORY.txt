@@ -4,6 +4,10 @@ Changelog for plone.i18n
 
 plone.i18n - 1.0.5 Unreleased
 
+    - Added a new MAX_URL_LENGTH constant used by the URL normalizer. It
+      defaults to 255.
+      [hannosch]
+
     - Added '`' to the list of dangerous chars, which will be removed by the
       url and be replaced with a dash by the file name normalizer now.
       [hannosch, mj]

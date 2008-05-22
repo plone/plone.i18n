@@ -18,6 +18,7 @@ EXTRA_DASHES_REGEX = re.compile(r"(^\-+)|(\-+$)")
 #Define static constraints
 MAX_LENGTH = 50
 MAX_FILENAME_LENGTH = 1023
+MAX_URL_LENGTH = 255
 
 
 def cropName(base, maxLength=MAX_LENGTH):
@@ -28,10 +29,10 @@ def cropName(base, maxLength=MAX_LENGTH):
         index = base.rfind('-', 0, index)
 
     if index == -1 and baseLength > maxLength:
-        base = base[: maxLength]
+        base = base[:maxLength]
 
     elif index > 0:
-        base = base[: index]
+        base = base[:index]
 
     return base
 
@@ -189,7 +190,7 @@ class URLNormalizer(object):
         base = EXTRA_DASHES_REGEX.sub('', base)
         base = MULTIPLE_DASHES_REGEX.sub('-', base)
 
-        base = cropName(base)
+        base = cropName(base, maxLength=MAX_URL_LENGTH)
 
         if ext != '':
             base = base + '.' + ext

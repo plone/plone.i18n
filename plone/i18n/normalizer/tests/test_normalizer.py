@@ -130,8 +130,8 @@ def testFileNameNormalizer():
       >>> util.normalize(unicode("umläut.doc", 'utf-8'))
       'umlaut.doc'
 
-      >>> len(util.normalize(u'aa-' * 2000))
-      1022
+      >>> len(util.normalize(u'aa' * 2000))
+      1023
 
       >>> util.normalize(unicode("rest `n` peace", 'utf-8'))
       'rest -n- peace'
@@ -202,6 +202,9 @@ def testURLNormalizer():
 
       >>> util.normalize(unicode("rest `n` peace", 'utf-8'))
       'rest-n-peace'
+
+      >>> len(util.normalize(u'aa' * 2000))
+      255
     """
 
 
