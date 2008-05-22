@@ -2,6 +2,9 @@ Changelog for plone.i18n
 
     (name of developer listed in brackets)
 
+plone.i18n - 1.0.6 Unreleased
+
+
 plone.i18n - 1.0.5 Released May 22, 2008
 
     - Added a new max_length argument to the normalize method. This allows you
