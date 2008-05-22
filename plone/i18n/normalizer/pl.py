@@ -26,7 +26,7 @@ class Normalizer(object):
     """
     implements(INormalizer)
 
-    def normalize(self, text, locale=None):
+    def normalize(self, text, locale=None, max_length=None):
         """
         Returns a normalized text. text has to be a unicode string.
         """

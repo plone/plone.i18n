@@ -52,7 +52,7 @@ class IDNormalizer(object):
     """
     implements(IIDNormalizer)
 
-    def normalize(self, text, locale=None):
+    def normalize(self, text, locale=None, max_length=MAX_LENGTH):
         """
         Returns a normalized text. text has to be a unicode string and locale
         should be a normal locale, for example: 'pt_BR', 'sr@Latn' or 'de'
@@ -85,7 +85,7 @@ class IDNormalizer(object):
         base = MULTIPLE_DASHES_REGEX.sub('-', base)
         base = EXTRA_DASHES_REGEX.sub('', base)
 
-        base = cropName(base)
+        base = cropName(base, maxLength=max_length)
         
         if ext != '':
             base = base + '.' + ext
@@ -106,7 +106,7 @@ class FileNameNormalizer(object):
     """
     implements(IFileNameNormalizer)
 
-    def normalize(self, text, locale=None):
+    def normalize(self, text, locale=None, max_length=MAX_FILENAME_LENGTH):
         """
         Returns a normalized text. text has to be a unicode string and locale
         should be a normal locale, for example: 'pt_BR', 'sr@Latn' or 'de'
@@ -136,7 +136,7 @@ class FileNameNormalizer(object):
         base = EXTRA_DASHES_REGEX.sub('', base)
         base = MULTIPLE_DASHES_REGEX.sub('-', base)
 
-        base = cropName(base, maxLength=MAX_FILENAME_LENGTH)
+        base = cropName(base, maxLength=max_length)
 
         if ext != '':
             base = base + '.' + ext
@@ -157,7 +157,7 @@ class URLNormalizer(object):
     """
     implements(IURLNormalizer)
 
-    def normalize(self, text, locale=None):
+    def normalize(self, text, locale=None, max_length=MAX_URL_LENGTH):
         """
         Returns a normalized text. text has to be a unicode string and locale
         should be a normal locale, for example: 'pt_BR', 'sr@Latn' or 'de'
@@ -190,7 +190,7 @@ class URLNormalizer(object):
         base = EXTRA_DASHES_REGEX.sub('', base)
         base = MULTIPLE_DASHES_REGEX.sub('-', base)
 
-        base = cropName(base, maxLength=MAX_URL_LENGTH)
+        base = cropName(base, maxLength=max_length)
 
         if ext != '':
             base = base + '.' + ext

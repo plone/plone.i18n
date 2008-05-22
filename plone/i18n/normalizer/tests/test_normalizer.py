@@ -67,6 +67,12 @@ def testIDNormalizer():
 
       >>> util.normalize(unicode("rest `n` peace", 'utf-8'))
       'rest-n-peace'
+
+      >>> util.normalize(u"short-hello-version", max_length=10)
+      'short'
+
+      >>> util.normalize(u"short-hello-version", max_length=15)
+      'short-hello'
     """
 
 
@@ -100,6 +106,12 @@ def testLocaleAwareIDNormalizer():
 
       >>> util.normalize(u'simpleandsafe', locale='sr@Latn')
       'simpleandsafe'
+
+      >>> util.normalize(u"short-hello-version", locale='de_DE', max_length=10)
+      'short'
+
+      >>> util.normalize(u"short-hello-version", locale='de_DE', max_length=15)
+      'short-hello'
     """
 
 
@@ -135,6 +147,9 @@ def testFileNameNormalizer():
 
       >>> util.normalize(unicode("rest `n` peace", 'utf-8'))
       'rest -n- peace'
+
+      >>> util.normalize(u"short-hello-version", max_length=10)
+      'short'
     """
 
 
@@ -161,6 +176,9 @@ def testLocaleAwareFileNameNormalizer():
 
       >>> util.normalize(u'simpleandsafe', locale='sr@Latn')
       'simpleandsafe'
+
+      >>> util.normalize(u"short-hello-version", locale='de_DE', max_length=10)
+      'short'
     """
 
 
@@ -205,6 +223,9 @@ def testURLNormalizer():
 
       >>> len(util.normalize(u'aa' * 2000))
       255
+
+      >>> util.normalize(u"short-hello-version", max_length=10)
+      'short'
     """
 
 
@@ -231,6 +252,9 @@ def testLocaleAwareURLNormalizer():
 
       >>> util.normalize(u'simpleandsafe', locale='sr@Latn')
       'simpleandsafe'
+
+      >>> util.normalize(u"short-hello-version", locale='de_DE', max_length=10)
+      'short'
     """
 
 def test_suite():

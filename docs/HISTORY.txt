@@ -4,6 +4,10 @@ Changelog for plone.i18n
 
 plone.i18n - 1.0.5 Unreleased
 
+    - Added a new max_length argument to the normalize method. This allows you
+      to override the default values for the maximum length on a call basis.
+      [hannosch, fschulze]
+
     - Added a new MAX_URL_LENGTH constant used by the URL normalizer. It
       defaults to 255.
       [hannosch]
