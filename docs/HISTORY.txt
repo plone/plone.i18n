@@ -4,6 +4,8 @@ Changelog for plone.i18n
 
 plone.i18n - 1.0.6 Unreleased
 
+    - Added a subdomain language negotiator (e.g. de.plone.org).
+      [stefan]
 
 plone.i18n - 1.0.5 Released May 22, 2008
 
