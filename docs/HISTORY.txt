@@ -4,6 +4,11 @@ Changelog for plone.i18n
 
 plone.i18n - 1.0.6 Unreleased
 
+    - Changed the default normalization of characters used in Scandinavian
+      languages to meet the most common rules. This is based on a discussion
+      with translators from all Scandinavian countries.
+      [hannosch]
+
     - Added a subdomain language negotiator (e.g. de.plone.org).
       [stefan]
 

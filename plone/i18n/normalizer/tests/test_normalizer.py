@@ -43,7 +43,7 @@ def testIDNormalizer():
       'here-s-yet-another'
 
       >>> util.normalize(unicode("umläut.doc", 'utf-8'))
-      'umlaut.doc'
+      'umlaeut.doc'
 
       >>> from plone.i18n.normalizer import MAX_LENGTH
       
@@ -140,7 +140,7 @@ def testFileNameNormalizer():
       'pseudo-filename-pot.doc'
 
       >>> util.normalize(unicode("umläut.doc", 'utf-8'))
-      'umlaut.doc'
+      'umlaeut.doc'
 
       >>> len(util.normalize(u'aa' * 2000))
       1023
@@ -204,7 +204,7 @@ def testURLNormalizer():
       'doe-joe'
 
       >>> util.normalize(unicode("umläut.doc", 'utf-8'))
-      'umlaut.doc'
+      'umlaeut.doc'
 
       >>> util.normalize('quote "this"!')
       'quote-this'
