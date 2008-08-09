@@ -4,6 +4,10 @@ Changelog for plone.i18n
 
 plone.i18n - 1.0.6 Unreleased
 
+    - Fixed the greek character normalization based on a patch by ggozad.
+      This closes http://dev.plone.org/plone/ticket/8308.
+      [hannosch]
+
     - Changed the default normalization of characters used in Scandinavian
       languages to meet the most common rules. This is based on a discussion
       with translators from all Scandinavian countries.
