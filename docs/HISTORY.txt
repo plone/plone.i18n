@@ -88,7 +88,7 @@ Changelog
 1.0.1 - October 7, 2007
 -----------------------
 
-- Extend polish normalizer 'Ł' to L. This closes
+- Extend polish normalizer 'dashed L' to L. This closes
   http://dev.plone.org/plone/ticket/6845.
   [hannosch]
 
@@ -100,7 +100,7 @@ Changelog
 1.0 - August 13, 2007
 ---------------------
 
-- Added Polish normalizer which normalizes 'ł' to l. This fixes
+- Added Polish normalizer which normalizes 'dashed l' to l. This fixes
   http://dev.plone.org/plone/ticket/6845.
   [hannosch]
 
