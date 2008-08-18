@@ -1,115 +1,129 @@
-Changelog for plone.i18n
+Changelog
+=========
 
-    (name of developer listed in brackets)
+1.0.6 - August 18, 2008
+-----------------------
 
-plone.i18n - 1.0.6 Unreleased
+- Added normalization for a French-only character (igature of o and e)
+  which isn't part of ISO 8859-1. This closes
+  http://dev.plone.org/plone/ticket/7512.
+  [dbaty, hannosch]
 
-    - Added normalization for a French-only character (igature of o and e)
-      which isn't part of ISO 8859-1. This closes
-      http://dev.plone.org/plone/ticket/7512.
-      [dbaty, hannosch]
+- Fixed the greek character normalization based on a patch by ggozad.
+  This closes http://dev.plone.org/plone/ticket/8308.
+  [hannosch]
 
-    - Fixed the greek character normalization based on a patch by ggozad.
-      This closes http://dev.plone.org/plone/ticket/8308.
-      [hannosch]
+- Changed the default normalization of characters used in Scandinavian
+  languages to meet the most common rules. This is based on a discussion
+  with translators from all Scandinavian countries.
+  [hannosch]
 
-    - Changed the default normalization of characters used in Scandinavian
-      languages to meet the most common rules. This is based on a discussion
-      with translators from all Scandinavian countries.
-      [hannosch]
+- Added a subdomain language negotiator (e.g. de.plone.org).
+  [stefan]
 
-    - Added a subdomain language negotiator (e.g. de.plone.org).
-      [stefan]
 
-plone.i18n - 1.0.5 Released May 22, 2008
+1.0.5 - May 22, 2008
+--------------------
 
-    - Added a new max_length argument to the normalize method. This allows you
-      to override the default values for the maximum length on a call basis.
-      [hannosch, fschulze]
+- Added a new max_length argument to the normalize method. This allows you
+  to override the default values for the maximum length on a call basis.
+  [hannosch, fschulze]
 
-    - Added a new MAX_URL_LENGTH constant used by the URL normalizer. It
-      defaults to 255.
-      [hannosch]
+- Added a new MAX_URL_LENGTH constant used by the URL normalizer. It
+  defaults to 255.
+  [hannosch]
 
-    - Added '`' to the list of dangerous chars, which will be removed by the
-      url and be replaced with a dash by the file name normalizer now.
-      [hannosch, mj]
+- Added '`' to the list of dangerous chars, which will be removed by the
+  url and be replaced with a dash by the file name normalizer now.
+  [hannosch, mj]
 
-plone.i18n - 1.0.4 Released April 19, 2008
+1.0.4 - April 19, 2008
+----------------------
 
-    - If a dot was used in a url, the url was not lowercased. This closes
-      http://dev.plone.org/plone/ticket/7961.
-      [hannosch]
+- If a dot was used in a url, the url was not lowercased. This closes
+  http://dev.plone.org/plone/ticket/7961.
+  [hannosch]
 
-plone.i18n - 1.0.3 Released February 13, 2008
 
-    - Updating the flag/language listings. Updating readme to include the flag
-      mapping logic. This closes http://dev.plone.org/plone/ticket/7441.
-      [limi]
+1.0.3 - February 13, 2008
+-------------------------
 
-    - Adding all the Arabic-speaking countries with their respective flags, and
-      adding a generic flag to represent Arabic in general (verified to be OK with
-      two independent, native residents).
-      [limi]
+- Updating the flag/language listings. Updating readme to include the flag
+  mapping logic. This closes http://dev.plone.org/plone/ticket/7441.
+  [limi]
 
-    - Added tests for the filename and url request adapters. We have now 100%
-      test coverage.
-      [hannosch]
+- Adding all the Arabic-speaking countries with their respective flags, and
+  adding a generic flag to represent Arabic in general (verified to be OK with
+  two independent, native residents).
+  [limi]
 
-    - Wrote tests for the locale-aware id normalizer and fixed a bug in it.
-      [hannosch]
+- Added tests for the filename and url request adapters. We have now 100%
+  test coverage.
+  [hannosch]
 
-    - Added more tests.
-      [hannosch]
+- Wrote tests for the locale-aware id normalizer and fixed a bug in it.
+  [hannosch]
 
-    - Removed unused and untested 'native' from country information.
-      [hannosch]
+- Added more tests.
+  [hannosch]
 
-    - Don't allow double quotes in normalized urls.
-      This closes http://dev.plone.org/archetypes/ticket/764.
-      [hannosch]
+- Removed unused and untested 'native' from country information.
+  [hannosch]
 
-plone.i18n - 1.0.2 Released November 24, 2007
+- Don't allow double quotes in normalized urls.
+  This closes http://dev.plone.org/archetypes/ticket/764.
+  [hannosch]
 
-    - Remove those [] brackets from file names as well.
-      [hannosch]
+1.0.2 - November 24, 2007
+-------------------------
 
-    - Increase the maximum filename size to 1023 and make it independently
-      configurable.
-      [hannosch]
+- Remove those [] brackets from file names as well.
+  [hannosch]
 
-plone.i18n - 1.0.1 Released October 7, 2007
+- Increase the maximum filename size to 1023 and make it independently
+  configurable.
+  [hannosch]
 
-    - Extend polish normalizer 'Ł' to L. This closes
-      http://dev.plone.org/plone/ticket/6845.
-      [hannosch]
 
-    - Added test for filename with non-ascii character and extension. Fixes
-      http://dev.plone.org/plone/ticket/7128.
-      [dreamcatcher]
+1.0.1 - October 7, 2007
+-----------------------
 
-plone.i18n - 1.0 Released August 13, 2007
+- Extend polish normalizer 'Ł' to L. This closes
+  http://dev.plone.org/plone/ticket/6845.
+  [hannosch]
 
-    - Added Polish normalizer which normalizes 'ł' to l. This fixes
-      http://dev.plone.org/plone/ticket/6845.
-      [hannosch]
+- Added test for filename with non-ascii character and extension. Fixes
+  http://dev.plone.org/plone/ticket/7128.
+  [dreamcatcher]
 
-plone.i18n - 1.0rc1 Released July 9, 2007
 
-    - Merged udg-sprint branch. This adds a Zope3-based configurable language
-      negotiator with similar functionality as PloneLanguageTool. It is not
-      enabled by default.
-      [hannosch]
+1.0 - August 13, 2007
+---------------------
 
-    - Added the reference to the Faroese flag.
-      [deo]
+- Added Polish normalizer which normalizes 'ł' to l. This fixes
+  http://dev.plone.org/plone/ticket/6845.
+  [hannosch]
 
-    - Remove more punctuation characters as for example using a comma in the
-      title results in a not so friendly ID. This closes
-      http://dev.plone.org/plone/ticket/6585.
-      [hannosch]
 
-plone.i18n - 1.0b1 Released March 5, 2007
+1.0rc1 - July 9, 2007
+---------------------
 
-    - Initial implementation.
-      [hannosch]
+- Merged udg-sprint branch. This adds a Zope3-based configurable language
+  negotiator with similar functionality as PloneLanguageTool. It is not
+  enabled by default.
+  [hannosch]
+
+- Added the reference to the Faroese flag.
+  [deo]
+
+- Remove more punctuation characters as for example using a comma in the
+  title results in a not so friendly ID. This closes
+  http://dev.plone.org/plone/ticket/6585.
+  [hannosch]
+
+
+1.0b1 - March 5, 2007
+---------------------
+
+- Initial implementation.
+  [hannosch]
