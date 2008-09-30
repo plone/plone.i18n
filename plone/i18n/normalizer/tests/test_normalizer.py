@@ -137,7 +137,7 @@ def testFileNameNormalizer():
       'me too'
 
       >>> util.normalize("pseudo_filename,pot.doc")
-      'pseudo-filename-pot.doc'
+      'pseudo_filename-pot.doc'
 
       >>> util.normalize(unicode("umläut.doc", 'utf-8'))
       'umlaeut.doc'
