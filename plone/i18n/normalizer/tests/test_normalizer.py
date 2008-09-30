@@ -136,8 +136,8 @@ def testFileNameNormalizer():
       >>> util.normalize(u"{[(me too)]}")
       'me too'
 
-      >>> util.normalize("pseudo_filename,pot.doc")
-      'pseudo_filename-pot.doc'
+      >>> util.normalize("pseudo_filename,pot,#1.doc")
+      'pseudo_filename-pot-#1.doc'
 
       >>> util.normalize(unicode("umläut.doc", 'utf-8'))
       'umlaeut.doc'
