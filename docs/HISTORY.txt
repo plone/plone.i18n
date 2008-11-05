@@ -1,12 +1,13 @@
 Changelog
 =========
 
-1.0.7
------
+1.0.7 - November 5, 2008
+------------------------
 
 - Allow _ as a valid character in file names and URLs. Do not remove # from
   file names. It only has a special meaning for URLs.
   [hannosch, sidnei]
+
 
 1.0.6 - August 18, 2008
 -----------------------
