@@ -88,6 +88,18 @@
       component=".tr.normalizer"
       permission="zope.Public" />
 
+  <utility
+      name="bg"
+      provides=".interfaces.IFileNameNormalizer"
+      component=".bg.normalizer"
+      permission="zope.Public" />
+
+  <utility
+      name="bg"
+      provides=".interfaces.IURLNormalizer"
+      component=".bg.normalizer"
+      permission="zope.Public" />
+
   <adapter
       for="zope.publisher.interfaces.http.IHTTPRequest"
       provides=".interfaces.IUserPreferredFileNameNormalizer"
