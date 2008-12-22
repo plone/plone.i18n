@@ -100,6 +100,18 @@
       component=".bg.normalizer"
       permission="zope.Public" />
 
+  <utility
+      name="uk"
+      provides=".interfaces.IFileNameNormalizer"
+      component=".uk.normalizer"
+      permission="zope.Public" />
+
+  <utility
+      name="uk"
+      provides=".interfaces.IURLNormalizer"
+      component=".uk.normalizer"
+      permission="zope.Public" />
+
   <adapter
       for="zope.publisher.interfaces.http.IHTTPRequest"
       provides=".interfaces.IUserPreferredFileNameNormalizer"

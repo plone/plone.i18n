@@ -268,6 +268,7 @@ def test_suite():
         DocTestSuite('plone.i18n.normalizer.ru'),
         DocTestSuite('plone.i18n.normalizer.tr'),
         DocTestSuite('plone.i18n.normalizer.bg'),
+        DocTestSuite('plone.i18n.normalizer.uk'),
         DocTestSuite(setUp=configurationSetUp,
                      tearDown=tearDown,
                      optionflags=doctest.ELLIPSIS | doctest.NORMALIZE_WHITESPACE),
