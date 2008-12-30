@@ -4,8 +4,15 @@ Changelog
 1.0.8 - unreleased
 ------------------
 
+- Register all dependencies in setup.py. Move dependencies for the negotiator and
+  test into a separate extra to keep the depenencies low so things like the normalizer
+  can be used in non-zope contexts.
+  [wichert]
+
 - Added bulgarian normalizer.
   [vlado]
+
+
 
 1.0.7 - November 5, 2008
 ------------------------

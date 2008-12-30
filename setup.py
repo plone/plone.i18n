@@ -23,5 +23,16 @@ setup(name='plone.i18n',
       zip_safe=False,
       install_requires=[
         'setuptools',
+        'zope.interface',
       ],
+      extras_require=dict(
+          test = [ 'zope.app.publisher',
+                   'zope.component [zcml]', 
+                   'zope.configuration',
+                   'zope.testing',
+                 ],
+          negotioator = [ 'zope.component',
+                          'ZODB3',
+                        ],
+      ),
       )
