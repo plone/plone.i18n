@@ -1,9 +1,0 @@
-<configure
-    xmlns="http://namespaces.zope.org/zope">
-
-  <utility
-      provides=".interfaces.ILanguageFallback"
-      factory=".fallback.LanguageFallback"
-      permission="zope.Public" />
-
-</configure>

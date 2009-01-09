@@ -1,7 +1,7 @@
+import os
 from setuptools import setup, find_packages
-import sys, os
 
-version = '1.0.8'
+version = '1.1'
 
 setup(
     name='plone.i18n',
@@ -24,20 +24,17 @@ setup(
     zip_safe=False,
     install_requires=[
         'setuptools',
+        'zope.component',
         'zope.i18n',
         'zope.interface',
+        'zope.publisher',
     ],
     extras_require=dict(
         test=[
             'zope.component [zcml]',
             'zope.configuration',
-            'zope.publisher',
             'zope.testing',
             'zope.app.publisher',
-        ],
-        negotiator = [
-            'zope.component',
-            'ZODB3',
         ],
     ),
 )
