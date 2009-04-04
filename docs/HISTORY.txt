@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.1 - unreleased
-----------------
+1.1a1 - 2009-04-04
+------------------
 
 - Removed the negotiator sub-package, as it hasn't been enabled or used yet.
   The functionality is better placed as a WSGI-middleware.
