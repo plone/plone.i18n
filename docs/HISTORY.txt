@@ -4,6 +4,8 @@ Changelog
 1.1a2 - unreleased
 ------------------
 
+- Added missing 'native' descriptions to pt-* combined languages.
+  [igbun]
 
 1.1a1 - 2009-04-04
 ------------------
