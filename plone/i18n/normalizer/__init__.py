@@ -16,7 +16,8 @@ DANGEROUS_CHARS_REGEX = re.compile(r"[!$%&()*+,/:;<=>?@\\^{|}\[\]~`]+")
 URL_DANGEROUS_CHARS_REGEX = re.compile(r"[!#$%&()*+,/:;<=>?@\\^{|}\[\]~`]+")
 MULTIPLE_DASHES_REGEX = re.compile(r"\-+")
 EXTRA_DASHES_REGEX = re.compile(r"(^\-+)|(\-+$)")
-#Define static constraints
+UNDERSCORE_START_REGEX = re.compile(r"(^_+)(.*)$")
+# Define static constraints
 MAX_LENGTH = 50
 MAX_FILENAME_LENGTH = 1023
 MAX_URL_LENGTH = 255
@@ -124,7 +125,14 @@ class FileNameNormalizer(object):
                 text = util.normalize(text, locale=locale)
 
         # Preserve filename extensions
-        base = text = baseNormalize(text)
+        text = baseNormalize(text)
+
+        # Remove any leading underscores
+        m = UNDERSCORE_START_REGEX.match(text)
+        if m is not None:
+            text = m.groups()[1]
+
+        base = text
         ext  = ''
 
         m = FILENAME_REGEX.match(text)

@@ -1,14 +1,20 @@
 Changelog
 =========
 
-1.0.8 - unreleased
+1.0.8 - Unreleased
 ------------------
+
+- Added new UNDERSCORE_START_REGEX to the file normalizer. This removes any
+  leading underscores from uploaded file names. Objects in Zope cannot start
+  with an underscore, so it makes little sense to generate suggested file
+  names which cannot work.
+  [hannosch]
 
 - Added bulgarian normalizer.
   [vlado]
 
-1.0.7 - November 5, 2008
-------------------------
+1.0.7 - 2008-11-05
+------------------
 
 - Allow _ as a valid character in file names and URLs. Do not remove # from
   file names. It only has a special meaning for URLs.
