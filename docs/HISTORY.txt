@@ -4,12 +4,6 @@ Changelog
 1.1a2 - unreleased
 ------------------
 
-- Added new UNDERSCORE_START_REGEX to the file normalizer. This removes any
-  leading underscores from uploaded file names. Objects in Zope cannot start
-  with an underscore, so it makes little sense to generate suggested file
-  names which cannot work.
-  [hannosch]
-
 - Added missing 'native' descriptions to pt-* combined languages.
   [igbun]
 
@@ -25,17 +19,28 @@ Changelog
   can be used in non-zope contexts.
   [wichert]
 
+1.0.9 - Unreleased
+------------------
+
+
+1.0.8 - 2009-10-15
+------------------
+
+- Added new UNDERSCORE_START_REGEX to the file normalizer. This removes any
+  leading underscores from uploaded file names. Objects in Zope cannot start
+  with an underscore, so it makes little sense to generate suggested file
+  names which cannot work.
+  [hannosch]
+
 - Added bulgarian normalizer.
   [vlado]
 
-
-1.0.7 - November 5, 2008
-------------------------
+1.0.7 - 2008-11-05
+------------------
 
 - Allow _ as a valid character in file names and URLs. Do not remove # from
   file names. It only has a special meaning for URLs.
   [hannosch, sidnei]
-
 
 1.0.6 - August 18, 2008
 -----------------------
@@ -56,7 +61,6 @@ Changelog
 
 - Added a subdomain language negotiator (e.g. de.plone.org).
   [stefan]
-
 
 1.0.5 - May 22, 2008
 --------------------
@@ -79,7 +83,6 @@ Changelog
 - If a dot was used in a url, the url was not lowercased. This closes
   http://dev.plone.org/plone/ticket/7961.
   [hannosch]
-
 
 1.0.3 - February 13, 2008
 -------------------------
@@ -120,7 +123,6 @@ Changelog
   configurable.
   [hannosch]
 
-
 1.0.1 - October 7, 2007
 -----------------------
 
@@ -132,14 +134,12 @@ Changelog
   http://dev.plone.org/plone/ticket/7128.
   [dreamcatcher]
 
-
 1.0 - August 13, 2007
 ---------------------
 
 - Added Polish normalizer which normalizes 'dashed l' to l. This fixes
   http://dev.plone.org/plone/ticket/6845.
   [hannosch]
-
 
 1.0rc1 - July 9, 2007
 ---------------------
@@ -156,7 +156,6 @@ Changelog
   title results in a not so friendly ID. This closes
   http://dev.plone.org/plone/ticket/6585.
   [hannosch]
-
 
 1.0b1 - March 5, 2007
 ---------------------
