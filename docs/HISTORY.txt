@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.0.8 - Unreleased
+1.0.8 - 2009-10-15
 ------------------
 
 - Added new UNDERSCORE_START_REGEX to the file normalizer. This removes any
