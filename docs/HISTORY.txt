@@ -4,6 +4,12 @@ Changelog
 1.1a2 - unreleased
 ------------------
 
+- Added new UNDERSCORE_START_REGEX to the file normalizer. This removes any
+  leading underscores from uploaded file names. Objects in Zope cannot start
+  with an underscore, so it makes little sense to generate suggested file
+  names which cannot work.
+  [hannosch]
+
 - Added missing 'native' descriptions to pt-* combined languages.
   [igbun]
 

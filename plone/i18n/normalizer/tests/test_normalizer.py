@@ -150,6 +150,12 @@ def testFileNameNormalizer():
 
       >>> util.normalize(u"short-hello-version", max_length=10)
       'short'
+
+      >>> util.normalize(u"_some_cameras_are_evil")
+      'some_cameras_are_evil'
+
+      >>> util.normalize(u"____my_new_file")
+      'my_new_file'
     """
 
 
@@ -179,6 +185,9 @@ def testLocaleAwareFileNameNormalizer():
 
       >>> util.normalize(u"short-hello-version", locale='de_DE', max_length=10)
       'short'
+
+      >>> util.normalize(u"_some_cameras_are_evil")
+      'some_cameras_are_evil'
     """
 
 
