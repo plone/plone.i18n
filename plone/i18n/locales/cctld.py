@@ -240,7 +240,7 @@ _tld_to_language = {
     u"py"        : [],
     u"qa"        : [],
     u"re"        : [],
-    u"ro"        : [],
+    u"ro"        : [u"ro"],
     u"ru"        : [u"ru"],
     u"rw"        : [],
     u"sa"        : [u"ar"],

@@ -4,6 +4,9 @@ Changelog
 1.0.9 - Unreleased
 ------------------
 
+- Added Romanian language as the language for the .ro TLD. This closes
+  http://dev.plone.org/plone/ticket/9152
+  [vincentfretin]
 
 1.0.8 - 2009-10-15
 ------------------
