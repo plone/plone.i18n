@@ -1,4 +1,3 @@
-import os
 from setuptools import setup, find_packages
 
 version = '1.1a2'
@@ -8,7 +7,7 @@ setup(
     version=version,
     description="Advanced i18n/l10n features",
     long_description=open("README.txt").read() + "\n" +
-                     open(os.path.join("docs", "HISTORY.txt")).read(),
+                     open("CHANGES.txt").read(),
     classifiers=[
         'Framework :: Plone',
         'Framework :: Zope2',

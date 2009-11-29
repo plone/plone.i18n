@@ -4,7 +4,7 @@ Changelog
 1.1a2 - unreleased
 ------------------
 
-- Added cs-cz combined language code. It solves problem with default language 
+- Added cs-cz combined language code. It solves problem with default language
   on new Plone site creation (Safari/Mac).
   [naro]
 
