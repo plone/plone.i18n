@@ -27,6 +27,7 @@ setup(
         'zope.i18n',
         'zope.interface',
         'zope.publisher',
+        'Unidecode',
     ],
     extras_require=dict(
         test=[

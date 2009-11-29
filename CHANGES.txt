@@ -4,6 +4,10 @@ Changelog
 1.1a2 - unreleased
 ------------------
 
+- Depend on and include ``Unidecode`` based transliterations. These provide
+  more meaningful results than unicodedata NFKD normalizations or hex codes.
+  [hannosch]
+
 - Added cs-cz combined language code. It solves problem with default language
   on new Plone site creation (Safari/Mac).
   [naro]

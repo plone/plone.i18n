@@ -50,7 +50,7 @@ def testUserPreferredFileNameNormalizer():
       'simpleandsafe'
 
       >>> en_filename.normalize(unicode('text with umläut', 'utf-8'))
-      'text with umlaeut'
+      'text with umlaut'
     """
 
 
@@ -78,7 +78,7 @@ def testUserPreferredURLNormalizer():
       'simpleandsafe'
 
       >>> en_url.normalize(unicode('text with umläut', 'utf-8'))
-      'text-with-umlaeut'
+      'text-with-umlaut'
     """
 
 
