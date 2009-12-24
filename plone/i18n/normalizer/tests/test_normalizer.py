@@ -43,7 +43,7 @@ def testIDNormalizer():
       'here-s-yet-another'
 
       >>> util.normalize(unicode("umläut.doc", 'utf-8'))
-      'umlaut.doc'
+      'umlaut-doc'
 
       >>> from plone.i18n.normalizer import MAX_LENGTH
       

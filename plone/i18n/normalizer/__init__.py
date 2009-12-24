@@ -73,26 +73,14 @@ class IDNormalizer(object):
         text = baseNormalize(text)
 
         # lowercase text
-        base = text.lower()
-        ext  = ''
+        text = text.lower()
 
-        # replace whitespace and punctuation, but preserve filename extensions
-        m = FILENAME_REGEX.match(text)
-        if m is not None:
-            base = m.groups()[0]
-            ext  = m.groups()[1]
+        text = IGNORE_REGEX.sub('', text)
+        text = NON_WORD_REGEX.sub('-', text)
+        text = MULTIPLE_DASHES_REGEX.sub('-', text)
+        text = EXTRA_DASHES_REGEX.sub('', text)
 
-        base = IGNORE_REGEX.sub('', base)
-        base = NON_WORD_REGEX.sub('-', base)
-        base = MULTIPLE_DASHES_REGEX.sub('-', base)
-        base = EXTRA_DASHES_REGEX.sub('', base)
-
-        base = cropName(base, maxLength=max_length)
-        
-        if ext != '':
-            base = base + '.' + ext
-
-        return base
+        return cropName(text, maxLength=max_length)
 
 
 class FileNameNormalizer(object):

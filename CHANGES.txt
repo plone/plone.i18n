@@ -4,6 +4,11 @@ Changelog
 1.1b1 - Unreleased
 ------------------
 
+- Fixed the IIDNormalizer to generate valid CSS ID or Python variable names as
+  specified in its docstring. It no longer tries to preserve filename
+  extensions. This closes http://dev.plone.org/plone/ticket/9708.
+  [hannosch]
+
 - Added a new explicit base normalizer for Thai, as the Unidecode based
   transliteration isn't good enough.
   [hannosch]
