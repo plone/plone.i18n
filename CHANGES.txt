@@ -4,6 +4,9 @@ Changelog
 1.1b1 - Unreleased
 ------------------
 
+- Added new specific normalizer for Japanese, which avoids the Unidecode based
+  transliteration. This refs http://dev.plone.org/plone/ticket/9914.
+  [hannosch]
 
 1.1a2 - 2009-12-02
 ------------------

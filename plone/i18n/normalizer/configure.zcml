@@ -53,6 +53,18 @@
       permission="zope.Public" />
 
   <utility
+      name="ja"
+      provides=".interfaces.IFileNameNormalizer"
+      component=".ja.normalizer"
+      permission="zope.Public" />
+
+  <utility
+      name="ja"
+      provides=".interfaces.IURLNormalizer"
+      component=".ja.normalizer"
+      permission="zope.Public" />
+
+  <utility
       name="pl"
       provides=".interfaces.IFileNameNormalizer"
       component=".pl.normalizer"
