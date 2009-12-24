@@ -89,6 +89,18 @@
       permission="zope.Public" />
 
   <utility
+      name="th"
+      provides=".interfaces.IFileNameNormalizer"
+      component=".th.normalizer"
+      permission="zope.Public" />
+
+  <utility
+      name="th"
+      provides=".interfaces.IURLNormalizer"
+      component=".th.normalizer"
+      permission="zope.Public" />
+
+  <utility
       name="tr"
       provides=".interfaces.IFileNameNormalizer"
       component=".tr.normalizer"

@@ -276,6 +276,7 @@ def test_suite():
         DocTestSuite('plone.i18n.normalizer.ja'),
         DocTestSuite('plone.i18n.normalizer.pl'),
         DocTestSuite('plone.i18n.normalizer.ru'),
+        DocTestSuite('plone.i18n.normalizer.th'),
         DocTestSuite('plone.i18n.normalizer.tr'),
         DocTestSuite('plone.i18n.normalizer.bg'),
         DocTestSuite('plone.i18n.normalizer.uk'),
