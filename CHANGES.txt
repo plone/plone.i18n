@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.1b1 - Unreleased
+1.1a3 - 2009-12-27
 ------------------
 
 - Use the flag of Bangladesh for the Bengali language (code: bn) in general
