@@ -2,8 +2,35 @@
 
 from plone.i18n.normalizer.interfaces import INormalizer
 from zope.interface import implements
-from plone.i18n.normalizer.base import baseNormalize
+# from plone.i18n.normalizer.base import baseNormalize
+from plone.i18n.normalizer.base import　allowed
 
+MAX_LENGTH = 8
+
+# TABLE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+TABLE = "abcdefghijklmnopqrstuvwxyz0123456789"
+TABLE_LEN = len(TABLE)
+
+def _gethashed(obj, n):
+   num = hash(obj) % (TABLE_LEN ** n)
+   while True:
+       d, m = divmod(num, TABLE_LEN)
+       num = d
+       yield TABLE[m]
+       if d == 0:
+           return
+
+def ja_normalize(text, max_length=MAX_LENGTH):
+    """
+    This function is normalize for Japanese.
+    exchange from unicode string to hash and base64 string.
+    """
+    text = text.strip()
+    if all(s in allowed for s in text):
+        return text.encode('ascii')
+    else:
+        return "".join(_gethashed(text, MAX_LENGTH))
+    
 
 class Normalizer(object):
     """
@@ -17,9 +44,14 @@ class Normalizer(object):
       True
 
       >>> norm = Normalizer()
+      >>> text = unicode("test page", 'utf-8')
+      >>> norm.normalize(text)
+      'test page'
+
+      >>> norm = Normalizer()
       >>> text = unicode("テストページ", 'utf-8')
       >>> norm.normalize(text)
-      '30c630b930c830fc'
+      '1ot16b99'
     """
     implements(INormalizer)
 
@@ -27,6 +59,7 @@ class Normalizer(object):
         """
         Returns a normalized text. text has to be a unicode string.
         """
-        return baseNormalize(text, transliterate=False)
+        # return baseNormalize(text, transliterate=False)
+        return ja_normalize(text)
 
 normalizer = Normalizer()
