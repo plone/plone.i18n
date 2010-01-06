@@ -3,7 +3,7 @@
 from plone.i18n.normalizer.interfaces import INormalizer
 from zope.interface import implements
 # from plone.i18n.normalizer.base import baseNormalize
-from plone.i18n.normalizer.base import　allowed
+from plone.i18n.normalizer.base import allowed
 
 MAX_LENGTH = 8
 
@@ -29,7 +29,7 @@ def ja_normalize(text, max_length=MAX_LENGTH):
     if all(s in allowed for s in text):
         return text.encode('ascii')
     else:
-        return "".join(_gethashed(text, MAX_LENGTH))
+        return "".join(_gethashed(text, max_length))
     
 
 class Normalizer(object):
