@@ -2,12 +2,10 @@
 
 from plone.i18n.normalizer.interfaces import INormalizer
 from zope.interface import implements
-# from plone.i18n.normalizer.base import baseNormalize
 from plone.i18n.normalizer.base import allowed
 
-MAX_LENGTH = 8
+MAX_LENGTH = 6
 
-# TABLE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 TABLE = "abcdefghijklmnopqrstuvwxyz0123456789"
 TABLE_LEN = len(TABLE)
 
@@ -51,7 +49,7 @@ class Normalizer(object):
       >>> norm = Normalizer()
       >>> text = unicode("テストページ", 'utf-8')
       >>> norm.normalize(text)
-      '1ot16b99'
+      '1ot16b'
     """
     implements(INormalizer)
 
@@ -59,7 +57,6 @@ class Normalizer(object):
         """
         Returns a normalized text. text has to be a unicode string.
         """
-        # return baseNormalize(text, transliterate=False)
         return ja_normalize(text)
 
 normalizer = Normalizer()
