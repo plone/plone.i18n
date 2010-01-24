@@ -4,6 +4,11 @@ Changelog
 1.1b1 - unreleased
 ------------------
 
+- In practice the Unidecode data didn't produce good enough results for various
+  languages. We therefor limit the transliteration approach again to latin-like
+  languages and introduce a UNIDECODE_LIMIT. This closes
+  http://dev.plone.org/plone/ticket/10107.
+  [hannosch]
 
 1.1a3 - 2009-12-27
 ------------------

@@ -49,7 +49,7 @@ class Normalizer(object):
       >>> norm = Normalizer()
       >>> text = unicode("テストページ", 'utf-8')
       >>> norm.normalize(text)
-      '1ot16b'
+      '921bib'
     """
     implements(INormalizer)
 
