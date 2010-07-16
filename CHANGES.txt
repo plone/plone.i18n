@@ -1,9 +1,11 @@
 Changelog
 =========
 
-1.1b2 - unreleased
-------------------
+1.1 - unreleased
+----------------
 
+- Update license to GPL version 2 only.
+  [hannosch]
 
 1.1b1 - 2010-01-24
 ------------------
