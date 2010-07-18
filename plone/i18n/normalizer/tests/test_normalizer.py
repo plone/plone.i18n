@@ -3,6 +3,8 @@
     Normalizer tests.
 """
 
+import doctest
+from doctest import DocTestSuite
 import unittest
 
 import plone.i18n.normalizer
@@ -14,8 +16,6 @@ import zope.component
 from zope.component import queryUtility
 from zope.component.testing import setUp, tearDown
 from zope.configuration.xmlconfig import XMLConfig
-from zope.testing import doctest
-from zope.testing.doctestunit import DocTestSuite
 
 
 def configurationSetUp(self):
@@ -46,7 +46,7 @@ def testIDNormalizer():
       'umlaut-doc'
 
       >>> from plone.i18n.normalizer import MAX_LENGTH
-      
+
       >>> testString = u"thissentenceiswaytolongtobecroppedwithoutcuttedbythenormalizemethodbecauseithasnoplacetocrop"
       >>> util.normalize(testString)
       'thissentenceiswaytolongtobecroppedwithoutcuttedbyt'
@@ -97,7 +97,7 @@ def testLocaleAwareIDNormalizer():
 
     Make sure we get the de normalizer as there's no special one for de_DE
     registered.
-       
+
       >>> util.normalize(unicode('text with umläut', 'utf-8'), locale='de_DE')
       'text-with-umlaeut'
 
@@ -120,7 +120,7 @@ def testFileNameNormalizer():
       >>> util = queryUtility(IFileNameNormalizer)
       >>> util
       <plone.i18n.normalizer.FileNameNormalizer object at ...>
-      
+
       >>> util.normalize(u'simpleandsafe')
       'simpleandsafe'
 
@@ -173,7 +173,7 @@ def testLocaleAwareFileNameNormalizer():
 
     Make sure we get the de normalizer as there's no special one for de_DE
     registered.
-       
+
       >>> util.normalize(unicode('text with umläut', 'utf-8'), locale='de_DE')
       'text with umlaeut'
 
@@ -196,7 +196,7 @@ def testURLNormalizer():
       >>> util = queryUtility(IURLNormalizer)
       >>> util
       <plone.i18n.normalizer.URLNormalizer object at ...>
-      
+
       >>> util.normalize(u'simpleandsafe')
       'simpleandsafe'
 
@@ -252,7 +252,7 @@ def testLocaleAwareURLNormalizer():
 
     Make sure we get the de normalizer as there's no special one for de_DE
     registered.
-       
+
       >>> util.normalize(unicode('text with umläut', 'utf-8'), locale='de_DE')
       'text-with-umlaeut'
 
@@ -265,6 +265,7 @@ def testLocaleAwareURLNormalizer():
       >>> util.normalize(u"short-hello-version", locale='de_DE', max_length=10)
       'short'
     """
+
 
 def test_suite():
     return unittest.TestSuite((
@@ -283,6 +284,3 @@ def test_suite():
                      tearDown=tearDown,
                      optionflags=doctest.ELLIPSIS | doctest.NORMALIZE_WHITESPACE),
         ))
-
-if __name__ == '__main__':
-    unittest.main(defaultTest="test_suite")

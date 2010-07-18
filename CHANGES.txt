@@ -4,6 +4,9 @@ Changelog
 1.1 - unreleased
 ----------------
 
+- Use the standard libraries doctest module.
+  [hannosch]
+
 - Update license to GPL version 2 only.
   [hannosch]
 

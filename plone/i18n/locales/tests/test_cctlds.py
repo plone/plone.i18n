@@ -3,6 +3,8 @@
     ccTLD tests.
 """
 
+import doctest
+from doctest import DocTestSuite
 import unittest
 
 import plone.i18n.locales
@@ -13,8 +15,7 @@ import zope.component
 from zope.component import queryUtility
 from zope.component.testing import setUp, tearDown
 from zope.configuration.xmlconfig import XMLConfig
-from zope.testing import doctest
-from zope.testing.doctestunit import DocTestSuite
+
 
 def configurationSetUp(self):
     setUp()
@@ -53,6 +54,3 @@ def test_suite():
                      tearDown=tearDown,
                      optionflags=doctest.ELLIPSIS | doctest.NORMALIZE_WHITESPACE),
         ))
-
-if __name__ == '__main__':
-    unittest.main(defaultTest="test_suite")

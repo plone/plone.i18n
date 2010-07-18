@@ -3,15 +3,14 @@
     Adapters tests.
 """
 
+import doctest
+from doctest import DocTestSuite
 import unittest
 
 from zope.component.testing import setUp, tearDown
 from zope.configuration.xmlconfig import XMLConfig
 from zope.publisher.browser import BrowserLanguages
 from zope.publisher.browser import TestRequest
-
-from zope.testing import doctest
-from zope.testing.doctestunit import DocTestSuite
 
 from plone.i18n.normalizer.adapters import UserPreferredFileNameNormalizer
 from plone.i18n.normalizer.adapters import UserPreferredURLNormalizer
@@ -88,6 +87,3 @@ def test_suite():
                      tearDown=tearDown,
                      optionflags=doctest.ELLIPSIS | doctest.NORMALIZE_WHITESPACE),
         ))
-
-if __name__ == '__main__':
-    unittest.main(defaultTest="test_suite")
