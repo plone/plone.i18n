@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.0.10 - unreleased
+1.0.10 - 2010-08-02
 -------------------
 
 - Use the flag of Bangladesh for the Bengali language (code: bn) in general
@@ -19,11 +19,9 @@ Changelog
   (backported from 1.1a2)
   [igbun]
 
-- Added catalan flag. This closes
-  http://dev.plone.org/plone/ticket/9540
+- Added catalan flag. This closes http://dev.plone.org/plone/ticket/9540
   (backported from 1.1a2)
   [ramon]
-
 
 1.0.9 - 2010-07-28
 ------------------
