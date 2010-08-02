@@ -38,7 +38,7 @@ def testContentLanguageAvailability():
 
       >>> languagecodes = util.getAvailableLanguages(combined=True)
       >>> len(languagecodes)
-      373
+      374
 
       >>> u'pt-br' in languagecodes
       True
@@ -66,7 +66,7 @@ def testContentLanguageAvailability():
 
       >>> languages = util.getLanguages(combined=True)
       >>> len(languages)
-      373
+      374
 
       >>> pt_BR = languages[u'pt-br']
       >>> pt_BR[u'name']
@@ -88,7 +88,7 @@ def testMetadataLanguageAvailability():
 
       >>> languagecodes = util.getAvailableLanguages(combined=True)
       >>> len(languagecodes)
-      373
+      374
 
       >>> u'pt-br' in languagecodes
       True
@@ -116,21 +116,21 @@ def testMetadataLanguageAvailability():
 
       >>> languages = util.getLanguageListing(combined=True)
       >>> len(languages)
-      373
+      374
 
       >>> (u'pt-br', u'Portuguese (Brazil)') in languages
       True
 
       >>> languages = util.getLanguageListing(combined=True)
       >>> len(languages)
-      373
+      374
 
       >>> (u'pt-br', u'Portuguese (Brazil)') in languages
       True
 
       >>> languages = util.getLanguages(combined=True)
       >>> len(languages)
-      373
+      374
 
       >>> pt_BR = languages[u'pt-br']
       >>> pt_BR[u'name']

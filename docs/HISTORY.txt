@@ -4,6 +4,26 @@ Changelog
 1.0.10 - unreleased
 -------------------
 
+- Use the flag of Bangladesh for the Bengali language (code: bn) in general
+  and not only for the ``bn-bd`` variant. This closes
+  http://dev.plone.org/plone/ticket/9950.
+  (backported from 1.1a3)
+  [hannosch]
+
+- Added cs-cz combined language code. It solves problem with default language
+  on new Plone site creation (Safari/Mac).
+  (backported from 1.1a2)
+  [naro]
+
+- Added missing 'native' descriptions to pt-* combined languages.
+  (backported from 1.1a2)
+  [igbun]
+
+- Added catalan flag. This closes
+  http://dev.plone.org/plone/ticket/9540
+  (backported from 1.1a2)
+  [ramon]
+
 
 1.0.9 - 2010-07-28
 ------------------
