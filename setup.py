@@ -1,7 +1,7 @@
 import os
 from setuptools import setup, find_packages
 
-version = '1.0.10'
+version = '1.0.11'
 
 setup(name='plone.i18n',
       version=version,
