@@ -55,6 +55,10 @@ Changelog
   on new Plone site creation (Safari/Mac).
   [naro]
 
+- Added catalan flag. This closes
+  http://dev.plone.org/plone/ticket/9540
+  [ramon]
+
 - Added missing 'native' descriptions to pt-* combined languages.
   [igbun]
 
