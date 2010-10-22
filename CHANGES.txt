@@ -4,6 +4,9 @@ Changelog
 2.0.1 - unreleased
 ------------------
 
+- Fixed various native names of African languages. Added ``nd``, ``nr`` and
+  ``ve`` language codes. Thanks to Dwayne Bailey and Roche Compaan.
+  [hannosch]
 
 2.0 - 2010-07-18
 ----------------
