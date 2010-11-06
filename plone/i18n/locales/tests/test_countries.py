@@ -2,43 +2,25 @@
 
 import unittest
 
-from zope.component import queryUtility
-from zope.component.testing import setUp, tearDown
-from zope.configuration.xmlconfig import XMLConfig
-
-from plone.i18n.locales.interfaces import ICountryAvailability
-
-
-def configurationSetUp():
-    setUp()
-    import zope.component
-    XMLConfig('meta.zcml', zope.component)()
-
-    # BBB Zope 2.12
-    try:
-        import zope.browserresource
-        XMLConfig('meta.zcml', zope.browserresource)()
-    except ImportError:
-        import zope.app.publisher.browser
-        XMLConfig('meta.zcml', zope.app.publisher.browser)()
-
-    import plone.i18n.locales
-    XMLConfig('configure.zcml', plone.i18n.locales)()
-
 
 class TestAvailableCountries(unittest.TestCase):
 
     def setUp(self):
-        configurationSetUp()
+        from .base import setUp
+        setUp()
 
     def tearDown(self):
+        from .base import tearDown
         tearDown()
 
     def _makeOne(self):
+        from zope.component import queryUtility
+        from plone.i18n.locales.interfaces import ICountryAvailability
         return queryUtility(ICountryAvailability)
 
     def test_interface(self):
         from zope.interface.verify import verifyClass
+        from plone.i18n.locales.interfaces import ICountryAvailability
         from plone.i18n.locales.countries import CountryAvailability
         self.assert_(verifyClass(ICountryAvailability, CountryAvailability))
 

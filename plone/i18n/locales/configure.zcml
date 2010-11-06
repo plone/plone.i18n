@@ -22,4 +22,5 @@
         provides=".interfaces.ICcTLDInformation"
         component=".cctld.ccTLDInformation"
         permission="zope.Public" />
+
 </configure>

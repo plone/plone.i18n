@@ -2,43 +2,32 @@
 
 import unittest
 
-from zope.component import queryUtility
-from zope.component.testing import setUp, tearDown
-from zope.configuration.xmlconfig import XMLConfig
-from zope.interface.verify import verifyClass
 
-from plone.i18n.locales.interfaces import IContentLanguageAvailability
-from plone.i18n.locales.interfaces import ILanguageAvailability
-from plone.i18n.locales.interfaces import IMetadataLanguageAvailability
+class TestInterfaces(unittest.TestCase):
 
-
-def configurationSetUp():
-    setUp()
-    import zope.component
-    XMLConfig('meta.zcml', zope.component)()
-
-    # BBB Zope 2.12
-    try:
-        import zope.browserresource
-        XMLConfig('meta.zcml', zope.browserresource)()
-    except ImportError:
-        import zope.app.publisher.browser
-        XMLConfig('meta.zcml', zope.app.publisher.browser)()
-
-    import plone.i18n.locales
-    XMLConfig('configure.zcml', plone.i18n.locales)()
+    def test_interface(self):
+        from zope.interface.verify import verifyClass
+        from plone.i18n.locales.interfaces import ILanguageAvailability
+        from plone.i18n.locales.languages import LanguageAvailability
+        self.assert_(verifyClass(ILanguageAvailability, LanguageAvailability))
 
 
 class BaseTest(object):
 
     def setUp(self):
-        configurationSetUp()
+        from .base import setUp
+        setUp()
 
     def tearDown(self):
+        from .base import tearDown
         tearDown()
 
     def _makeOne(self):
         raise NotImplementedError
+
+    def _verify(self, interface, klass):
+        from zope.interface.verify import verifyClass
+        return verifyClass(interface, klass)
 
     def test_get_available(self):
         util = self._makeOne()
@@ -84,27 +73,26 @@ class BaseTest(object):
 class TestContentLanguageAvailability(BaseTest, unittest.TestCase):
 
     def _makeOne(self):
+        from zope.component import queryUtility
+        from plone.i18n.locales.interfaces import IContentLanguageAvailability
         return queryUtility(IContentLanguageAvailability)
 
     def test_interface(self):
+        from plone.i18n.locales.interfaces import IContentLanguageAvailability
         from plone.i18n.locales.languages import ContentLanguageAvailability
-        self.assert_(verifyClass(IContentLanguageAvailability,
-                                 ContentLanguageAvailability))
+        self.assert_(self._verify(IContentLanguageAvailability,
+                                  ContentLanguageAvailability))
 
 
 class TestMetadataLanguageAvailability(BaseTest, unittest.TestCase):
 
     def _makeOne(self):
+        from zope.component import queryUtility
+        from plone.i18n.locales.interfaces import IMetadataLanguageAvailability
         return queryUtility(IMetadataLanguageAvailability)
 
     def test_interface(self):
+        from plone.i18n.locales.interfaces import IMetadataLanguageAvailability
         from plone.i18n.locales.languages import MetadataLanguageAvailability
-        self.assert_(verifyClass(IMetadataLanguageAvailability,
-                                 MetadataLanguageAvailability))
-
-
-class TestInterfaces(unittest.TestCase):
-
-    def test_interface(self):
-        from plone.i18n.locales.languages import LanguageAvailability
-        self.assert_(verifyClass(ILanguageAvailability, LanguageAvailability))
+        self.assert_(self._verify(IMetadataLanguageAvailability,
+                                  MetadataLanguageAvailability))
