@@ -12,7 +12,7 @@ class TestInterfaces(unittest.TestCase):
         self.assert_(verifyClass(ILanguageAvailability, LanguageAvailability))
 
 
-class BaseTest(object):
+class BaseTestCase(object):
 
     def setUp(self):
         from .base import setUp
@@ -70,7 +70,7 @@ class BaseTest(object):
         self.assertTrue((u'de', u'German') in languages)
 
 
-class TestContentLanguageAvailability(BaseTest, unittest.TestCase):
+class TestContentLanguageAvailability(BaseTestCase, unittest.TestCase):
 
     def _makeOne(self):
         from zope.component import queryUtility
@@ -84,7 +84,7 @@ class TestContentLanguageAvailability(BaseTest, unittest.TestCase):
                                   ContentLanguageAvailability))
 
 
-class TestMetadataLanguageAvailability(BaseTest, unittest.TestCase):
+class TestMetadataLanguageAvailability(BaseTestCase, unittest.TestCase):
 
     def _makeOne(self):
         from zope.component import queryUtility
