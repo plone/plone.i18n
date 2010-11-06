@@ -1,27 +1,17 @@
 # -*- coding: utf-8 -*-
-"""
-    Normalizer tests.
-"""
 
 import doctest
 from doctest import DocTestSuite
 import unittest
 
-import plone.i18n.normalizer
+from zope.component import queryUtility
+
 from plone.i18n.normalizer.interfaces import IIDNormalizer
 from plone.i18n.normalizer.interfaces import IFileNameNormalizer
 from plone.i18n.normalizer.interfaces import IURLNormalizer
 
-import zope.component
-from zope.component import queryUtility
-from zope.component.testing import setUp, tearDown
-from zope.configuration.xmlconfig import XMLConfig
-
-
-def configurationSetUp(self):
-    setUp()
-    XMLConfig('meta.zcml', zope.component)()
-    XMLConfig('configure.zcml', plone.i18n.normalizer)()
+from .base import setUp as configurationSetUp
+from .base import tearDown
 
 
 def testIDNormalizer():
@@ -86,7 +76,8 @@ def testLocaleAwareIDNormalizer():
     test the locale-aware id normalization logic:
 
       >>> de_util = queryUtility(IFileNameNormalizer, name='de')
-      >>> sm = zope.component.getGlobalSiteManager()
+      >>> from zope.component import getSiteManager
+      >>> sm = getSiteManager()
       >>> sm.registerUtility(de_util, IIDNormalizer, name='de')
 
       >>> util.normalize(u'simpleandsafe', locale='de')
