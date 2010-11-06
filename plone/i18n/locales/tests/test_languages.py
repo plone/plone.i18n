@@ -33,21 +33,21 @@ def testContentLanguageAvailability():
 
       >>> languagecodes = util.getAvailableLanguages()
       >>> len(languagecodes)
-      148
+      151
 
       >>> u'de' in languagecodes
       True
 
       >>> languagecodes = util.getAvailableLanguages(combined=True)
       >>> len(languagecodes)
-      374
+      377
 
       >>> u'pt-br' in languagecodes
       True
 
       >>> languages = util.getLanguages()
       >>> len(languages)
-      148
+      151
 
       >>> de = languages[u'de']
       >>> de[u'name']
@@ -61,14 +61,14 @@ def testContentLanguageAvailability():
 
       >>> languages = util.getLanguageListing()
       >>> len(languages)
-      148
+      151
 
       >>> (u'de', u'German') in languages
       True
 
       >>> languages = util.getLanguages(combined=True)
       >>> len(languages)
-      374
+      377
 
       >>> pt_BR = languages[u'pt-br']
       >>> pt_BR[u'name']
@@ -84,21 +84,21 @@ def testMetadataLanguageAvailability():
 
       >>> languagecodes = util.getAvailableLanguages()
       >>> len(languagecodes)
-      148
+      151
 
       >>> u'de' in languagecodes
       True
 
       >>> languagecodes = util.getAvailableLanguages(combined=True)
       >>> len(languagecodes)
-      374
+      377
 
       >>> u'pt-br' in languagecodes
       True
 
       >>> languages = util.getLanguages()
       >>> len(languages)
-      148
+      151
 
       >>> de = languages[u'de']
       >>> de[u'name']
@@ -112,28 +112,28 @@ def testMetadataLanguageAvailability():
 
       >>> languages = util.getLanguageListing()
       >>> len(languages)
-      148
+      151
 
       >>> (u'de', u'German') in languages
       True
 
       >>> languages = util.getLanguageListing(combined=True)
       >>> len(languages)
-      374
+      377
 
       >>> (u'pt-br', u'Portuguese (Brazil)') in languages
       True
 
       >>> languages = util.getLanguageListing(combined=True)
       >>> len(languages)
-      374
+      377
 
       >>> (u'pt-br', u'Portuguese (Brazil)') in languages
       True
 
       >>> languages = util.getLanguages(combined=True)
       >>> len(languages)
-      374
+      377
 
       >>> pt_BR = languages[u'pt-br']
       >>> pt_BR[u'name']
