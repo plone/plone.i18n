@@ -2,14 +2,14 @@
 
 import unittest
 
-from plone.i18n.locales.interfaces import IContentLanguageAvailability
-from plone.i18n.locales.interfaces import ILanguageAvailability
-from plone.i18n.locales.interfaces import IMetadataLanguageAvailability
-
 from zope.component import queryUtility
 from zope.component.testing import setUp, tearDown
 from zope.configuration.xmlconfig import XMLConfig
 from zope.interface.verify import verifyClass
+
+from plone.i18n.locales.interfaces import IContentLanguageAvailability
+from plone.i18n.locales.interfaces import ILanguageAvailability
+from plone.i18n.locales.interfaces import IMetadataLanguageAvailability
 
 
 def configurationSetUp():

@@ -3,14 +3,9 @@
 from plone.i18n.locales.interfaces import ICountryAvailability
 from zope.interface import implements
 
+
 class CountryAvailability(object):
     """A list of available coutries.
-
-    Let's make sure that this implementation actually fulfills the API.
-
-      >>> from zope.interface.verify import verifyClass
-      >>> verifyClass(ICountryAvailability, CountryAvailability)
-      True
     """
     implements(ICountryAvailability)
 
@@ -278,7 +273,7 @@ u'ye' : {u'name' : 'Yemen', u'flag' : u'/++resource++country-flags/ye.gif'},
 u'yt' : {u'name' : 'Mayotte', u'flag' : u'/++resource++country-flags/yt.gif'},
 u'za' : {u'name' : 'South Africa', u'flag' : u'/++resource++country-flags/za.gif'},
 u'zm' : {u'name' : 'Zambia', u'flag' : u'/++resource++country-flags/zm.gif'},
-u'zw' : {u'name' : 'Zimbabwe', u'flag' : u'/++resource++country-flags/zw.gif'}
+u'zw' : {u'name' : 'Zimbabwe', u'flag' : u'/++resource++country-flags/zw.gif'},
 }
 
 # convert the utf-8 encoded values to unicode

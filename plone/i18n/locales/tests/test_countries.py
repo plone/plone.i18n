@@ -1,66 +1,64 @@
 # -*- coding: UTF-8 -*-
-"""
-    Country tests.
-"""
 
-import doctest
-from doctest import DocTestSuite
 import unittest
 
-import plone.i18n.locales
-from plone.i18n.locales.interfaces import ICountryAvailability
-
-import zope.app.publisher.browser
-import zope.component
 from zope.component import queryUtility
 from zope.component.testing import setUp, tearDown
 from zope.configuration.xmlconfig import XMLConfig
 
+from plone.i18n.locales.interfaces import ICountryAvailability
 
-def configurationSetUp(self):
+
+def configurationSetUp():
     setUp()
+    import zope.component
     XMLConfig('meta.zcml', zope.component)()
-    XMLConfig('meta.zcml', zope.app.publisher.browser)()
+
+    # BBB Zope 2.12
+    try:
+        import zope.browserresource
+        XMLConfig('meta.zcml', zope.browserresource)()
+    except ImportError:
+        import zope.app.publisher.browser
+        XMLConfig('meta.zcml', zope.app.publisher.browser)()
+
+    import plone.i18n.locales
     XMLConfig('configure.zcml', plone.i18n.locales)()
 
 
-def testAvailableCountries():
-    """
-      >>> util = queryUtility(ICountryAvailability)
-      >>> util
-      <plone.i18n.locales.countries.CountryAvailability object at ...>
+class TestAvailableCountries(unittest.TestCase):
 
-      >>> countrycodes = util.getAvailableCountries()
-      >>> len(countrycodes)
-      243
+    def setUp(self):
+        configurationSetUp()
 
-      >>> u'de' in countrycodes
-      True
+    def tearDown(self):
+        tearDown()
 
-      >>> countries = util.getCountries()
-      >>> len(countries)
-      243
+    def _makeOne(self):
+        return queryUtility(ICountryAvailability)
 
-      >>> de = countries[u'de']
-      >>> de[u'name']
-      u'Germany'
+    def test_interface(self):
+        from zope.interface.verify import verifyClass
+        from plone.i18n.locales.countries import CountryAvailability
+        self.assert_(verifyClass(ICountryAvailability, CountryAvailability))
 
-      >>> de[u'flag']
-      u'/++resource++country-flags/de.gif'
+    def test_get_available(self):
+        util = self._makeOne()
+        countrycodes = util.getAvailableCountries()
+        self.assertEquals(len(countrycodes), 243)
+        self.assert_(u'de' in countrycodes)
 
-      >>> countries = util.getCountryListing()
-      >>> len(countries)
-      243
+    def test_get_countries(self):
+        util = self._makeOne()
+        countries = util.getCountries()
+        self.assertEquals(len(countries), 243)
+        self.assert_(u'de' in countries)
+        de = countries[u'de']
+        self.assertEquals(de[u'name'], u'Germany')
+        self.assertEquals(de[u'flag'], u'/++resource++country-flags/de.gif')
 
-      >>> (u'de', u'Germany') in countries
-      True
-    """
-
-
-def test_suite():
-    return unittest.TestSuite((
-        DocTestSuite('plone.i18n.locales.countries'),
-        DocTestSuite(setUp=configurationSetUp,
-                     tearDown=tearDown,
-                     optionflags=doctest.ELLIPSIS | doctest.NORMALIZE_WHITESPACE),
-        ))
+    def test_get_country_listing(self):
+        util = self._makeOne()
+        countries = util.getCountryListing()
+        self.assertEquals(len(countries), 243)
+        self.assertTrue((u'de', u'Germany') in countries)
