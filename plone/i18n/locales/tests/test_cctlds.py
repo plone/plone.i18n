@@ -1,56 +1,59 @@
 # -*- coding: UTF-8 -*-
-"""
-    ccTLD tests.
-"""
 
-import doctest
-from doctest import DocTestSuite
 import unittest
 
-import plone.i18n.locales
 from plone.i18n.locales.interfaces import ICcTLDInformation
 
-import zope.app.publisher.browser
-import zope.component
 from zope.component import queryUtility
 from zope.component.testing import setUp, tearDown
 from zope.configuration.xmlconfig import XMLConfig
 
 
-def configurationSetUp(self):
+def configurationSetUp():
     setUp()
+    import zope.component
     XMLConfig('meta.zcml', zope.component)()
-    XMLConfig('meta.zcml', zope.app.publisher.browser)()
+
+    # BBB Zope 2.12
+    try:
+        import zope.browserresource
+        XMLConfig('meta.zcml', zope.browserresource)()
+    except ImportError:
+        import zope.app.publisher.browser
+        XMLConfig('meta.zcml', zope.app.publisher.browser)()
+
+    import plone.i18n.locales
     XMLConfig('configure.zcml', plone.i18n.locales)()
 
-def testccTLDs():
-    """
-      >>> util = queryUtility(ICcTLDInformation)
-      >>> util
-      <plone.i18n.locales.cctld.CcTLDInformation object at ...>
 
-      >>> tlds = util.getAvailableTLDs()
-      >>> len(tlds)
-      266
+class TestCCTLD(unittest.TestCase):
 
-      >>> u'nl' in tlds
-      True
+    def setUp(self):
+        configurationSetUp()
 
-      >>> tlds = util.getTLDs()
-      >>> len(tlds)
-      266
+    def tearDown(self):
+        tearDown()
 
-      >>> util.getLanguagesForTLD(u'nl')
-      [u'nl']
+    def _makeOne(self):
+        return queryUtility(ICcTLDInformation)
 
-      >>> util.getLanguagesForTLD(u'be')
-      [u'nl', u'fr']
-    """
+    def test_interface(self):
+        from zope.interface.verify import verifyClass
+        from plone.i18n.locales.cctld import CcTLDInformation
+        self.assert_(verifyClass(ICcTLDInformation, CcTLDInformation))
 
-def test_suite():
-    return unittest.TestSuite((
-        DocTestSuite('plone.i18n.locales.cctld'),
-        DocTestSuite(setUp=configurationSetUp,
-                     tearDown=tearDown,
-                     optionflags=doctest.ELLIPSIS | doctest.NORMALIZE_WHITESPACE),
-        ))
+    def test_get_available(self):
+        util = self._makeOne()
+        tlds = util.getAvailableTLDs()
+        self.assertEquals(len(tlds), 266)
+        self.assert_(u'nl' in tlds)
+
+    def test_get(self):
+        util = self._makeOne()
+        tlds = util.getTLDs()
+        self.assertEquals(len(tlds), 266)
+
+    def test_get_languages_for(self):
+        util = self._makeOne()
+        self.assertEquals(util.getLanguagesForTLD(u'nl'), [u'nl'])
+        self.assertEquals(util.getLanguagesForTLD(u'be'), [u'nl', u'fr'])

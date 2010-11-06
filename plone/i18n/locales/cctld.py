@@ -1,8 +1,10 @@
 # This file contains a map from internet top level domains to the spoken
 # language(s) in the country associated with the domain.
 
-# Top level domain list taken from http://data.iana.org/TLD/tlds-alpha-by-domain.txt
-# Descriptions for most TLDs a can be found at http://en.wikipedia.org/wiki/List_of_Internet_top-level_domains
+# Top level domain list taken from
+# http://data.iana.org/TLD/tlds-alpha-by-domain.txt
+# Descriptions for most TLDs a can be found at
+# http://en.wikipedia.org/wiki/List_of_Internet_top-level_domains
 
 from plone.i18n.locales.interfaces import ICcTLDInformation
 from zope.interface import implements
@@ -10,12 +12,6 @@ from zope.interface import implements
 
 class CcTLDInformation(object):
     """A list of country code top level domains their relevant languages.
-
-    Let's make sure that this implementation actually fulfills the API.
-
-      >>> from zope.interface.verify import verifyClass
-      >>> verifyClass(ICcTLDInformation, CcTLDInformation)
-      True
     """
 
     implements(ICcTLDInformation)
@@ -305,4 +301,3 @@ _tld_to_language = {
     u"zm"        : [],
     u"zw"        : [],
 }
-
