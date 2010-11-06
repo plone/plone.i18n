@@ -35,10 +35,10 @@ setup(
     ],
     extras_require=dict(
         test=[
+            'zope.browserresource',
             'zope.component [zcml]',
             'zope.configuration',
             'zope.testing',
-            'zope.app.publisher',
         ],
     ),
 )

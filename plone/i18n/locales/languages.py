@@ -5,14 +5,9 @@ from plone.i18n.locales.interfaces import IMetadataLanguageAvailability
 from plone.i18n.locales.interfaces import ILanguageAvailability
 from zope.interface import implements
 
+
 class LanguageAvailability(object):
     """A list of available languages.
-
-    Let's make sure that this implementation actually fulfills the API.
-
-      >>> from zope.interface.verify import verifyClass
-      >>> verifyClass(ILanguageAvailability, LanguageAvailability)
-      True
     """
     implements(ILanguageAvailability)
 
@@ -43,25 +38,14 @@ class LanguageAvailability(object):
 
 class ContentLanguageAvailability(LanguageAvailability):
     """A list of available content languages.
-
-    Let's make sure that this implementation actually fulfills the API.
-
-      >>> from zope.interface.verify import verifyClass
-      >>> verifyClass(IContentLanguageAvailability, ContentLanguageAvailability)
-      True
     """
     implements(IContentLanguageAvailability)
 
 contentlanguages = ContentLanguageAvailability()
 
+
 class MetadataLanguageAvailability(LanguageAvailability):
     """A list of available metadata languages.
-
-    Let's make sure that this implementation actually fulfills the API.
-
-      >>> from zope.interface.verify import verifyClass
-      >>> verifyClass(IMetadataLanguageAvailability, MetadataLanguageAvailability)
-      True
     """
     implements(IMetadataLanguageAvailability)
 
@@ -222,7 +206,7 @@ u'yi' : {u'native' : 'ײִדיש', u'name' : 'Yiddish',                         
 u'yo' : {u'native' : 'Yorùbá', u'name' : 'Yorouba'},
 u'za' : {u'native' : 'Zhuang', u'name' : 'Zhuang'},
 u'zh' : {u'native' : '中文', u'name' : 'Chinese',                                 u'flag' : u'/++resource++country-flags/cn.gif'},
-u'zu' : {u'native' : 'IsiZulu', u'name' : 'Zulu',                               u'flag' : u'/++resource++country-flags/za.gif'}
+u'zu' : {u'native' : 'IsiZulu', u'name' : 'Zulu',                               u'flag' : u'/++resource++country-flags/za.gif'},
 }
 
 # convert the utf-8 encoded values to unicode
@@ -459,7 +443,7 @@ u'ur-pk' : {u'name' : 'Urdu (Pakistan)',                                        
 u'zh-cn' : {u'name' : 'Chinese (China)', u'native' : '简体中文(中国)',                u'flag' : u'/++resource++country-flags/cn.gif'},
 u'zh-hk' : {u'name' : 'Chinese (Hongkong)', u'native' : '繁體中文(香港)',             u'flag' : u'/++resource++country-flags/hk.gif'},
 u'zh-sg' : {u'name' : 'Chinese (Singapore)', u'native' : '简体中文(新加坡)',           u'flag' : u'/++resource++country-flags/sg.gif'},
-u'zh-tw' : {u'name' : 'Chinese (Taiwan)', u'native' : '繁體中文(臺灣)',               u'flag' : u'/++resource++country-flags/tw.gif'}
+u'zh-tw' : {u'name' : 'Chinese (Taiwan)', u'native' : '繁體中文(臺灣)',               u'flag' : u'/++resource++country-flags/tw.gif'},
 }
 
 # convert the utf-8 encoded values to unicode

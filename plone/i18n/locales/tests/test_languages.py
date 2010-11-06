@@ -1,150 +1,110 @@
 # -*- coding: UTF-8 -*-
-"""
-    Languages tests.
-"""
 
-import doctest
-from doctest import DocTestSuite
 import unittest
 
-import plone.i18n.locales
 from plone.i18n.locales.interfaces import IContentLanguageAvailability
+from plone.i18n.locales.interfaces import ILanguageAvailability
 from plone.i18n.locales.interfaces import IMetadataLanguageAvailability
 
-import zope.app.publisher.browser
-import zope.component
 from zope.component import queryUtility
 from zope.component.testing import setUp, tearDown
 from zope.configuration.xmlconfig import XMLConfig
+from zope.interface.verify import verifyClass
 
 
-def configurationSetUp(self):
+def configurationSetUp():
     setUp()
+    import zope.component
     XMLConfig('meta.zcml', zope.component)()
-    XMLConfig('meta.zcml', zope.app.publisher.browser)()
+
+    # BBB Zope 2.12
+    try:
+        import zope.browserresource
+        XMLConfig('meta.zcml', zope.browserresource)()
+    except ImportError:
+        import zope.app.publisher.browser
+        XMLConfig('meta.zcml', zope.app.publisher.browser)()
+
+    import plone.i18n.locales
     XMLConfig('configure.zcml', plone.i18n.locales)()
 
 
-def testContentLanguageAvailability():
-    """
-      >>> util = queryUtility(IContentLanguageAvailability)
-      >>> util
-      <plone.i18n.locales.languages.ContentLanguageAvailability object at ...>
+class BaseTest(object):
 
-      >>> languagecodes = util.getAvailableLanguages()
-      >>> len(languagecodes)
-      151
+    def setUp(self):
+        configurationSetUp()
 
-      >>> u'de' in languagecodes
-      True
+    def tearDown(self):
+        tearDown()
 
-      >>> languagecodes = util.getAvailableLanguages(combined=True)
-      >>> len(languagecodes)
-      377
+    def _makeOne(self):
+        raise NotImplementedError
 
-      >>> u'pt-br' in languagecodes
-      True
+    def test_get_available(self):
+        util = self._makeOne()
+        languagecodes = util.getAvailableLanguages()
+        self.assertEquals(len(languagecodes), 151)
+        self.assertTrue(u'de' in languagecodes)
+        self.assertFalse(u'pt-br' in languagecodes)
 
-      >>> languages = util.getLanguages()
-      >>> len(languages)
-      151
+    def test_get_available_combined(self):
+        util = self._makeOne()
+        languagecodes = util.getAvailableLanguages(combined=True)
+        self.assertEquals(len(languagecodes), 377)
+        self.assertTrue(u'de' in languagecodes)
+        self.assertTrue(u'pt-br' in languagecodes)
 
-      >>> de = languages[u'de']
-      >>> de[u'name']
-      u'German'
+    def test_get_languages(self):
+        util = self._makeOne()
+        languages = util.getLanguages()
+        self.assertEquals(len(languages), 151)
+        self.assertTrue(u'de' in languages)
+        self.assertFalse(u'pt-br' in languages)
+        de = languages[u'de']
+        self.assertEquals(de[u'name'], u'German')
+        self.assertEquals(de[u'native'], u'Deutsch')
+        self.assertEquals(de[u'flag'], u'/++resource++country-flags/de.gif')
 
-      >>> de[u'native']
-      u'Deutsch'
+    def test_get_languages_combined(self):
+        util = self._makeOne()
+        languages = util.getLanguages(combined=True)
+        self.assertEquals(len(languages), 377)
+        self.assertTrue(u'de' in languages)
+        self.assertTrue(u'pt-br' in languages)
+        self.assertEquals(languages[u'de'][u'name'], u'German')
+        self.assertEquals(languages[u'pt-br'][u'name'], u'Portuguese (Brazil)')
 
-      >>> de[u'flag']
-      u'/++resource++country-flags/de.gif'
-
-      >>> languages = util.getLanguageListing()
-      >>> len(languages)
-      151
-
-      >>> (u'de', u'German') in languages
-      True
-
-      >>> languages = util.getLanguages(combined=True)
-      >>> len(languages)
-      377
-
-      >>> pt_BR = languages[u'pt-br']
-      >>> pt_BR[u'name']
-      u'Portuguese (Brazil)'
-    """
-
-
-def testMetadataLanguageAvailability():
-    """
-      >>> util = queryUtility(IMetadataLanguageAvailability)
-      >>> util
-      <plone.i18n.locales.languages.MetadataLanguageAvailability object at ...>
-
-      >>> languagecodes = util.getAvailableLanguages()
-      >>> len(languagecodes)
-      151
-
-      >>> u'de' in languagecodes
-      True
-
-      >>> languagecodes = util.getAvailableLanguages(combined=True)
-      >>> len(languagecodes)
-      377
-
-      >>> u'pt-br' in languagecodes
-      True
-
-      >>> languages = util.getLanguages()
-      >>> len(languages)
-      151
-
-      >>> de = languages[u'de']
-      >>> de[u'name']
-      u'German'
-
-      >>> de[u'native']
-      u'Deutsch'
-
-      >>> de[u'flag']
-      u'/++resource++country-flags/de.gif'
-
-      >>> languages = util.getLanguageListing()
-      >>> len(languages)
-      151
-
-      >>> (u'de', u'German') in languages
-      True
-
-      >>> languages = util.getLanguageListing(combined=True)
-      >>> len(languages)
-      377
-
-      >>> (u'pt-br', u'Portuguese (Brazil)') in languages
-      True
-
-      >>> languages = util.getLanguageListing(combined=True)
-      >>> len(languages)
-      377
-
-      >>> (u'pt-br', u'Portuguese (Brazil)') in languages
-      True
-
-      >>> languages = util.getLanguages(combined=True)
-      >>> len(languages)
-      377
-
-      >>> pt_BR = languages[u'pt-br']
-      >>> pt_BR[u'name']
-      u'Portuguese (Brazil)'
-    """
+    def test_get_language_listing(self):
+        util = self._makeOne()
+        languages = util.getLanguageListing()
+        self.assertEquals(len(languages), 151)
+        self.assertTrue((u'de', u'German') in languages)
 
 
-def test_suite():
-    return unittest.TestSuite((
-        DocTestSuite('plone.i18n.locales.languages'),
-        DocTestSuite(setUp=configurationSetUp,
-                     tearDown=tearDown,
-                     optionflags=doctest.ELLIPSIS | doctest.NORMALIZE_WHITESPACE),
-        ))
+class TestContentLanguageAvailability(BaseTest, unittest.TestCase):
+
+    def _makeOne(self):
+        return queryUtility(IContentLanguageAvailability)
+
+    def test_interface(self):
+        from plone.i18n.locales.languages import ContentLanguageAvailability
+        self.assert_(verifyClass(IContentLanguageAvailability,
+                                 ContentLanguageAvailability))
+
+
+class TestMetadataLanguageAvailability(BaseTest, unittest.TestCase):
+
+    def _makeOne(self):
+        return queryUtility(IMetadataLanguageAvailability)
+
+    def test_interface(self):
+        from plone.i18n.locales.languages import MetadataLanguageAvailability
+        self.assert_(verifyClass(IMetadataLanguageAvailability,
+                                 MetadataLanguageAvailability))
+
+
+class TestInterfaces(unittest.TestCase):
+
+    def test_interface(self):
+        from plone.i18n.locales.languages import LanguageAvailability
+        self.assert_(verifyClass(ILanguageAvailability, LanguageAvailability))
