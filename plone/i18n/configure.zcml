@@ -2,7 +2,6 @@
     xmlns="http://namespaces.zope.org/zope">
 
     <include package=".locales" />
-
     <include package=".normalizer" />
 
 </configure>
