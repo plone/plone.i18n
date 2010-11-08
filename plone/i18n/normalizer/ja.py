@@ -53,7 +53,7 @@ class Normalizer(object):
       >>> norm = Normalizer()
       >>> text = unicode("テストページ", 'utf-8')
       >>> normalized = norm.normalize(text)
-      >>> normalized != text
+      >>> all(s in allowed for s in normalized)
       True
       >>> len(normalized)
       6
