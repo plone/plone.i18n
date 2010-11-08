@@ -41,22 +41,34 @@ class Normalizer(object):
       >>> verifyClass(INormalizer, Normalizer)
       True
 
+    Strings that contain only ASCII characters are returned decoded.
+
       >>> norm = Normalizer()
       >>> text = unicode("test page", 'utf-8')
       >>> norm.normalize(text)
       'test page'
 
+    Text that contains non-ASCII characters are normalized.
+
       >>> norm = Normalizer()
       >>> text = unicode("テストページ", 'utf-8')
-      >>> norm.normalize(text)
-      '921bib'
+      >>> normalized = norm.normalize(text)
+      >>> normalized != text
+      True
+      >>> len(normalized)
+      6
+
+    The max_length argument is respected.
+      >>> normalized = norm.normalize(text, max_length=8)
+      >>> len(normalized)
+      8
     """
     implements(INormalizer)
 
-    def normalize(self, text, locale=None, max_length=None):
+    def normalize(self, text, locale=None, max_length=MAX_LENGTH):
         """
         Returns a normalized text. text has to be a unicode string.
         """
-        return ja_normalize(text)
+        return ja_normalize(text, max_length=max_length)
 
 normalizer = Normalizer()

@@ -14,6 +14,10 @@ Changelog
   ``ve`` language codes. Thanks to Dwayne Bailey and Roche Compaan.
   [hannosch]
 
+- The max_length argument was ignored by
+  plone.i18n.normalizer.ja.Normalizer.
+  [rossp]
+
 2.0 - 2010-07-18
 ----------------
 
