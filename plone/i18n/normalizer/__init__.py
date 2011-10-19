@@ -181,7 +181,7 @@ class URLNormalizer(object):
             base = m.groups()[0]
             ext  = m.groups()[1]
 
-        base = base.replace(' ', '-')
+        base = NON_WORD_REGEX.sub('-', base)
         base = IGNORE_REGEX.sub('', base)
         base = URL_DANGEROUS_CHARS_REGEX.sub('-', base)
         base = EXTRA_DASHES_REGEX.sub('', base)
