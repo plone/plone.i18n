@@ -28,7 +28,7 @@ def ja_normalize(text, max_length=MAX_LENGTH):
         return text.encode('ascii')
     else:
         return "".join(_gethashed(text, max_length))
-    
+
 
 class Normalizer(object):
     """

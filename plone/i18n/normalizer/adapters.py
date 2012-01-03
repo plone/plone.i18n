@@ -12,7 +12,7 @@ class UserPreferredFileNameNormalizer(object):
     """
     An adapter for the HTTPRequest to provide user preferred language
     dependent normalization.
-    
+
     Let's make sure that this implementation actually fulfills the API.
 
       >>> from zope.interface.verify import verifyClass
@@ -39,7 +39,7 @@ class UserPreferredURLNormalizer(object):
     """
     An adapter for the HTTPRequest to provide user preferred language
     dependent normalization.
-    
+
     Let's make sure that this implementation actually fulfills the API.
 
       >>> from zope.interface.verify import verifyClass
