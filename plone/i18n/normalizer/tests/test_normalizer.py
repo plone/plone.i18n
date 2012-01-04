@@ -195,7 +195,7 @@ def testURLNormalizer():
       'whitespace-and-capital-letters'
 
       >>> util.normalize(u">here's another!")
-      'heres-another'
+      'here-s-another'
 
       >>> util.normalize(u">>>here'!--s yet another!!!")
       'here-s-yet-another'
@@ -213,10 +213,10 @@ def testURLNormalizer():
       'quote-this'
 
       >>> util.normalize("I'm not a FILE.txt")
-      'im-not-a-file.txt'
+      'i-m-not-a-file.txt'
 
       >>> util.normalize("I'm a big file.TXT")
-      'im-a-big-file.txt'
+      'i-m-a-big-file.txt'
 
       >>> util.normalize(unicode("rest `n` peace", 'utf-8'))
       'rest-n-peace'
