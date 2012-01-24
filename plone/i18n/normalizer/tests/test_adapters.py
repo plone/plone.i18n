@@ -45,6 +45,13 @@ class TestFileNameNormalizer(BaseTestCase, unittest.TestCase):
         self.assertEquals(norm.normalize(u'text with umläut'),
                           u'text with umlaut')
 
+    def test_spanish(self):
+        norm = self._makeOne('es')
+        self.assertEquals(norm.normalize(u'simpleandsafe'),
+                          'simpleandsafe')
+        self.assertEquals(norm.normalize(u'text with eñe'),
+                          u'text with enhe')
+
 
 class TestUrlNormalizer(BaseTestCase, unittest.TestCase):
 
@@ -67,3 +74,11 @@ class TestUrlNormalizer(BaseTestCase, unittest.TestCase):
 
         self.assertEquals(norm.normalize(u'text with umläut'),
                           u'text-with-umlaut')
+
+    def test_spanish(self):
+        norm = self._makeOne('es')
+        self.assertEquals(norm.normalize(u'simpleandsafe'),
+                          u'simpleandsafe')
+
+        self.assertEquals(norm.normalize(u'text with eñe'),
+                          u'text-with-enhe')
