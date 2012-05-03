@@ -18,6 +18,11 @@ Changelog
   plone.i18n.normalizer.ja.Normalizer.
   [rossp]
 
+- Added three new countries and its corresponding flags. Also updated
+  the internet top level domains list. Added countries are Kosovo,
+  Montenegro and Serbia.
+  [alecghica]
+
 2.0 - 2010-07-18
 ----------------
 
