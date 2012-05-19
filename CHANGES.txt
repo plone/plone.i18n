@@ -4,7 +4,7 @@ Changelog
 2.0.1 - unreleased
 ------------------
 
-- Use `zope.browserresource` if it is available.
+- Use `zope.browserresource`.
   [hannosch]
 
 - Converted most tests from doctests to proper unit tests.
