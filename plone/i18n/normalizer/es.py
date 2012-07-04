@@ -11,14 +11,14 @@ mapping = {
     204: u'I', 205: u'I',
     210: u'O', 211: u'O',
     217: u'U', 218: u'U', 220: u'U',
-    209: u'NH',
+    209: u'N',
     199: u'C',
     224: u'a', 225: u'a',
     232: u'e', 233: u'e',
     236: u'i', 237: u'i',
     242: u'o', 243: u'o',
     249: u'u', 250: u'u',
-    241: u'nh',
+    241: u'n',
     231: u'c',
 }
 
@@ -35,7 +35,7 @@ class Normalizer(object):
 
       >>> norm = Normalizer()
       >>> norm.normalize(u'\xf1')
-      'nh'
+      'n'
     """
     implements(INormalizer)
 
