@@ -50,7 +50,7 @@ class TestFileNameNormalizer(BaseTestCase, unittest.TestCase):
         self.assertEquals(norm.normalize(u'simpleandsafe'),
                           'simpleandsafe')
         self.assertEquals(norm.normalize(u'text with eñe'),
-                          u'text with enhe')
+                          u'text with ene')
 
 
 class TestUrlNormalizer(BaseTestCase, unittest.TestCase):
@@ -81,4 +81,4 @@ class TestUrlNormalizer(BaseTestCase, unittest.TestCase):
                           u'simpleandsafe')
 
         self.assertEquals(norm.normalize(u'text with eñe'),
-                          u'text-with-enhe')
+                          u'text-with-ene')
