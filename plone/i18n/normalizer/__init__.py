@@ -67,7 +67,10 @@ class IDNormalizer(object):
                 # Try to get a normalizer for the base language if we asked
                 # for one for a language/country combination and found none
                 util = queryUtility(IIDNormalizer, name=parts[0])
-            if util is not None:
+            # be defensive: if queryUtility() returns an instance of the same
+            # normalizer class as this one, we'll loop forever until
+            # "RuntimeError: maximum recursion depth exceeded" (ticket #11630)
+            if util is not None and util.__class__ is not self.__class__:
                 text = util.normalize(text, locale=locale)
 
         text = baseNormalize(text)
@@ -109,7 +112,10 @@ class FileNameNormalizer(object):
                 # Try to get a normalizer for the base language if we asked
                 # for one for a language/country combination and found none
                 util = queryUtility(IFileNameNormalizer, name=parts[0])
-            if util is not None:
+            # be defensive: if queryUtility() returns an instance of the same
+            # normalizer class as this one, we'll loop forever until
+            # "RuntimeError: maximum recursion depth exceeded" (ticket #11630)
+            if util is not None and util.__class__ is not self.__class__:
                 text = util.normalize(text, locale=locale)
 
         # Preserve filename extensions
@@ -167,7 +173,10 @@ class URLNormalizer(object):
                 # Try to get a normalizer for the base language if we asked
                 # for one for a language/country combination and found none
                 util = queryUtility(IURLNormalizer, name=parts[0])
-            if util is not None:
+            # be defensive: if queryUtility() returns an instance of the same
+            # normalizer class as this one, we'll loop forever until
+            # "RuntimeError: maximum recursion depth exceeded" (ticket #11630)
+            if util is not None and util.__class__ is not self.__class__:
                 text = util.normalize(text, locale=locale)
 
         text = baseNormalize(text)
@@ -181,8 +190,8 @@ class URLNormalizer(object):
             base = m.groups()[0]
             ext  = m.groups()[1]
 
-        base = NON_WORD_REGEX.sub('-', base)
         base = IGNORE_REGEX.sub('', base)
+        base = NON_WORD_REGEX.sub('-', base)
         base = URL_DANGEROUS_CHARS_REGEX.sub('-', base)
         base = EXTRA_DASHES_REGEX.sub('', base)
         base = MULTIPLE_DASHES_REGEX.sub('-', base)
