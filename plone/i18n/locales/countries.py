@@ -169,6 +169,7 @@ u'ly' : {u'name' : 'Libyan Arab Jamahiriya', u'flag' : u'/++resource++country-fl
 u'ma' : {u'name' : 'Morocco', u'flag' : u'/++resource++country-flags/ma.gif'},
 u'mc' : {u'name' : 'Monaco', u'flag' : u'/++resource++country-flags/mc.gif'},
 u'md' : {u'name' : 'Moldova Republic of', u'flag' : u'/++resource++country-flags/md.gif'},
+u'me' : {u'name' : 'Montenegro', u'flag' : u'/++resource++country-flags/me.gif'},
 u'mg' : {u'name' : 'Madagascar', u'flag' : u'/++resource++country-flags/mg.gif'},
 u'mh' : {u'name' : 'Marshall Islands', u'flag' : u'/++resource++country-flags/mh.gif'},
 u'mk' : {u'name' : 'Macedonia the former Yugoslavian Republic of', u'flag' : u'/++resource++country-flags/mk.gif'},
@@ -217,6 +218,7 @@ u'py' : {u'name' : 'Paraguay', u'flag' : u'/++resource++country-flags/py.gif'},
 u'qa' : {u'name' : 'Qatar', u'flag' : u'/++resource++country-flags/qa.gif'},
 u're' : {u'name' : 'Reunion', u'flag' : u'/++resource++country-flags/re.gif'},
 u'ro' : {u'name' : 'Romania', u'flag' : u'/++resource++country-flags/ro.gif'},
+u'rs' : {u'name' : 'Serbia', u'flag' : u'/++resource++country-flags/rs.gif'},
 u'ru' : {u'name' : 'Russian Federation', u'flag' : u'/++resource++country-flags/ru.gif'},
 u'rw' : {u'name' : 'Rwanda', u'flag' : u'/++resource++country-flags/rw.gif'},
 u'sa' : {u'name' : 'Saudi Arabia', u'flag' : u'/++resource++country-flags/sa.gif'},
@@ -274,6 +276,7 @@ u'yt' : {u'name' : 'Mayotte', u'flag' : u'/++resource++country-flags/yt.gif'},
 u'za' : {u'name' : 'South Africa', u'flag' : u'/++resource++country-flags/za.gif'},
 u'zm' : {u'name' : 'Zambia', u'flag' : u'/++resource++country-flags/zm.gif'},
 u'zw' : {u'name' : 'Zimbabwe', u'flag' : u'/++resource++country-flags/zw.gif'},
+u'xk' : {u'name' : 'Kosovo', u'flag' : u'/++resource++country-flags/xk.gif'},
 }
 
 # convert the utf-8 encoded values to unicode
