@@ -4,6 +4,9 @@ Changelog
 2.0.3 (unreleased)
 ------------------
 
+- Removed invalid me language code added in 2007. me is only a country code.
+  [hannosch]
+
 - Correct language code for Javanese from jw to jv.
   [hannosch]
 
