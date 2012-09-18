@@ -29,6 +29,8 @@ countries = CountryAvailability()
 # This is a dictionary of dictonaries:
 #
 # 'country-code' : {u'name' : 'English name', u'flag' : u'/++resource++country-flags/*.gif'}
+#
+# This list follows ISO 3166-1.
 
 _countrylist = {
 u'ad' : {u'name' : 'Andorra', u'flag' : u'/++resource++country-flags/ad.gif'},
