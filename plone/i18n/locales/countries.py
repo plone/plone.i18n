@@ -30,7 +30,8 @@ countries = CountryAvailability()
 #
 # 'country-code' : {u'name' : 'English name', u'flag' : u'/++resource++country-flags/*.gif'}
 #
-# This list follows ISO 3166-1.
+# This list follows ISO 3166-1. In addition the following reservations are
+# part of the list for historical reasons: an
 
 _countrylist = {
 u'ad' : {u'name' : 'Andorra', u'flag' : u'/++resource++country-flags/ad.gif'},

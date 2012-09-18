@@ -44,3 +44,11 @@ class TestAvailableCountries(unittest.TestCase):
         countries = util.getCountryListing()
         self.assertTrue(len(countries) > 200)
         self.assertTrue((u'de', u'Germany') in countries)
+
+    def test_reservations(self):
+        # our list has historically contained some reservations, which
+        # aren't part of the official list. We retain those, to avoid
+        # breaking content based on these
+        from plone.i18n.locales.countries import _countrylist
+        self.assertTrue(u'an' in _countrylist)
+        self.assertTrue(u'cs' in _countrylist)
