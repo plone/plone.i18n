@@ -13,6 +13,9 @@ Changelog
   Montenegro and Serbia.
   [alecghica]
 
+- Fixed tests not to crash when a new country, language or domain is added.
+  [alecghica]
+
 2.0.2 (2012-08-29)
 ------------------
 

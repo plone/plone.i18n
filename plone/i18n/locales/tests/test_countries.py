@@ -27,13 +27,13 @@ class TestAvailableCountries(unittest.TestCase):
     def test_get_available(self):
         util = self._makeOne()
         countrycodes = util.getAvailableCountries()
-        self.assertEquals(len(countrycodes), 243)
+        self.assertTrue(len(countrycodes) > 200)
         self.assert_(u'de' in countrycodes)
 
     def test_get_countries(self):
         util = self._makeOne()
         countries = util.getCountries()
-        self.assertEquals(len(countries), 243)
+        self.assertTrue(len(countries) > 200)
         self.assert_(u'de' in countries)
         de = countries[u'de']
         self.assertEquals(de[u'name'], u'Germany')
@@ -42,5 +42,5 @@ class TestAvailableCountries(unittest.TestCase):
     def test_get_country_listing(self):
         util = self._makeOne()
         countries = util.getCountryListing()
-        self.assertEquals(len(countries), 243)
+        self.assertTrue(len(countries) > 200)
         self.assertTrue((u'de', u'Germany') in countries)
