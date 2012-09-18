@@ -4,6 +4,11 @@ Changelog
 2.0.3 (unreleased)
 ------------------
 
+- Added missing ISO-639-1 language codes: ae, ak, an, bm, ce, ch, cr, cu, cv,
+  dv, ee, ff, ho, ht, hz, ig, ii, io, kg, ki, kj, kr, kv, lg, lu, mh, nb, ng,
+  nv, ny, oj, os, pi, sc, vk.
+  [hannosch]
+
 - URLNormalizer should remove all ignored characters before making any
   substitutions.
   [esteele]
