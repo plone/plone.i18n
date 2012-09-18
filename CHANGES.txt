@@ -4,6 +4,9 @@ Changelog
 2.0.3 (unreleased)
 ------------------
 
+- Added new country codes and flags for: bl, bq, cw, mf, ss and sx.
+  [hannosch]
+
 - Clarify and test availability of reserved country codes an and cs.
   [hannosch]
 
