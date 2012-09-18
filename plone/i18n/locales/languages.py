@@ -55,7 +55,8 @@ metadatalanguages = MetadataLanguageAvailability()
 #
 # 'langcode-variation' : {u'native' : 'Native name', u'name' : 'English name', u'flag' : u'/++resource++country-flags/*.gif'}
 #
-# This list follows ISO-639-1.
+# This list follows ISO-639-1. The list retains entries for mo and sh,
+# even tough these have later been deprecated from the standard.
 
 _languagelist = {
 u'aa' : {u'native' : 'магIарул мацI', u'name' : 'Afar',                         u'flag' : u'/++resource++country-flags/dj.gif'},

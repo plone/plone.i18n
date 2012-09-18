@@ -12,6 +12,16 @@ class TestInterfaces(unittest.TestCase):
         self.assert_(verifyClass(ILanguageAvailability, LanguageAvailability))
 
 
+class TestDeprecatedLanguages(unittest.TestCase):
+
+    def test_deprecated(self):
+        # make sure we retain deprecated language codes, as we don't
+        # want to break existing content based on it
+        from plone.i18n.locales.languages import _languagelist
+        self.assertTrue(u'mo' in _languagelist)
+        self.assertTrue(u'sh' in _languagelist)
+
+
 class BaseTestCase(object):
 
     def setUp(self):

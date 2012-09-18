@@ -4,6 +4,9 @@ Changelog
 2.0.3 (unreleased)
 ------------------
 
+- Clarify and test availability of deprecated language codes mo and sh.
+  [hannosch]
+
 - Removed invalid me language code added in 2007. me is only a country code.
   [hannosch]
 
