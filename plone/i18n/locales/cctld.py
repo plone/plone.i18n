@@ -286,7 +286,6 @@ _tld_to_language = {
     u"ua"        : [],
     u"ug"        : [],
     u"uk"        : [u"en"],
-    u"um"        : [u"en"],
     u"us"        : [u"en"],
     u"uy"        : [],
     u"uz"        : [],

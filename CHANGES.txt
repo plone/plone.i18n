@@ -4,6 +4,9 @@ Changelog
 2.0.3 (unreleased)
 ------------------
 
+- Removed unknown cctld entry for um.
+  [hannosch]
+
 - Added new cctld entries for: asia, kp, ss and xxx.
   [hannosch]
 
