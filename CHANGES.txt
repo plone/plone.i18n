@@ -4,6 +4,9 @@ Changelog
 2.0.3 (unreleased)
 ------------------
 
+- Added new cctld entries for: asia, kp, ss and xxx.
+  [hannosch]
+
 - Added new country codes and flags for: bl, bq, cw, mf, ss and sx.
   [hannosch]
 
