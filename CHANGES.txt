@@ -4,8 +4,8 @@ Changelog
 2.0.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Add Latvian flag to language list
+  [maartenkling]§
 
 2.0.3 (2012-10-16)
 ------------------
