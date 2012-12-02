@@ -62,7 +62,7 @@ class IDNormalizer(object):
         if locale is not None:
             # Try to get a normalizer for the locale
             util = queryUtility(IIDNormalizer, name=locale)
-            parts = locale.split('_')
+            parts = locale.split('-')
             if util is None and len(parts) > 1:
                 # Try to get a normalizer for the base language if we asked
                 # for one for a language/country combination and found none
@@ -107,7 +107,7 @@ class FileNameNormalizer(object):
         if locale is not None:
             # Try to get a normalizer for the locale
             util = queryUtility(IFileNameNormalizer, name=locale)
-            parts = locale.split('_')
+            parts = locale.split('-')
             if util is None and len(parts) > 1:
                 # Try to get a normalizer for the base language if we asked
                 # for one for a language/country combination and found none
@@ -168,7 +168,7 @@ class URLNormalizer(object):
         if locale is not None:
             # Try to get a normalizer for the locale
             util = queryUtility(IURLNormalizer, name=locale)
-            parts = locale.split('_')
+            parts = locale.split('-')
             if util is None and len(parts) > 1:
                 # Try to get a normalizer for the base language if we asked
                 # for one for a language/country combination and found none
