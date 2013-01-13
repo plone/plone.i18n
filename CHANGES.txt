@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.0.4 (2013-01-13)
+2.0.4 (unreleased)
 ------------------
 
 - Add Latvian flag to language list
