@@ -5,7 +5,7 @@ Changelog
 ------------------
 
 - Add Latvian flag to language list
-  [maartenkling]§
+  [maartenkling]
 
 2.0.3 (2012-10-16)
 ------------------
