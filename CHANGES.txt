@@ -4,7 +4,8 @@ Changelog
 2.0.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Revert 97645c76f5e0cf14e525f702c66fe0c4de8cb0fc.
+  [esteele]
 
 
 2.0.4 (2013-01-13)
