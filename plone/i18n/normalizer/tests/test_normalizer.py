@@ -86,22 +86,22 @@ def testLocaleAwareIDNormalizer():
       >>> util.normalize(unicode('text with umläut', 'utf-8'), locale='de')
       'text-with-umlaeut'
 
-    Make sure we get the de normalizer as there's no special one for de_DE
+    Make sure we get the de normalizer as there's no special one for de-DE
     registered.
 
-      >>> util.normalize(unicode('text with umläut', 'utf-8'), locale='de_DE')
+      >>> util.normalize(unicode('text with umläut', 'utf-8'), locale='de-DE')
       'text-with-umlaeut'
 
-      >>> util.normalize(u'simpleandsafe', locale='pt_BR')
+      >>> util.normalize(u'simpleandsafe', locale='pt-BR')
       'simpleandsafe'
 
       >>> util.normalize(u'simpleandsafe', locale='sr@Latn')
       'simpleandsafe'
 
-      >>> util.normalize(u"short-hello-version", locale='de_DE', max_length=10)
+      >>> util.normalize(u"short-hello-version", locale='de-DE', max_length=10)
       'short'
 
-      >>> util.normalize(u"short-hello-version", locale='de_DE', max_length=15)
+      >>> util.normalize(u"short-hello-version", locale='de-DE', max_length=15)
       'short-hello'
     """
 
@@ -162,19 +162,19 @@ def testLocaleAwareFileNameNormalizer():
       >>> util.normalize(unicode('text with umläut', 'utf-8'), locale='de')
       'text with umlaeut'
 
-    Make sure we get the de normalizer as there's no special one for de_DE
+    Make sure we get the de normalizer as there's no special one for de-DE
     registered.
 
-      >>> util.normalize(unicode('text with umläut', 'utf-8'), locale='de_DE')
+      >>> util.normalize(unicode('text with umläut', 'utf-8'), locale='de-DE')
       'text with umlaeut'
 
-      >>> util.normalize(u'simpleandsafe', locale='pt_BR')
+      >>> util.normalize(u'simpleandsafe', locale='pt-BR')
       'simpleandsafe'
 
       >>> util.normalize(u'simpleandsafe', locale='sr@Latn')
       'simpleandsafe'
 
-      >>> util.normalize(u"short-hello-version", locale='de_DE', max_length=10)
+      >>> util.normalize(u"short-hello-version", locale='de-DE', max_length=10)
       'short'
 
       >>> util.normalize(u"_some_cameras_are_evil")
@@ -241,19 +241,19 @@ def testLocaleAwareURLNormalizer():
       >>> util.normalize(unicode('text with umläut', 'utf-8'), locale='de')
       'text-with-umlaeut'
 
-    Make sure we get the de normalizer as there's no special one for de_DE
+    Make sure we get the de normalizer as there's no special one for de-DE
     registered.
 
-      >>> util.normalize(unicode('text with umläut', 'utf-8'), locale='de_DE')
+      >>> util.normalize(unicode('text with umläut', 'utf-8'), locale='de-DE')
       'text-with-umlaeut'
 
-      >>> util.normalize(u'simpleandsafe', locale='pt_BR')
+      >>> util.normalize(u'simpleandsafe', locale='pt-BR')
       'simpleandsafe'
 
       >>> util.normalize(u'simpleandsafe', locale='sr@Latn')
       'simpleandsafe'
 
-      >>> util.normalize(u"short-hello-version", locale='de_DE', max_length=10)
+      >>> util.normalize(u"short-hello-version", locale='de-DE', max_length=10)
       'short'
     """
 

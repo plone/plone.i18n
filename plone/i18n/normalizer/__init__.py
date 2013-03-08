@@ -57,12 +57,12 @@ class IDNormalizer(object):
     def normalize(self, text, locale=None, max_length=MAX_LENGTH):
         """
         Returns a normalized text. text has to be a unicode string and locale
-        should be a normal locale, for example: 'pt_BR', 'sr@Latn' or 'de'
+        should be a normal locale, for example: 'pt-BR', 'sr@Latn' or 'de'
         """
         if locale is not None:
             # Try to get a normalizer for the locale
             util = queryUtility(IIDNormalizer, name=locale)
-            parts = locale.split('_')
+            parts = locale.split('-')
             if util is None and len(parts) > 1:
                 # Try to get a normalizer for the base language if we asked
                 # for one for a language/country combination and found none
@@ -102,12 +102,12 @@ class FileNameNormalizer(object):
     def normalize(self, text, locale=None, max_length=MAX_FILENAME_LENGTH):
         """
         Returns a normalized text. text has to be a unicode string and locale
-        should be a normal locale, for example: 'pt_BR', 'sr@Latn' or 'de'
+        should be a normal locale, for example: 'pt-BR', 'sr@Latn' or 'de'
         """
         if locale is not None:
             # Try to get a normalizer for the locale
             util = queryUtility(IFileNameNormalizer, name=locale)
-            parts = locale.split('_')
+            parts = locale.split('-')
             if util is None and len(parts) > 1:
                 # Try to get a normalizer for the base language if we asked
                 # for one for a language/country combination and found none
@@ -163,12 +163,12 @@ class URLNormalizer(object):
     def normalize(self, text, locale=None, max_length=MAX_URL_LENGTH):
         """
         Returns a normalized text. text has to be a unicode string and locale
-        should be a normal locale, for example: 'pt_BR', 'sr@Latn' or 'de'
+        should be a normal locale, for example: 'pt-BR', 'sr@Latn' or 'de'
         """
         if locale is not None:
             # Try to get a normalizer for the locale
             util = queryUtility(IURLNormalizer, name=locale)
-            parts = locale.split('_')
+            parts = locale.split('-')
             if util is None and len(parts) > 1:
                 # Try to get a normalizer for the base language if we asked
                 # for one for a language/country combination and found none
