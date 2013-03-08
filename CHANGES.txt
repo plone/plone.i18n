@@ -4,8 +4,9 @@ Changelog
 2.0.6 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Fixed does not correctly handle client HTTP_ACCEPT_LANGUAGE is
+  language/country combination.
+  [jianaijun]
 
 2.0.5 (2013-01-13)
 ------------------
