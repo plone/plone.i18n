@@ -37,6 +37,13 @@ class TestFileNameNormalizer(BaseTestCase, unittest.TestCase):
         self.assertEquals(norm.normalize(u'text with umläut'),
                           u'text with umlaeut')
 
+    def test_german_country(self):
+        norm = self._makeOne('de-DE')
+        self.assertEquals(norm.normalize(u'simpleandsafe'),
+                          u'simpleandsafe')
+
+        self.assertEquals(norm.normalize(u'text with umläut'),
+                          u'text with umlaeut')
     def test_english(self):
         norm = self._makeOne('en')
         self.assertEquals(norm.normalize(u'simpleandsafe'),
@@ -61,6 +68,14 @@ class TestUrlNormalizer(BaseTestCase, unittest.TestCase):
 
     def test_german(self):
         norm = self._makeOne('de')
+        self.assertEquals(norm.normalize(u'simpleandsafe'),
+                          u'simpleandsafe')
+
+        self.assertEquals(norm.normalize(u'text with umläut'),
+                          u'text-with-umlaeut')
+
+    def test_german_country(self):
+        norm = self._makeOne('de-DE')
         self.assertEquals(norm.normalize(u'simpleandsafe'),
                           u'simpleandsafe')
 
