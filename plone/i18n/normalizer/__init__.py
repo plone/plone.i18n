@@ -17,6 +17,7 @@ URL_DANGEROUS_CHARS_REGEX = re.compile(r"[!#$%&()*+,/:;<=>?@\\^{|}\[\]~`]+")
 MULTIPLE_DASHES_REGEX = re.compile(r"\-+")
 EXTRA_DASHES_REGEX = re.compile(r"(^\-+)|(\-+$)")
 UNDERSCORE_START_REGEX = re.compile(r"(^_+)(.*)$")
+LOCALE_SPLIT_REGEX = re.compile(r'[_-]')
 # Define static constraints
 MAX_LENGTH = 50
 MAX_FILENAME_LENGTH = 1023
@@ -62,7 +63,7 @@ class IDNormalizer(object):
         if locale is not None:
             # Try to get a normalizer for the locale
             util = queryUtility(IIDNormalizer, name=locale)
-            parts = locale.split('-')
+            parts = LOCALE_SPLIT_REGEX.split(locale)
             if util is None and len(parts) > 1:
                 # Try to get a normalizer for the base language if we asked
                 # for one for a language/country combination and found none
@@ -107,7 +108,7 @@ class FileNameNormalizer(object):
         if locale is not None:
             # Try to get a normalizer for the locale
             util = queryUtility(IFileNameNormalizer, name=locale)
-            parts = locale.split('-')
+            parts = LOCALE_SPLIT_REGEX.split(locale)
             if util is None and len(parts) > 1:
                 # Try to get a normalizer for the base language if we asked
                 # for one for a language/country combination and found none
@@ -168,7 +169,7 @@ class URLNormalizer(object):
         if locale is not None:
             # Try to get a normalizer for the locale
             util = queryUtility(IURLNormalizer, name=locale)
-            parts = locale.split('-')
+            parts = LOCALE_SPLIT_REGEX.split(locale)
             if util is None and len(parts) > 1:
                 # Try to get a normalizer for the base language if we asked
                 # for one for a language/country combination and found none

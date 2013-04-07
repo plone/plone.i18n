@@ -103,6 +103,13 @@ def testLocaleAwareIDNormalizer():
 
       >>> util.normalize(u"short-hello-version", locale='de-DE', max_length=15)
       'short-hello'
+
+    Make sure we also handle POSIX-format locale identifiers,
+    for backwards-compatibility with an earlier version of plone.i18n.
+
+      >>> util.normalize(unicode('text with umläut', 'utf-8'), locale='de_DE')
+      'text-with-umlaeut'
+
     """
 
 
@@ -179,6 +186,13 @@ def testLocaleAwareFileNameNormalizer():
 
       >>> util.normalize(u"_some_cameras_are_evil")
       'some_cameras_are_evil'
+
+    Make sure we also handle POSIX-format locale identifiers,
+    for backwards-compatibility with an earlier version of plone.i18n.
+
+      >>> util.normalize(unicode('text with umläut', 'utf-8'), locale='de_DE')
+      'text with umlaeut'
+
     """
 
 
@@ -255,6 +269,13 @@ def testLocaleAwareURLNormalizer():
 
       >>> util.normalize(u"short-hello-version", locale='de-DE', max_length=10)
       'short'
+
+    Make sure we also handle POSIX-format locale identifiers,
+    for backwards-compatibility with an earlier version of plone.i18n.
+
+      >>> util.normalize(unicode('text with umläut', 'utf-8'), locale='de_DE')
+      'text-with-umlaeut'
+
     """
 
 
