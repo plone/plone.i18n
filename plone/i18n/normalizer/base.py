@@ -9,7 +9,7 @@ allowed = string.ascii_letters + string.digits + string.punctuation + whitespace
 CHAR = {}
 NULLMAP = ['' * 0x100]
 UNIDECODE_LIMIT = 0x0530
-
+GENERAL_PUNCTUATION = (0x2000, 0x206F)
 
 def mapUnicode(text, mapping=()):
     """
@@ -61,7 +61,8 @@ def baseNormalize(text):
             res.append(ch)
         else:
             ordinal = ord(ch)
-            if ordinal < UNIDECODE_LIMIT:
+            if ordinal < UNIDECODE_LIMIT or \
+               (ordinal >= GENERAL_PUNCTUATION[0] and ordinal <= GENERAL_PUNCTUATION[1]):
                 h = ordinal >> 8
                 l = ordinal & 0xff
 
@@ -94,7 +95,6 @@ def baseNormalize(text):
                 res.append(''.join([c for c in normalized if c in allowed]))
 
             else:
-                # hex string instead of unknown char
-                res.append("%x" % ordinal)
+                res.append('')
 
     return ''.join(res).encode('ascii')
