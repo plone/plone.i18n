@@ -77,6 +77,18 @@
       permission="zope.Public" />
 
   <utility
+      name="pt"
+      provides=".interfaces.IFileNameNormalizer"
+      component=".pt.normalizer"
+      permission="zope.Public" />
+
+  <utility
+      name="pt"
+      provides=".interfaces.IURLNormalizer"
+      component=".pt.normalizer"
+      permission="zope.Public" />
+
+  <utility
       name="ru"
       provides=".interfaces.IFileNameNormalizer"
       component=".ru.normalizer"
