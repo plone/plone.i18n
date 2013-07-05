@@ -148,6 +148,18 @@
       component=".es.normalizer"
       permission="zope.Public" />
 
+  <utility
+      name="zh"
+      provides=".interfaces.IFileNameNormalizer"
+      component=".zh.normalizer"
+      permission="zope.Public" />
+
+  <utility
+      name="zh"
+      provides=".interfaces.IURLNormalizer"
+      component=".zh.normalizer"
+      permission="zope.Public" />
+
   <adapter
       for="zope.publisher.interfaces.http.IHTTPRequest"
       provides=".interfaces.IUserPreferredFileNameNormalizer"
