@@ -97,3 +97,19 @@ class TestUrlNormalizer(BaseTestCase, unittest.TestCase):
 
         self.assertEquals(norm.normalize(u'text with eñe'),
                           u'text-with-ene')
+
+    def test_chinese(self):
+        norm = self._makeOne('zh')
+        self.assertEquals(norm.normalize(u'中国汉字'),
+                          u'zhong-guo-han-zi')
+
+        self.assertEquals(norm.normalize(u'english + 简体'),
+                          u'english-jian-ti')
+
+    def test_chinese_tw(self):
+        norm = self._makeOne('zh-tw')
+        self.assertEquals(norm.normalize(u'正體中文'),
+                          u'zheng-ti-zhong-wen')
+
+        self.assertEquals(norm.normalize(u'english + 正體'),
+                          u'english-zheng-ti')
