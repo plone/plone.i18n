@@ -4,7 +4,9 @@ Changelog
 2.0.9 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- German URL normalizer: handle German ‚single‘ and „double“ 
+  quotation marks, em dash –, paragraph § and € sign.
+  [jnachtigall]
 
 
 2.0.8 (2013-05-26)
