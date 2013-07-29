@@ -5,9 +5,22 @@ from zope.interface import implements
 from plone.i18n.normalizer.base import mapUnicode
 
 # German character mapping
+#
+# Special characters:
+#     8222: German left double quotation mark
+#     8220: German right double quotation mark 
+#     8218: German left single quotation mark
+#     8216: German right single quotation mark
+#     8211: en dash '-' 
+#      167: paragraph character
+#     8364: Euro sign
+
 mapping = {
     196 : 'AE', 198 : 'AE', 214 : 'OE', 220 : 'UE', 223 : 'ss', 224 : 'a',
-    228 : 'ae', 230 : 'ae', 246 : 'oe', 252 : 'ue'
+    228 : 'ae', 230 : 'ae', 246 : 'oe', 252 : 'ue',
+    8222: '-' , 8220: '-' , 8218: '-' , 8216: '-',
+    8211: '-' , 167 : '-' , 
+    8364: 'euro' 
 }
 
 class Normalizer(object):
