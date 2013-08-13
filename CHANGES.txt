@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.0.9 (unreleased)
+2.0.9 (2013-08-13)
 ------------------
 
 - German URL normalizer: handle German ‚single‘ and „double“ 
