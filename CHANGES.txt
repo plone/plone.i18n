@@ -25,6 +25,12 @@ Changelog
 2.0.7 (2013-05-23)
 ------------------
 
+- Allow the "General punctuation" block of unicode chars in the
+  base normalizer (things like em dash). Also do not add hex value
+  for the chars we do not handle. Em dash is a good example why
+  this is bad (especially this year) - it has a hex value of 2013.;-)
+  [tmog]
+
 - Fix regression in normalizer: handle POSIX locale identifiers
   in addition to IETF language codes.
   [davisagli]
