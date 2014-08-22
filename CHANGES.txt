@@ -10,7 +10,7 @@ Changelog
 2.0.9 (2013-08-13)
 ------------------
 
-- German URL normalizer: handle German ‚single‘ and „double“ 
+- German URL normalizer: handle German ‚single‘ and „double“
   quotation marks, em dash –, paragraph § and € sign.
   [jnachtigall]
 
