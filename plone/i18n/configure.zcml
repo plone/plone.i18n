@@ -3,5 +3,7 @@
 
     <include package=".locales" />
     <include package=".normalizer" />
+    
+    <utility factory=".utility.LanguageUtility" name="portal_language"/>
 
 </configure>
