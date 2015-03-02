@@ -1,6 +1,7 @@
 from zope.interface import implements
 from plone.i18n.interfaces import INegotiateLanguage
-from Products.CMFCore.utils import getToolByName
+from zope.component import getUtility
+from plone.i18n.interfaces import ILanguageUtility
 
 
 class NegotiateLanguage(object):
@@ -9,7 +10,7 @@ class NegotiateLanguage(object):
 
     def __init__(self, site, request):
         """Setup the current language stuff."""
-        tool = getToolByName(site, 'portal_languages')
+        tool = getUtility(ILanguageUtility)
         langs = []
         useContent = tool.settings.use_content_negotiation
         useCcTLD = tool.settings.use_cctld_negotiation
