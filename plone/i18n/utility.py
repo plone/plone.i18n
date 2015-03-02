@@ -9,18 +9,67 @@ from ZODB.POSException import ConflictError
 from AccessControl import ClassSecurityInfo
 from zope.component.hooks import getSite
 from zope.component import getMultiAdapter
-from Products.CMFCore.utils import getToolByName
 from zope.component import getUtility
-from Products.CMFCore.interfaces import ISiteRoot
 from Products.CMFCore.interfaces import IDublinCore
+
+from plone.registry.interfaces import IRegistry
+from Products.CMFPlone.interfaces import ILanguageSchema
+
+
+class LanguageBinding:
+    """Helper which holding language infos in request."""
+    security = ClassSecurityInfo()
+    __allow_access_to_unprotected_subobjects__ = 1
+
+    DEFAULT_LANGUAGE = None
+    LANGUAGE = None
+    LANGUAGE_LIST = []
+
+    security.declarePublic('getLanguageBindings')
+
+    def getLanguageBindings(self):
+        """Returns the bound languages.
+
+        (language, default_language, languages_list)
+        """
+        return (self.LANGUAGE, self.DEFAULT_LANGUAGE, self.LANGUAGE_LIST)
+
+
+def onRequest(object, event):
+    """Set Language headers in the request.
+    """
+    request = event.request
+    settings = getMultiAdapter((getSite(), request), INegotiateLanguage)
+    binding = request.get('LANGUAGE_TOOL', None)
+
+    if not isinstance(binding, LanguageBinding):
+        # Create new binding instance
+        binding = LanguageBinding()
+        # Set bindings instance to request here to avoid infinite recursion
+        request['LANGUAGE_TOOL'] = binding
+    # Bind languages
+    binding.LANGUAGE = lang = settings.language
+    binding.DEFAULT_LANGUAGE = settings.default_language
+    binding.LANGUAGE_LIST = list(settings.language_list)
+    # Set LANGUAGE to request
+    request['LANGUAGE'] = lang
+    return lang
 
 
 class LanguageUtility(object):
     implements(ILanguageUtility)
 
+    @property
+    def settings(self):
+        registry = getUtility(IRegistry)
+        return registry.forInterface(
+            ILanguageSchema,
+            prefix='plone',
+        )
+
     def getSupportedLanguages(self):
         """Returns a list of supported language codes."""
-        return self.supported_langs
+        return self.settings.available_languages
 
     def listSupportedLanguages(self):
         """Returns a list of supported language names."""
@@ -84,30 +133,12 @@ class LanguageUtility(object):
         return languages
 
     def getDefaultLanguage(self):
-        """Returns the default language."""
-        portal_properties = getToolByName(self, "portal_properties", None)
-        if portal_properties is None:
-            return 'en'
-        site_properties = getattr(portal_properties, 'site_properties', None)
-        if site_properties is not None:
-            if site_properties.hasProperty('default_language'):
-                return site_properties.getProperty('default_language')
-        portal = getUtility(ISiteRoot)
-        if portal.hasProperty('default_language'):
-            return portal.getProperty('default_language')
-        return getattr(self, 'default_lang', 'en')
+        """Returns the default language. D"""
+        return self.settings.default_language
 
     def setDefaultLanguage(self, langCode):
-        """Sets the default language."""
-        portal_properties = getToolByName(self, "portal_properties")
-        site_properties = getattr(portal_properties, 'site_properties', None)
-        if site_properties is not None:
-            if site_properties.hasProperty('default_language'):
-                return site_properties._updateProperty('default_language', langCode)
-        portal = getUtility(ISiteRoot)
-        if portal.hasProperty('default_language'):
-            return portal._updateProperty('default_language', langCode)
-        self.default_lang = langCode
+        """Sets the default language. D"""
+        self.settings.default_language = langCode
 
     def getNameForLanguageCode(self, langCode):
         """Returns the name for a language code."""
@@ -125,44 +156,44 @@ class LanguageUtility(object):
 
     def addSupportedLanguage(self, langCode):
         """Registers a language code as supported."""
-        alist = self.supported_langs[:]
+        alist = self.settings.available_languages[:]
         if (langCode in self.getAvailableLanguages().keys()) and not langCode in alist:
             alist.append(langCode)
-            self.supported_langs = alist
+            self.settings.available_languages = alist
 
     def removeSupportedLanguages(self, langCodes):
         """Unregisters language codes from supported."""
-        alist = self.supported_langs[:]
+        alist = self.settings.available_languages[:]
         for i in langCodes:
             alist.remove(i)
-        self.supported_langs = alist
+        self.settings.available_languages = alist
 
-    def setLanguageCookie(self, lang=None, REQUEST=None, noredir=None):
+    def setLanguageCookie(self, lang=None, request=None, noredir=None):
         """Sets a cookie for overriding language negotiation."""
         res = None
         if lang and lang in self.getSupportedLanguages():
-            if lang != self.getLanguageCookie():
-                self.REQUEST.RESPONSE.setCookie('I18N_LANGUAGE', lang, path='/')
+            if lang != self.getLanguageCookie(request):
+                request.RESPONSE.setCookie('I18N_LANGUAGE', lang, path='/')
             res = lang
         if noredir is None:
-            if REQUEST:
-                REQUEST.RESPONSE.redirect(REQUEST['HTTP_REFERER'])
+            if request:
+                request.RESPONSE.redirect(request['HTTP_REFERER'])
         return res
 
-    def getLanguageCookie(self):
+    def getLanguageCookie(self, request):
         """Gets the preferred cookie language."""
-        if not hasattr(self, 'REQUEST'):
+        if not request:
             return None
-        langCookie = self.REQUEST.cookies.get('I18N_LANGUAGE')
+        langCookie = request.cookies.get('I18N_LANGUAGE')
         if langCookie in self.getSupportedLanguages():
             return langCookie
         return None
 
-    def getPreferredLanguage(self):
+    def getPreferredLanguage(self, request):
         """Gets the preferred site language."""
-        l = self.getLanguageBindings()
+        l = self.getLanguageBindings(request)
         if l[0]:
-            if not self.use_combined_language_codes:
+            if not self.settings.use_combined_language_codes:
                 return l[0].split('-')[0]
             else:
                 return l[0]
@@ -170,11 +201,11 @@ class LanguageUtility(object):
         # this is the default language
         return l[1]
 
-    def getPathLanguage(self):
+    def getPathLanguage(self, request):
         """Checks if a language is part of the current path."""
         if not hasattr(self, 'REQUEST'):
             return []
-        items = self.REQUEST.get('TraversalRequestNameStack')
+        items = request.get('TraversalRequestNameStack')
         # XXX Why this try/except?
         try:
             for item in items:
@@ -186,12 +217,12 @@ class LanguageUtility(object):
             pass
         return None
 
-    def getContentLanguage(self):
+    def getContentLanguage(self, request):
         """Checks the language of the current content if not folderish."""
-        if not hasattr(self, 'REQUEST'):
+        if not request:
             return []
         try: # This will actually work nicely with browserdefault as we get attribute error...
-            contentpath = self.REQUEST.path[:]
+            contentpath = request.path[:]
 
             # Now check if we need to exclude from using language specific path
             # See https://dev.plone.org/ticket/11263
@@ -230,11 +261,10 @@ class LanguageUtility(object):
             pass
         return None
 
-    def getCcTLDLanguages(self):
-        if not hasattr(self, 'REQUEST'):
+    def getCcTLDLanguages(self, request):
+        if not request:
             return None
-        request = self.REQUEST
-        if not "HTTP_HOST" in request:
+        if "HTTP_HOST" not in request:
             return None
         host = request["HTTP_HOST"].split(":")[0].lower()
         tld = host.split(".")[-1]
@@ -242,11 +272,10 @@ class LanguageUtility(object):
         allowed = self.getSupportedLanguages()
         return [lang for lang in wanted if lang in allowed]
 
-    def getSubdomainLanguages(self):
-        if not hasattr(self, 'REQUEST'):
+    def getSubdomainLanguages(self, request):
+        if not request:
             return None
-        request = self.REQUEST
-        if not "HTTP_HOST" in request:
+        if "HTTP_HOST" not in request:
             return None
         host = request["HTTP_HOST"].split(":")[0].lower()
         tld = host.split(".")[0]
@@ -254,14 +283,14 @@ class LanguageUtility(object):
         allowed = self.getSupportedLanguages()
         return [lang for lang in wanted if lang in allowed]
 
-    def getRequestLanguages(self):
+    def getRequestLanguages(self, request):
         """Parses the request and return language list."""
 
-        if not hasattr(self, 'REQUEST'):
+        if not request:
             return None
 
         # Get browser accept languages
-        browser_pref_langs = self.REQUEST.get('HTTP_ACCEPT_LANGUAGE', '')
+        browser_pref_langs = request.get('HTTP_ACCEPT_LANGUAGE', '')
         browser_pref_langs = browser_pref_langs.split(',')
 
         i = 0
@@ -314,38 +343,19 @@ class LanguageUtility(object):
 
         return langs
 
-    def setLanguageBindings(self):
-        """Setups the current language stuff."""
-        if not hasattr(self, 'REQUEST'):
-            return
-        settings = getMultiAdapter((getSite(), self.REQUEST), INegotiateLanguage)
-        binding = self.REQUEST.get('LANGUAGE_TOOL', None)
-        if not isinstance(binding, LanguageBinding):
-            # Create new binding instance
-            binding = LanguageBinding(self)
-            # Set bindings instance to request here to avoid infinite recursion
-            self.REQUEST['LANGUAGE_TOOL'] = binding
-        # Bind languages
-        binding.LANGUAGE = lang = settings.language
-        binding.DEFAULT_LANGUAGE = settings.default_language
-        binding.LANGUAGE_LIST = list(settings.language_list)
-        # Set LANGUAGE to request
-        self.REQUEST['LANGUAGE'] = lang
-        return lang
-
-    def getLanguageBindings(self):
+    def getLanguageBindings(self, request):
         """Returns the bound languages.
 
         (language, default_language, languages_list)
         """
-        if not hasattr(self, 'REQUEST'):
+        if not request:
             # Can't do anything
             return (None, self.getDefaultLanguage(), [])
-        binding = self.REQUEST.get('LANGUAGE_TOOL', None)
+        binding = request.get('LANGUAGE_TOOL', None)
         if not isinstance(binding, LanguageBinding):
             # Not bound -> bind
             self.setLanguageBindings()
-            binding = self.REQUEST.get('LANGUAGE_TOOL')
+            binding = request.get('LANGUAGE_TOOL')
         return binding.getLanguageBindings()
 
     def getAvailableCountries(self):
@@ -371,31 +381,12 @@ class LanguageUtility(object):
 
     def showSelector(self):
         """Returns True if the selector viewlet should be shown."""
-        if self.always_show_selector:
-            return True
-        if (self.use_cookie_negotiation and
-            not (self.authenticated_users_only and self.isAnonymousUser())):
+        # if self.always_show_selector:
+        #     return True
+        if (self.settings.use_cookie_negotiation and
+            not (self.settings.authenticated_users_only and self.isAnonymousUser())):
             return True
         return False
 
 
-class LanguageBinding:
-    """Helper which holding language infos in request."""
-    security = ClassSecurityInfo()
-    __allow_access_to_unprotected_subobjects__ = 1
 
-    DEFAULT_LANGUAGE = None
-    LANGUAGE = None
-    LANGUAGE_LIST = []
-
-    def __init__(self, tool):
-        self.tool = tool
-
-    security.declarePublic('getLanguageBindings')
-
-    def getLanguageBindings(self):
-        """Returns the bound languages.
-
-        (language, default_language, languages_list)
-        """
-        return (self.LANGUAGE, self.DEFAULT_LANGUAGE, self.LANGUAGE_LIST)

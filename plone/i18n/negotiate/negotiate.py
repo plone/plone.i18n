@@ -11,43 +11,43 @@ class NegotiateLanguage(object):
         """Setup the current language stuff."""
         tool = getToolByName(site, 'portal_languages')
         langs = []
-        useContent = tool.use_content_negotiation
-        useCcTLD = tool.use_cctld_negotiation
-        useSubdomain = tool.use_subdomain_negotiation
-        usePath = tool.use_path_negotiation
-        useCookie = tool.use_cookie_negotiation
-        setCookieEverywhere = tool.set_cookie_everywhere
-        authOnly = tool.authenticated_users_only
-        useRequest = tool.use_request_negotiation
+        useContent = tool.settings.use_content_negotiation
+        useCcTLD = tool.settings.use_cctld_negotiation
+        useSubdomain = tool.settings.use_subdomain_negotiation
+        usePath = tool.settings.use_path_negotiation
+        useCookie = tool.settings.use_cookie_negotiation
+        setCookieEverywhere = tool.settings.set_cookie_always
+        authOnly = tool.settings.authenticated_users_only
+        useRequest = tool.settings.use_request_negotiation
         useDefault = 1 # This should never be disabled
         langsCookie = None
 
         if usePath:
             # This one is set if there is an allowed language in the current path
-            langs.append(tool.getPathLanguage())
+            langs.append(tool.getPathLanguage(request))
 
         if useContent:
-            langs.append(tool.getContentLanguage())
+            langs.append(tool.getContentLanguage(request))
 
         if useCookie and not (authOnly and tool.isAnonymousUser()):
             # If we are using the cookie stuff we provide the setter here
-            set_language = tool.REQUEST.get('set_language', None)
+            set_language = request.get('set_language', None)
             if set_language:
-                langsCookie = tool.setLanguageCookie(set_language)
+                langsCookie = tool.setLanguageCookie(set_language, request=request)
             else:
                 # Get from cookie
-                langsCookie = tool.getLanguageCookie()
+                langsCookie = tool.getLanguageCookie(request)
             langs.append(langsCookie)
 
         if useSubdomain:
-            langs.extend(tool.getSubdomainLanguages())
+            langs.extend(tool.getSubdomainLanguages(request))
 
         if useCcTLD:
-            langs.extend(tool.getCcTLDLanguages())
+            langs.extend(tool.getCcTLDLanguages(request))
 
         # Get langs from request
         if useRequest:
-            langs.extend(tool.getRequestLanguages())
+            langs.extend(tool.getRequestLanguages(request))
 
         # Get default
         if useDefault:

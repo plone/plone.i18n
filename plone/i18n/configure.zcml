@@ -1,9 +1,18 @@
 <configure
     xmlns="http://namespaces.zope.org/zope">
 
+    <include package="plone.registry" />
+
     <include package=".locales" />
     <include package=".normalizer" />
     
-    <utility factory=".utility.LanguageUtility" name="portal_language"/>
+    <utility factory=".utility.LanguageUtility"/>
+    <adapter for="* *" factory=".negotiate.negotiate.NegotiateLanguage"/>
+
+    <subscriber
+       for="Products.CMFCore.interfaces.ISiteRoot
+            zope.traversing.interfaces.IBeforeTraverseEvent"
+       handler=".utility.onRequest"
+       />
 
 </configure>
