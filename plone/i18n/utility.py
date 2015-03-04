@@ -84,7 +84,7 @@ class LanguageUtility(object):
         """Returns the dictionary of available languages.
         """
         util = queryUtility(IContentLanguageAvailability)
-        if self.use_combined_language_codes:
+        if self.settings.use_combined_language_codes:
             languages = util.getLanguages(combined=True)
         else:
             languages = util.getLanguages()
