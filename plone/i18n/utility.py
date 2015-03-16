@@ -388,5 +388,29 @@ class LanguageUtility(object):
             return True
         return False
 
+try:
+    from Products.PlacelessTranslationService.Negotiator import registerLangPrefsMethod
+    _hasPTS = 1
+except ImportError:
+    _hasPTS = 0
 
 
+class PrefsForPTS:
+    """A preference to hook into PTS."""
+    def __init__(self, context):
+        self._env = context
+        self.languages = []
+        binding = context.get('LANGUAGE_TOOL')
+        if not isinstance(binding, LanguageBinding):
+            return None
+        self.pref = binding.getLanguageBindings()
+        self.languages = [self.pref[0]] + self.pref[2] + [self.pref[1]]
+        return None
+
+    def getPreferredLanguages(self):
+        """Returns the list of the bound languages."""
+        return self.languages
+
+
+if _hasPTS:
+    registerLangPrefsMethod({'klass':PrefsForPTS, 'priority':100 })
