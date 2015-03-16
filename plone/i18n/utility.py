@@ -203,7 +203,7 @@ class LanguageUtility(object):
 
     def getPathLanguage(self, request):
         """Checks if a language is part of the current path."""
-        if not hasattr(self, 'REQUEST'):
+        if not request:
             return []
         items = request.get('TraversalRequestNameStack')
         # XXX Why this try/except?
