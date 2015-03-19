@@ -22,7 +22,6 @@ class NegotiateLanguage(object):
         useRequest = tool.settings.use_request_negotiation
         useDefault = 1 # This should never be disabled
         langsCookie = None
-
         if usePath:
             # This one is set if there is an allowed language in the current path
             langs.append(tool.getPathLanguage(request))
@@ -58,8 +57,8 @@ class NegotiateLanguage(object):
         langs = [lang for lang in langs if lang is not None]
 
         # Set cookie language to language
-        if setCookieEverywhere and useCookie and langs[0] != langsCookie:
-            tool.setLanguageCookie(langs[0], noredir=True)
+        if setCookieEverywhere  and langs[0] != langsCookie:
+            tool.setLanguageCookie(langs[0], noredir=True, request=request)
 
         self.default_language = langs[-1]
         self.language = langs[0]

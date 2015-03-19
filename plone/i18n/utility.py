@@ -11,6 +11,7 @@ from zope.component.hooks import getSite
 from zope.component import getMultiAdapter
 from zope.component import getUtility
 from Products.CMFCore.interfaces import IDublinCore
+from zope.component.hooks import getSite
 
 from plone.registry.interfaces import IRegistry
 from Products.CMFPlone.interfaces import ILanguageSchema
@@ -59,6 +60,25 @@ def onRequest(object, event):
 class LanguageUtility(object):
     implements(ILanguageUtility)
 
+    # resources that must not use language specific URLs
+    exclude_paths = frozenset((
+        'portal_css',
+        'portal_javascripts',
+        'portal_kss',
+        'portal_factory'
+    ))
+
+    exclude_exts = frozenset((
+        'css',
+        'js',
+        'kss',
+        'xml',
+        'gif',
+        'jpg',
+        'png',
+        'jpeg'
+    ))
+
     @property
     def settings(self):
         registry = getUtility(IRegistry)
@@ -74,7 +94,7 @@ class LanguageUtility(object):
 
     @property
     def supported_langs(self):
-        return self.settings.supported_langs   
+        return self.settings.available_languages   
 
     def getSupportedLanguages(self):
         """Returns a list of supported language codes."""
@@ -147,6 +167,11 @@ class LanguageUtility(object):
 
     def setDefaultLanguage(self, langCode):
         """Sets the default language. D"""
+        if langCode not in self.settings.available_languages:
+            # If its not in supported langs
+            if len(self.settings.available_languages) > 0:
+                self.settings.default_language = self.settings.available_languages[0]
+            return
         self.settings.default_language = langCode
 
     def getNameForLanguageCode(self, langCode):
@@ -240,7 +265,7 @@ class LanguageUtility(object):
                 ):
                 return None
 
-            obj = self.aq_parent
+            obj = getSite()
             traversed = []
             while contentpath:
                 name = contentpath.pop()
@@ -390,8 +415,8 @@ class LanguageUtility(object):
 
     def showSelector(self):
         """Returns True if the selector viewlet should be shown."""
-        # if self.always_show_selector:
-        #     return True
+        if self.settings.always_show_selector:
+            return True
         if (self.settings.use_cookie_negotiation and
             not (self.settings.authenticated_users_only and self.isAnonymousUser())):
             return True
