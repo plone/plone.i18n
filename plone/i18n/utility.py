@@ -67,6 +67,10 @@ class LanguageUtility(object):
             prefix='plone',
         )
 
+    @property
+    def use_combined_language_codes(self):
+        return self.settings.use_combined_language_codes   
+
     def getSupportedLanguages(self):
         """Returns a list of supported language codes."""
         return self.settings.available_languages
