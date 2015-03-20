@@ -90,11 +90,15 @@ class LanguageUtility(object):
     # BBB propouses
     @property
     def use_combined_language_codes(self):
-        return self.settings.use_combined_language_codes   
+        return self.settings.use_combined_language_codes
 
     @property
     def supported_langs(self):
-        return self.settings.available_languages   
+        return self.settings.available_languages
+
+    @property
+    def showFlags(self):
+        return self.settings.display_flags
 
     def getSupportedLanguages(self):
         """Returns a list of supported language codes."""
