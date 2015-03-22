@@ -36,8 +36,9 @@ class LanguageBinding:
         return (self.LANGUAGE, self.DEFAULT_LANGUAGE, self.LANGUAGE_LIST)
 
 
-def setLanguageBinding(request, settings):
+def setLanguageBinding(request):
     binding = request.get('LANGUAGE_TOOL', None)
+    settings = getMultiAdapter((getSite(), request), INegotiateLanguage)
 
     if not isinstance(binding, LanguageBinding):
         # Create new binding instance
@@ -57,9 +58,8 @@ def onRequest(object, event):
     """Set Language headers in the request.
     """
     request = event.request
-    settings = getMultiAdapter((getSite(), request), INegotiateLanguage)
 
-    return setLanguageBinding(request, settings)
+    return setLanguageBinding(request)
 
 
 class LanguageUtility(object):
@@ -397,7 +397,7 @@ class LanguageUtility(object):
         binding = request.get('LANGUAGE_TOOL', None)
         if not isinstance(binding, LanguageBinding):
             # Not bound -> bind
-            setLanguageBinding(request, self.settings)
+            setLanguageBinding(request)
             binding = request.get('LANGUAGE_TOOL')
         return binding.getLanguageBindings()
 
