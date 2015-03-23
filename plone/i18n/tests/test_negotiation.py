@@ -111,8 +111,8 @@ class TestContentLanguageNegotiation(LanguageNegotiationTestCase):
         registry['plone.resources.development'] = True
 
     def testContentObject(self):
-        self.folder.invokeFactory('Document', 'doc')
-        doc = self.folder.doc
+        self.layer['portal'].invokeFactory('Document', 'doc')
+        doc = self.layer['portal'].doc
         ILanguage(doc).set_language('nl')
         self.failUnlessEqual(doc.Language(), 'nl')
         docpath = '/'.join(doc.getPhysicalPath())
@@ -125,8 +125,8 @@ class TestContentLanguageNegotiation(LanguageNegotiationTestCase):
         adding.manage_addVirtualHostMonster('VHM')
         vhmBasePath = "/VirtualHostBase/http/example.org:80/%s/VirtualHostRoot/" % self.portal.getId()
 
-        self.folder.invokeFactory('Folder', 'sub')
-        sub = self.folder['sub']
+        self.layer['portal'].invokeFactory('Folder', 'sub')
+        sub = self.layer['portal']['sub']
         sub.setLanguage('nl')
         sub.invokeFactory('Document', 'doc')
         doc = sub.doc
@@ -141,8 +141,8 @@ class TestContentLanguageNegotiation(LanguageNegotiationTestCase):
         adding.manage_addVirtualHostMonster('VHM')
         vhmBasePath = "/VirtualHostBase/http/example.org:80/%s/VirtualHostRoot/_vh_one/_vh_two/" % self.portal.getId()
 
-        self.folder.invokeFactory('Folder', 'sub')
-        sub = self.folder['sub']
+        self.layer['portal'].invokeFactory('Folder', 'sub')
+        sub = self.layer['portal']['sub']
         sub.setLanguage('nl')
         sub.invokeFactory('Document', 'doc')
         doc = sub.doc
@@ -156,11 +156,10 @@ class TestContentLanguageNegotiation(LanguageNegotiationTestCase):
         adding = self.app.manage_addProduct['SiteAccess']
         adding.manage_addVirtualHostMonster('VHM')
 
-        folder_path = '/'.join(self.folder.getPhysicalPath())
+        folder_path = '/'.join(self.layer['portal'].getPhysicalPath())
         vhmBasePath = "/VirtualHostBase/http/example.org:80%s/VirtualHostRoot/" % folder_path
-
-        self.folder.invokeFactory('Folder', 'sub')
-        sub = self.folder['sub']
+        self.layer['portal'].invokeFactory('Folder', 'sub')
+        sub = self.layer['portal']['sub']
         sub.setLanguage('nl')
         sub.invokeFactory('Document', 'doc')
         doc = sub.doc

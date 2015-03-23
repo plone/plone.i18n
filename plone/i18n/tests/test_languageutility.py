@@ -70,17 +70,18 @@ class TestLanguageTool(base.TestCase):
         self.settings.available_languages = supportedLanguages
         self.ltool.setDefaultLanguage(defaultLanguage)
         request = self.layer['request']
-        request.path = ['Members', ]
-        content = self.portal.Members
+        request.path = ['doc', ]
+        self.layer['portal'].invokeFactory('Document', 'doc')
+        content = self.layer['portal']['doc']
         content.setLanguage('de')
         alsoProvides(content, IDublinCore)
         self.ltool.getContentLanguage(request)
         self.failUnless(self.ltool.getContentLanguage(request) == 'de')
-        request.path = ['view', 'foo.jpg', 'Members', ]
+        request.path = ['view', 'foo.jpg', 'doc', ]
         self.failUnless(self.ltool.getContentLanguage(request) == 'de')
-        request.path = ['foo.jpg', 'Members', ]
+        request.path = ['foo.jpg', 'doc', ]
         self.failUnless(self.ltool.getContentLanguage(request) == None)
-        request.path = ['foo', 'portal_javascript', ]
+        request.path = ['foo', 'portal_catalog', ]
         self.failUnless(self.ltool.getContentLanguage(request) == None)
 
     def testRegisterInterface(self):

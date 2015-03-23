@@ -58,7 +58,11 @@ class NegotiateLanguage(object):
 
         # Set cookie language to language
         if setCookieEverywhere  and langs[0] != langsCookie:
-            tool.setLanguageCookie(langs[0], noredir=True, request=request)
+            # We need to make sure its not a subrequest otherwise we are going
+            # To change the language of the main request
+            from plone.subrequest import ISubRequest
+            if not ISubRequest.providedBy(request):
+                tool.setLanguageCookie(langs[0], noredir=True, request=request)
 
         self.default_language = langs[-1]
         self.language = langs[0]

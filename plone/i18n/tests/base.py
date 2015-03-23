@@ -1,17 +1,22 @@
 from plone.app.testing import bbb
 from plone.app import testing
 from plone.testing import z2
+from plone.app.contenttypes.testing import PLONE_APP_CONTENTTYPES_FIXTURE
+from plone.app.testing import PloneSandboxLayer
 
 
-class PloneTestCaseFixture(bbb.PloneTestCaseFixture):
+class PloneI18nLayer(PloneSandboxLayer):
 
-    defaultBases = (bbb.PTC_FIXTURE, )
+    defaultBases = (PLONE_APP_CONTENTTYPES_FIXTURE, )
 
     def setUpZope(self, app, configurationContext):
         import plone.i18n
+        # Needed to have ILanguage adapter for dx
+        import plone.app.multilingual
         self.loadZCML(package=plone.i18n)
+        self.loadZCML(package=plone.app.multilingual)
 
-PLT_FIXTURE = PloneTestCaseFixture()
+PLT_FIXTURE = PloneI18nLayer()
 PLT_FUNCTIONAL_TESTING = testing.FunctionalTesting(
     bases=(PLT_FIXTURE, ), name='Plonei18nTestCase:Functional')
 
