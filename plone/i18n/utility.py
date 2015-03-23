@@ -218,9 +218,6 @@ class LanguageUtility(object):
             if lang != self.getLanguageCookie(request):
                 request.RESPONSE.setCookie('I18N_LANGUAGE', lang, path='/')
             res = lang
-        if noredir is None:
-            if request:
-                request.RESPONSE.redirect(request['HTTP_REFERER'])
         return res
 
     def getLanguageCookie(self, request):
