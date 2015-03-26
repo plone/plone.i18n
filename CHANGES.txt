@@ -1,10 +1,20 @@
 Changelog
 =========
 
-2.0.10 (unreleased)
+3.0.0 (unreleased)
 -------------------
 
-- Added the Products.PloneLanguageTool on this package [bloodbare]
+- Adapted for Plone5
+  [bloodbare]
+
+- Added the tests from Products.PloneLanguageTool
+  [bloodbare]
+
+- Added the Products.PloneLanguageTool on this package
+  [bloodbare]
+
+- Added the negotiation traverse hook for language negotiation
+  [bloodbare]
 
 
 2.0.9 (2013-08-13)
