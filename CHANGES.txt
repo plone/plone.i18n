@@ -4,7 +4,8 @@ Changelog
 3.0.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Avoid loading of registry on BeforeTraversal breake the request
+  [bloodbare]
 
 
 3.0.0 (2015-03-26)
