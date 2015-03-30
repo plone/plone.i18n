@@ -38,7 +38,12 @@ class LanguageBinding:
 
 def setLanguageBinding(request):
     binding = request.get('LANGUAGE_TOOL', None)
-    settings = getMultiAdapter((getSite(), request), INegotiateLanguage)
+    try:
+        settings = getMultiAdapter((getSite(), request), INegotiateLanguage)
+    except:
+        # We may be on a site before upgrading so return None
+        # No registry is registered
+        return None
 
     if not isinstance(binding, LanguageBinding):
         # Create new binding instance
