@@ -11,8 +11,7 @@ from zope.component.hooks import getSite
 from zope.component import getMultiAdapter
 from zope.component import getUtility
 from Products.CMFCore.interfaces import IDublinCore
-from zope.component.hooks import getSite
-
+from zope.globalrequest import getRequest
 from plone.registry.interfaces import IRegistry
 from Products.CMFPlone.interfaces import ILanguageSchema
 
@@ -234,8 +233,10 @@ class LanguageUtility(object):
             return langCookie
         return None
 
-    def getPreferredLanguage(self, request):
+    def getPreferredLanguage(self, request=None):
         """Gets the preferred site language."""
+        if request is None:
+            request = getRequest()
         l = self.getLanguageBindings(request)
         if l[0]:
             if not self.settings.use_combined_language_codes:
