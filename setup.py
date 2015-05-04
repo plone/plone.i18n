@@ -6,8 +6,8 @@ setup(
     name='plone.i18n',
     version=version,
     description="Advanced i18n/l10n features",
-    long_description=open("README.txt").read() + "\n" +
-                     open("CHANGES.txt").read(),
+    long_description=(open("README.rst").read() + "\n" +
+                      open("CHANGES.rst").read()),
     classifiers=[
         "Environment :: Web Environment",
         "Framework :: Plone",
@@ -15,7 +15,7 @@ setup(
         "License :: OSI Approved :: GNU General Public License (GPL)",
         "Operating System :: OS Independent",
         "Programming Language :: Python",
-      ],
+    ],
     keywords='i18n l10n Plone',
     author='Plone Foundation',
     author_email='plone-developers@lists.sourceforge.net',
