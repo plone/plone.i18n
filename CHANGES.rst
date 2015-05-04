@@ -1,7 +1,7 @@
 Changelog
 =========
 
-3.0.2 (unreleased)
+3.0.2 (2015-05-04)
 ------------------
 
 - Allow calling getPreferedLanguage without parameter again
