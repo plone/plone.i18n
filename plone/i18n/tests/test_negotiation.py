@@ -2,6 +2,8 @@ from plone.i18n.tests import base
 
 from plone.app.testing import TEST_USER_PASSWORD
 from plone.app.testing import TEST_USER_NAME
+from plone.app.testing import setRoles
+from plone.app.testing import TEST_USER_ID
 
 from plone.registry.interfaces import IRegistry
 from zope.component import getUtility
@@ -69,6 +71,7 @@ class TestCombinedLanguageNegotiation(LanguageNegotiationTestCase):
 
     def afterSetUp(self):
         LanguageNegotiationTestCase.afterSetUp(self)
+        setRoles(self.layer['portal'], TEST_USER_ID, ['Contributor'])
         # set some allowed languages and make sure we don't use combined
         # language codes
         self.settings.use_combined_language_codes = True
@@ -102,6 +105,7 @@ class TestContentLanguageNegotiation(LanguageNegotiationTestCase):
 
     def afterSetUp(self):
         LanguageNegotiationTestCase.afterSetUp(self)
+        setRoles(self.layer['portal'], TEST_USER_ID, ['Contributor'])
         self.settings.available_languages = ['en', 'nl', 'fr']
         self.settings.use_content_negotiation = 1
         self.settings.display_flags = 0
@@ -177,6 +181,7 @@ class TestCcTLDLanguageNegotiation(LanguageNegotiationTestCase):
 
     def afterSetUp(self):
         LanguageNegotiationTestCase.afterSetUp(self)
+        # setRoles(self.layer['portal'], TEST_USER_ID, ['Contributor'])
         self.settings.available_languages = ['en', 'nl', 'fr']
         self.settings.use_cctld_negotiation = 1
         self.settings.display_flags = 0

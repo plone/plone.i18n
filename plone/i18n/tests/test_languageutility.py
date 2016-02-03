@@ -5,6 +5,8 @@ from plone.registry.interfaces import IRegistry
 from zope.component import getUtility
 from Products.CMFPlone.interfaces import ILanguageSchema
 from plone.i18n.interfaces import ILanguageUtility
+from plone.app.testing import setRoles
+from plone.app.testing import TEST_USER_ID
 
 from plone.i18n.tests import base
 
@@ -13,6 +15,7 @@ class TestLanguageTool(base.TestCase):
 
     def afterSetUp(self):
         self.ltool = getToolByName(self.portal, 'portal_languages')
+        setRoles(self.layer['portal'], TEST_USER_ID, ['Contributor'])
         self.settings = getUtility(IRegistry).forInterface(
             ILanguageSchema,
             prefix='plone')
