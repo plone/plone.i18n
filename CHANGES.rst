@@ -20,7 +20,8 @@ Fixes:
 
 Fixes:
 
-- Fixed test (don't expect role from pac-tests).  [pbauer]
+- Fixed test (don't expect role from pac-tests).
+  [pbauer]
 
 
 3.0.2 (2015-05-04)
