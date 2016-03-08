@@ -4,7 +4,15 @@ Changelog
 2.0.11 (unreleased)
 -------------------
 
-- Nothing changed yet.
+New:
+
+- *add item here*
+
+Fixes:
+
+- URLNormalizer now removes leading underscores.
+  They are disallowed for content objects in zope.
+  [do3cc]
 
 
 2.0.10 (2015-05-11)

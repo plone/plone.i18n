@@ -240,6 +240,11 @@ def testURLNormalizer():
 
       >>> util.normalize(u"short-hello-version", max_length=10)
       'short'
+
+      Leading underscores are forbidden by zope, so this
+      normalizer should strip it
+      >>> util.normalize(u'_awesome.txt')
+      'awesome.txt'
     """
 
 
