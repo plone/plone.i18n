@@ -10,7 +10,9 @@ New:
 
 Fixes:
 
-- *add item here*
+- URLNormalizer now removes leading underscores.
+  They are disallowed for content objects in zope.
+  [do3cc]
 
 
 3.0.3 (2016-02-19)

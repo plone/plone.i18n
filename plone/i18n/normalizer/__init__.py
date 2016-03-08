@@ -182,6 +182,11 @@ class URLNormalizer(object):
 
         text = baseNormalize(text)
 
+        # Remove any leading underscores
+        m = UNDERSCORE_START_REGEX.match(text)
+        if m is not None:
+            text = m.groups()[1]
+
         # lowercase text
         base = text.lower()
         ext  = ''
