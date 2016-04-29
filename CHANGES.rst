@@ -4,10 +4,6 @@ Changelog
 2.0.11 (unreleased)
 -------------------
 
-New:
-
-- *add item here*
-
 Fixes:
 
 - URLNormalizer now removes leading underscores.
