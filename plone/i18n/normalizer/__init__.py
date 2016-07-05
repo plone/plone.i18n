@@ -6,7 +6,7 @@ from plone.i18n.normalizer.interfaces import IFileNameNormalizer
 from plone.i18n.normalizer.interfaces import IURLNormalizer
 
 from zope.component import queryUtility
-from zope.interface import implements
+from zope.interface import implementer
 
 # Define and compile static regexes
 FILENAME_REGEX = re.compile(r"^(.+)\.(\w{,4})$")
@@ -40,6 +40,7 @@ def cropName(base, maxLength=MAX_LENGTH):
     return base
 
 
+@implementer(IIDNormalizer)
 class IDNormalizer(object):
     """
     This normalizer can normalize any unicode string and returns a
@@ -53,7 +54,6 @@ class IDNormalizer(object):
       >>> verifyClass(IIDNormalizer, IDNormalizer)
       True
     """
-    implements(IIDNormalizer)
 
     def normalize(self, text, locale=None, max_length=MAX_LENGTH):
         """
@@ -87,6 +87,7 @@ class IDNormalizer(object):
         return cropName(text, maxLength=max_length)
 
 
+@implementer(IFileNameNormalizer)
 class FileNameNormalizer(object):
     """
     This normalizer can normalize any unicode string and returns a version
@@ -98,7 +99,6 @@ class FileNameNormalizer(object):
       >>> verifyClass(IFileNameNormalizer, FileNameNormalizer)
       True
     """
-    implements(IFileNameNormalizer)
 
     def normalize(self, text, locale=None, max_length=MAX_FILENAME_LENGTH):
         """
@@ -148,6 +148,7 @@ class FileNameNormalizer(object):
         return base
 
 
+@implementer(IURLNormalizer)
 class URLNormalizer(object):
     """
     This normalizer can normalize any unicode string and returns a URL-safe
@@ -159,7 +160,6 @@ class URLNormalizer(object):
       >>> verifyClass(IURLNormalizer, URLNormalizer)
       True
     """
-    implements(IURLNormalizer)
 
     def normalize(self, text, locale=None, max_length=MAX_URL_LENGTH):
         """

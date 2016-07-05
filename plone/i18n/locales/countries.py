@@ -1,13 +1,13 @@
 # -*- coding: UTF-8 -*-
 
 from plone.i18n.locales.interfaces import ICountryAvailability
-from zope.interface import implements
+from zope.interface import implementer
 
 
+@implementer(ICountryAvailability)
 class CountryAvailability(object):
     """A list of available coutries.
     """
-    implements(ICountryAvailability)
 
     def getAvailableCountries(self):
         """Return a sequence of country tags for available countries.

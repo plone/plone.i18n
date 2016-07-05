@@ -7,14 +7,13 @@
 # http://en.wikipedia.org/wiki/List_of_Internet_top-level_domains
 
 from plone.i18n.locales.interfaces import ICcTLDInformation
-from zope.interface import implements
+from zope.interface import implementer
 
 
+@implementer(ICcTLDInformation)
 class CcTLDInformation(object):
     """A list of country code top level domains their relevant languages.
     """
-
-    implements(ICcTLDInformation)
 
     def getAvailableTLDs(self):
         """Return a sequence of country code top level domains.

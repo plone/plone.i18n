@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 
 from plone.i18n.normalizer.interfaces import INormalizer
-from zope.interface import implements
+from zope.interface import implementer
 from plone.i18n.normalizer.base import mapUnicode
 
 # Greek character mapping
@@ -18,6 +18,7 @@ mapping = {
     969: 'o', 970: 'i', 971: 'y', 972: 'o', 973: 'y', 974: 'o',
 }
 
+@implementer(INormalizer)
 class Normalizer(object):
     """
     This normalizer can normalize any unicode string and returns a version
@@ -33,7 +34,6 @@ class Normalizer(object):
       >>> norm.normalize(u'\u03b9')
       'i'
     """
-    implements(INormalizer)
 
     def normalize(self, text, locale=None, max_length=None):
         """

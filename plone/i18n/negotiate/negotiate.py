@@ -1,12 +1,12 @@
-from zope.interface import implements
+from zope.interface import implementer
 from plone.i18n.interfaces import INegotiateLanguage
 from zope.component import getUtility
 from plone.i18n.interfaces import ILanguageUtility
 
 
+@implementer(INegotiateLanguage)
 class NegotiateLanguage(object):
     """Perform default language negotiation"""
-    implements(INegotiateLanguage)
 
     def __init__(self, site, request):
         """Setup the current language stuff."""

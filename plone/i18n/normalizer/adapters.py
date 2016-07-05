@@ -4,10 +4,11 @@ from plone.i18n.normalizer.interfaces import IUserPreferredFileNameNormalizer
 from plone.i18n.normalizer.interfaces import IUserPreferredURLNormalizer
 
 from zope.component import queryUtility
-from zope.interface import implements
+from zope.interface import implementer
 from zope.i18n.interfaces import IUserPreferredLanguages
 
 
+@implementer(IUserPreferredFileNameNormalizer)
 class UserPreferredFileNameNormalizer(object):
     """
     An adapter for the HTTPRequest to provide user preferred language
@@ -19,7 +20,6 @@ class UserPreferredFileNameNormalizer(object):
       >>> verifyClass(IUserPreferredFileNameNormalizer, UserPreferredFileNameNormalizer)
       True
     """
-    implements(IUserPreferredFileNameNormalizer)
 
     def __init__(self, context):
         self.context = context # the context must be the request
@@ -35,6 +35,7 @@ class UserPreferredFileNameNormalizer(object):
         return util.normalize(text, locale=locale)
 
 
+@implementer(IUserPreferredURLNormalizer)
 class UserPreferredURLNormalizer(object):
     """
     An adapter for the HTTPRequest to provide user preferred language
@@ -46,7 +47,6 @@ class UserPreferredURLNormalizer(object):
       >>> verifyClass(IUserPreferredURLNormalizer, UserPreferredURLNormalizer)
       True
     """
-    implements(IUserPreferredURLNormalizer)
 
     def __init__(self, context):
         self.context = context # the context must be the request
