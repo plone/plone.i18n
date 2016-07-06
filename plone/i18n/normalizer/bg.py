@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 
 from plone.i18n.normalizer.interfaces import INormalizer
-from zope.interface import implements
+from zope.interface import implementer
 from plone.i18n.normalizer.base import mapUnicode
 
 # Bulgarian character mapping
@@ -17,6 +17,7 @@ mapping = {1040: 'A', 1041: 'B', 1042: 'V', 1043: 'G', 1044: 'D', 1045: 'E',
            1095: 'ch', 1096: 'sh', 1097: 'sht', 1098: 'a', 1100: 'y',
            1102: 'yu', 1103: 'ya'}
 
+@implementer(INormalizer)
 class Normalizer(object):
     """
     This normalizer can normalize any unicode string and returns a version
@@ -32,7 +33,6 @@ class Normalizer(object):
       >>> norm.normalize(u'\u0429')
       'SHT'
     """
-    implements(INormalizer)
 
     def normalize(self, text, locale=None, max_length=None):
         """

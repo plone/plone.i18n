@@ -3,13 +3,13 @@
 from plone.i18n.locales.interfaces import IContentLanguageAvailability
 from plone.i18n.locales.interfaces import IMetadataLanguageAvailability
 from plone.i18n.locales.interfaces import ILanguageAvailability
-from zope.interface import implements
+from zope.interface import implementer
 
 
+@implementer(ILanguageAvailability)
 class LanguageAvailability(object):
     """A list of available languages.
     """
-    implements(ILanguageAvailability)
 
     def getAvailableLanguages(self, combined=False):
         """Return a sequence of language tags for available languages.
@@ -36,18 +36,18 @@ class LanguageAvailability(object):
         return [(code, languages[code][u'name']) for code in languages]
 
 
+@implementer(IContentLanguageAvailability)
 class ContentLanguageAvailability(LanguageAvailability):
     """A list of available content languages.
     """
-    implements(IContentLanguageAvailability)
 
 contentlanguages = ContentLanguageAvailability()
 
 
+@implementer(IMetadataLanguageAvailability)
 class MetadataLanguageAvailability(LanguageAvailability):
     """A list of available metadata languages.
     """
-    implements(IMetadataLanguageAvailability)
 
 metadatalanguages = MetadataLanguageAvailability()
 

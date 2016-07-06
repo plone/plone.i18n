@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 
 from plone.i18n.normalizer.interfaces import INormalizer
-from zope.interface import implements
+from zope.interface import implementer
 from plone.i18n.normalizer.base import mapUnicode
 
 # German character mapping
@@ -23,6 +23,7 @@ mapping = {
     8364: 'euro'
 }
 
+@implementer(INormalizer)
 class Normalizer(object):
     """
     This normalizer can normalize any unicode string and returns a version
@@ -38,7 +39,6 @@ class Normalizer(object):
       >>> norm.normalize(u'\xe4')
       'ae'
     """
-    implements(INormalizer)
 
     def normalize(self, text, locale=None, max_length=None):
         """

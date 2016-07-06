@@ -1,4 +1,4 @@
-from zope.interface import implements
+from zope.interface import implementer
 from plone.i18n.interfaces import ILanguageUtility, INegotiateLanguage
 from zope.component import queryUtility
 from plone.i18n.locales.interfaces import ICountryAvailability
@@ -66,8 +66,8 @@ def onRequest(object, event):
     return setLanguageBinding(request)
 
 
+@implementer(ILanguageUtility)
 class LanguageUtility(object):
-    implements(ILanguageUtility)
 
     # resources that must not use language specific URLs
     exclude_paths = frozenset((
