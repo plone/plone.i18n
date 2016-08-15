@@ -4,14 +4,6 @@ Changelog
 3.0.5 (unreleased)
 ------------------
 
-Incompatibilities:
-
-- *add item here*
-
-New:
-
-- *add item here*
-
 Fixes:
 
 - Use zope.interface decorator.
