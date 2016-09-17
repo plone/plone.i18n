@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from plone.i18n.interfaces import ILanguageUtility

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from plone.i18n.normalizer.base import baseNormalize
 from plone.i18n.normalizer.interfaces import IFileNameNormalizer
 from plone.i18n.normalizer.interfaces import IIDNormalizer

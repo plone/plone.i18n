@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from AccessControl import ClassSecurityInfo
 from plone.i18n.interfaces import ILanguageUtility
 from plone.i18n.interfaces import INegotiateLanguage

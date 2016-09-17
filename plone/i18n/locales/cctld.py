@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # This file contains a map from internet top level domains to the spoken
 # language(s) in the country associated with the domain.
 

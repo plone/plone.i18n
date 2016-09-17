@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from unicodedata import decomposition
 from unicodedata import normalize
 
