@@ -1,5 +1,8 @@
+from unicodedata import decomposition
+from unicodedata import normalize
+
 import string
-from unicodedata import normalize, decomposition
+
 
 # On OpenBSD string.whitespace has a non-standard implementation
 # See http://dev.plone.org/plone/ticket/4704 for details

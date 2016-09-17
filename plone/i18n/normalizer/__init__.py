@@ -1,12 +1,12 @@
-import re
-
 from plone.i18n.normalizer.base import baseNormalize
-from plone.i18n.normalizer.interfaces import IIDNormalizer
 from plone.i18n.normalizer.interfaces import IFileNameNormalizer
+from plone.i18n.normalizer.interfaces import IIDNormalizer
 from plone.i18n.normalizer.interfaces import IURLNormalizer
-
 from zope.component import queryUtility
 from zope.interface import implementer
+
+import re
+
 
 # Define and compile static regexes
 FILENAME_REGEX = re.compile(r"^(.+)\.(\w{,4})$")

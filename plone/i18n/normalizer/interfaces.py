@@ -1,5 +1,6 @@
 from zope.interface import Interface
 
+
 class INormalizer(Interface):
     """A normalizer can normalize any unicode text string according to a
        specific ruleset implemented in the normalizer itself.

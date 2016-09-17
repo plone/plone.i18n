@@ -1,8 +1,8 @@
 # -*- coding: UTF-8 -*-
 
 from plone.i18n.locales.interfaces import IContentLanguageAvailability
-from plone.i18n.locales.interfaces import IMetadataLanguageAvailability
 from plone.i18n.locales.interfaces import ILanguageAvailability
+from plone.i18n.locales.interfaces import IMetadataLanguageAvailability
 from zope.interface import implementer
 
 

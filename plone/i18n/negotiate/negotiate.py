@@ -1,7 +1,7 @@
-from zope.interface import implementer
+from plone.i18n.interfaces import ILanguageUtility
 from plone.i18n.interfaces import INegotiateLanguage
 from zope.component import getUtility
-from plone.i18n.interfaces import ILanguageUtility
+from zope.interface import implementer
 
 
 @implementer(INegotiateLanguage)

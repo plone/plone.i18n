@@ -1,8 +1,9 @@
 # -*- coding: UTF-8 -*-
 
+from plone.i18n.normalizer.base import mapUnicode
 from plone.i18n.normalizer.interfaces import INormalizer
 from zope.interface import implementer
-from plone.i18n.normalizer.base import mapUnicode
+
 
 # French character mapping
 mapping = {

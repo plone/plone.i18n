@@ -1,8 +1,9 @@
 # -*- coding: UTF-8 -*-
 
+from plone.i18n.normalizer.base import allowed
 from plone.i18n.normalizer.interfaces import INormalizer
 from zope.interface import implements
-from plone.i18n.normalizer.base import allowed
+
 
 MAX_LENGTH = 6
 

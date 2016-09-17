@@ -1,6 +1,6 @@
+from zope.i18n.interfaces import ILanguageAvailability as IBaseLanguageAvailability
 from zope.interface import Interface
-from zope.i18n.interfaces import ILanguageAvailability as \
-    IBaseLanguageAvailability
+
 
 class ICcTLDInformation(Interface):
     """A list of country code top level domains their relevant languages."""

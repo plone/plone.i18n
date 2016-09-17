@@ -2,10 +2,9 @@ from plone.i18n.normalizer.interfaces import IFileNameNormalizer
 from plone.i18n.normalizer.interfaces import IURLNormalizer
 from plone.i18n.normalizer.interfaces import IUserPreferredFileNameNormalizer
 from plone.i18n.normalizer.interfaces import IUserPreferredURLNormalizer
-
 from zope.component import queryUtility
-from zope.interface import implementer
 from zope.i18n.interfaces import IUserPreferredLanguages
+from zope.interface import implementer
 
 
 @implementer(IUserPreferredFileNameNormalizer)
