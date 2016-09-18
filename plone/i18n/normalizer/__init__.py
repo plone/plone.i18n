@@ -1,12 +1,13 @@
-import re
-
+# -*- coding: utf-8 -*-
 from plone.i18n.normalizer.base import baseNormalize
-from plone.i18n.normalizer.interfaces import IIDNormalizer
 from plone.i18n.normalizer.interfaces import IFileNameNormalizer
+from plone.i18n.normalizer.interfaces import IIDNormalizer
 from plone.i18n.normalizer.interfaces import IURLNormalizer
-
 from zope.component import queryUtility
 from zope.interface import implementer
+
+import re
+
 
 # Define and compile static regexes
 FILENAME_REGEX = re.compile(r"^(.+)\.(\w{,4})$")
@@ -128,12 +129,12 @@ class FileNameNormalizer(object):
             text = m.groups()[1]
 
         base = text
-        ext  = ''
+        ext = ''
 
         m = FILENAME_REGEX.match(text)
         if m is not None:
             base = m.groups()[0]
-            ext  = m.groups()[1]
+            ext = m.groups()[1]
 
         base = IGNORE_REGEX.sub('', base)
         base = DANGEROUS_CHARS_REGEX.sub('-', base)
@@ -189,12 +190,12 @@ class URLNormalizer(object):
 
         # lowercase text
         base = text.lower()
-        ext  = ''
+        ext = ''
 
         m = FILENAME_REGEX.match(base)
         if m is not None:
             base = m.groups()[0]
-            ext  = m.groups()[1]
+            ext = m.groups()[1]
 
         base = IGNORE_REGEX.sub('', base)
         base = NON_WORD_REGEX.sub('-', base)
@@ -208,6 +209,7 @@ class URLNormalizer(object):
             base = base + '.' + ext
 
         return base
+
 
 idnormalizer = IDNormalizer()
 filenamenormalizer = FileNameNormalizer()

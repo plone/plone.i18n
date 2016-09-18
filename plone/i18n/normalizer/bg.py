@@ -1,8 +1,9 @@
 # -*- coding: UTF-8 -*-
 
+from plone.i18n.normalizer.base import mapUnicode
 from plone.i18n.normalizer.interfaces import INormalizer
 from zope.interface import implementer
-from plone.i18n.normalizer.base import mapUnicode
+
 
 # Bulgarian character mapping
 mapping = {1040: 'A', 1041: 'B', 1042: 'V', 1043: 'G', 1044: 'D', 1045: 'E',
@@ -16,6 +17,7 @@ mapping = {1040: 'A', 1041: 'B', 1042: 'V', 1043: 'G', 1044: 'D', 1045: 'E',
            1089: 's', 1090: 't', 1091: 'u', 1092: 'f', 1093: 'h', 1094: 'ts',
            1095: 'ch', 1096: 'sh', 1097: 'sht', 1098: 'a', 1100: 'y',
            1102: 'yu', 1103: 'ya'}
+
 
 @implementer(INormalizer)
 class Normalizer(object):
@@ -39,5 +41,6 @@ class Normalizer(object):
         Returns a normalized text. text has to be a unicode string.
         """
         return mapUnicode(text, mapping=mapping)
+
 
 normalizer = Normalizer()

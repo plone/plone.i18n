@@ -1,14 +1,15 @@
-from zope.interface import alsoProvides
-from Products.CMFCore.interfaces import IDublinCore
-from Products.CMFCore.utils import getToolInterface, getToolByName
-from plone.registry.interfaces import IRegistry
-from zope.component import getUtility
-from Products.CMFPlone.interfaces import ILanguageSchema
-from plone.i18n.interfaces import ILanguageUtility
+# -*- coding: utf-8 -*-
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
-
+from plone.i18n.interfaces import ILanguageUtility
 from plone.i18n.tests import base
+from plone.registry.interfaces import IRegistry
+from Products.CMFCore.interfaces import IDublinCore
+from Products.CMFCore.utils import getToolByName
+from Products.CMFCore.utils import getToolInterface
+from Products.CMFPlone.interfaces import ILanguageSchema
+from zope.component import getUtility
+from zope.interface import alsoProvides
 
 
 class TestLanguageTool(base.TestCase):

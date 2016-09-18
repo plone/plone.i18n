@@ -1,7 +1,8 @@
-from zope.interface import implementer
+# -*- coding: utf-8 -*-
+from plone.i18n.interfaces import ILanguageUtility
 from plone.i18n.interfaces import INegotiateLanguage
 from zope.component import getUtility
-from plone.i18n.interfaces import ILanguageUtility
+from zope.interface import implementer
 
 
 @implementer(INegotiateLanguage)

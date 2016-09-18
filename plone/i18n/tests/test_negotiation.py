@@ -1,15 +1,14 @@
-from plone.i18n.tests import base
-
-from plone.app.testing import TEST_USER_PASSWORD
-from plone.app.testing import TEST_USER_NAME
+# -*- coding: utf-8 -*-
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
-
+from plone.app.testing import TEST_USER_NAME
+from plone.app.testing import TEST_USER_PASSWORD
+from plone.i18n.tests import base
 from plone.registry.interfaces import IRegistry
-from zope.component import getUtility
 from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone.interfaces import ILanguageSchema
 from Products.CMFPlone.interfaces import ILanguage
+from Products.CMFPlone.interfaces import ILanguageSchema
+from zope.component import getUtility
 
 
 class LanguageNegotiationTestCase(base.FunctionalTestCase):

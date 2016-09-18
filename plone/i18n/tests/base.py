@@ -1,8 +1,9 @@
-from plone.app.testing import bbb
+# -*- coding: utf-8 -*-
 from plone.app import testing
-from plone.testing import z2
 from plone.app.contenttypes.testing import PLONE_APP_CONTENTTYPES_FIXTURE
+from plone.app.testing import bbb
 from plone.app.testing import PloneSandboxLayer
+from plone.testing import z2
 
 
 class PloneI18nLayer(PloneSandboxLayer):

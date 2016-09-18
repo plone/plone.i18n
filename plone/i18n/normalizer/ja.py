@@ -1,22 +1,24 @@
 # -*- coding: UTF-8 -*-
-
-from plone.i18n.normalizer.interfaces import INormalizer
-from zope.interface import implements
 from plone.i18n.normalizer.base import allowed
+from plone.i18n.normalizer.interfaces import INormalizer
+from zope.interface import implementer
+
 
 MAX_LENGTH = 6
 
 TABLE = "abcdefghijklmnopqrstuvwxyz0123456789"
 TABLE_LEN = len(TABLE)
 
+
 def _gethashed(obj, n):
-   num = hash(obj) % (TABLE_LEN ** n)
-   while True:
-       d, m = divmod(num, TABLE_LEN)
-       num = d
-       yield TABLE[m]
-       if d == 0:
-           return
+    num = hash(obj) % (TABLE_LEN ** n)
+    while True:
+        d, m = divmod(num, TABLE_LEN)
+        num = d
+        yield TABLE[m]
+        if d == 0:
+            return
+
 
 def ja_normalize(text, max_length=MAX_LENGTH):
     """
@@ -30,6 +32,7 @@ def ja_normalize(text, max_length=MAX_LENGTH):
         return "".join(_gethashed(text, max_length))
 
 
+@implementer(INormalizer)
 class Normalizer(object):
     """
     This normalizer can normalize any unicode string and returns a version
@@ -63,12 +66,12 @@ class Normalizer(object):
       >>> len(normalized)
       8
     """
-    implements(INormalizer)
 
     def normalize(self, text, locale=None, max_length=MAX_LENGTH):
         """
         Returns a normalized text. text has to be a unicode string.
         """
         return ja_normalize(text, max_length=max_length)
+
 
 normalizer = Normalizer()

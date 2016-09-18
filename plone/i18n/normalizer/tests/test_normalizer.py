@@ -1,17 +1,15 @@
 # -*- coding: utf-8 -*-
 
-import doctest
-from doctest import DocTestSuite
-import unittest
-
-from zope.component import queryUtility
-
-from plone.i18n.normalizer.interfaces import IIDNormalizer
-from plone.i18n.normalizer.interfaces import IFileNameNormalizer
-from plone.i18n.normalizer.interfaces import IURLNormalizer
-
 from .base import setUp as configurationSetUp
 from .base import tearDown
+from doctest import DocTestSuite
+from plone.i18n.normalizer.interfaces import IFileNameNormalizer
+from plone.i18n.normalizer.interfaces import IIDNormalizer
+from plone.i18n.normalizer.interfaces import IURLNormalizer
+from zope.component import queryUtility
+
+import doctest
+import unittest
 
 
 def testIDNormalizer():

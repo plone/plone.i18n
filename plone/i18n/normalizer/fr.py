@@ -1,13 +1,15 @@
 # -*- coding: UTF-8 -*-
 
+from plone.i18n.normalizer.base import mapUnicode
 from plone.i18n.normalizer.interfaces import INormalizer
 from zope.interface import implementer
-from plone.i18n.normalizer.base import mapUnicode
+
 
 # French character mapping
 mapping = {
     339: 'oe'
 }
+
 
 @implementer(INormalizer)
 class Normalizer(object):
@@ -27,5 +29,6 @@ class Normalizer(object):
         Returns a normalized text. text has to be a unicode string.
         """
         return mapUnicode(text, mapping=mapping)
+
 
 normalizer = Normalizer()

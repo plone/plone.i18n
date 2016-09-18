@@ -1,11 +1,11 @@
+# -*- coding: utf-8 -*-
 from plone.i18n.normalizer.interfaces import IFileNameNormalizer
 from plone.i18n.normalizer.interfaces import IURLNormalizer
 from plone.i18n.normalizer.interfaces import IUserPreferredFileNameNormalizer
 from plone.i18n.normalizer.interfaces import IUserPreferredURLNormalizer
-
 from zope.component import queryUtility
-from zope.interface import implementer
 from zope.i18n.interfaces import IUserPreferredLanguages
+from zope.interface import implementer
 
 
 @implementer(IUserPreferredFileNameNormalizer)
@@ -17,12 +17,14 @@ class UserPreferredFileNameNormalizer(object):
     Let's make sure that this implementation actually fulfills the API.
 
       >>> from zope.interface.verify import verifyClass
-      >>> verifyClass(IUserPreferredFileNameNormalizer, UserPreferredFileNameNormalizer)
+      >>> verifyClass(
+      ...     IUserPreferredFileNameNormalizer,
+      ...     UserPreferredFileNameNormalizer)
       True
     """
 
     def __init__(self, context):
-        self.context = context # the context must be the request
+        self.context = context  # the context must be the request
 
     def normalize(self, text):
         """Returns a normalized Unicode string."""
