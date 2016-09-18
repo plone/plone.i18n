@@ -17,12 +17,25 @@ from zope.interface import implementer
 #     8364: Euro sign
 
 mapping = {
-    196 : 'AE', 198 : 'AE', 214 : 'OE', 220 : 'UE', 223 : 'ss', 224 : 'a',
-    228 : 'ae', 230 : 'ae', 246 : 'oe', 252 : 'ue',
-    8222: '-' , 8220: '-' , 8218: '-' , 8216: '-',
-    8211: '-' , 167 : '-' ,
+    196: 'AE',
+    198: 'AE',
+    214: 'OE',
+    220: 'UE',
+    223: 'ss',
+    224: 'a',
+    228: 'ae',
+    230: 'ae',
+    246: 'oe',
+    252: 'ue',
+    8222: '-',
+    8220: '-',
+    8218: '-',
+    8216: '-',
+    8211: '-',
+    167: '-',
     8364: 'euro'
 }
+
 
 @implementer(INormalizer)
 class Normalizer(object):
@@ -46,5 +59,6 @@ class Normalizer(object):
         Returns a normalized text. text has to be a unicode string.
         """
         return mapUnicode(text, mapping=mapping)
+
 
 normalizer = Normalizer()

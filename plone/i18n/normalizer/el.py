@@ -15,9 +15,10 @@ mapping = {
     941: 'e', 942: 'i', 943: 'i', 944: 'y', 945: 'a', 946: 'b', 947: 'g',
     948: 'd', 949: 'e', 950: 'z', 951: 'i', 952: 'th', 953: 'i', 954: 'k',
     955: 'l', 956: 'm', 957: 'n', 958: 'ks', 959: 'o', 960: 'p', 961: 'r',
-    962: 's', 963: 's', 964: 't', 965: 'y', 966: 'f', 967:'ch', 968: 'ps',
+    962: 's', 963: 's', 964: 't', 965: 'y', 966: 'f', 967: 'ch', 968: 'ps',
     969: 'o', 970: 'i', 971: 'y', 972: 'o', 973: 'y', 974: 'o',
 }
+
 
 @implementer(INormalizer)
 class Normalizer(object):
@@ -41,5 +42,6 @@ class Normalizer(object):
         Returns a normalized text. text has to be a unicode string.
         """
         return mapUnicode(text, mapping=mapping)
+
 
 normalizer = Normalizer()

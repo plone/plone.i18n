@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from AccessControl import ClassSecurityInfo
+from AccessControl import getSecurityManager
 from plone.i18n.interfaces import ILanguageUtility
 from plone.i18n.interfaces import INegotiateLanguage
 from plone.i18n.locales.interfaces import ICcTLDInformation
@@ -17,8 +18,14 @@ from zope.component.hooks import getSite
 from zope.globalrequest import getRequest
 from zope.interface import implementer
 
+try:
+    from Products.PlacelessTranslationService.Negotiator import registerLangPrefsMethod  # noqa
+    _hasPTS = 1
+except ImportError:
+    _hasPTS = 0
 
-class LanguageBinding:
+
+class LanguageBinding(object):
     """Helper which holding language infos in request."""
     security = ClassSecurityInfo()
     __allow_access_to_unprotected_subobjects__ = 1
@@ -157,7 +164,13 @@ class LanguageUtility(object):
             langs[lang][u'code'] = lang
             # flatten outer dict to list to make it sortable
             new_langs.append(langs[lang])
-        new_langs.sort(lambda x, y: cmp(x.get(u'native', x.get(u'name')), y.get(u'native', y.get(u'name'))))
+        new_langs.sort(
+            lambda x, y:
+            cmp(
+                x.get(u'native', x.get(u'name')),
+                y.get(u'native', y.get(u'name'))
+            )
+        )
         return new_langs
 
     def getAvailableLanguageInformation(self):
@@ -185,7 +198,7 @@ class LanguageUtility(object):
         if langCode not in self.settings.available_languages:
             # If its not in supported langs
             if len(self.settings.available_languages) > 0:
-                self.settings.default_language = self.settings.available_languages[0]
+                self.settings.default_language = self.settings.available_languages[0]  # noqa
             return
         self.settings.default_language = langCode
 
@@ -206,7 +219,10 @@ class LanguageUtility(object):
     def addSupportedLanguage(self, langCode):
         """Registers a language code as supported."""
         alist = self.settings.available_languages[:]
-        if (langCode in self.getAvailableLanguages().keys()) and not langCode in alist:
+        if (
+            langCode in self.getAvailableLanguages().keys() and
+            langCode not in alist
+        ):
             alist.append(langCode)
             self.settings.available_languages = alist
 
@@ -239,15 +255,15 @@ class LanguageUtility(object):
         """Gets the preferred site language."""
         if request is None:
             request = getRequest()
-        l = self.getLanguageBindings(request)
-        if l[0]:
+        lb = self.getLanguageBindings(request)
+        if lb[0]:
             if not self.settings.use_combined_language_codes:
-                return l[0].split('-')[0]
+                return lb[0].split('-')[0]
             else:
-                return l[0]
-            return l[0]
+                return lb[0]
+            return lb[0]
         # this is the default language
-        return l[1]
+        return lb[1]
 
     def getPathLanguage(self, request):
         """Checks if a language is part of the current path."""
@@ -269,14 +285,22 @@ class LanguageUtility(object):
         """Checks the language of the current content if not folderish."""
         if not request:
             return []
-        try: # This will actually work nicely with browserdefault as we get attribute error...
+        try:
+            # This will actually work nicely with browserdefault as we get
+            # attribute error...
             contentpath = request.path[:]
 
             # Now check if we need to exclude from using language specific path
             # See https://dev.plone.org/ticket/11263
-            if (bool([1 for p in self.exclude_paths if p in contentpath]) or
-                bool([1 for p in self.exclude_exts if contentpath[0].endswith(p)])
-                ):
+            if (
+                bool(
+                    [1 for p in self.exclude_paths if p in contentpath]
+                ) or
+                bool(
+                    [1 for p in self.exclude_exts
+                     if contentpath[0].endswith(p)]
+                )
+            ):
                 return None
 
             obj = getSite()
@@ -353,12 +377,12 @@ class LanguageUtility(object):
         for lang in browser_pref_langs:
             lang = lang.strip().lower().replace('_', '-')
             if lang:
-                l = lang.split(';', 2)
+                lb = lang.split(';', 2)
                 quality = []
 
-                if len(l) == 2:
+                if len(lb) == 2:
                     try:
-                        q = l[1]
+                        q = lb[1]
                         if q.startswith('q='):
                             q = q.split('=', 2)[1]
                             quality = float(q)
@@ -366,9 +390,9 @@ class LanguageUtility(object):
                         pass
 
                 if quality == []:
-                    quality = float(length-i)
+                    quality = float(length - i)
 
-                language = l[0]
+                language = lb[0]
                 if (self.use_combined_language_codes and
                         language in self.getSupportedLanguages()):
                     # If allowed add the language
@@ -423,27 +447,24 @@ class LanguageUtility(object):
         return self.getAvailableCountries().get(countryCode, countryCode)
 
     def isAnonymousUser(self):
-        from AccessControl import getSecurityManager
         user = getSecurityManager().getUser()
         return not user.has_role('Authenticated')
 
     def showSelector(self):
         """Returns True if the selector viewlet should be shown."""
-        if self.settings.always_show_selector:
-            return True
-        if (self.settings.use_cookie_negotiation and
-            not (self.settings.authenticated_users_only and self.isAnonymousUser())):
-            return True
-        return False
-
-try:
-    from Products.PlacelessTranslationService.Negotiator import registerLangPrefsMethod
-    _hasPTS = 1
-except ImportError:
-    _hasPTS = 0
+        return (
+            self.settings.always_show_selector or
+            (
+                self.settings.use_cookie_negotiation and
+                not (
+                    self.settings.authenticated_users_only and
+                    self.isAnonymousUser()
+                )
+            )
+        )
 
 
-class PrefsForPTS:
+class PrefsForPTS(object):
     """A preference to hook into PTS."""
     def __init__(self, context):
         self._env = context
@@ -461,4 +482,4 @@ class PrefsForPTS:
 
 
 if _hasPTS:
-    registerLangPrefsMethod({'klass':PrefsForPTS, 'priority':100 })
+    registerLangPrefsMethod({'klass': PrefsForPTS, 'priority': 100})

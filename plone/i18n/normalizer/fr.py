@@ -10,6 +10,7 @@ mapping = {
     339: 'oe'
 }
 
+
 @implementer(INormalizer)
 class Normalizer(object):
     """
@@ -28,5 +29,6 @@ class Normalizer(object):
         Returns a normalized text. text has to be a unicode string.
         """
         return mapUnicode(text, mapping=mapping)
+
 
 normalizer = Normalizer()

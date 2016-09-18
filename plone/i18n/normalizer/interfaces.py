@@ -15,6 +15,7 @@ class INormalizer(Interface):
            values used by the normalizers on a case-by-case basis.
         """
 
+
 class IIDNormalizer(INormalizer):
     """An ID normalizer can normalize any unicode string and returns a
        version that only contains of ASCII characters allowed in a typical
@@ -22,16 +23,20 @@ class IIDNormalizer(INormalizer):
        variable names for example.
     """
 
+
 class IFileNameNormalizer(INormalizer):
     """An file name normalizer can normalize any unicode string and returns a
        version that only contains of ASCII characters allowed in a URL while
        still preserving whitespace and upper and lower case.
     """
 
+
 class IURLNormalizer(INormalizer):
     """An URL normalizer can normalize any unicode string and returns a
-       URL-safe version that only contains of ASCII characters allowed in a URL.
+       URL-safe version that only contains of ASCII characters allowed in a
+       URL.
     """
+
 
 class IUserPreferredNormalizer(Interface):
     """An adapter for the HTTPRequest to provide user preferred language
@@ -41,10 +46,12 @@ class IUserPreferredNormalizer(Interface):
     def normalize(text):
         """Returns a normalized Unicode string."""
 
+
 class IUserPreferredFileNameNormalizer(IUserPreferredNormalizer):
     """An adapter for the HTTPRequest to provide user preferred language
        dependent normalization, based on an file name normalizer.
     """
+
 
 class IUserPreferredURLNormalizer(IUserPreferredNormalizer):
     """An adapter for the HTTPRequest to provide user preferred language

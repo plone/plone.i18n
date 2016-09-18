@@ -14,7 +14,8 @@ New features:
 
 Bug fixes:
 
-- *add item here*
+- Code Cleanup: isort, pep8, manual cleanup
+  [jensens]
 
 
 3.0.5 (2016-08-15)

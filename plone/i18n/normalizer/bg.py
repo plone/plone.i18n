@@ -18,6 +18,7 @@ mapping = {1040: 'A', 1041: 'B', 1042: 'V', 1043: 'G', 1044: 'D', 1045: 'E',
            1095: 'ch', 1096: 'sh', 1097: 'sht', 1098: 'a', 1100: 'y',
            1102: 'yu', 1103: 'ya'}
 
+
 @implementer(INormalizer)
 class Normalizer(object):
     """
@@ -40,5 +41,6 @@ class Normalizer(object):
         Returns a normalized text. text has to be a unicode string.
         """
         return mapUnicode(text, mapping=mapping)
+
 
 normalizer = Normalizer()
