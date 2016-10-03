@@ -4,14 +4,6 @@ Changelog
 3.0.6 (unreleased)
 ------------------
 
-Breaking changes:
-
-- *add item here*
-
-New features:
-
-- *add item here*
-
 Bug fixes:
 
 - Code Cleanup: isort, pep8, manual cleanup
