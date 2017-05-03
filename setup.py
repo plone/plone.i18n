@@ -29,15 +29,19 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
+        'Products.CMFCore',
+        'Products.CMFPlone',
         'setuptools',
+        'Unidecode',
         'zope.component',
         'zope.i18n',
         'zope.interface',
         'zope.publisher',
-        'Unidecode',
+        'Zope2',
     ],
     extras_require=dict(
         test=[
+            'plone.registry',
             'zope.browserresource',
             'zope.component [zcml]',
             'zope.configuration',
