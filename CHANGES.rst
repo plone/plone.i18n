@@ -14,7 +14,8 @@ New features:
 
 Bug fixes:
 
-- *add item here*
+- Add missing entries to requirements in setup.py. 
+  [dhavlik]
 
 
 3.0.6 (2016-10-03)
