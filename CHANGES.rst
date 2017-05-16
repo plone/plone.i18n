@@ -4,14 +4,6 @@ Changelog
 3.0.7 (unreleased)
 ------------------
 
-Breaking changes:
-
-- *add item here*
-
-New features:
-
-- *add item here*
-
 Bug fixes:
 
 - Add missing entries to requirements in setup.py. 
