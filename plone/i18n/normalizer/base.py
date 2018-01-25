@@ -2,6 +2,7 @@
 from unicodedata import decomposition
 from unicodedata import normalize
 
+import six
 import string
 
 
@@ -51,7 +52,7 @@ def baseNormalize(text):
       >>> baseNormalize(u"\u5317\u4EB0")
       '53174eb0'
     """
-    if not isinstance(text, basestring):
+    if not isinstance(text, six.string_types):
         # This most surely ends up in something the user does not expect
         # to see. But at least it does not break.
         return repr(text)

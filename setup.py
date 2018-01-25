@@ -32,6 +32,7 @@ setup(
         'Products.CMFCore',
         'Products.CMFPlone',
         'setuptools',
+        'six',
         'Unidecode',
         'zope.component',
         'zope.i18n',

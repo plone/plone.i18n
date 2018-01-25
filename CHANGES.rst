@@ -14,7 +14,8 @@ New features:
 
 Bug fixes:
 
-- *add item here*
+- Add Python 2 / 3 compatibility
+  [pbauer]
 
 
 3.0.7 (2017-05-16)
@@ -22,7 +23,7 @@ Bug fixes:
 
 Bug fixes:
 
-- Add missing entries to requirements in setup.py. 
+- Add missing entries to requirements in setup.py.
   [dhavlik]
 
 
