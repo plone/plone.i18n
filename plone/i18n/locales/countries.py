@@ -3,6 +3,8 @@
 from plone.i18n.locales.interfaces import ICountryAvailability
 from zope.interface import implementer
 
+import six
+
 
 @implementer(ICountryAvailability)
 class CountryAvailability(object):
@@ -292,4 +294,4 @@ u'xk' : {u'name' : 'Kosovo', u'flag' : u'/++resource++country-flags/xk.gif'},
 for code in _countrylist:
     value = _countrylist[code]
     if u'name' in value:
-        value[u'name'] = unicode(value[u'name'], 'utf-8')
+        value[u'name'] = six.text_type(value[u'name'], 'utf-8')

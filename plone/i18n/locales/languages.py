@@ -1,9 +1,10 @@
 # -*- coding: UTF-8 -*-
-
 from plone.i18n.locales.interfaces import IContentLanguageAvailability
 from plone.i18n.locales.interfaces import ILanguageAvailability
 from plone.i18n.locales.interfaces import IMetadataLanguageAvailability
 from zope.interface import implementer
+
+import six
 
 
 @implementer(ILanguageAvailability)
@@ -251,9 +252,9 @@ u'zu' : {u'native' : 'IsiZulu', u'name' : 'Zulu',                               
 for code in _languagelist:
     value = _languagelist[code]
     if u'name' in value:
-        value[u'name'] = unicode(value[u'name'], 'utf-8')
+        value[u'name'] = six.text_type(value[u'name'], 'utf-8')
     if u'native' in value:
-        value[u'native'] = unicode(value[u'native'], 'utf-8')
+        value[u'native'] = six.text_type(value[u'native'], 'utf-8')
 
 _combinedlanguagelist = {
 u'ar-ae' : {u'name' : 'Arabic (United Arab Emirates)',                          u'flag' : u'/++resource++country-flags/ae.gif'},
@@ -488,6 +489,6 @@ u'zh-tw' : {u'name' : 'Chinese (Taiwan)', u'native' : '繁體中文(臺灣)',   
 for code in _combinedlanguagelist:
     value = _combinedlanguagelist[code]
     if u'name' in value:
-        value[u'name'] = unicode(value[u'name'], 'utf-8')
+        value[u'name'] = six.text_type(value[u'name'], 'utf-8')
     if u'native' in value:
-        value[u'native'] = unicode(value[u'native'], 'utf-8')
+        value[u'native'] = six.text_type(value[u'native'], 'utf-8')
