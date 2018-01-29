@@ -39,7 +39,7 @@ setup(
         'plone.supermodel',
         'setuptools',
         'six',
-        'Unidecode',
+        'Unidecode>=1.0.22',
         'ZODB',
         'zope.component',
         'zope.i18n',
