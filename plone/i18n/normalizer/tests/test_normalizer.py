@@ -13,7 +13,6 @@ import six
 import unittest
 
 
-
 def testIDNormalizer():
     """
       >>> util = queryUtility(IIDNormalizer)

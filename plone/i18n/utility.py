@@ -6,6 +6,7 @@ from plone.i18n.interfaces import INegotiateLanguage
 from plone.i18n.locales.interfaces import ICcTLDInformation
 from plone.i18n.locales.interfaces import IContentLanguageAvailability
 from plone.i18n.locales.interfaces import ICountryAvailability
+from plone.i18n.negotiate.ptsnegotiator import registerLangPrefsMethod
 from plone.registry.interfaces import IRegistry
 from Products.CMFCore.interfaces import IDublinCore
 from Products.CMFPlone.interfaces import ILanguageSchema
@@ -17,12 +18,6 @@ from zope.component import queryUtility
 from zope.component.hooks import getSite
 from zope.globalrequest import getRequest
 from zope.interface import implementer
-
-try:
-    from Products.PlacelessTranslationService.Negotiator import registerLangPrefsMethod  # noqa
-    _hasPTS = 1
-except ImportError:
-    _hasPTS = 0
 
 
 class LanguageBinding(object):
@@ -481,5 +476,4 @@ class PrefsForPTS(object):
         return self.languages
 
 
-if _hasPTS:
-    registerLangPrefsMethod({'klass': PrefsForPTS, 'priority': 100})
+registerLangPrefsMethod({'klass': PrefsForPTS, 'priority': 100})

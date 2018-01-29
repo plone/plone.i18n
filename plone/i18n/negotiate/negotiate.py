@@ -21,10 +21,11 @@ class NegotiateLanguage(object):
         setCookieEverywhere = tool.settings.set_cookie_always
         authOnly = tool.settings.authenticated_users_only
         useRequest = tool.settings.use_request_negotiation
-        useDefault = 1 # This should never be disabled
+        useDefault = 1  # This should never be disabled
         langsCookie = None
         if usePath:
-            # This one is set if there is an allowed language in the current path
+            # This one is set if there is an allowed language in the current
+            # path
             langs.append(tool.getPathLanguage(request))
 
         if useContent:
@@ -34,7 +35,10 @@ class NegotiateLanguage(object):
             # If we are using the cookie stuff we provide the setter here
             set_language = request.get('set_language', None)
             if set_language:
-                langsCookie = tool.setLanguageCookie(set_language, request=request)
+                langsCookie = tool.setLanguageCookie(
+                    set_language,
+                    request=request
+                )
             else:
                 # Get from cookie
                 langsCookie = tool.getLanguageCookie(request)
@@ -58,7 +62,7 @@ class NegotiateLanguage(object):
         langs = [lang for lang in langs if lang is not None]
 
         # Set cookie language to language
-        if setCookieEverywhere  and langs[0] != langsCookie:
+        if setCookieEverywhere and langs[0] != langsCookie:
             # We need to make sure its not a subrequest otherwise we are going
             # To change the language of the main request
             from plone.subrequest import ISubRequest
