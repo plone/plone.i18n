@@ -15,6 +15,10 @@ New features:
 
 Bug fixes:
 
+- Make it work with newwest Unidecode 1.0.22. Use its method instaed of duplicating it in here.
+  Also support newer unicode chars, like with `Bei Jing` in the example.
+  [gogobd, jensens]
+
 - Add Python 2 / 3 compatibility
   [pbauer]
 
