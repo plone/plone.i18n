@@ -18,12 +18,6 @@ from zope.component.hooks import getSite
 from zope.globalrequest import getRequest
 from zope.interface import implementer
 
-try:
-    from Products.PlacelessTranslationService.Negotiator import registerLangPrefsMethod  # noqa
-    _hasPTS = 1
-except ImportError:
-    _hasPTS = 0
-
 
 class LanguageBinding(object):
     """Helper which holding language infos in request."""
@@ -479,7 +473,3 @@ class PrefsForPTS(object):
     def getPreferredLanguages(self):
         """Returns the list of the bound languages."""
         return self.languages
-
-
-if _hasPTS:
-    registerLangPrefsMethod({'klass': PrefsForPTS, 'priority': 100})

@@ -18,6 +18,10 @@ Bug fixes:
   [pbauer]
 
 
+
+- Remove backward compatibility for Products.PlacelessTranslationService [ksuess]
+
+
 3.0.7 (2017-05-16)
 ------------------
 
