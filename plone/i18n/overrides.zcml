@@ -1,0 +1,9 @@
+<configure xmlns="http://namespaces.zope.org/zope">
+
+  <adapter
+    for="zope.publisher.interfaces.http.IHTTPRequest"
+    provides="zope.i18n.interfaces.IUserPreferredLanguages"
+    factory=".negotiate.ptsnegotiator.PTSLanguages"
+    />
+
+</configure>
