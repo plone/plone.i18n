@@ -142,7 +142,7 @@ class BrowserAccept(object):
                 if quality == []:
                     quality = float(length - i)
 
-                accepts.append((quality, l[0]))
+                accepts.append((quality, ll[0]))
                 i += 1
 
         # sort and reverse it
