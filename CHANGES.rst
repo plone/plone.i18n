@@ -9,10 +9,6 @@ Breaking changes:
 - Move PTS Negotiator over form PlacelessTranslationService over to here in order to get rid of PTS itself.
   [jensens, ksuess]
 
-New features:
-
-- *add item here*
-
 Bug fixes:
 
 - Add Python 2 / 3 compatibility
