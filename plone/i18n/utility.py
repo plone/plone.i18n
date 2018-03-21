@@ -215,7 +215,7 @@ class LanguageUtility(object):
         """Registers a language code as supported."""
         alist = self.settings.available_languages[:]
         if (
-            langCode in self.getAvailableLanguages().keys() and
+            langCode in list(self.getAvailableLanguages().keys()) and
             langCode not in alist
         ):
             alist.append(langCode)
@@ -406,7 +406,7 @@ class LanguageUtility(object):
         langs.reverse()
 
         # Filter quality string
-        langs = map(lambda x: x[1], langs)
+        langs = [x[1] for x in langs]
 
         return langs
 

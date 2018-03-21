@@ -15,9 +15,9 @@ class LanguageAvailability(object):
     def getAvailableLanguages(self, combined=False):
         """Return a sequence of language tags for available languages.
         """
-        languages = _languagelist.keys()
+        languages = list(_languagelist.keys())
         if combined:
-            languages.extend(_combinedlanguagelist.keys())
+            languages.extend(list(_combinedlanguagelist.keys()))
         return languages
 
     def getLanguages(self, combined=False):
@@ -252,9 +252,15 @@ u'zu' : {u'native' : 'IsiZulu', u'name' : 'Zulu',                               
 for code in _languagelist:
     value = _languagelist[code]
     if u'name' in value:
-        value[u'name'] = six.text_type(value[u'name'], 'utf-8')
+        if six.PY3:
+            value[u'name'] = value[u'name']
+        else:
+            value[u'name'] = unicode(value[u'name'], 'utf-8')
     if u'native' in value:
-        value[u'native'] = six.text_type(value[u'native'], 'utf-8')
+        if six.PY3:
+            value[u'native'] = value[u'native']
+        else:
+            value[u'native'] = unicode(value[u'native'], 'utf-8')
 
 _combinedlanguagelist = {
 u'ar-ae' : {u'name' : 'Arabic (United Arab Emirates)',                          u'flag' : u'/++resource++country-flags/ae.gif'},
@@ -489,6 +495,12 @@ u'zh-tw' : {u'name' : 'Chinese (Taiwan)', u'native' : '繁體中文(臺灣)',   
 for code in _combinedlanguagelist:
     value = _combinedlanguagelist[code]
     if u'name' in value:
-        value[u'name'] = six.text_type(value[u'name'], 'utf-8')
+        if six.PY3:
+            value[u'name'] = value[u'name']
+        else:
+            value[u'name'] = unicode(value[u'name'], 'utf-8')
     if u'native' in value:
-        value[u'native'] = six.text_type(value[u'native'], 'utf-8')
+        if six.PY3:
+            value[u'native'] = value[u'native']
+        else:
+            value[u'native'] = unicode(value[u'native'], 'utf-8')

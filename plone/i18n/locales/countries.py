@@ -14,7 +14,7 @@ class CountryAvailability(object):
     def getAvailableCountries(self):
         """Return a sequence of country tags for available countries.
         """
-        return _countrylist.keys()
+        return list(_countrylist.keys())
 
     def getCountries(self):
         """Return a sequence of Country objects for available countries.
@@ -294,4 +294,7 @@ u'xk' : {u'name' : 'Kosovo', u'flag' : u'/++resource++country-flags/xk.gif'},
 for code in _countrylist:
     value = _countrylist[code]
     if u'name' in value:
-        value[u'name'] = six.text_type(value[u'name'], 'utf-8')
+        if six.PY3:
+            value[u'name'] = value[u'name']
+        else:
+            value[u'name'] = unicode(value[u'name'], 'utf-8')
