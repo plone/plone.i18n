@@ -1,13 +1,12 @@
 Changelog
 =========
 
-4.0.0 (unreleased)
+4.0.1 (unreleased)
 ------------------
 
 Breaking changes:
 
-- Move PTS Negotiator over form PlacelessTranslationService over to here in order to get rid of PTS itself.
-  [jensens, ksuess]
+- *add item here*
 
 New features:
 
@@ -18,6 +17,17 @@ Bug fixes:
 - Make it work with newwest Unidecode 1.0.22. Use its method instaed of duplicating it in here.
   Also support newer unicode chars, like with `Bei Jing` in the example.
   [gogobd, jensens]
+
+
+4.0.0 (2018-02-02)
+------------------
+
+Breaking changes:
+
+- Move PTS Negotiator over form PlacelessTranslationService over to here in order to get rid of PTS itself.
+  [jensens, ksuess]
+
+Bug fixes:
 
 - Add Python 2 / 3 compatibility
   [pbauer]
