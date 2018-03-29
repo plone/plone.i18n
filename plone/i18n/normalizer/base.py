@@ -102,4 +102,6 @@ def baseNormalize(text):
                 # hex string instead of unknown char
                 res.append("%x" % ordinal)
 
-    return ''.join(res).encode('ascii')
+    if six.PY2:
+        return ''.join(res).encode('ascii')
+    return ''.join(res)
