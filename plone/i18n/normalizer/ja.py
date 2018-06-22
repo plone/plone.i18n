@@ -47,14 +47,14 @@ class Normalizer(object):
     Strings that contain only ASCII characters are returned decoded.
 
       >>> norm = Normalizer()
-      >>> text = unicode("test page", 'utf-8')
+      >>> text = u"test page"
       >>> norm.normalize(text)
-      'test page'
+      b'test page'
 
     Text that contains non-ASCII characters are normalized.
 
       >>> norm = Normalizer()
-      >>> text = unicode("テストページ", 'utf-8')
+      >>> text = u"テストページ"
       >>> normalized = norm.normalize(text)
       >>> all(s in allowed for s in normalized)
       True
