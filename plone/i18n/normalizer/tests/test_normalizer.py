@@ -13,6 +13,12 @@ import six
 import unittest
 
 
+def utf8unicode(value):
+    if six.PY2:
+        return unicode(value, 'utf-8')
+    return value
+
+
 def testIDNormalizer():
     """
       >>> util = queryUtility(IIDNormalizer)
@@ -31,7 +37,7 @@ def testIDNormalizer():
       >>> util.normalize(u">>>here'!--s yet another!!!")
       'here-s-yet-another'
 
-      >>> util.normalize(u"umläut.doc")
+      >>> util.normalize(utf8unicode("umläut.doc"))
       'umlaut-doc'
 
       >>> from plone.i18n.normalizer import MAX_LENGTH
@@ -82,13 +88,13 @@ def testLocaleAwareIDNormalizer():
       >>> util.normalize(u'simpleandsafe', locale='de')
       'simpleandsafe'
 
-      >>> util.normalize(u'text with umläut', locale='de')
+      >>> util.normalize(utf8unicode('text with umläut'), locale='de')
       'text-with-umlaeut'
 
     Make sure we get the de normalizer as there's no special one for de-DE
     registered.
 
-      >>> util.normalize(u'text with umläut', locale='de-DE')
+      >>> util.normalize(utf8unicode('text with umläut'), locale='de-DE')
       'text-with-umlaeut'
 
       >>> util.normalize(u'simpleandsafe', locale='pt-BR')
@@ -106,7 +112,7 @@ def testLocaleAwareIDNormalizer():
     Make sure we also handle POSIX-format locale identifiers,
     for backwards-compatibility with an earlier version of plone.i18n.
 
-      >>> util.normalize(u'text with umläut', locale='de_DE')
+      >>> util.normalize(utf8unicode('text with umläut'), locale='de_DE')
       'text-with-umlaeut'
 
     """
@@ -136,7 +142,7 @@ def testFileNameNormalizer():
       >>> util.normalize("pseudo_filename,pot,#1.doc")
       'pseudo_filename-pot-#1.doc'
 
-      >>> util.normalize(u"umläut.doc")
+      >>> util.normalize(utf8unicode("umläut.doc"))
       'umlaut.doc'
 
       >>> len(util.normalize(u'aa' * 2000))
@@ -165,13 +171,13 @@ def testLocaleAwareFileNameNormalizer():
       >>> util.normalize(u'simpleandsafe', locale='de')
       'simpleandsafe'
 
-      >>> util.normalize(u'text with umläut', locale='de')
+      >>> util.normalize(utf8unicode('text with umläut'), locale='de')
       'text with umlaeut'
 
     Make sure we get the de normalizer as there's no special one for de-DE
     registered.
 
-      >>> util.normalize(u'text with umläut', locale='de-DE')
+      >>> util.normalize(utf8unicode('text with umläut'), locale='de-DE')
       'text with umlaeut'
 
       >>> util.normalize(u'simpleandsafe', locale='pt-BR')
@@ -189,7 +195,7 @@ def testLocaleAwareFileNameNormalizer():
     Make sure we also handle POSIX-format locale identifiers,
     for backwards-compatibility with an earlier version of plone.i18n.
 
-      >>> util.normalize(u'text with umläut', locale='de_DE')
+      >>> util.normalize(utf8unicode('text with umläut'), locale='de_DE')
       'text with umlaeut'
 
     """
@@ -216,7 +222,7 @@ def testURLNormalizer():
       >>> util.normalize(u"Doe, Joe")
       'doe-joe'
 
-      >>> util.normalize(u"umläut.doc")
+      >>> util.normalize(utf8unicode("umläut.doc"))
       'umlaut.doc'
 
       >>> util.normalize('quote "this"!')
@@ -256,13 +262,13 @@ def testLocaleAwareURLNormalizer():
       >>> util.normalize(u'simpleandsafe', locale='de')
       'simpleandsafe'
 
-      >>> util.normalize(u'text with umläut', locale='de')
+      >>> util.normalize(utf8unicode('text with umläut'), locale='de')
       'text-with-umlaeut'
 
     Make sure we get the de normalizer as there's no special one for de-DE
     registered.
 
-      >>> util.normalize(u'text with umläut', locale='de-DE')
+      >>> util.normalize(utf8unicode('text with umläut'), locale='de-DE')
       'text-with-umlaeut'
 
       >>> util.normalize(u'simpleandsafe', locale='pt-BR')
@@ -277,7 +283,7 @@ def testLocaleAwareURLNormalizer():
     Make sure we also handle POSIX-format locale identifiers,
     for backwards-compatibility with an earlier version of plone.i18n.
 
-      >>> util.normalize(u'text with umläut', locale='de_DE')
+      >>> util.normalize(utf8unicode('text with umläut'), locale='de_DE')
       'text-with-umlaeut'
 
     """

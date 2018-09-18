@@ -48,8 +48,8 @@ class Normalizer(object):
 
       >>> norm = Normalizer()
       >>> text = u"test page"
-      >>> norm.normalize(text)
-      b'test page'
+      >>> norm.normalize(text) == b'test page'
+      True
 
     Text that contains non-ASCII characters are normalized.
 
