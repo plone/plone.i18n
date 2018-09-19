@@ -19,7 +19,7 @@ class CcTLDInformation(object):
     def getAvailableTLDs(self):
         """Return a sequence of country code top level domains.
         """
-        return _tld_to_language.keys()
+        return list(_tld_to_language.keys())
 
     def getTLDs(self):
         """Return a sequence of ccTLDs and their languages.

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from AccessControl import ClassSecurityInfo
 from AccessControl import getSecurityManager
+from operator import itemgetter
 from plone.i18n.interfaces import ILanguageUtility
 from plone.i18n.interfaces import INegotiateLanguage
 from plone.i18n.locales.interfaces import ICcTLDInformation
@@ -147,8 +148,7 @@ class LanguageUtility(object):
             languages = util.getLanguageListing(combined=True)
         else:
             languages = util.getLanguageListing()
-        languages.sort(lambda x, y: cmp(x[1], y[1]))
-        return languages
+        return sorted(languages, key=itemgetter(1))
 
     def listAvailableLanguageInformation(self):
         """Returns list of available languages."""
@@ -215,7 +215,7 @@ class LanguageUtility(object):
         """Registers a language code as supported."""
         alist = self.settings.available_languages[:]
         if (
-            langCode in self.getAvailableLanguages().keys() and
+            langCode in list(self.getAvailableLanguages().keys()) and
             langCode not in alist
         ):
             alist.append(langCode)
@@ -406,7 +406,7 @@ class LanguageUtility(object):
         langs.reverse()
 
         # Filter quality string
-        langs = map(lambda x: x[1], langs)
+        langs = [x[1] for x in langs]
 
         return langs
 

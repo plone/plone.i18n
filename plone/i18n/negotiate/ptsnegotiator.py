@@ -2,6 +2,8 @@
 from zope.i18n.interfaces import IUserPreferredLanguages
 from zope.interface import implementer
 
+import operator
+
 
 # this is the negotiator from old PlacelessTranslationService
 # may be cleaned up in future
@@ -17,7 +19,7 @@ def getAcceptedHelper(self, request, kind='language'):
 
 def registerLangPrefsMethod(prefs, kind='language'):
     # check for correct format of prefs
-    if not  isinstance(prefs, dict):
+    if not isinstance(prefs, dict):
         prefs = {'klass': prefs, 'priority': 0}
     # add chain for kind
     if kind not in _langPrefsRegistry:
@@ -29,8 +31,7 @@ def registerLangPrefsMethod(prefs, kind='language'):
     _langPrefsRegistry[kind].append(prefs)
     # sort by priority
     _langPrefsRegistry[kind].sort(
-        lambda x, y: cmp(y['priority'], x['priority'])
-    )
+        key=operator.itemgetter('priority'), reverse=True)
 
 
 def getLangPrefs(env, kind='language'):
@@ -168,7 +169,7 @@ class CookieAccept(object):
             else:
                 # filter
                 for filter in self.filters:
-                    language = filter(language)
+                    language = list(filter(language))
                 return (language,)
         else:
             return ()
