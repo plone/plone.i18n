@@ -14,7 +14,8 @@ New features:
 
 Bug fixes:
 
-- *add item here*
+- Code and test cleanuo.
+  [jensens]
 
 
 4.0.1 (2018-10-31)

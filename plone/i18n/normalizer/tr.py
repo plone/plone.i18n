@@ -6,9 +6,7 @@ from zope.interface import implementer
 
 
 # Turkish character mapping
-mapping = {
-    286: 'G', 287: 'g', 304: 'I', 305: 'i', 350: 'S', 351: 's'
-}
+mapping = {286: 'G', 287: 'g', 304: 'I', 305: 'i', 350: 'S', 351: 's'}
 
 
 @implementer(INormalizer)

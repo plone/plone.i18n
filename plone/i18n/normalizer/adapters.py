@@ -51,7 +51,7 @@ class UserPreferredURLNormalizer(object):
     """
 
     def __init__(self, context):
-        self.context = context # the context must be the request
+        self.context = context  # the context must be the request
 
     def normalize(self, text):
         """Returns a normalized Unicode string."""
