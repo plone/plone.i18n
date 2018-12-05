@@ -15,7 +15,7 @@ import unittest
 
 def utf8unicode(value):
     if six.PY2:
-        return unicode(value, 'utf-8')
+        return unicode(value, "utf-8")
     return value
 
 
@@ -290,20 +290,24 @@ def testLocaleAwareURLNormalizer():
 
 
 def test_suite():
-    return unittest.TestSuite((
-        DocTestSuite('plone.i18n.normalizer'),
-        DocTestSuite('plone.i18n.normalizer.base'),
-        DocTestSuite('plone.i18n.normalizer.de'),
-        DocTestSuite('plone.i18n.normalizer.el'),
-        DocTestSuite('plone.i18n.normalizer.fr'),
-        DocTestSuite('plone.i18n.normalizer.ja'),
-        DocTestSuite('plone.i18n.normalizer.pl'),
-        DocTestSuite('plone.i18n.normalizer.ru'),
-        DocTestSuite('plone.i18n.normalizer.tr'),
-        DocTestSuite('plone.i18n.normalizer.bg'),
-        DocTestSuite('plone.i18n.normalizer.uk'),
-        DocTestSuite('plone.i18n.normalizer.es'),
-        DocTestSuite(setUp=configurationSetUp,
-                     tearDown=tearDown,
-                     optionflags=doctest.ELLIPSIS | doctest.NORMALIZE_WHITESPACE),
-        ))
+    return unittest.TestSuite(
+        (
+            DocTestSuite("plone.i18n.normalizer"),
+            DocTestSuite("plone.i18n.normalizer.base"),
+            DocTestSuite("plone.i18n.normalizer.de"),
+            DocTestSuite("plone.i18n.normalizer.el"),
+            DocTestSuite("plone.i18n.normalizer.fr"),
+            DocTestSuite("plone.i18n.normalizer.ja"),
+            DocTestSuite("plone.i18n.normalizer.pl"),
+            DocTestSuite("plone.i18n.normalizer.ru"),
+            DocTestSuite("plone.i18n.normalizer.tr"),
+            DocTestSuite("plone.i18n.normalizer.bg"),
+            DocTestSuite("plone.i18n.normalizer.uk"),
+            DocTestSuite("plone.i18n.normalizer.es"),
+            DocTestSuite(
+                setUp=configurationSetUp,
+                tearDown=tearDown,
+                optionflags=doctest.ELLIPSIS | doctest.NORMALIZE_WHITESPACE,
+            ),
+        )
+    )

@@ -6,9 +6,7 @@ from zope.interface import implementer
 
 
 # French character mapping
-mapping = {
-    339: 'oe'
-}
+mapping = {339: 'oe'}
 
 
 @implementer(INormalizer)

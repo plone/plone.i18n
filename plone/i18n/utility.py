@@ -23,6 +23,7 @@ from zope.interface import implementer
 
 class LanguageBinding(object):
     """Helper which holding language infos in request."""
+
     security = ClassSecurityInfo()
     __allow_access_to_unprotected_subobjects__ = 1
 
@@ -30,7 +31,7 @@ class LanguageBinding(object):
     LANGUAGE = None
     LANGUAGE_LIST = []
 
-    security.declarePublic('getLanguageBindings')
+    security.declarePublic("getLanguageBindings")
 
     def getLanguageBindings(self):
         """Returns the bound languages.
@@ -41,7 +42,7 @@ class LanguageBinding(object):
 
 
 def setLanguageBinding(request):
-    binding = request.get('LANGUAGE_TOOL', None)
+    binding = request.get("LANGUAGE_TOOL", None)
     try:
         settings = getMultiAdapter((getSite(), request), INegotiateLanguage)
     except:
@@ -53,13 +54,13 @@ def setLanguageBinding(request):
         # Create new binding instance
         binding = LanguageBinding()
         # Set bindings instance to request here to avoid infinite recursion
-        request['LANGUAGE_TOOL'] = binding
+        request["LANGUAGE_TOOL"] = binding
     # Bind languages
     binding.LANGUAGE = lang = settings.language
     binding.DEFAULT_LANGUAGE = settings.default_language
     binding.LANGUAGE_LIST = list(settings.language_list)
     # Set LANGUAGE to request
-    request['LANGUAGE'] = lang
+    request["LANGUAGE"] = lang
     return lang
 
 
@@ -75,31 +76,18 @@ def onRequest(object, event):
 class LanguageUtility(object):
 
     # resources that must not use language specific URLs
-    exclude_paths = frozenset((
-        'portal_css',
-        'portal_javascripts',
-        'portal_kss',
-        'portal_factory'
-    ))
+    exclude_paths = frozenset(
+        ("portal_css", "portal_javascripts", "portal_kss", "portal_factory")
+    )
 
-    exclude_exts = frozenset((
-        'css',
-        'js',
-        'kss',
-        'xml',
-        'gif',
-        'jpg',
-        'png',
-        'jpeg'
-    ))
+    exclude_exts = frozenset(
+        ("css", "js", "kss", "xml", "gif", "jpg", "png", "jpeg")
+    )
 
     @property
     def settings(self):
         registry = getUtility(IRegistry)
-        return registry.forInterface(
-            ILanguageSchema,
-            prefix='plone',
-        )
+        return registry.forInterface(ILanguageSchema, prefix="plone")
 
     # BBB propouses
     @property
@@ -124,7 +112,7 @@ class LanguageUtility(object):
         available = self.getAvailableLanguages()
         for i in self.supported_langs:
             if available.get(i):
-                r.append((i, available[i][u'name']))
+                r.append((i, available[i][u"name"]))
         return r
 
     def getAvailableLanguages(self):
@@ -156,14 +144,13 @@ class LanguageUtility(object):
         new_langs = []
         for lang in langs:
             # add language-code to dict
-            langs[lang][u'code'] = lang
+            langs[lang][u"code"] = lang
             # flatten outer dict to list to make it sortable
             new_langs.append(langs[lang])
         new_langs.sort(
-            lambda x, y:
-            cmp(
-                x.get(u'native', x.get(u'name')),
-                y.get(u'native', y.get(u'name'))
+            lambda x, y: cmp(
+                x.get(u"native", x.get(u"name")),
+                y.get(u"native", y.get(u"name")),
             )
         )
         return new_langs
@@ -177,11 +164,11 @@ class LanguageUtility(object):
             languages = util.getLanguages()
 
         for lang in languages:
-            languages[lang]['code'] = lang
+            languages[lang]["code"] = lang
             if lang in self.supported_langs:
-                languages[lang]['selected'] = True
+                languages[lang]["selected"] = True
             else:
-                languages[lang]['selected'] = False
+                languages[lang]["selected"] = False
         return languages
 
     def getDefaultLanguage(self):
@@ -193,7 +180,9 @@ class LanguageUtility(object):
         if langCode not in self.settings.available_languages:
             # If its not in supported langs
             if len(self.settings.available_languages) > 0:
-                self.settings.default_language = self.settings.available_languages[0]  # noqa
+                self.settings.default_language = self.settings.available_languages[
+                    0
+                ]  # noqa
             return
         self.settings.default_language = langCode
 
@@ -201,22 +190,22 @@ class LanguageUtility(object):
         """Returns the name for a language code."""
         info = self.getAvailableLanguageInformation().get(langCode, None)
         if info is not None:
-            return info.get(u'name', None)
+            return info.get(u"name", None)
         return None
 
     def getFlagForLanguageCode(self, langCode):
         """Returns the name of the flag for a language code."""
         info = self.getAvailableLanguageInformation().get(langCode, None)
         if info is not None:
-            return info.get(u'flag', None)
+            return info.get(u"flag", None)
         return None
 
     def addSupportedLanguage(self, langCode):
         """Registers a language code as supported."""
         alist = self.settings.available_languages[:]
         if (
-            langCode in list(self.getAvailableLanguages().keys()) and
-            langCode not in alist
+            langCode in list(self.getAvailableLanguages().keys())
+            and langCode not in alist
         ):
             alist.append(langCode)
             self.settings.available_languages = alist
@@ -233,7 +222,7 @@ class LanguageUtility(object):
         res = None
         if lang and lang in self.getSupportedLanguages():
             if lang != self.getLanguageCookie(request):
-                request.RESPONSE.setCookie('I18N_LANGUAGE', lang, path='/')
+                request.RESPONSE.setCookie("I18N_LANGUAGE", lang, path="/")
             res = lang
         return res
 
@@ -241,7 +230,7 @@ class LanguageUtility(object):
         """Gets the preferred cookie language."""
         if not request:
             return None
-        langCookie = request.cookies.get('I18N_LANGUAGE')
+        langCookie = request.cookies.get("I18N_LANGUAGE")
         if langCookie in self.getSupportedLanguages():
             return langCookie
         return None
@@ -253,7 +242,7 @@ class LanguageUtility(object):
         lb = self.getLanguageBindings(request)
         if lb[0]:
             if not self.settings.use_combined_language_codes:
-                return lb[0].split('-')[0]
+                return lb[0].split("-")[0]
             else:
                 return lb[0]
             return lb[0]
@@ -264,7 +253,7 @@ class LanguageUtility(object):
         """Checks if a language is part of the current path."""
         if not request:
             return []
-        items = request.get('TraversalRequestNameStack')
+        items = request.get("TraversalRequestNameStack")
         # XXX Why this try/except?
         try:
             for item in items:
@@ -287,14 +276,10 @@ class LanguageUtility(object):
 
             # Now check if we need to exclude from using language specific path
             # See https://dev.plone.org/ticket/11263
-            if (
-                bool(
-                    [1 for p in self.exclude_paths if p in contentpath]
-                ) or
-                bool(
-                    [1 for p in self.exclude_exts
-                     if contentpath[0].endswith(p)]
-                )
+            if bool(
+                [1 for p in self.exclude_paths if p in contentpath]
+            ) or bool(
+                [1 for p in self.exclude_exts if contentpath[0].endswith(p)]
             ):
                 return None
 
@@ -302,7 +287,7 @@ class LanguageUtility(object):
             traversed = []
             while contentpath:
                 name = contentpath.pop()
-                if name[0] in '@+':
+                if name[0] in "@+":
                     break
                 next = obj.unrestrictedTraverse(name, None)
                 if next is None:
@@ -357,8 +342,8 @@ class LanguageUtility(object):
             return None
 
         # Get browser accept languages
-        browser_pref_langs = request.get('HTTP_ACCEPT_LANGUAGE', '')
-        browser_pref_langs = browser_pref_langs.split(',')
+        browser_pref_langs = request.get("HTTP_ACCEPT_LANGUAGE", "")
+        browser_pref_langs = browser_pref_langs.split(",")
 
         i = 0
         langs = []
@@ -370,16 +355,16 @@ class LanguageUtility(object):
         # If no quality string is given then the list order
         # is used as quality indicator
         for lang in browser_pref_langs:
-            lang = lang.strip().lower().replace('_', '-')
+            lang = lang.strip().lower().replace("_", "-")
             if lang:
-                lb = lang.split(';', 2)
+                lb = lang.split(";", 2)
                 quality = []
 
                 if len(lb) == 2:
                     try:
                         q = lb[1]
-                        if q.startswith('q='):
-                            q = q.split('=', 2)[1]
+                        if q.startswith("q="):
+                            q = q.split("=", 2)[1]
                             quality = float(q)
                     except:
                         pass
@@ -388,15 +373,17 @@ class LanguageUtility(object):
                     quality = float(length - i)
 
                 language = lb[0]
-                if (self.use_combined_language_codes and
-                        language in self.getSupportedLanguages()):
+                if (
+                    self.use_combined_language_codes
+                    and language in self.getSupportedLanguages()
+                ):
                     # If allowed add the language
                     langs.append((quality, language))
                 else:
                     # if we only use simply language codes, we should recognize
                     # combined codes as their base code. So 'de-de' is treated
                     # as 'de'.
-                    baselanguage = language.split('-')[0]
+                    baselanguage = language.split("-")[0]
                     if baselanguage in self.getSupportedLanguages():
                         langs.append((quality, baselanguage))
                 i = i + 1
@@ -418,11 +405,11 @@ class LanguageUtility(object):
         if not request:
             # Can't do anything
             return (None, self.getDefaultLanguage(), [])
-        binding = request.get('LANGUAGE_TOOL', None)
+        binding = request.get("LANGUAGE_TOOL", None)
         if not isinstance(binding, LanguageBinding):
             # Not bound -> bind
             setLanguageBinding(request)
-            binding = request.get('LANGUAGE_TOOL')
+            binding = request.get("LANGUAGE_TOOL")
         return binding.getLanguageBindings()
 
     def getAvailableCountries(self):
@@ -443,28 +430,26 @@ class LanguageUtility(object):
 
     def isAnonymousUser(self):
         user = getSecurityManager().getUser()
-        return not user.has_role('Authenticated')
+        return not user.has_role("Authenticated")
 
     def showSelector(self):
         """Returns True if the selector viewlet should be shown."""
-        return (
-            self.settings.always_show_selector or
-            (
-                self.settings.use_cookie_negotiation and
-                not (
-                    self.settings.authenticated_users_only and
-                    self.isAnonymousUser()
-                )
+        return self.settings.always_show_selector or (
+            self.settings.use_cookie_negotiation
+            and not (
+                self.settings.authenticated_users_only
+                and self.isAnonymousUser()
             )
         )
 
 
 class PrefsForPTS(object):
     """A preference to hook into PTS."""
+
     def __init__(self, context):
         self._env = context
         self.languages = []
-        binding = context.get('LANGUAGE_TOOL')
+        binding = context.get("LANGUAGE_TOOL")
         if not isinstance(binding, LanguageBinding):
             return None
         self.pref = binding.getLanguageBindings()
@@ -476,4 +461,4 @@ class PrefsForPTS(object):
         return self.languages
 
 
-registerLangPrefsMethod({'klass': PrefsForPTS, 'priority': 100})
+registerLangPrefsMethod({"klass": PrefsForPTS, "priority": 100})

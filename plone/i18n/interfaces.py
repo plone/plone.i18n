@@ -11,6 +11,7 @@ class ILanguageUtility(Interface):
 class INegotiateLanguage(Interface):
     """Result of language negotiation
     """
+
     language = Attribute('Language to use')
     default_language = Attribute('Default language')
     language_list = Attribute('List of language preferences in order')

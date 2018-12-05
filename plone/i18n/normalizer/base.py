@@ -9,7 +9,9 @@ import string
 # On OpenBSD string.whitespace has a non-standard implementation
 # See http://dev.plone.org/plone/ticket/4704 for details
 whitespace = ''.join([c for c in string.whitespace if ord(c) < 128])
-allowed = string.ascii_letters + string.digits + string.punctuation + whitespace
+allowed = (
+    string.ascii_letters + string.digits + string.punctuation + whitespace
+)
 
 CHAR = {}
 NULLMAP = ['' * 0x100]
@@ -68,13 +70,15 @@ def baseNormalize(text):
             ordinal = ord(ch)
             if ordinal < UNIDECODE_LIMIT:
                 h = ordinal >> 8
-                l = ordinal & 0xff
+                l = ordinal & 0xFF
 
                 c = CHAR.get(h, None)
 
                 if c == None:
                     try:
-                        mod = __import__('unidecode.x%02x'%(h), [], [], ['data'])
+                        mod = __import__(
+                            'unidecode.x%02x' % (h), [], [], ['data']
+                        )
                     except ImportError:
                         CHAR[h] = NULLMAP
                         res.append('')
@@ -83,12 +87,12 @@ def baseNormalize(text):
                     CHAR[h] = mod.data
 
                     try:
-                        res.append( mod.data[l] )
+                        res.append(mod.data[l])
                     except IndexError:
                         res.append('')
                 else:
                     try:
-                        res.append( c[l] )
+                        res.append(c[l])
                     except IndexError:
                         res.append('')
 
