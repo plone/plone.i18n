@@ -4,14 +4,6 @@ Changelog
 4.0.2 (unreleased)
 ------------------
 
-Breaking changes:
-
-- *add item here*
-
-New features:
-
-- *add item here*
-
 Bug fixes:
 
 - Code and test cleanuo.
