@@ -1,1 +1,3 @@
 Be more verbose when Japanese normalizer fails in tests.
+Test that the length of the returned string is lower
+but not always equal to the given max_length.
