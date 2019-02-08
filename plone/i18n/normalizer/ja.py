@@ -54,7 +54,7 @@ class Normalizer(object):
     Text that contains non-ASCII characters are normalized.
 
       >>> norm = Normalizer()
-      >>> text = u"テストページ"
+      >>> text = u"公開テストページ"
       >>> normalized = norm.normalize(text)
       >>> all(s in allowed for s in normalized)
       True
