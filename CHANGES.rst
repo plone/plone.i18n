@@ -8,6 +8,16 @@ Changelog
 
 .. towncrier release notes start
 
+4.0.3 (2019-02-13)
+------------------
+
+Bug fixes:
+
+
+- Be more verbose when Japanese normalizer fails in tests. Test that the length
+  of the returned string is lower but not always equal to the given max_length.
+  Changed tested string. (#25)
+
 
 4.0.2 (2018-12-11)
 ------------------
