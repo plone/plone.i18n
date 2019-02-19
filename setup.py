@@ -33,7 +33,6 @@ setup(
     install_requires=[
         'AccessControl',
         'Products.CMFCore',
-        'Products.SiteAccess',
         'plone.supermodel',
         'setuptools',
         'six',
@@ -45,7 +44,7 @@ setup(
         'zope.interface',
         'zope.publisher',
         'zope.schema',
-        'zopezope.globalrequest',
+        'zope.globalrequest',
         'Zope',
     ],
     extras_require=dict(
