@@ -4,13 +4,13 @@ from AccessControl import getSecurityManager
 from operator import itemgetter
 from plone.i18n.interfaces import ILanguageUtility
 from plone.i18n.interfaces import INegotiateLanguage
+from plone.i18n.interfaces import ILanguageSchema
 from plone.i18n.locales.interfaces import ICcTLDInformation
 from plone.i18n.locales.interfaces import IContentLanguageAvailability
 from plone.i18n.locales.interfaces import ICountryAvailability
 from plone.i18n.negotiate.ptsnegotiator import registerLangPrefsMethod
 from plone.registry.interfaces import IRegistry
 from Products.CMFCore.interfaces import IDublinCore
-from Products.CMFPlone.interfaces import ILanguageSchema
 from Products.SiteAccess.VirtualHostMonster import VirtualHostMonster
 from ZODB.POSException import ConflictError
 from zope.component import getMultiAdapter
