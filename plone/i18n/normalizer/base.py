@@ -36,8 +36,9 @@ def mapUnicode(text, mapping=()):
 def baseNormalize(text):
     """
     This method is used for normalization of unicode characters to the base
-    ASCII letters. Output is ASCII encoded string (or char) with only ASCII
-    letters, digits, punctuation and whitespace characters. Case is preserved.
+    ASCII letters. 
+    Output is a native string with only ASCII letters, digits, punctuation 
+    and whitespace characters. Case is preserved.
 
       >>> baseNormalize(123)
       '123'
@@ -54,8 +55,8 @@ def baseNormalize(text):
     if not isinstance(text, six.string_types):
         # This most surely ends up in something the user does not expect
         # to see. But at least it does not break.
-        return repr(text)
-
-    text = unidecode(text).encode('ascii').strip()
-    text = [c for c in text if c in allowed]
-    return ''.join(text)
+        text = repr(text)
+    if six.PY2 and not isinstance(text, six.text_type):
+        text = text.decode('ascii', 'replace')
+    text = unidecode(text).strip()
+    return ''.join(filter(lambda c: c in allowed, text))
