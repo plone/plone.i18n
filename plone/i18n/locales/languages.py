@@ -331,7 +331,7 @@ _languagelist = {
         u'flag': u'/++resource++country-flags/la.gif',
     },
     u'lt': {
-        u'native': 'Lietuviskai',
+        u'native': 'Lietuvių',
         u'name': 'Lithuanian',
         u'flag': u'/++resource++country-flags/lt.gif',
     },
