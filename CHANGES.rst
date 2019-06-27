@@ -8,6 +8,15 @@ Changelog
 
 .. towncrier release notes start
 
+4.0.5 (2019-06-27)
+------------------
+
+Bug fixes:
+
+
+- bugfix Shortname starts "b" in Japanese https://github.com/plone/Products.CMFPlone/issues/2901 [terapyon] (#32)
+
+
 4.0.4 (2019-03-03)
 ------------------
 
