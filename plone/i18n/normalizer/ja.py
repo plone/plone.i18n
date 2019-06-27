@@ -2,6 +2,7 @@
 from plone.i18n.normalizer.base import allowed
 from plone.i18n.normalizer.interfaces import INormalizer
 from zope.interface import implementer
+import six
 
 
 MAX_LENGTH = 6
@@ -27,9 +28,13 @@ def ja_normalize(text, max_length=MAX_LENGTH):
     """
     text = text.strip()
     if all(s in allowed for s in text):
-        return text.encode('ascii')
+        exchanged = text
     else:
-        return "".join(_gethashed(text, max_length))
+        exchanged = "".join(_gethashed(text, max_length))
+    if six.PY2:
+        return exchanged.encode('ascii')
+    else:
+        return exchanged
 
 
 @implementer(INormalizer)
@@ -48,8 +53,8 @@ class Normalizer(object):
 
       >>> norm = Normalizer()
       >>> text = u"test page"
-      >>> norm.normalize(text) == b'test page'
-      True
+      >>> norm.normalize(text)
+      'test page'
 
     Text that contains non-ASCII characters are normalized.
 
