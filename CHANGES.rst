@@ -8,6 +8,14 @@ Changelog
 
 .. towncrier release notes start
 
+3.0.8 (2019-08-29)
+------------------
+
+Bug fixes:
+
+
+- Fix localised name for Lithuanian.  [fredvd] (#1)
+
 
 3.0.7 (2017-05-16)
 ------------------
