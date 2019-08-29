@@ -9,6 +9,7 @@ setup(
     long_description=(open("README.rst").read() + "\n" +
                       open("CHANGES.rst").read()),
     classifiers=[
+        "Development Status :: 6 - Mature",
         "Environment :: Web Environment",
         "Framework :: Plone",
         "Framework :: Plone :: 5.0",
@@ -22,7 +23,7 @@ setup(
     keywords='i18n l10n Plone',
     author='Plone Foundation',
     author_email='plone-developers@lists.sourceforge.net',
-    url='https://pypi.python.org/pypi/plone.i18n',
+    url='https://pypi.org/project/plone.i18n/',
     license='GPL version 2',
     packages=find_packages(exclude=['ez_setup']),
     namespace_packages=['plone'],
