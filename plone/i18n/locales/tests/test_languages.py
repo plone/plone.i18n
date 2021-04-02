@@ -64,7 +64,7 @@ class BaseTestCase(object):
         de = languages[u"de"]
         self.assertEqual(de[u"name"], u"German")
         self.assertEqual(de[u"native"], u"Deutsch")
-        self.assertEqual(de[u"flag"], u"/++resource++country-flags/de.gif")
+        self.assertEqual(de[u"flag"], u"countryflag/de")
 
     def test_get_languages_combined(self):
         util = self._makeOne()

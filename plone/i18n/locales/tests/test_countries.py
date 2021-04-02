@@ -40,7 +40,7 @@ class TestAvailableCountries(unittest.TestCase):
         self.assert_(u"de" in countries)
         de = countries[u"de"]
         self.assertEqual(de[u"name"], u"Germany")
-        self.assertEqual(de[u"flag"], u"/++resource++country-flags/de.gif")
+        self.assertEqual(de[u"flag"], u"countryflag/de")
 
     def test_get_country_listing(self):
         util = self._makeOne()
