@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from plone.i18n.interfaces import ILanguageSchema
@@ -27,43 +26,33 @@ class TestLanguageTool(base.TestCase):
         self.settings.available_languages = supportedLanguages
         self.settings.use_combined_language_codes = False
         self.assertEqual(self.ltool.getDefaultLanguage(), defaultLanguage)
-        self.assertEqual(
-            self.ltool.getSupportedLanguages(), supportedLanguages
-        )
+        self.assertEqual(self.ltool.getSupportedLanguages(), supportedLanguages)
 
     def testSupportedLanguages(self):
         defaultLanguage = "de"
         supportedLanguages = ["en", "de", "no"]
         self.settings.available_languages = supportedLanguages
         self.settings.default_language = defaultLanguage
-        self.assertEqual(
-            self.ltool.getSupportedLanguages(), supportedLanguages
-        )
+        self.assertEqual(self.ltool.getSupportedLanguages(), supportedLanguages)
 
         self.ltool.removeSupportedLanguages(supportedLanguages)
         self.assertEqual(self.ltool.getSupportedLanguages(), [])
 
         for lang in supportedLanguages:
             self.ltool.addSupportedLanguage(lang)
-        self.assertEqual(
-            self.ltool.getSupportedLanguages(), supportedLanguages
-        )
+        self.assertEqual(self.ltool.getSupportedLanguages(), supportedLanguages)
 
     def testDefaultLanguage(self):
         supportedLanguages = ["de", "no"]
         self.settings.available_languages = supportedLanguages
         self.ltool.setDefaultLanguage("no")
-        self.assertEqual(
-            self.ltool.getSupportedLanguages(), supportedLanguages
-        )
+        self.assertEqual(self.ltool.getSupportedLanguages(), supportedLanguages)
         self.assertEqual(self.ltool.getDefaultLanguage(), "no")
 
         # default not in supported languages, should set to first supported
         self.ltool.setDefaultLanguage("nl")
 
-        self.assertEqual(
-            self.ltool.getSupportedLanguages(), supportedLanguages
-        )
+        self.assertEqual(self.ltool.getSupportedLanguages(), supportedLanguages)
         self.assertEqual(self.ltool.getDefaultLanguage(), "de")
 
     def testAvailableLanguage(self):

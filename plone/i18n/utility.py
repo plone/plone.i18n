@@ -1,10 +1,9 @@
-# -*- coding: utf-8 -*-
 from AccessControl import ClassSecurityInfo
 from AccessControl import getSecurityManager
 from operator import itemgetter
+from plone.i18n.interfaces import ILanguageSchema
 from plone.i18n.interfaces import ILanguageUtility
 from plone.i18n.interfaces import INegotiateLanguage
-from plone.i18n.interfaces import ILanguageSchema
 from plone.i18n.locales.interfaces import ICcTLDInformation
 from plone.i18n.locales.interfaces import IContentLanguageAvailability
 from plone.i18n.locales.interfaces import ICountryAvailability
@@ -21,7 +20,7 @@ from zope.globalrequest import getRequest
 from zope.interface import implementer
 
 
-class LanguageBinding(object):
+class LanguageBinding:
     """Helper which holding language infos in request."""
 
     security = ClassSecurityInfo()
@@ -65,24 +64,21 @@ def setLanguageBinding(request):
 
 
 def onRequest(object, event):
-    """Set Language headers in the request.
-    """
+    """Set Language headers in the request."""
     request = event.request
 
     return setLanguageBinding(request)
 
 
 @implementer(ILanguageUtility)
-class LanguageUtility(object):
+class LanguageUtility:
 
     # resources that must not use language specific URLs
     exclude_paths = frozenset(
         ("portal_css", "portal_javascripts", "portal_kss", "portal_factory")
     )
 
-    exclude_exts = frozenset(
-        ("css", "js", "kss", "xml", "gif", "jpg", "png", "jpeg")
-    )
+    exclude_exts = frozenset(("css", "js", "kss", "xml", "gif", "jpg", "png", "jpeg"))
 
     @property
     def settings(self):
@@ -112,12 +108,11 @@ class LanguageUtility(object):
         available = self.getAvailableLanguages()
         for i in self.supported_langs:
             if available.get(i):
-                r.append((i, available[i][u"name"]))
+                r.append((i, available[i]["name"]))
         return r
 
     def getAvailableLanguages(self):
-        """Returns the dictionary of available languages.
-        """
+        """Returns the dictionary of available languages."""
         util = queryUtility(IContentLanguageAvailability)
         if self.settings.use_combined_language_codes:
             languages = util.getLanguages(combined=True)
@@ -144,13 +139,13 @@ class LanguageUtility(object):
         new_langs = []
         for lang in langs:
             # add language-code to dict
-            langs[lang][u"code"] = lang
+            langs[lang]["code"] = lang
             # flatten outer dict to list to make it sortable
             new_langs.append(langs[lang])
         new_langs.sort(
             lambda x, y: cmp(
-                x.get(u"native", x.get(u"name")),
-                y.get(u"native", y.get(u"name")),
+                x.get("native", x.get("name")),
+                y.get("native", y.get("name")),
             )
         )
         return new_langs
@@ -190,14 +185,14 @@ class LanguageUtility(object):
         """Returns the name for a language code."""
         info = self.getAvailableLanguageInformation().get(langCode, None)
         if info is not None:
-            return info.get(u"name", None)
+            return info.get("name", None)
         return None
 
     def getFlagForLanguageCode(self, langCode):
         """Returns the name of the flag for a language code."""
         info = self.getAvailableLanguageInformation().get(langCode, None)
         if info is not None:
-            return info.get(u"flag", None)
+            return info.get("flag", None)
         return None
 
     def addSupportedLanguage(self, langCode):
@@ -276,9 +271,7 @@ class LanguageUtility(object):
 
             # Now check if we need to exclude from using language specific path
             # See https://dev.plone.org/ticket/11263
-            if bool(
-                [1 for p in self.exclude_paths if p in contentpath]
-            ) or bool(
+            if bool([1 for p in self.exclude_paths if p in contentpath]) or bool(
                 [1 for p in self.exclude_exts if contentpath[0].endswith(p)]
             ):
                 return None
@@ -436,14 +429,11 @@ class LanguageUtility(object):
         """Returns True if the selector viewlet should be shown."""
         return self.settings.always_show_selector or (
             self.settings.use_cookie_negotiation
-            and not (
-                self.settings.authenticated_users_only
-                and self.isAnonymousUser()
-            )
+            and not (self.settings.authenticated_users_only and self.isAnonymousUser())
         )
 
 
-class PrefsForPTS(object):
+class PrefsForPTS:
     """A preference to hook into PTS."""
 
     def __init__(self, context):

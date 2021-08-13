@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from plone.i18n.interfaces import ILanguageUtility
 from plone.i18n.interfaces import INegotiateLanguage
 from zope.component import getUtility
@@ -6,7 +5,7 @@ from zope.interface import implementer
 
 
 @implementer(INegotiateLanguage)
-class NegotiateLanguage(object):
+class NegotiateLanguage:
     """Perform default language negotiation"""
 
     def __init__(self, site, request):
@@ -33,11 +32,9 @@ class NegotiateLanguage(object):
 
         if useCookie and not (authOnly and tool.isAnonymousUser()):
             # If we are using the cookie stuff we provide the setter here
-            set_language = request.get('set_language', None)
+            set_language = request.get("set_language", None)
             if set_language:
-                langsCookie = tool.setLanguageCookie(
-                    set_language, request=request
-                )
+                langsCookie = tool.setLanguageCookie(set_language, request=request)
             else:
                 # Get from cookie
                 langsCookie = tool.getLanguageCookie(request)

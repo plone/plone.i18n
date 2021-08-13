@@ -1,15 +1,13 @@
-# -*- coding: UTF-8 -*-
-
 import unittest
 
 
 class TestInterfaces(unittest.TestCase):
     def test_interface(self):
-        from zope.interface.verify import verifyClass
         from plone.i18n.locales.interfaces import ILanguageAvailability
         from plone.i18n.locales.languages import LanguageAvailability
+        from zope.interface.verify import verifyClass
 
-        self.assert_(verifyClass(ILanguageAvailability, LanguageAvailability))
+        self.assertTrue(verifyClass(ILanguageAvailability, LanguageAvailability))
 
 
 class TestDeprecatedLanguages(unittest.TestCase):
@@ -18,11 +16,11 @@ class TestDeprecatedLanguages(unittest.TestCase):
         # want to break existing content based on it
         from plone.i18n.locales.languages import _languagelist
 
-        self.assertIn(u"mo", _languagelist)
-        self.assertIn(u"sh", _languagelist)
+        self.assertIn("mo", _languagelist)
+        self.assertIn("sh", _languagelist)
 
 
-class BaseTestCase(object):
+class BaseTestCase:
     def setUp(self):
         from .base import setUp
 
@@ -45,47 +43,47 @@ class BaseTestCase(object):
         util = self._makeOne()
         languagecodes = util.getAvailableLanguages()
         self.assertTrue(len(languagecodes) > 100)
-        self.assertIn(u"de", languagecodes)
-        self.assertNotIn(u"pt-br", languagecodes)
+        self.assertIn("de", languagecodes)
+        self.assertNotIn("pt-br", languagecodes)
 
     def test_get_available_combined(self):
         util = self._makeOne()
         languagecodes = util.getAvailableLanguages(combined=True)
         self.assertTrue(len(languagecodes) > 300)
-        self.assertIn(u"de", languagecodes)
-        self.assertIn(u"pt-br", languagecodes)
+        self.assertIn("de", languagecodes)
+        self.assertIn("pt-br", languagecodes)
 
     def test_get_languages(self):
         util = self._makeOne()
         languages = util.getLanguages()
         self.assertTrue(len(languages) > 100)
-        self.assertIn(u"de", languages)
-        self.assertNotIn(u"pt-br", languages)
-        de = languages[u"de"]
-        self.assertEqual(de[u"name"], u"German")
-        self.assertEqual(de[u"native"], u"Deutsch")
-        self.assertEqual(de[u"flag"], u"/++resource++country-flags/de.gif")
+        self.assertIn("de", languages)
+        self.assertNotIn("pt-br", languages)
+        de = languages["de"]
+        self.assertEqual(de["name"], "German")
+        self.assertEqual(de["native"], "Deutsch")
+        self.assertEqual(de["flag"], "/++resource++country-flags/de.gif")
 
     def test_get_languages_combined(self):
         util = self._makeOne()
         languages = util.getLanguages(combined=True)
         self.assertTrue(len(languages) > 300)
-        self.assertIn(u"de", languages)
-        self.assertIn(u"pt-br", languages)
-        self.assertEqual(languages[u"de"][u"name"], u"German")
-        self.assertEqual(languages[u"pt-br"][u"name"], u"Portuguese (Brazil)")
+        self.assertIn("de", languages)
+        self.assertIn("pt-br", languages)
+        self.assertEqual(languages["de"]["name"], "German")
+        self.assertEqual(languages["pt-br"]["name"], "Portuguese (Brazil)")
 
     def test_get_language_listing(self):
         util = self._makeOne()
         languages = util.getLanguageListing()
         self.assertTrue(len(languages) > 100)
-        self.assertIn((u"de", u"German"), languages)
+        self.assertIn(("de", "German"), languages)
 
 
 class TestContentLanguageAvailability(BaseTestCase, unittest.TestCase):
     def _makeOne(self):
-        from zope.component import queryUtility
         from plone.i18n.locales.interfaces import IContentLanguageAvailability
+        from zope.component import queryUtility
 
         return queryUtility(IContentLanguageAvailability)
 
@@ -94,16 +92,14 @@ class TestContentLanguageAvailability(BaseTestCase, unittest.TestCase):
         from plone.i18n.locales.languages import ContentLanguageAvailability
 
         self.assertTrue(
-            self._verify(
-                IContentLanguageAvailability, ContentLanguageAvailability
-            )
+            self._verify(IContentLanguageAvailability, ContentLanguageAvailability)
         )
 
 
 class TestMetadataLanguageAvailability(BaseTestCase, unittest.TestCase):
     def _makeOne(self):
-        from zope.component import queryUtility
         from plone.i18n.locales.interfaces import IMetadataLanguageAvailability
+        from zope.component import queryUtility
 
         return queryUtility(IMetadataLanguageAvailability)
 
@@ -112,7 +108,5 @@ class TestMetadataLanguageAvailability(BaseTestCase, unittest.TestCase):
         from plone.i18n.locales.languages import MetadataLanguageAvailability
 
         self.assertTrue(
-            self._verify(
-                IMetadataLanguageAvailability, MetadataLanguageAvailability
-            )
+            self._verify(IMetadataLanguageAvailability, MetadataLanguageAvailability)
         )

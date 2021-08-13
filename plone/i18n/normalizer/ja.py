@@ -1,8 +1,6 @@
-# -*- coding: UTF-8 -*-
 from plone.i18n.normalizer.base import allowed
 from plone.i18n.normalizer.interfaces import INormalizer
 from zope.interface import implementer
-import six
 
 
 MAX_LENGTH = 6
@@ -31,14 +29,11 @@ def ja_normalize(text, max_length=MAX_LENGTH):
         exchanged = text
     else:
         exchanged = "".join(_gethashed(text, max_length))
-    if six.PY2:
-        return exchanged.encode('ascii')
-    else:
-        return exchanged
+    return exchanged
 
 
 @implementer(INormalizer)
-class Normalizer(object):
+class Normalizer:
     """
     This normalizer can normalize any unicode string and returns a version
     that only contains of ASCII characters.
