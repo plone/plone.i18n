@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from plone.i18n.normalizer.base import baseNormalize
 from plone.i18n.normalizer.interfaces import IFileNameNormalizer
 from plone.i18n.normalizer.interfaces import IIDNormalizer
@@ -42,7 +41,7 @@ def cropName(base, maxLength=MAX_LENGTH):
 
 
 @implementer(IIDNormalizer)
-class IDNormalizer(object):
+class IDNormalizer:
     """
     This normalizer can normalize any unicode string and returns a
     version that only contains of ASCII characters allowed in a typical
@@ -89,7 +88,7 @@ class IDNormalizer(object):
 
 
 @implementer(IFileNameNormalizer)
-class FileNameNormalizer(object):
+class FileNameNormalizer:
     """
     This normalizer can normalize any unicode string and returns a version
     that only contains of ASCII characters allowed in a file name.
@@ -150,7 +149,7 @@ class FileNameNormalizer(object):
 
 
 @implementer(IURLNormalizer)
-class URLNormalizer(object):
+class URLNormalizer:
     """
     This normalizer can normalize any unicode string and returns a URL-safe
     version that only contains of ASCII characters allowed in a URL.

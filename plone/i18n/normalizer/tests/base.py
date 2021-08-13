@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from zope.configuration.xmlconfig import XMLConfig
 
 

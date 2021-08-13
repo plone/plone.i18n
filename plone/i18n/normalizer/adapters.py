@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from plone.i18n.normalizer.interfaces import IFileNameNormalizer
 from plone.i18n.normalizer.interfaces import IURLNormalizer
 from plone.i18n.normalizer.interfaces import IUserPreferredFileNameNormalizer
@@ -9,7 +8,7 @@ from zope.interface import implementer
 
 
 @implementer(IUserPreferredFileNameNormalizer)
-class UserPreferredFileNameNormalizer(object):
+class UserPreferredFileNameNormalizer:
     """
     An adapter for the HTTPRequest to provide user preferred language
     dependent normalization.
@@ -38,7 +37,7 @@ class UserPreferredFileNameNormalizer(object):
 
 
 @implementer(IUserPreferredURLNormalizer)
-class UserPreferredURLNormalizer(object):
+class UserPreferredURLNormalizer:
     """
     An adapter for the HTTPRequest to provide user preferred language
     dependent normalization.

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from AccessControl import ClassSecurityInfo
 from AccessControl import getSecurityManager
 from operator import itemgetter
@@ -21,7 +20,7 @@ from zope.globalrequest import getRequest
 from zope.interface import implementer
 
 
-class LanguageBinding(object):
+class LanguageBinding:
     """Helper which holding language infos in request."""
 
     security = ClassSecurityInfo()
@@ -72,7 +71,7 @@ def onRequest(object, event):
 
 
 @implementer(ILanguageUtility)
-class LanguageUtility(object):
+class LanguageUtility:
 
     # resources that must not use language specific URLs
     exclude_paths = frozenset(
@@ -109,7 +108,7 @@ class LanguageUtility(object):
         available = self.getAvailableLanguages()
         for i in self.supported_langs:
             if available.get(i):
-                r.append((i, available[i][u"name"]))
+                r.append((i, available[i]["name"]))
         return r
 
     def getAvailableLanguages(self):
@@ -140,13 +139,13 @@ class LanguageUtility(object):
         new_langs = []
         for lang in langs:
             # add language-code to dict
-            langs[lang][u"code"] = lang
+            langs[lang]["code"] = lang
             # flatten outer dict to list to make it sortable
             new_langs.append(langs[lang])
         new_langs.sort(
             lambda x, y: cmp(
-                x.get(u"native", x.get(u"name")),
-                y.get(u"native", y.get(u"name")),
+                x.get("native", x.get("name")),
+                y.get("native", y.get("name")),
             )
         )
         return new_langs
@@ -186,14 +185,14 @@ class LanguageUtility(object):
         """Returns the name for a language code."""
         info = self.getAvailableLanguageInformation().get(langCode, None)
         if info is not None:
-            return info.get(u"name", None)
+            return info.get("name", None)
         return None
 
     def getFlagForLanguageCode(self, langCode):
         """Returns the name of the flag for a language code."""
         info = self.getAvailableLanguageInformation().get(langCode, None)
         if info is not None:
-            return info.get(u"flag", None)
+            return info.get("flag", None)
         return None
 
     def addSupportedLanguage(self, langCode):
@@ -434,7 +433,7 @@ class LanguageUtility(object):
         )
 
 
-class PrefsForPTS(object):
+class PrefsForPTS:
     """A preference to hook into PTS."""
 
     def __init__(self, context):

@@ -1,5 +1,3 @@
-# -*- coding: UTF-8 -*-
-
 import unittest
 
 
@@ -31,22 +29,22 @@ class TestAvailableCountries(unittest.TestCase):
         util = self._makeOne()
         countrycodes = util.getAvailableCountries()
         self.assertTrue(len(countrycodes) > 200)
-        self.assertIn(u"de", countrycodes)
+        self.assertIn("de", countrycodes)
 
     def test_get_countries(self):
         util = self._makeOne()
         countries = util.getCountries()
         self.assertTrue(len(countries) > 200)
-        self.assert_(u"de" in countries)
-        de = countries[u"de"]
-        self.assertEqual(de[u"name"], u"Germany")
-        self.assertEqual(de[u"flag"], u"/++resource++country-flags/de.gif")
+        self.assert_("de" in countries)
+        de = countries["de"]
+        self.assertEqual(de["name"], "Germany")
+        self.assertEqual(de["flag"], "/++resource++country-flags/de.gif")
 
     def test_get_country_listing(self):
         util = self._makeOne()
         countries = util.getCountryListing()
         self.assertTrue(len(countries) > 200)
-        self.assertIn((u"de", u"Germany"), countries)
+        self.assertIn(("de", "Germany"), countries)
 
     def test_reservations(self):
         # our list has historically contained some reservations, which
@@ -54,5 +52,5 @@ class TestAvailableCountries(unittest.TestCase):
         # breaking content based on these
         from plone.i18n.locales.countries import _countrylist
 
-        self.assertIn(u"an", _countrylist)
-        self.assertIn(u"cs", _countrylist)
+        self.assertIn("an", _countrylist)
+        self.assertIn("cs", _countrylist)

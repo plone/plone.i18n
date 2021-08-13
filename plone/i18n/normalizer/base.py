@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from unidecode import unidecode
 
 import six
@@ -16,7 +15,7 @@ def mapUnicode(text, mapping=()):
     This method is used for replacement of special characters found in a
     mapping before baseNormalize is applied.
     """
-    res = u""
+    res = ""
     for ch in text:
         ordinal = ord(ch)
         if ordinal in mapping:
@@ -48,11 +47,11 @@ def baseNormalize(text):
       >>> baseNormalize(u"\u5317\u4EB0")
       'Bei Jing'
     """
-    if not isinstance(text, six.string_types):
+    if not isinstance(text, str):
         # This most surely ends up in something the user does not expect
         # to see. But at least it does not break.
         text = repr(text)
-    if six.PY2 and not isinstance(text, six.text_type):
+    if six.PY2 and not isinstance(text, str):
         text = text.decode("ascii", "replace")
     text = unidecode(text).strip()
     return "".join(filter(lambda c: c in allowed, text))

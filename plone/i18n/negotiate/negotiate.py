@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from plone.i18n.interfaces import ILanguageUtility
 from plone.i18n.interfaces import INegotiateLanguage
 from zope.component import getUtility
@@ -6,7 +5,7 @@ from zope.interface import implementer
 
 
 @implementer(INegotiateLanguage)
-class NegotiateLanguage(object):
+class NegotiateLanguage:
     """Perform default language negotiation"""
 
     def __init__(self, site, request):

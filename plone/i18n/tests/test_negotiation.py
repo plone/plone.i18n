@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from plone.app.testing import TEST_USER_NAME
@@ -13,7 +12,7 @@ from zope.component import getUtility
 
 class LanguageNegotiationTestCase(base.FunctionalTestCase):
     def afterSetUp(self):
-        self.basic_auth = "%s:%s" % (TEST_USER_NAME, TEST_USER_PASSWORD)
+        self.basic_auth = f"{TEST_USER_NAME}:{TEST_USER_PASSWORD}"
         self.portal_path = self.portal.absolute_url(1)
         self.tool = getToolByName(self.portal, "portal_languages")
         self.settings = getUtility(IRegistry).forInterface(
@@ -145,7 +144,7 @@ class TestContentLanguageNegotiation(LanguageNegotiationTestCase):
         adding = self.app.manage_addProduct["SiteAccess"]
         adding.manage_addVirtualHostMonster("VHM")
         vhmBasePath = (
-            "/VirtualHostBase/http/example.org:80/{0}/"
+            "/VirtualHostBase/http/example.org:80/{}/"
             "VirtualHostRoot/".format(self.portal.getId())
         )
         self.layer["portal"].invokeFactory("Folder", "sub")
@@ -163,7 +162,7 @@ class TestContentLanguageNegotiation(LanguageNegotiationTestCase):
         adding = self.app.manage_addProduct["SiteAccess"]
         adding.manage_addVirtualHostMonster("VHM")
         vhmBasePath = (
-            "/VirtualHostBase/http/example.org:80/{0}/VirtualHostRoot/"
+            "/VirtualHostBase/http/example.org:80/{}/VirtualHostRoot/"
             "_vh_one/_vh_two/".format(self.portal.getId())
         )
 
@@ -183,7 +182,7 @@ class TestContentLanguageNegotiation(LanguageNegotiationTestCase):
         adding.manage_addVirtualHostMonster("VHM")
 
         folder_path = "/".join(self.layer["portal"].getPhysicalPath())
-        vhmBasePath = "/VirtualHostBase/http/example.org:80{0}/VirtualHostRoot/".format(
+        vhmBasePath = "/VirtualHostBase/http/example.org:80{}/VirtualHostRoot/".format(
             folder_path
         )
         self.layer["portal"].invokeFactory("Folder", "sub")

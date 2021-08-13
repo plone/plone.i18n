@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from plone.i18n.interfaces import ILanguageUtility
 from Products.CMFCore.utils import registerToolInterface
 

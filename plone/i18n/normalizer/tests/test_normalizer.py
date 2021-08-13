@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from .base import setUp as configurationSetUp
 from .base import tearDown
 from doctest import DocTestSuite

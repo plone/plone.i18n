@@ -1,4 +1,3 @@
-# -*- coding: UTF-8 -*-
 from plone.i18n.normalizer.base import mapUnicode
 from plone.i18n.normalizer.interfaces import INormalizer
 from zope.interface import implementer
@@ -76,7 +75,7 @@ mapping = {
 
 
 @implementer(INormalizer)
-class Normalizer(object):
+class Normalizer:
     """
     This normalizer can normalize any unicode string and returns a version
     that only contains of ASCII characters.

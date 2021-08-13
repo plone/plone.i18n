@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from zope.i18n.interfaces import ILanguageAvailability as IBaseLanguageAvailability
 from zope.interface import Interface
 

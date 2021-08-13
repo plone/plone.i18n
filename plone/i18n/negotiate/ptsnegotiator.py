@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from zope.i18n.interfaces import IUserPreferredLanguages
 from zope.interface import implementer
 
@@ -76,7 +75,7 @@ def _false(*a, **kw):
     pass
 
 
-class BrowserAccept(object):
+class BrowserAccept:
 
     filters = {
         "content-type": (str_lower,),
@@ -152,7 +151,7 @@ class BrowserAccept(object):
         return [a[1] for a in accepts]
 
 
-class CookieAccept(object):
+class CookieAccept:
     filters = (str_lower, lang_normalize, str_strip)
 
     def __init__(self, request):
@@ -198,7 +197,7 @@ registerLangPrefsMethod({"klass": CookieAccept, "priority": 40}, "language")
 registerLangPrefsMethod({"klass": BrowserAccept, "priority": 10}, "content-type")
 
 
-class Negotiator(object):
+class Negotiator:
 
     tests = {"content-type": type_accepted, "language": lang_accepted}
 
@@ -235,7 +234,7 @@ def negotiate(langs, request):
 
 
 @implementer(IUserPreferredLanguages)
-class PTSLanguages(object):
+class PTSLanguages:
     """Languages adapter that chooses languages for the zope.i18n machinery.
 
     This used to be part of Products.Five.i18n.

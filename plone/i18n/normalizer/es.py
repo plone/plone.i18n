@@ -1,5 +1,3 @@
-# -*- coding: UTF-8 -*-
-
 from plone.i18n.normalizer.base import mapUnicode
 from plone.i18n.normalizer.interfaces import INormalizer
 from zope.interface import implementer
@@ -7,36 +5,36 @@ from zope.interface import implementer
 
 # Spanish character mapping
 mapping = {
-    192: u"A",
-    193: u"A",
-    200: u"E",
-    201: u"E",
-    204: u"I",
-    205: u"I",
-    210: u"O",
-    211: u"O",
-    217: u"U",
-    218: u"U",
-    220: u"U",
-    209: u"N",
-    199: u"C",
-    224: u"a",
-    225: u"a",
-    232: u"e",
-    233: u"e",
-    236: u"i",
-    237: u"i",
-    242: u"o",
-    243: u"o",
-    249: u"u",
-    250: u"u",
-    241: u"n",
-    231: u"c",
+    192: "A",
+    193: "A",
+    200: "E",
+    201: "E",
+    204: "I",
+    205: "I",
+    210: "O",
+    211: "O",
+    217: "U",
+    218: "U",
+    220: "U",
+    209: "N",
+    199: "C",
+    224: "a",
+    225: "a",
+    232: "e",
+    233: "e",
+    236: "i",
+    237: "i",
+    242: "o",
+    243: "o",
+    249: "u",
+    250: "u",
+    241: "n",
+    231: "c",
 }
 
 
 @implementer(INormalizer)
-class Normalizer(object):
+class Normalizer:
     """
     This normalizer can normalize any unicode string and returns a version
     that only contains of ASCII characters.
