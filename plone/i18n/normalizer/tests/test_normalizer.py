@@ -7,14 +7,7 @@ from plone.i18n.normalizer.interfaces import IURLNormalizer
 from zope.component import queryUtility
 
 import doctest
-import six
 import unittest
-
-
-def utf8unicode(value):
-    if six.PY2:
-        return unicode(value, "utf-8")
-    return value
 
 
 def testIDNormalizer():
@@ -23,10 +16,10 @@ def testIDNormalizer():
     >>> util
     <plone.i18n.normalizer.IDNormalizer object at ...>
 
-    >>> util.normalize(u'simpleandsafe')
+    >>> util.normalize('simpleandsafe')
     'simpleandsafe'
 
-    >>> util.normalize(u' Whitespace and capital Letters  ')
+    >>> util.normalize(' Whitespace and capital Letters  ')
     'whitespace-and-capital-letters'
 
     >>> util.normalize(u">here's another!")
@@ -35,7 +28,7 @@ def testIDNormalizer():
     >>> util.normalize(u">>>here'!--s yet another!!!")
     'here-s-yet-another'
 
-    >>> util.normalize(utf8unicode("umläut.doc"))
+    >>> util.normalize("umläut.doc")
     'umlaut-doc'
 
     >>> from plone.i18n.normalizer import MAX_LENGTH
@@ -83,22 +76,22 @@ def testLocaleAwareIDNormalizer():
       >>> sm = getSiteManager()
       >>> sm.registerUtility(de_util, IIDNormalizer, name='de')
 
-      >>> util.normalize(u'simpleandsafe', locale='de')
+      >>> util.normalize('simpleandsafe', locale='de')
       'simpleandsafe'
 
-      >>> util.normalize(utf8unicode('text with umläut'), locale='de')
+      >>> util.normalize('text with umläut', locale='de')
       'text-with-umlaeut'
 
     Make sure we get the de normalizer as there's no special one for de-DE
     registered.
 
-      >>> util.normalize(utf8unicode('text with umläut'), locale='de-DE')
+      >>> util.normalize('text with umläut', locale='de-DE')
       'text-with-umlaeut'
 
-      >>> util.normalize(u'simpleandsafe', locale='pt-BR')
+      >>> util.normalize('simpleandsafe', locale='pt-BR')
       'simpleandsafe'
 
-      >>> util.normalize(u'simpleandsafe', locale='sr@Latn')
+      >>> util.normalize('simpleandsafe', locale='sr@Latn')
       'simpleandsafe'
 
       >>> util.normalize(u"short-hello-version", locale='de-DE', max_length=10)
@@ -110,7 +103,7 @@ def testLocaleAwareIDNormalizer():
     Make sure we also handle POSIX-format locale identifiers,
     for backwards-compatibility with an earlier version of plone.i18n.
 
-      >>> util.normalize(utf8unicode('text with umläut'), locale='de_DE')
+      >>> util.normalize('text with umläut', locale='de_DE')
       'text-with-umlaeut'
 
     """
@@ -122,10 +115,10 @@ def testFileNameNormalizer():
     >>> util
     <plone.i18n.normalizer.FileNameNormalizer object at ...>
 
-    >>> util.normalize(u'simpleandsafe')
+    >>> util.normalize('simpleandsafe')
     'simpleandsafe'
 
-    >>> util.normalize(u' Whitespace and capital Letters  ')
+    >>> util.normalize(' Whitespace and capital Letters  ')
     'Whitespace and capital Letters'
 
     >>> util.normalize(u">here's another!")
@@ -140,10 +133,10 @@ def testFileNameNormalizer():
     >>> util.normalize("pseudo_filename,pot,#1.doc")
     'pseudo_filename-pot-#1.doc'
 
-    >>> util.normalize(utf8unicode("umläut.doc"))
+    >>> util.normalize("umläut.doc")
     'umlaut.doc'
 
-    >>> len(util.normalize(u'aa' * 2000))
+    >>> len(util.normalize('aa' * 2000))
     1023
 
     >>> util.normalize(u"rest `n` peace")
@@ -166,22 +159,22 @@ def testLocaleAwareFileNameNormalizer():
       >>> util
       <plone.i18n.normalizer.FileNameNormalizer object at ...>
 
-      >>> util.normalize(u'simpleandsafe', locale='de')
+      >>> util.normalize('simpleandsafe', locale='de')
       'simpleandsafe'
 
-      >>> util.normalize(utf8unicode('text with umläut'), locale='de')
+      >>> util.normalize('text with umläut', locale='de')
       'text with umlaeut'
 
     Make sure we get the de normalizer as there's no special one for de-DE
     registered.
 
-      >>> util.normalize(utf8unicode('text with umläut'), locale='de-DE')
+      >>> util.normalize('text with umläut', locale='de-DE')
       'text with umlaeut'
 
-      >>> util.normalize(u'simpleandsafe', locale='pt-BR')
+      >>> util.normalize('simpleandsafe', locale='pt-BR')
       'simpleandsafe'
 
-      >>> util.normalize(u'simpleandsafe', locale='sr@Latn')
+      >>> util.normalize('simpleandsafe', locale='sr@Latn')
       'simpleandsafe'
 
       >>> util.normalize(u"short-hello-version", locale='de-DE', max_length=10)
@@ -193,7 +186,7 @@ def testLocaleAwareFileNameNormalizer():
     Make sure we also handle POSIX-format locale identifiers,
     for backwards-compatibility with an earlier version of plone.i18n.
 
-      >>> util.normalize(utf8unicode('text with umläut'), locale='de_DE')
+      >>> util.normalize('text with umläut', locale='de_DE')
       'text with umlaeut'
 
     """
@@ -205,10 +198,10 @@ def testURLNormalizer():
     >>> util
     <plone.i18n.normalizer.URLNormalizer object at ...>
 
-    >>> util.normalize(u'simpleandsafe')
+    >>> util.normalize('simpleandsafe')
     'simpleandsafe'
 
-    >>> util.normalize(u' Whitespace and capital Letters  ')
+    >>> util.normalize(' Whitespace and capital Letters  ')
     'whitespace-and-capital-letters'
 
     >>> util.normalize(u">here's another!")
@@ -220,7 +213,7 @@ def testURLNormalizer():
     >>> util.normalize(u"Doe, Joe")
     'doe-joe'
 
-    >>> util.normalize(utf8unicode("umläut.doc"))
+    >>> util.normalize("umläut.doc")
     'umlaut.doc'
 
     >>> util.normalize('quote "this"!')
@@ -238,7 +231,7 @@ def testURLNormalizer():
     >>> util.normalize(u"rest `n` peace")
     'rest-n-peace'
 
-    >>> len(util.normalize(u'aa' * 2000))
+    >>> len(util.normalize('aa' * 2000))
     255
 
     >>> util.normalize(u"short-hello-version", max_length=10)
@@ -246,7 +239,7 @@ def testURLNormalizer():
 
     Leading underscores are forbidden by zope, so this
     normalizer should strip it
-    >>> util.normalize(u'_awesome.txt')
+    >>> util.normalize('_awesome.txt')
     'awesome.txt'
     """
 
@@ -257,22 +250,22 @@ def testLocaleAwareURLNormalizer():
       >>> util
       <plone.i18n.normalizer.URLNormalizer object at ...>
 
-      >>> util.normalize(u'simpleandsafe', locale='de')
+      >>> util.normalize('simpleandsafe', locale='de')
       'simpleandsafe'
 
-      >>> util.normalize(utf8unicode('text with umläut'), locale='de')
+      >>> util.normalize('text with umläut', locale='de')
       'text-with-umlaeut'
 
     Make sure we get the de normalizer as there's no special one for de-DE
     registered.
 
-      >>> util.normalize(utf8unicode('text with umläut'), locale='de-DE')
+      >>> util.normalize('text with umläut', locale='de-DE')
       'text-with-umlaeut'
 
-      >>> util.normalize(u'simpleandsafe', locale='pt-BR')
+      >>> util.normalize('simpleandsafe', locale='pt-BR')
       'simpleandsafe'
 
-      >>> util.normalize(u'simpleandsafe', locale='sr@Latn')
+      >>> util.normalize('simpleandsafe', locale='sr@Latn')
       'simpleandsafe'
 
       >>> util.normalize(u"short-hello-version", locale='de-DE', max_length=10)
@@ -281,7 +274,7 @@ def testLocaleAwareURLNormalizer():
     Make sure we also handle POSIX-format locale identifiers,
     for backwards-compatibility with an earlier version of plone.i18n.
 
-      >>> util.normalize(utf8unicode('text with umläut'), locale='de_DE')
+      >>> util.normalize('text with umläut', locale='de_DE')
       'text-with-umlaeut'
 
     """

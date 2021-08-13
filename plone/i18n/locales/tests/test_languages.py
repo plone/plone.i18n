@@ -7,7 +7,7 @@ class TestInterfaces(unittest.TestCase):
         from plone.i18n.locales.languages import LanguageAvailability
         from zope.interface.verify import verifyClass
 
-        self.assert_(verifyClass(ILanguageAvailability, LanguageAvailability))
+        self.assertTrue(verifyClass(ILanguageAvailability, LanguageAvailability))
 
 
 class TestDeprecatedLanguages(unittest.TestCase):

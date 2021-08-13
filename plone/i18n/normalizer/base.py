@@ -1,6 +1,5 @@
 from unidecode import unidecode
 
-import six
 import string
 
 
@@ -51,7 +50,5 @@ def baseNormalize(text):
         # This most surely ends up in something the user does not expect
         # to see. But at least it does not break.
         text = repr(text)
-    if six.PY2 and not isinstance(text, str):
-        text = text.decode("ascii", "replace")
     text = unidecode(text).strip()
     return "".join(filter(lambda c: c in allowed, text))

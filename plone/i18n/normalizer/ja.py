@@ -2,8 +2,6 @@ from plone.i18n.normalizer.base import allowed
 from plone.i18n.normalizer.interfaces import INormalizer
 from zope.interface import implementer
 
-import six
-
 
 MAX_LENGTH = 6
 

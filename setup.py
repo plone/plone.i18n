@@ -37,7 +37,6 @@ setup(
         "Products.CMFCore",
         "plone.supermodel",
         "setuptools",
-        "six",
         "Unidecode>=1.0.22",
         "ZODB",
         "zope.component",

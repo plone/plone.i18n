@@ -35,7 +35,7 @@ class TestAvailableCountries(unittest.TestCase):
         util = self._makeOne()
         countries = util.getCountries()
         self.assertTrue(len(countries) > 200)
-        self.assert_("de" in countries)
+        self.assertIn("de", countries)
         de = countries["de"]
         self.assertEqual(de["name"], "Germany")
         self.assertEqual(de["flag"], "/++resource++country-flags/de.gif")

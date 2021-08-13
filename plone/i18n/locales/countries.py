@@ -1,8 +1,6 @@
 from plone.i18n.locales.interfaces import ICountryAvailability
 from zope.interface import implementer
 
-import six
-
 
 @implementer(ICountryAvailability)
 class CountryAvailability:

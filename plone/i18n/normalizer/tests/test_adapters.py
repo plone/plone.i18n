@@ -43,7 +43,6 @@ class TestFileNameNormalizer(BaseTestCase, unittest.TestCase):
     def test_english(self):
         norm = self._makeOne("en")
         self.assertEqual(norm.normalize("simpleandsafe"), "simpleandsafe")
-
         self.assertEqual(norm.normalize("text with umläut"), "text with umlaut")
 
     def test_spanish(self):

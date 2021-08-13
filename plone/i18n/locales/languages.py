@@ -3,8 +3,6 @@ from plone.i18n.locales.interfaces import ILanguageAvailability
 from plone.i18n.locales.interfaces import IMetadataLanguageAvailability
 from zope.interface import implementer
 
-import six
-
 
 @implementer(ILanguageAvailability)
 class LanguageAvailability:
