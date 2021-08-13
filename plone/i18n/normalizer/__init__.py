@@ -18,7 +18,7 @@ URL_DANGEROUS_CHARS_REGEX = re.compile(r"[!#$%&()*+,/:;<=>?@\\^{|}\[\]~`]+")
 MULTIPLE_DASHES_REGEX = re.compile(r"\-+")
 EXTRA_DASHES_REGEX = re.compile(r"(^\-+)|(\-+$)")
 UNDERSCORE_START_REGEX = re.compile(r"(^_+)(.*)$")
-LOCALE_SPLIT_REGEX = re.compile(r'[_-]')
+LOCALE_SPLIT_REGEX = re.compile(r"[_-]")
 # Define static constraints
 MAX_LENGTH = 50
 MAX_FILENAME_LENGTH = 1023
@@ -30,7 +30,7 @@ def cropName(base, maxLength=MAX_LENGTH):
 
     index = baseLength
     while index > maxLength:
-        index = base.rfind('-', 0, index)
+        index = base.rfind("-", 0, index)
 
     if index == -1 and baseLength > maxLength:
         base = base[:maxLength]
@@ -80,10 +80,10 @@ class IDNormalizer(object):
         # lowercase text
         text = text.lower()
 
-        text = IGNORE_REGEX.sub('', text)
-        text = NON_WORD_REGEX.sub('-', text)
-        text = MULTIPLE_DASHES_REGEX.sub('-', text)
-        text = EXTRA_DASHES_REGEX.sub('', text)
+        text = IGNORE_REGEX.sub("", text)
+        text = NON_WORD_REGEX.sub("-", text)
+        text = MULTIPLE_DASHES_REGEX.sub("-", text)
+        text = EXTRA_DASHES_REGEX.sub("", text)
 
         return cropName(text, maxLength=max_length)
 
@@ -129,22 +129,22 @@ class FileNameNormalizer(object):
             text = m.groups()[1]
 
         base = text
-        ext = ''
+        ext = ""
 
         m = FILENAME_REGEX.match(text)
         if m is not None:
             base = m.groups()[0]
             ext = m.groups()[1]
 
-        base = IGNORE_REGEX.sub('', base)
-        base = DANGEROUS_CHARS_REGEX.sub('-', base)
-        base = EXTRA_DASHES_REGEX.sub('', base)
-        base = MULTIPLE_DASHES_REGEX.sub('-', base)
+        base = IGNORE_REGEX.sub("", base)
+        base = DANGEROUS_CHARS_REGEX.sub("-", base)
+        base = EXTRA_DASHES_REGEX.sub("", base)
+        base = MULTIPLE_DASHES_REGEX.sub("-", base)
 
         base = cropName(base, maxLength=max_length)
 
-        if ext != '':
-            base = base + '.' + ext
+        if ext != "":
+            base = base + "." + ext
 
         return base
 
@@ -190,23 +190,23 @@ class URLNormalizer(object):
 
         # lowercase text
         base = text.lower()
-        ext = ''
+        ext = ""
 
         m = FILENAME_REGEX.match(base)
         if m is not None:
             base = m.groups()[0]
             ext = m.groups()[1]
 
-        base = IGNORE_REGEX.sub('', base)
-        base = NON_WORD_REGEX.sub('-', base)
-        base = URL_DANGEROUS_CHARS_REGEX.sub('-', base)
-        base = EXTRA_DASHES_REGEX.sub('', base)
-        base = MULTIPLE_DASHES_REGEX.sub('-', base)
+        base = IGNORE_REGEX.sub("", base)
+        base = NON_WORD_REGEX.sub("-", base)
+        base = URL_DANGEROUS_CHARS_REGEX.sub("-", base)
+        base = EXTRA_DASHES_REGEX.sub("", base)
+        base = MULTIPLE_DASHES_REGEX.sub("-", base)
 
         base = cropName(base, maxLength=max_length)
 
-        if ext != '':
-            base = base + '.' + ext
+        if ext != "":
+            base = base + "." + ext
 
         return base
 

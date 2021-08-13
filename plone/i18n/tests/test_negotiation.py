@@ -138,9 +138,7 @@ class TestContentLanguageNegotiation(LanguageNegotiationTestCase):
         ILanguage(doc).set_language("nl")
         self.assertEqual(doc.Language(), "nl")
         docpath = "/".join(doc.getPhysicalPath())
-        response = self.publish(
-            docpath, self.basic_auth, env={"PATH_INFO": docpath}
-        )
+        response = self.publish(docpath, self.basic_auth, env={"PATH_INFO": docpath})
         self.checkLanguage(response, "nl")
 
     def testContentObjectVHMPortal(self):
@@ -196,7 +194,7 @@ class TestContentLanguageNegotiation(LanguageNegotiationTestCase):
         doc.setLanguage("nl")
         self.assertEqual(doc.Language(), "nl")
         docpath = "/".join(doc.getPhysicalPath())
-        docpath = docpath[len(folder_path) + 1:]
+        docpath = docpath[len(folder_path) + 1 :]
 
         response = self.publish(
             vhmBasePath + docpath, self.basic_auth, env={"diazo.off": "1"}

@@ -11,34 +11,32 @@ import operator
 _langPrefsRegistry = {}
 
 
-def getAcceptedHelper(self, request, kind='language'):
+def getAcceptedHelper(self, request, kind="language"):
     """this is patched on prefs classes which don't define the getAccepted
     classes but define the deprecated getPreferredLanguages method"""
     return self.getPreferredLanguages()
 
 
-def registerLangPrefsMethod(prefs, kind='language'):
+def registerLangPrefsMethod(prefs, kind="language"):
     # check for correct format of prefs
     if not isinstance(prefs, dict):
-        prefs = {'klass': prefs, 'priority': 0}
+        prefs = {"klass": prefs, "priority": 0}
     # add chain for kind
     if kind not in _langPrefsRegistry:
         _langPrefsRegistry[kind] = []
     # backwards compatibilty monkey patch
-    if not hasattr(prefs['klass'], 'getAccepted'):
-        prefs['klass'].getAccepted = getAcceptedHelper
+    if not hasattr(prefs["klass"], "getAccepted"):
+        prefs["klass"].getAccepted = getAcceptedHelper
     # add this pref helper
     _langPrefsRegistry[kind].append(prefs)
     # sort by priority
-    _langPrefsRegistry[kind].sort(
-        key=operator.itemgetter('priority'), reverse=True
-    )
+    _langPrefsRegistry[kind].sort(key=operator.itemgetter("priority"), reverse=True)
 
 
-def getLangPrefs(env, kind='language'):
+def getLangPrefs(env, kind="language"):
     """get higest prio method for kind"""
     for pref in _langPrefsRegistry[kind]:
-        handler = pref['klass'](env)
+        handler = pref["klass"](env)
         accepted = handler.getAccepted(env, kind)
         if accepted:
             return accepted
@@ -47,7 +45,7 @@ def getLangPrefs(env, kind='language'):
 
 def lang_normalize(lang):
     """filter"""
-    return lang.replace('_', '-')
+    return lang.replace("_", "-")
 
 
 def str_lower(aString):
@@ -62,11 +60,11 @@ def str_strip(aString):
 
 def type_accepted(available, preferred):
     # ex: preferred is text/* and available is text/html
-    av = available.split('/')
-    pr = preferred.split('/')
+    av = available.split("/")
+    pr = preferred.split("/")
     if len(av) < 2 or len(pr) < 2:
         return False
-    return pr[1] == '*' and pr[0] == av[0]
+    return pr[1] == "*" and pr[0] == av[0]
 
 
 def lang_accepted(available, preferred):
@@ -81,40 +79,40 @@ def _false(*a, **kw):
 class BrowserAccept(object):
 
     filters = {
-        'content-type': (str_lower,),
-        'language': (str_lower, lang_normalize, str_strip),
+        "content-type": (str_lower,),
+        "language": (str_lower, lang_normalize, str_strip),
     }
 
     def __init__(self, request):
         pass
 
-    def getAccepted(self, request, kind='content-type'):
-        custom_name = ('user_%s' % kind).lower()
-        if kind == 'content-type':
-            header_name = ('HTTP_ACCEPT').upper()
+    def getAccepted(self, request, kind="content-type"):
+        custom_name = ("user_%s" % kind).lower()
+        if kind == "content-type":
+            header_name = ("HTTP_ACCEPT").upper()
         else:
-            header_name = ('HTTP_ACCEPT_%s' % kind).upper()
+            header_name = ("HTTP_ACCEPT_%s" % kind).upper()
 
-        user_accepts = request.get(custom_name, '')
-        http_accepts = request.get(header_name, '')
+        user_accepts = request.get(custom_name, "")
+        http_accepts = request.get(header_name, "")
 
         if (
             user_accepts
             and http_accepts
-            and user_accepts == request.cookies.get('custom_name')
+            and user_accepts == request.cookies.get("custom_name")
         ):
-            user_accepts = [a.strip() for a in user_accepts.split(',')]
-            http_accepts = [a.strip() for a in http_accepts.split(',')]
+            user_accepts = [a.strip() for a in user_accepts.split(",")]
+            http_accepts = [a.strip() for a in http_accepts.split(",")]
             for l in user_accepts:
                 if l not in http_accepts:
                     req_accepts = user_accepts + http_accepts
                     break
                 else:
                     # user_accepts is a subset of http_accepts
-                    request.RESPONSE.expireCookie('custom_name', path='/')
+                    request.RESPONSE.expireCookie("custom_name", path="/")
                     req_accepts = http_accepts
         else:
-            req_accepts = (user_accepts + ',' + http_accepts).split(',')
+            req_accepts = (user_accepts + "," + http_accepts).split(",")
 
         accepts = []
         i = 0
@@ -129,14 +127,14 @@ class BrowserAccept(object):
             for normalizer in filters:
                 accept = normalizer(accept)
             if accept:
-                ll = accept.split(';', 2)
+                ll = accept.split(";", 2)
                 quality = []
 
                 if len(ll) == 2:
                     try:
                         q = l[1]
-                        if q.startswith('q='):
-                            q = q.split('=', 2)[1]
+                        if q.startswith("q="):
+                            q = q.split("=", 2)[1]
                             quality = float(q)
                     except Exception:
                         pass
@@ -160,10 +158,10 @@ class CookieAccept(object):
     def __init__(self, request):
         pass
 
-    def getAccepted(self, request, kind='language'):
-        if not hasattr(request, 'cookies'):
+    def getAccepted(self, request, kind="language"):
+        if not hasattr(request, "cookies"):
             return ()
-        language = request.cookies.get('pts_language', None)
+        language = request.cookies.get("pts_language", None)
         if language:
             if isinstance(language, tuple):
                 return language
@@ -185,7 +183,7 @@ def setCookieLanguage(request, lang, REQUEST=None):
     if isinstance(lang, tuple):
         lang = lang[1]
     lang = str_lower(lang_normalize(lang))
-    request.RESPONSE.setCookie('pts_language', lang)
+    request.RESPONSE.setCookie("pts_language", lang)
     if REQUEST:
         REQUEST.RESPONSE.redirect(REQUEST.URL0)
     else:
@@ -195,18 +193,16 @@ def setCookieLanguage(request, lang, REQUEST=None):
 # higher number = higher priority
 # if a acceptor returns a false value (() or None) then the next acceptor
 # in the chain is queried
-registerLangPrefsMethod({'klass': BrowserAccept, 'priority': 10}, 'language')
-registerLangPrefsMethod({'klass': CookieAccept, 'priority': 40}, 'language')
-registerLangPrefsMethod(
-    {'klass': BrowserAccept, 'priority': 10}, 'content-type'
-)
+registerLangPrefsMethod({"klass": BrowserAccept, "priority": 10}, "language")
+registerLangPrefsMethod({"klass": CookieAccept, "priority": 40}, "language")
+registerLangPrefsMethod({"klass": BrowserAccept, "priority": 10}, "content-type")
 
 
 class Negotiator(object):
 
-    tests = {'content-type': type_accepted, 'language': lang_accepted}
+    tests = {"content-type": type_accepted, "language": lang_accepted}
 
-    def negotiate(self, choices, request, kind='content-type'):
+    def negotiate(self, choices, request, kind="content-type"):
         choices = tuple(choices)
         return self._negotiate(choices, request, kind)
 
@@ -225,17 +221,17 @@ class Negotiator(object):
 
     # backwards compatibility... should be deprecated
     def getLanguage(self, langs, request):
-        return self.negotiate(langs, request, 'language')
+        return self.negotiate(langs, request, "language")
 
     def getLanguages(self, request):
-        return getLangPrefs(request, 'language')
+        return getLangPrefs(request, "language")
 
 
 negotiator = Negotiator()
 
 
 def negotiate(langs, request):
-    return negotiator.negotiate(langs, request, 'language')
+    return negotiator.negotiate(langs, request, "language")
 
 
 @implementer(IUserPreferredLanguages)

@@ -5,7 +5,7 @@ from zope.interface import implementer
 
 
 # Polish character mapping
-mapping = {321: 'L', 322: 'l'}
+mapping = {321: "L", 322: "l"}
 
 
 @implementer(INormalizer)

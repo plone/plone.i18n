@@ -2,9 +2,9 @@
 from AccessControl import ClassSecurityInfo
 from AccessControl import getSecurityManager
 from operator import itemgetter
+from plone.i18n.interfaces import ILanguageSchema
 from plone.i18n.interfaces import ILanguageUtility
 from plone.i18n.interfaces import INegotiateLanguage
-from plone.i18n.interfaces import ILanguageSchema
 from plone.i18n.locales.interfaces import ICcTLDInformation
 from plone.i18n.locales.interfaces import IContentLanguageAvailability
 from plone.i18n.locales.interfaces import ICountryAvailability
@@ -65,8 +65,7 @@ def setLanguageBinding(request):
 
 
 def onRequest(object, event):
-    """Set Language headers in the request.
-    """
+    """Set Language headers in the request."""
     request = event.request
 
     return setLanguageBinding(request)
@@ -80,9 +79,7 @@ class LanguageUtility(object):
         ("portal_css", "portal_javascripts", "portal_kss", "portal_factory")
     )
 
-    exclude_exts = frozenset(
-        ("css", "js", "kss", "xml", "gif", "jpg", "png", "jpeg")
-    )
+    exclude_exts = frozenset(("css", "js", "kss", "xml", "gif", "jpg", "png", "jpeg"))
 
     @property
     def settings(self):
@@ -116,8 +113,7 @@ class LanguageUtility(object):
         return r
 
     def getAvailableLanguages(self):
-        """Returns the dictionary of available languages.
-        """
+        """Returns the dictionary of available languages."""
         util = queryUtility(IContentLanguageAvailability)
         if self.settings.use_combined_language_codes:
             languages = util.getLanguages(combined=True)
@@ -276,9 +272,7 @@ class LanguageUtility(object):
 
             # Now check if we need to exclude from using language specific path
             # See https://dev.plone.org/ticket/11263
-            if bool(
-                [1 for p in self.exclude_paths if p in contentpath]
-            ) or bool(
+            if bool([1 for p in self.exclude_paths if p in contentpath]) or bool(
                 [1 for p in self.exclude_exts if contentpath[0].endswith(p)]
             ):
                 return None
@@ -436,10 +430,7 @@ class LanguageUtility(object):
         """Returns True if the selector viewlet should be shown."""
         return self.settings.always_show_selector or (
             self.settings.use_cookie_negotiation
-            and not (
-                self.settings.authenticated_users_only
-                and self.isAnonymousUser()
-            )
+            and not (self.settings.authenticated_users_only and self.isAnonymousUser())
         )
 
 

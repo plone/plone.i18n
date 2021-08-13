@@ -26,9 +26,7 @@ class BaseTestCase(object):
 
 class TestFileNameNormalizer(BaseTestCase, unittest.TestCase):
     def _getTargetClass(self):
-        from plone.i18n.normalizer.adapters import (
-            UserPreferredFileNameNormalizer,
-        )
+        from plone.i18n.normalizer.adapters import UserPreferredFileNameNormalizer
 
         return UserPreferredFileNameNormalizer
 
@@ -36,25 +34,19 @@ class TestFileNameNormalizer(BaseTestCase, unittest.TestCase):
         norm = self._makeOne("de")
         self.assertEqual(norm.normalize(u"simpleandsafe"), u"simpleandsafe")
 
-        self.assertEqual(
-            norm.normalize(u"text with umläut"), u"text with umlaeut"
-        )
+        self.assertEqual(norm.normalize(u"text with umläut"), u"text with umlaeut")
 
     def test_german_country(self):
         norm = self._makeOne("de-DE")
         self.assertEqual(norm.normalize(u"simpleandsafe"), u"simpleandsafe")
 
-        self.assertEqual(
-            norm.normalize(u"text with umläut"), u"text with umlaeut"
-        )
+        self.assertEqual(norm.normalize(u"text with umläut"), u"text with umlaeut")
 
     def test_english(self):
         norm = self._makeOne("en")
         self.assertEqual(norm.normalize(u"simpleandsafe"), u"simpleandsafe")
 
-        self.assertEqual(
-            norm.normalize(u"text with umläut"), u"text with umlaut"
-        )
+        self.assertEqual(norm.normalize(u"text with umläut"), u"text with umlaut")
 
     def test_spanish(self):
         norm = self._makeOne("es")
@@ -72,25 +64,19 @@ class TestUrlNormalizer(BaseTestCase, unittest.TestCase):
         norm = self._makeOne("de")
         self.assertEqual(norm.normalize(u"simpleandsafe"), u"simpleandsafe")
 
-        self.assertEqual(
-            norm.normalize(u"text with umläut"), u"text-with-umlaeut"
-        )
+        self.assertEqual(norm.normalize(u"text with umläut"), u"text-with-umlaeut")
 
     def test_german_country(self):
         norm = self._makeOne("de-DE")
         self.assertEqual(norm.normalize(u"simpleandsafe"), u"simpleandsafe")
 
-        self.assertEqual(
-            norm.normalize(u"text with umläut"), u"text-with-umlaeut"
-        )
+        self.assertEqual(norm.normalize(u"text with umläut"), u"text-with-umlaeut")
 
     def test_english(self):
         norm = self._makeOne("en")
         self.assertEqual(norm.normalize(u"simpleandsafe"), u"simpleandsafe")
 
-        self.assertEqual(
-            norm.normalize(u"text with umläut"), u"text-with-umlaut"
-        )
+        self.assertEqual(norm.normalize(u"text with umläut"), u"text-with-umlaut")
 
     def test_spanish(self):
         norm = self._makeOne("es")

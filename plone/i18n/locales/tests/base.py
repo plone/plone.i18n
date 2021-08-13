@@ -8,15 +8,15 @@ def setUp():
     setUp()
     import zope.component
 
-    XMLConfig('meta.zcml', zope.component)()
+    XMLConfig("meta.zcml", zope.component)()
 
     import zope.browserresource
 
-    XMLConfig('meta.zcml', zope.browserresource)()
+    XMLConfig("meta.zcml", zope.browserresource)()
 
     import plone.i18n.locales
 
-    XMLConfig('configure.zcml', plone.i18n.locales)()
+    XMLConfig("configure.zcml", plone.i18n.locales)()
 
 
 def tearDown():

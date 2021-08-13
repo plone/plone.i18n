@@ -21,53 +21,53 @@ def utf8unicode(value):
 
 def testIDNormalizer():
     """
-      >>> util = queryUtility(IIDNormalizer)
-      >>> util
-      <plone.i18n.normalizer.IDNormalizer object at ...>
+    >>> util = queryUtility(IIDNormalizer)
+    >>> util
+    <plone.i18n.normalizer.IDNormalizer object at ...>
 
-      >>> util.normalize(u'simpleandsafe')
-      'simpleandsafe'
+    >>> util.normalize(u'simpleandsafe')
+    'simpleandsafe'
 
-      >>> util.normalize(u' Whitespace and capital Letters  ')
-      'whitespace-and-capital-letters'
+    >>> util.normalize(u' Whitespace and capital Letters  ')
+    'whitespace-and-capital-letters'
 
-      >>> util.normalize(u">here's another!")
-      'heres-another'
+    >>> util.normalize(u">here's another!")
+    'heres-another'
 
-      >>> util.normalize(u">>>here'!--s yet another!!!")
-      'here-s-yet-another'
+    >>> util.normalize(u">>>here'!--s yet another!!!")
+    'here-s-yet-another'
 
-      >>> util.normalize(utf8unicode("umläut.doc"))
-      'umlaut-doc'
+    >>> util.normalize(utf8unicode("umläut.doc"))
+    'umlaut-doc'
 
-      >>> from plone.i18n.normalizer import MAX_LENGTH
+    >>> from plone.i18n.normalizer import MAX_LENGTH
 
-      >>> testString = u"thissentenceiswaytolongtobecroppedwithoutcuttedbythenormalizemethodbecauseithasnoplacetocrop"
-      >>> util.normalize(testString)
-      'thissentenceiswaytolongtobecroppedwithoutcuttedbyt'
-      >>> len(util.normalize(testString)) == MAX_LENGTH
-      True
+    >>> testString = u"thissentenceiswaytolongtobecroppedwithoutcuttedbythenormalizemethodbecauseithasnoplacetocrop"
+    >>> util.normalize(testString)
+    'thissentenceiswaytolongtobecroppedwithoutcuttedbyt'
+    >>> len(util.normalize(testString)) == MAX_LENGTH
+    True
 
-      >>> testString = u"thissentenceisacropped-by-the-normalize-method-because-it-has-many-places-to-crop"
-      >>> util.normalize(testString)
-      'thissentenceisacropped-by-the-normalize-method'
-      >>> len(util.normalize(testString)) <= MAX_LENGTH
-      True
+    >>> testString = u"thissentenceisacropped-by-the-normalize-method-because-it-has-many-places-to-crop"
+    >>> util.normalize(testString)
+    'thissentenceisacropped-by-the-normalize-method'
+    >>> len(util.normalize(testString)) <= MAX_LENGTH
+    True
 
-      >>> testString = u"this-sentence-is-way-to-long-but-can-be-cropped-by-the-normalize-method-because-it-has-many-places-to-crop"
-      >>> util.normalize(testString)
-      'this-sentence-is-way-to-long-but-can-be-cropped-by'
-      >>> len(util.normalize(testString)) <= MAX_LENGTH
-      True
+    >>> testString = u"this-sentence-is-way-to-long-but-can-be-cropped-by-the-normalize-method-because-it-has-many-places-to-crop"
+    >>> util.normalize(testString)
+    'this-sentence-is-way-to-long-but-can-be-cropped-by'
+    >>> len(util.normalize(testString)) <= MAX_LENGTH
+    True
 
-      >>> util.normalize(u"rest `n` peace")
-      'rest-n-peace'
+    >>> util.normalize(u"rest `n` peace")
+    'rest-n-peace'
 
-      >>> util.normalize(u"short-hello-version", max_length=10)
-      'short'
+    >>> util.normalize(u"short-hello-version", max_length=10)
+    'short'
 
-      >>> util.normalize(u"short-hello-version", max_length=15)
-      'short-hello'
+    >>> util.normalize(u"short-hello-version", max_length=15)
+    'short-hello'
     """
 
 
@@ -120,45 +120,45 @@ def testLocaleAwareIDNormalizer():
 
 def testFileNameNormalizer():
     """
-      >>> util = queryUtility(IFileNameNormalizer)
-      >>> util
-      <plone.i18n.normalizer.FileNameNormalizer object at ...>
+    >>> util = queryUtility(IFileNameNormalizer)
+    >>> util
+    <plone.i18n.normalizer.FileNameNormalizer object at ...>
 
-      >>> util.normalize(u'simpleandsafe')
-      'simpleandsafe'
+    >>> util.normalize(u'simpleandsafe')
+    'simpleandsafe'
 
-      >>> util.normalize(u' Whitespace and capital Letters  ')
-      'Whitespace and capital Letters'
+    >>> util.normalize(u' Whitespace and capital Letters  ')
+    'Whitespace and capital Letters'
 
-      >>> util.normalize(u">here's another!")
-      'heres another'
+    >>> util.normalize(u">here's another!")
+    'heres another'
 
-      >>> util.normalize(u">>>here'!--s yet another!!!")
-      'here-s yet another'
+    >>> util.normalize(u">>>here'!--s yet another!!!")
+    'here-s yet another'
 
-      >>> util.normalize(u"{[(me too)]}")
-      'me too'
+    >>> util.normalize(u"{[(me too)]}")
+    'me too'
 
-      >>> util.normalize("pseudo_filename,pot,#1.doc")
-      'pseudo_filename-pot-#1.doc'
+    >>> util.normalize("pseudo_filename,pot,#1.doc")
+    'pseudo_filename-pot-#1.doc'
 
-      >>> util.normalize(utf8unicode("umläut.doc"))
-      'umlaut.doc'
+    >>> util.normalize(utf8unicode("umläut.doc"))
+    'umlaut.doc'
 
-      >>> len(util.normalize(u'aa' * 2000))
-      1023
+    >>> len(util.normalize(u'aa' * 2000))
+    1023
 
-      >>> util.normalize(u"rest `n` peace")
-      'rest -n- peace'
+    >>> util.normalize(u"rest `n` peace")
+    'rest -n- peace'
 
-      >>> util.normalize(u"short-hello-version", max_length=10)
-      'short'
+    >>> util.normalize(u"short-hello-version", max_length=10)
+    'short'
 
-      >>> util.normalize(u"_some_cameras_are_evil")
-      'some_cameras_are_evil'
+    >>> util.normalize(u"_some_cameras_are_evil")
+    'some_cameras_are_evil'
 
-      >>> util.normalize(u"____my_new_file")
-      'my_new_file'
+    >>> util.normalize(u"____my_new_file")
+    'my_new_file'
     """
 
 
@@ -203,53 +203,53 @@ def testLocaleAwareFileNameNormalizer():
 
 def testURLNormalizer():
     """
-      >>> util = queryUtility(IURLNormalizer)
-      >>> util
-      <plone.i18n.normalizer.URLNormalizer object at ...>
+    >>> util = queryUtility(IURLNormalizer)
+    >>> util
+    <plone.i18n.normalizer.URLNormalizer object at ...>
 
-      >>> util.normalize(u'simpleandsafe')
-      'simpleandsafe'
+    >>> util.normalize(u'simpleandsafe')
+    'simpleandsafe'
 
-      >>> util.normalize(u' Whitespace and capital Letters  ')
-      'whitespace-and-capital-letters'
+    >>> util.normalize(u' Whitespace and capital Letters  ')
+    'whitespace-and-capital-letters'
 
-      >>> util.normalize(u">here's another!")
-      'heres-another'
+    >>> util.normalize(u">here's another!")
+    'heres-another'
 
-      >>> util.normalize(u">>>here'!--s yet another!!!")
-      'here-s-yet-another'
+    >>> util.normalize(u">>>here'!--s yet another!!!")
+    'here-s-yet-another'
 
-      >>> util.normalize(u"Doe, Joe")
-      'doe-joe'
+    >>> util.normalize(u"Doe, Joe")
+    'doe-joe'
 
-      >>> util.normalize(utf8unicode("umläut.doc"))
-      'umlaut.doc'
+    >>> util.normalize(utf8unicode("umläut.doc"))
+    'umlaut.doc'
 
-      >>> util.normalize('quote "this"!')
-      'quote-this'
+    >>> util.normalize('quote "this"!')
+    'quote-this'
 
-      >>> util.normalize("quote 'this'!")
-      'quote-this'
+    >>> util.normalize("quote 'this'!")
+    'quote-this'
 
-      >>> util.normalize("I'm not a FILE.txt")
-      'im-not-a-file.txt'
+    >>> util.normalize("I'm not a FILE.txt")
+    'im-not-a-file.txt'
 
-      >>> util.normalize("I'm a big file.TXT")
-      'im-a-big-file.txt'
+    >>> util.normalize("I'm a big file.TXT")
+    'im-a-big-file.txt'
 
-      >>> util.normalize(u"rest `n` peace")
-      'rest-n-peace'
+    >>> util.normalize(u"rest `n` peace")
+    'rest-n-peace'
 
-      >>> len(util.normalize(u'aa' * 2000))
-      255
+    >>> len(util.normalize(u'aa' * 2000))
+    255
 
-      >>> util.normalize(u"short-hello-version", max_length=10)
-      'short'
+    >>> util.normalize(u"short-hello-version", max_length=10)
+    'short'
 
-      Leading underscores are forbidden by zope, so this
-      normalizer should strip it
-      >>> util.normalize(u'_awesome.txt')
-      'awesome.txt'
+    Leading underscores are forbidden by zope, so this
+    normalizer should strip it
+    >>> util.normalize(u'_awesome.txt')
+    'awesome.txt'
     """
 
 

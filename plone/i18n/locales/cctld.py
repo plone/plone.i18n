@@ -13,22 +13,18 @@ from zope.interface import implementer
 
 @implementer(ICcTLDInformation)
 class CcTLDInformation(object):
-    """A list of country code top level domains their relevant languages.
-    """
+    """A list of country code top level domains their relevant languages."""
 
     def getAvailableTLDs(self):
-        """Return a sequence of country code top level domains.
-        """
+        """Return a sequence of country code top level domains."""
         return list(_tld_to_language.keys())
 
     def getTLDs(self):
-        """Return a sequence of ccTLDs and their languages.
-        """
+        """Return a sequence of ccTLDs and their languages."""
         return _tld_to_language.copy()
 
     def getLanguagesForTLD(self, tld):
-        """Return the relevant languages for a top level domain.
-        """
+        """Return the relevant languages for a top level domain."""
         return _tld_to_language[tld]
 
 

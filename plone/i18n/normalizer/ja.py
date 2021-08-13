@@ -2,6 +2,7 @@
 from plone.i18n.normalizer.base import allowed
 from plone.i18n.normalizer.interfaces import INormalizer
 from zope.interface import implementer
+
 import six
 
 
@@ -32,7 +33,7 @@ def ja_normalize(text, max_length=MAX_LENGTH):
     else:
         exchanged = "".join(_gethashed(text, max_length))
     if six.PY2:
-        return exchanged.encode('ascii')
+        return exchanged.encode("ascii")
     else:
         return exchanged
 

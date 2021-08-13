@@ -33,11 +33,9 @@ class NegotiateLanguage(object):
 
         if useCookie and not (authOnly and tool.isAnonymousUser()):
             # If we are using the cookie stuff we provide the setter here
-            set_language = request.get('set_language', None)
+            set_language = request.get("set_language", None)
             if set_language:
-                langsCookie = tool.setLanguageCookie(
-                    set_language, request=request
-                )
+                langsCookie = tool.setLanguageCookie(set_language, request=request)
             else:
                 # Get from cookie
                 langsCookie = tool.getLanguageCookie(request)

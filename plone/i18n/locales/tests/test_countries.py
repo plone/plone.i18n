@@ -15,15 +15,15 @@ class TestAvailableCountries(unittest.TestCase):
         tearDown()
 
     def _makeOne(self):
-        from zope.component import queryUtility
         from plone.i18n.locales.interfaces import ICountryAvailability
+        from zope.component import queryUtility
 
         return queryUtility(ICountryAvailability)
 
     def test_interface(self):
-        from zope.interface.verify import verifyClass
-        from plone.i18n.locales.interfaces import ICountryAvailability
         from plone.i18n.locales.countries import CountryAvailability
+        from plone.i18n.locales.interfaces import ICountryAvailability
+        from zope.interface.verify import verifyClass
 
         self.assertTrue(verifyClass(ICountryAvailability, CountryAvailability))
 

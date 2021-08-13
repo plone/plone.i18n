@@ -21,9 +21,9 @@ class TestCCTLD(unittest.TestCase):
         return queryUtility(ICcTLDInformation)
 
     def test_interface(self):
-        from zope.interface.verify import verifyClass
-        from plone.i18n.locales.interfaces import ICcTLDInformation
         from plone.i18n.locales.cctld import CcTLDInformation
+        from plone.i18n.locales.interfaces import ICcTLDInformation
+        from zope.interface.verify import verifyClass
 
         self.assertTrue(verifyClass(ICcTLDInformation, CcTLDInformation))
 

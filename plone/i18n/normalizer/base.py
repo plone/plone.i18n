@@ -1,18 +1,14 @@
 # -*- coding: utf-8 -*-
 from unidecode import unidecode
+
 import six
 import string
 
 
 # On OpenBSD string.whitespace has a non-standard implementation
 # See http://dev.plone.org/plone/ticket/4704 for details
-whitespace = ''.join([c for c in string.whitespace if ord(c) < 128])
-allowed = (
-    string.ascii_letters +
-    string.digits +
-    string.punctuation +
-    whitespace
-)
+whitespace = "".join([c for c in string.whitespace if ord(c) < 128])
+allowed = string.ascii_letters + string.digits + string.punctuation + whitespace
 
 
 def mapUnicode(text, mapping=()):
@@ -20,7 +16,7 @@ def mapUnicode(text, mapping=()):
     This method is used for replacement of special characters found in a
     mapping before baseNormalize is applied.
     """
-    res = u''
+    res = u""
     for ch in text:
         ordinal = ord(ch)
         if ordinal in mapping:
@@ -36,8 +32,8 @@ def mapUnicode(text, mapping=()):
 def baseNormalize(text):
     """
     This method is used for normalization of unicode characters to the base
-    ASCII letters. 
-    Output is a native string with only ASCII letters, digits, punctuation 
+    ASCII letters.
+    Output is a native string with only ASCII letters, digits, punctuation
     and whitespace characters. Case is preserved.
 
       >>> baseNormalize(123)
@@ -57,6 +53,6 @@ def baseNormalize(text):
         # to see. But at least it does not break.
         text = repr(text)
     if six.PY2 and not isinstance(text, six.text_type):
-        text = text.decode('ascii', 'replace')
+        text = text.decode("ascii", "replace")
     text = unidecode(text).strip()
-    return ''.join(filter(lambda c: c in allowed, text))
+    return "".join(filter(lambda c: c in allowed, text))

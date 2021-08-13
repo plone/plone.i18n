@@ -5,9 +5,9 @@ import unittest
 
 class TestInterfaces(unittest.TestCase):
     def test_interface(self):
-        from zope.interface.verify import verifyClass
         from plone.i18n.locales.interfaces import ILanguageAvailability
         from plone.i18n.locales.languages import LanguageAvailability
+        from zope.interface.verify import verifyClass
 
         self.assert_(verifyClass(ILanguageAvailability, LanguageAvailability))
 
@@ -84,8 +84,8 @@ class BaseTestCase(object):
 
 class TestContentLanguageAvailability(BaseTestCase, unittest.TestCase):
     def _makeOne(self):
-        from zope.component import queryUtility
         from plone.i18n.locales.interfaces import IContentLanguageAvailability
+        from zope.component import queryUtility
 
         return queryUtility(IContentLanguageAvailability)
 
@@ -94,16 +94,14 @@ class TestContentLanguageAvailability(BaseTestCase, unittest.TestCase):
         from plone.i18n.locales.languages import ContentLanguageAvailability
 
         self.assertTrue(
-            self._verify(
-                IContentLanguageAvailability, ContentLanguageAvailability
-            )
+            self._verify(IContentLanguageAvailability, ContentLanguageAvailability)
         )
 
 
 class TestMetadataLanguageAvailability(BaseTestCase, unittest.TestCase):
     def _makeOne(self):
-        from zope.component import queryUtility
         from plone.i18n.locales.interfaces import IMetadataLanguageAvailability
+        from zope.component import queryUtility
 
         return queryUtility(IMetadataLanguageAvailability)
 
@@ -112,7 +110,5 @@ class TestMetadataLanguageAvailability(BaseTestCase, unittest.TestCase):
         from plone.i18n.locales.languages import MetadataLanguageAvailability
 
         self.assertTrue(
-            self._verify(
-                IMetadataLanguageAvailability, MetadataLanguageAvailability
-            )
+            self._verify(IMetadataLanguageAvailability, MetadataLanguageAvailability)
         )
