@@ -8,6 +8,24 @@ Changelog
 
 .. towncrier release notes start
 
+5.0.0a1 (2021-09-01)
+--------------------
+
+Breaking changes:
+
+
+- Drop support of Python 2 [jensens] (#31)
+
+
+New features:
+
+
+- Make it work with newwest Unidecode 1.2.0. 
+  Use its method instead of duplicating it in here.
+  Also support newer unicode chars, like with `Bei Jing` in the example.
+  [gogobd, jensens, alert] (#31)
+
+
 4.0.6 (2020-04-20)
 ------------------
 
