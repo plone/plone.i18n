@@ -3,6 +3,8 @@ from plone.i18n.locales.interfaces import ILanguageAvailability
 from plone.i18n.locales.interfaces import IMetadataLanguageAvailability
 from zope.interface import implementer
 
+import os
+
 
 @implementer(ILanguageAvailability)
 class LanguageAvailability:
@@ -460,6 +462,10 @@ _languagelist = {
         "flag": "/++resource++country-flags/al.gif",
     },
     "sr": {
+        # Note: we support two character sets for this language.
+        # See zope_i18n_allowed_languages below.
+        # TODO: in Plone 6.0 native should become 'Srpski',
+        # but that requires copying sr@Latn to sr in plone.app.locales.
         "native": "српски",
         "name": "Serbian",
         "flag": "/++resource++country-flags/cs.gif",
@@ -552,6 +558,23 @@ _languagelist = {
         "flag": "/++resource++country-flags/za.gif",
     },
 }
+
+# Character sets are a thing now.
+# See https://github.com/collective/plone.app.locales/issues/326
+# At the moment only for Serbian.
+_zope_i18n_allowed_languages = os.environ.get("zope_i18n_allowed_languages", "")
+if "sr@Latn" in _zope_i18n_allowed_languages:
+    _languagelist["sr"] = {
+        "native": "Srpski",
+        "name": "Serbian (Latin)",
+        "flag": "/++resource++country-flags/cs.gif",
+    }
+elif "sr@Cyrl" in _zope_i18n_allowed_languages:
+    _languagelist["sr"] = {
+        "native": "српски",
+        "name": "Serbian (Cyrillic)",
+        "flag": "/++resource++country-flags/cs.gif",
+    }
 
 # convert the utf-8 encoded values to unicode
 for code in _languagelist:
