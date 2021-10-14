@@ -4,6 +4,7 @@ from plone.i18n.locales.interfaces import ILanguageAvailability
 from plone.i18n.locales.interfaces import IMetadataLanguageAvailability
 from zope.interface import implementer
 
+import os
 import six
 
 
@@ -469,6 +470,8 @@ _languagelist = {
         u'flag': u'/++resource++country-flags/al.gif',
     },
     u'sr': {
+        # Note: we support two character sets for this language.
+        # See zope_i18n_allowed_languages below.
         u'native': 'српски',
         u'name': 'Serbian',
         u'flag': u'/++resource++country-flags/cs.gif',
@@ -561,6 +564,23 @@ _languagelist = {
         u'flag': u'/++resource++country-flags/za.gif',
     },
 }
+
+# Character sets are a thing now.
+# See https://github.com/collective/plone.app.locales/issues/326
+# At the moment only for Serbian.
+_zope_i18n_allowed_languages = os.environ.get("zope_i18n_allowed_languages", "")
+if 'sr@Latn' in _zope_i18n_allowed_languages:
+    _languagelist[u'sr'] = {
+        u'native': 'Srpski',
+        u'name': 'Serbian (Latin)',
+        u'flag': u'/++resource++country-flags/cs.gif',
+    }
+elif 'sr@Cyrl' in _zope_i18n_allowed_languages:
+    _languagelist[u'sr'] = {
+        u'native': 'српски',
+        u'name': 'Serbian (Cyrillic)',
+        u'flag': u'/++resource++country-flags/cs.gif',
+    }
 
 # convert the utf-8 encoded values to unicode
 for code in _languagelist:
