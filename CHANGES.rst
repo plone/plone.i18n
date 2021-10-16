@@ -8,6 +8,17 @@ Changelog
 
 .. towncrier release notes start
 
+4.0.7 (2021-10-16)
+------------------
+
+New features:
+
+
+- Support Cyrillic and Latin character sets for Serbian.
+  See `locales issue 326 <https://github.com/collective/plone.app.locales/issues/326>`_.
+  [maurits, fredvd] (#326)
+
+
 4.0.6 (2020-04-20)
 ------------------
 
