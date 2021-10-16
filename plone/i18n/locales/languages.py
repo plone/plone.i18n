@@ -464,9 +464,9 @@ _languagelist = {
     "sr": {
         # Note: we support two character sets for this language.
         # See zope_i18n_allowed_languages below.
-        # TODO: in Plone 6.0 native should become 'Srpski',
-        # but that requires copying sr@Latn to sr in plone.app.locales.
-        "native": "српски",
+        # Until and including 5.2, native was Cyrillic: српски.
+        # In Plone 6.0 native became Latin: Srpski.
+        "native": "Srpski",
         "name": "Serbian",
         "flag": "/++resource++country-flags/cs.gif",
     },
