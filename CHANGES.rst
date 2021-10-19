@@ -8,6 +8,18 @@ Changelog
 
 .. towncrier release notes start
 
+5.0.0a3 (2021-10-20)
+--------------------
+
+New features:
+
+
+- Let the sr language be Latin: Sprski.
+  If you want to use the Cyrillic character set variant,
+  set environment variable `zope_i18n_allowed_languages` to `sr@Cyrl`.
+  [maurits] (#326)
+
+
 5.0.0a2 (2021-10-16)
 --------------------
 
