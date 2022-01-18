@@ -34,6 +34,7 @@ class TestDefaultLanguageNegotiation(LanguageNegotiationTestCase):
             self.portal_path,
             self.basic_auth,
             env={"HTTP_ACCEPT_LANGUAGE": "pt"},
+            handle_errors=False
         )
         self.checkLanguage(response, "en")
 
@@ -55,6 +56,7 @@ class TestNoCombinedLanguageNegotiation(LanguageNegotiationTestCase):
             self.portal_path,
             self.basic_auth,
             env={"HTTP_ACCEPT_LANGUAGE": "pt"},
+            handle_errors=False
         )
         self.checkLanguage(response, "pt")
 
@@ -62,6 +64,7 @@ class TestNoCombinedLanguageNegotiation(LanguageNegotiationTestCase):
             self.portal_path,
             self.basic_auth,
             env={"HTTP_ACCEPT_LANGUAGE": "de"},
+            handle_errors=False
         )
         self.checkLanguage(response, "de")
 
@@ -70,6 +73,7 @@ class TestNoCombinedLanguageNegotiation(LanguageNegotiationTestCase):
             self.portal_path,
             self.basic_auth,
             env={"HTTP_ACCEPT_LANGUAGE": "pt-br"},
+            handle_errors=False
         )
         self.checkLanguage(response, "pt")
 
@@ -92,6 +96,7 @@ class TestCombinedLanguageNegotiation(LanguageNegotiationTestCase):
             self.portal_path,
             self.basic_auth,
             env={"HTTP_ACCEPT_LANGUAGE": "pt"},
+            handle_errors=False
         )
         self.checkLanguage(response, "pt")
 
@@ -99,6 +104,7 @@ class TestCombinedLanguageNegotiation(LanguageNegotiationTestCase):
             self.portal_path,
             self.basic_auth,
             env={"HTTP_ACCEPT_LANGUAGE": "de"},
+            handle_errors=False
         )
         self.checkLanguage(response, "de")
 
@@ -107,6 +113,7 @@ class TestCombinedLanguageNegotiation(LanguageNegotiationTestCase):
             self.portal_path,
             self.basic_auth,
             env={"HTTP_ACCEPT_LANGUAGE": "pt-br"},
+            handle_errors=False
         )
         self.checkLanguage(response, "pt-br")
 
@@ -115,6 +122,7 @@ class TestCombinedLanguageNegotiation(LanguageNegotiationTestCase):
             self.portal_path,
             self.basic_auth,
             env={"HTTP_ACCEPT_LANGUAGE": "de-de"},
+            handle_errors=False
         )
         self.checkLanguage(response, "de")
 
@@ -137,7 +145,12 @@ class TestContentLanguageNegotiation(LanguageNegotiationTestCase):
         ILanguage(doc).set_language("nl")
         self.assertEqual(doc.Language(), "nl")
         docpath = "/".join(doc.getPhysicalPath())
-        response = self.publish(docpath, self.basic_auth, env={"PATH_INFO": docpath})
+        response = self.publish(
+            docpath,
+            self.basic_auth,
+            env={"PATH_INFO": docpath},
+            handle_errors=False,
+        )
         self.checkLanguage(response, "nl")
 
     def testContentObjectVHMPortal(self):
@@ -155,7 +168,11 @@ class TestContentLanguageNegotiation(LanguageNegotiationTestCase):
         doc.setLanguage("nl")
         self.assertEqual(doc.Language(), "nl")
         docpath = "/".join(self.portal.portal_url.getRelativeContentPath(doc))
-        response = self.publish(vhmBasePath + docpath, self.basic_auth)
+        response = self.publish(
+            vhmBasePath + docpath,
+            self.basic_auth,
+            handle_errors=False
+        )
         self.checkLanguage(response, "nl")
 
     def testContentObjectVHMPortalVHSubpath(self):
@@ -174,7 +191,11 @@ class TestContentLanguageNegotiation(LanguageNegotiationTestCase):
         doc.setLanguage("nl")
         self.assertEqual(doc.Language(), "nl")
         docpath = "/".join(self.portal.portal_url.getRelativeContentPath(doc))
-        response = self.publish(vhmBasePath + docpath, self.basic_auth)
+        response = self.publish(
+            vhmBasePath + docpath,
+            self.basic_auth,
+            handle_errors=False,
+        )
         self.checkLanguage(response, "nl")
 
     def testContentObjectVHMFolder(self):
@@ -196,7 +217,10 @@ class TestContentLanguageNegotiation(LanguageNegotiationTestCase):
         docpath = docpath[len(folder_path) + 1 :]
 
         response = self.publish(
-            vhmBasePath + docpath, self.basic_auth, env={"diazo.off": "1"}
+            vhmBasePath + docpath,
+            self.basic_auth,
+            env={"diazo.off": "1"},
+            handle_errors=False,
         )
         self.checkLanguage(response, "nl")
 
@@ -212,26 +236,38 @@ class TestCcTLDLanguageNegotiation(LanguageNegotiationTestCase):
     def testSimpleHostname(self):
         # For a simple hostname without ccTLD the canonical language is used
         response = self.publish(
-            self.portal_path, self.basic_auth, env={"HTTP_HOST": "localhost"}
+            self.portal_path,
+            self.basic_auth,
+            env={"HTTP_HOST": "localhost"},
+            handle_errors=False,
         )
         self.checkLanguage(response, "en")
 
     def testIPAddress(self):
         response = self.publish(
-            self.portal_path, self.basic_auth, env={"HTTP_HOST": "127.0.0.1"}
+            self.portal_path,
+            self.basic_auth,
+            env={"HTTP_HOST": "127.0.0.1"},
+            handle_errors=False,
         )
         self.checkLanguage(response, "en")
 
     def testDutchDomain(self):
         response = self.publish(
-            self.portal_path, self.basic_auth, env={"HTTP_HOST": "plone.nl"}
+            self.portal_path,
+            self.basic_auth,
+            env={"HTTP_HOST": "plone.nl"},
+            handle_errors=False,
         )
         self.checkLanguage(response, "nl")
 
     def testAcceptedLanguages(self):
         # Brazil uses Portugese, which is not in the accepted languages list
         response = self.publish(
-            self.portal_path, self.basic_auth, env={"HTTP_HOST": "plone.br"}
+            self.portal_path,
+            self.basic_auth,
+            env={"HTTP_HOST": "plone.br"},
+            handle_errors=False,
         )
         self.checkLanguage(response, "en")
 
@@ -240,14 +276,20 @@ class TestCcTLDLanguageNegotiation(LanguageNegotiationTestCase):
         # uses both Dutch and French, with a preference for Dutch.
 
         response = self.publish(
-            self.portal_path, self.basic_auth, env={"HTTP_HOST": "plone.be"}
+            self.portal_path,
+            self.basic_auth,
+            env={"HTTP_HOST": "plone.be"},
+            handle_errors=False,
         )
         self.checkLanguage(response, "nl")
 
         # If we stop allowing Dutch we should now fall back to French
         self.settings.available_languages = ["en", "fr"]
         response = self.publish(
-            self.portal_path, self.basic_auth, env={"HTTP_HOST": "plone.be"}
+            self.portal_path,
+            self.basic_auth,
+            env={"HTTP_HOST": "plone.be"},
+            handle_errors=False,
         )
         self.checkLanguage(response, "fr")
 
@@ -262,13 +304,19 @@ class TestSubdomainLanguageNegotiation(LanguageNegotiationTestCase):
     def testSimpleHostname(self):
         # For a simple hostname without ccTLD the canonical language is used
         response = self.publish(
-            self.portal_path, self.basic_auth, env={"HTTP_HOST": "localhost"}
+            self.portal_path,
+            self.basic_auth,
+            env={"HTTP_HOST": "localhost"},
+            handle_errors=False,
         )
         self.checkLanguage(response, "en")
 
     def testIPAddress(self):
         response = self.publish(
-            self.portal_path, self.basic_auth, env={"HTTP_HOST": "127.0.0.1"}
+            self.portal_path,
+            self.basic_auth,
+            env={"HTTP_HOST": "127.0.0.1"},
+            handle_errors=False,
         )
         self.checkLanguage(response, "en")
 
@@ -277,6 +325,7 @@ class TestSubdomainLanguageNegotiation(LanguageNegotiationTestCase):
             self.portal_path,
             self.basic_auth,
             env={"HTTP_HOST": "nl.plone.org"},
+            handle_errors=False,
         )
         self.checkLanguage(response, "nl")
 
@@ -286,6 +335,7 @@ class TestSubdomainLanguageNegotiation(LanguageNegotiationTestCase):
             self.portal_path,
             self.basic_auth,
             env={"HTTP_HOST": "br.plone.org"},
+            handle_errors=False,
         )
         self.checkLanguage(response, "en")
 
@@ -297,6 +347,7 @@ class TestSubdomainLanguageNegotiation(LanguageNegotiationTestCase):
             self.portal_path,
             self.basic_auth,
             env={"HTTP_HOST": "be.plone.org"},
+            handle_errors=False,
         )
         self.checkLanguage(response, "nl")
 
@@ -306,5 +357,6 @@ class TestSubdomainLanguageNegotiation(LanguageNegotiationTestCase):
             self.portal_path,
             self.basic_auth,
             env={"HTTP_HOST": "be.plone.org"},
+            handle_errors=False,
         )
         self.checkLanguage(response, "fr")
