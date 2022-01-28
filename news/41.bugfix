@@ -1,0 +1,2 @@
+Tests: call self.publish with handle_errors=False.
+[maurits]
