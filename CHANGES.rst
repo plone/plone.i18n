@@ -8,6 +8,16 @@ Changelog
 
 .. towncrier release notes start
 
+5.0.0a4 (2022-01-28)
+--------------------
+
+Bug fixes:
+
+
+- Tests: call self.publish with handle_errors=False.
+  [maurits] (#41)
+
+
 5.0.0a3 (2021-10-20)
 --------------------
 
