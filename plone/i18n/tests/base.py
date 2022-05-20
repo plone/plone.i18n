@@ -1,9 +1,11 @@
-from plone.app import testing
 from plone.app.contenttypes.testing import PLONE_APP_CONTENTTYPES_FIXTURE
 from plone.app.testing import bbb
+from plone.app.testing import FunctionalTesting
 from plone.app.testing import PloneSandboxLayer
 from plone.testing import z2
 
+
+# XXX: testing with dependency indirection!
 
 class PloneI18nLayer(PloneSandboxLayer):
 
@@ -19,7 +21,7 @@ class PloneI18nLayer(PloneSandboxLayer):
 
 
 PLT_FIXTURE = PloneI18nLayer()
-PLT_FUNCTIONAL_TESTING = testing.FunctionalTesting(
+PLT_FUNCTIONAL_TESTING = FunctionalTesting(
     bases=(PLT_FIXTURE,), name="Plonei18nTestCase:Functional"
 )
 

@@ -1,20 +1,19 @@
+from .interfaces import ILanguageSchema
+from .interfaces import ILanguageUtility
+from .interfaces import INegotiateLanguage
+from .locales.interfaces import ICcTLDInformation
+from .locales.interfaces import IContentLanguageAvailability
+from .locales.interfaces import ICountryAvailability
+from .negotiate.ptsnegotiator import registerLangPrefsMethod
 from AccessControl import ClassSecurityInfo
 from AccessControl import getSecurityManager
 from operator import itemgetter
-from plone.i18n.interfaces import ILanguageSchema
-from plone.i18n.interfaces import ILanguageUtility
-from plone.i18n.interfaces import INegotiateLanguage
-from plone.i18n.locales.interfaces import ICcTLDInformation
-from plone.i18n.locales.interfaces import IContentLanguageAvailability
-from plone.i18n.locales.interfaces import ICountryAvailability
-from plone.i18n.negotiate.ptsnegotiator import registerLangPrefsMethod
 from plone.registry.interfaces import IRegistry
 from Products.CMFCore.interfaces import IDublinCore
 from Products.SiteAccess.VirtualHostMonster import VirtualHostMonster
 from ZODB.POSException import ConflictError
 from zope.component import getMultiAdapter
 from zope.component import getUtility
-from zope.component import queryUtility
 from zope.component.hooks import getSite
 from zope.globalrequest import getRequest
 from zope.interface import implementer
@@ -113,20 +112,18 @@ class LanguageUtility:
 
     def getAvailableLanguages(self):
         """Returns the dictionary of available languages."""
-        util = queryUtility(IContentLanguageAvailability)
+        util = getUtility(IContentLanguageAvailability)
         if self.settings.use_combined_language_codes:
-            languages = util.getLanguages(combined=True)
-        else:
-            languages = util.getLanguages()
-        return languages
+            return util.getLanguages(combined=True)
+        return util.getLanguages()
 
     def getCcTLDInformation(self):
-        util = queryUtility(ICcTLDInformation)
+        util = getUtility(ICcTLDInformation)
         return util.getTLDs()
 
     def listAvailableLanguages(self):
         """Returns sorted list of available languages (code, name)."""
-        util = queryUtility(IContentLanguageAvailability)
+        util = getUtility(IContentLanguageAvailability)
         if self.use_combined_language_codes:
             languages = util.getLanguageListing(combined=True)
         else:
@@ -152,7 +149,7 @@ class LanguageUtility:
 
     def getAvailableLanguageInformation(self):
         """Returns the dictionary of available languages."""
-        util = queryUtility(IContentLanguageAvailability)
+        util = getUtility(IContentLanguageAvailability)
         if self.use_combined_language_codes:
             languages = util.getLanguages(combined=True)
         else:
@@ -160,10 +157,7 @@ class LanguageUtility:
 
         for lang in languages:
             languages[lang]["code"] = lang
-            if lang in self.supported_langs:
-                languages[lang]["selected"] = True
-            else:
-                languages[lang]["selected"] = False
+            languages[lang]["selected"] = lang in self.supported_langs
         return languages
 
     def getDefaultLanguage(self):
@@ -177,16 +171,16 @@ class LanguageUtility:
             if len(self.settings.available_languages) > 0:
                 self.settings.default_language = self.settings.available_languages[
                     0
-                ]  # noqa
+                ]
             return
         self.settings.default_language = langCode
 
     def getNameForLanguageCode(self, langCode):
         """Returns the name for a language code."""
         info = self.getAvailableLanguageInformation().get(langCode, None)
-        if info is not None:
-            return info.get("name", None)
-        return None
+        if info is None:
+            return None
+        return info.get("name", None)
 
     def getFlagForLanguageCode(self, langCode):
         """Returns the name of the flag for a language code."""
@@ -238,8 +232,6 @@ class LanguageUtility:
         if lb[0]:
             if not self.settings.use_combined_language_codes:
                 return lb[0].split("-")[0]
-            else:
-                return lb[0]
             return lb[0]
         # this is the default language
         return lb[1]
@@ -298,8 +290,7 @@ class LanguageUtility:
                         continue
                     if lang in self.getSupportedLanguages():
                         return lang
-                    else:
-                        return None
+                    return None
         except ConflictError:
             raise
         except:
@@ -407,12 +398,12 @@ class LanguageUtility:
 
     def getAvailableCountries(self):
         """Returns the dictionary of available countries."""
-        util = queryUtility(ICountryAvailability)
+        util = getUtility(ICountryAvailability)
         return util.getCountries()
 
     def listAvailableCountries(self):
         """Returns the sorted list of available countries (code, name)."""
-        util = queryUtility(ICountryAvailability)
+        util = getUtility(ICountryAvailability)
         countries = util.getCountryListing()
         countries.sort(lambda x, y: cmp(x[1], y[1]))
         return countries

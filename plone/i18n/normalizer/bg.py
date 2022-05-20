@@ -1,5 +1,5 @@
-from plone.i18n.normalizer.base import mapUnicode
-from plone.i18n.normalizer.interfaces import INormalizer
+from .base import mapUnicode
+from .interfaces import INormalizer
 from zope.interface import implementer
 
 

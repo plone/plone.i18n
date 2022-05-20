@@ -5,7 +5,7 @@
 
     <include package=".locales" />
     <include package=".normalizer" />
-    
+
     <utility factory=".utility.LanguageUtility"/>
     <adapter for="* *" factory=".negotiate.negotiate.NegotiateLanguage"/>
 

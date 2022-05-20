@@ -1,4 +1,4 @@
-from plone.i18n.locales.interfaces import ICountryAvailability
+from .interfaces import ICountryAvailability
 from zope.interface import implementer
 
 

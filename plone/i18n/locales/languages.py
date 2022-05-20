@@ -1,6 +1,6 @@
-from plone.i18n.locales.interfaces import IContentLanguageAvailability
-from plone.i18n.locales.interfaces import ILanguageAvailability
-from plone.i18n.locales.interfaces import IMetadataLanguageAvailability
+from .interfaces import IContentLanguageAvailability
+from .interfaces import ILanguageAvailability
+from .interfaces import IMetadataLanguageAvailability
 from zope.interface import implementer
 
 import os
