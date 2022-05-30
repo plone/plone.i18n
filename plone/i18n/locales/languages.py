@@ -77,7 +77,7 @@ _languagelist = {
     "ar": {
         "native": "العربية",
         "name": "Arabic",
-        "flag": "/++resource++language-flags/ar",
+        "flag": "languageflag/ar",
     },
     "as": {"native": "অসমিয়া", "name": "Assamese"},
     "ay": {"native": "Aymara", "name": "Aymara"},
@@ -115,7 +115,7 @@ _languagelist = {
     "ca": {
         "native": "Català",
         "name": "Catalan",
-        "flag": "/++resource++language-flags/ca",
+        "flag": "languageflag/ca",
     },
     "ce": {"native": "нохчийн мотт", "name": "Chechen"},
     "ch": {"native": "Chamoru", "name": "Chamorro"},
@@ -131,7 +131,7 @@ _languagelist = {
     "cy": {
         "native": "Cymraeg",
         "name": "Welsh",
-        "flag": "/++resource++language-flags/cy",
+        "flag": "languageflag/cy",
     },
     "da": {
         "native": "Dansk",
@@ -159,7 +159,7 @@ _languagelist = {
     "eo": {
         "native": "Esperanto",
         "name": "Esperanto",
-        "flag": "/++resource++language-flags/eo",
+        "flag": "languageflag/eo",
     },
     "es": {
         "native": "Español",
@@ -174,7 +174,7 @@ _languagelist = {
     "eu": {
         "native": "Euskara",
         "name": "Basque",
-        "flag": "/++resource++language-flags/eu",
+        "flag": "languageflag/eu",
     },
     "fa": {"native": "فارسی", "name": "Persian"},
     "ff": {"native": "Fulfulde", "name": "Fula"},
