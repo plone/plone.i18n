@@ -1,6 +1,6 @@
-from plone.i18n.locales.interfaces import IContentLanguageAvailability
-from plone.i18n.locales.interfaces import ILanguageAvailability
-from plone.i18n.locales.interfaces import IMetadataLanguageAvailability
+from .interfaces import IContentLanguageAvailability
+from .interfaces import ILanguageAvailability
+from .interfaces import IMetadataLanguageAvailability
 from zope.interface import implementer
 
 import os
@@ -52,7 +52,7 @@ metadatalanguages = MetadataLanguageAvailability()
 # 'langcode-variation' : {
 #     u'native' : 'Native name',
 #     u'name' : 'English name',
-#     u'flag' : u'/++resource++country-flags/*.gif'
+#     u'flag' : u'countryflag/*.gif'
 # }
 #
 # This list follows ISO-639-1. The list retains entries for mo and sh,
@@ -62,12 +62,12 @@ _languagelist = {
     "aa": {
         "native": "магIарул мацI",
         "name": "Afar",
-        "flag": "/++resource++country-flags/dj.gif",
+        "flag": "countryflag/dj",
     },
     "ab": {
         "native": "бызшәа",
         "name": "Abkhazian",
-        "flag": "/++resource++country-flags/ge.gif",
+        "flag": "countryflag/ge",
     },
     "ae": {"native": "avesta", "name": "Avestan"},
     "af": {"native": "Afrikaans", "name": "Afrikaans"},
@@ -77,25 +77,25 @@ _languagelist = {
     "ar": {
         "native": "العربية",
         "name": "Arabic",
-        "flag": "/++resource++language-flags/ar.gif",
+        "flag": "languageflag/ar",
     },
     "as": {"native": "অসমিয়া", "name": "Assamese"},
     "ay": {"native": "Aymara", "name": "Aymara"},
     "az": {
         "native": "Azəri Türkçəsi",
         "name": "Azerbaijani",
-        "flag": "/++resource++country-flags/az.gif",
+        "flag": "countryflag/az",
     },
     "ba": {"native": "Bashkir", "name": "Bashkir"},
     "be": {
         "native": "Беларускі",
         "name": "Belarussian",
-        "flag": "/++resource++country-flags/by.gif",
+        "flag": "countryflag/by",
     },
     "bg": {
         "native": "Български",
         "name": "Bulgarian",
-        "flag": "/++resource++country-flags/bg.gif",
+        "flag": "countryflag/bg",
     },
     "bh": {"native": "Bihari", "name": "Bihari"},
     "bi": {"native": "Bislama", "name": "Bislama"},
@@ -103,19 +103,19 @@ _languagelist = {
     "bn": {
         "native": "বাংলা",
         "name": "Bengali",
-        "flag": "/++resource++country-flags/bd.gif",
+        "flag": "countryflag/bd",
     },
     "bo": {"native": "བོད་སྐད་", "name": "Tibetan"},
     "br": {"native": "brezhoneg", "name": "Breton"},
     "bs": {
         "native": "Bosanski",
         "name": "Bosnian",
-        "flag": "/++resource++country-flags/ba.gif",
+        "flag": "countryflag/ba",
     },
     "ca": {
         "native": "Català",
         "name": "Catalan",
-        "flag": "/++resource++language-flags/ca.gif",
+        "flag": "languageflag/ca",
     },
     "ce": {"native": "нохчийн мотт", "name": "Chechen"},
     "ch": {"native": "Chamoru", "name": "Chamorro"},
@@ -124,24 +124,24 @@ _languagelist = {
     "cs": {
         "native": "Čeština",
         "name": "Czech",
-        "flag": "/++resource++country-flags/cz.gif",
+        "flag": "countryflag/cz",
     },
     "cu": {"native": "ѩзыкъ словѣньскъ", "name": "Old Church Slavonic"},
     "cv": {"native": "чӑваш чӗлхи", "name": "Chuvash"},
     "cy": {
         "native": "Cymraeg",
         "name": "Welsh",
-        "flag": "/++resource++language-flags/cy.gif",
+        "flag": "languageflag/cy",
     },
     "da": {
         "native": "Dansk",
         "name": "Danish",
-        "flag": "/++resource++country-flags/dk.gif",
+        "flag": "countryflag/dk",
     },
     "de": {
         "native": "Deutsch",
         "name": "German",
-        "flag": "/++resource++country-flags/de.gif",
+        "flag": "countryflag/de",
     },
     "dv": {"native": "Divehi", "name": "Maldivian"},
     "dz": {"native": "Bhutani", "name": "Indian Bhutani"},
@@ -149,54 +149,54 @@ _languagelist = {
     "el": {
         "native": "Ελληνικά",
         "name": "Greek",
-        "flag": "/++resource++country-flags/gr.gif",
+        "flag": "countryflag/gr",
     },
     "en": {
         "native": "English",
         "name": "English",
-        "flag": "/++resource++country-flags/gb.gif",
+        "flag": "countryflag/gb",
     },
     "eo": {
         "native": "Esperanto",
         "name": "Esperanto",
-        "flag": "/++resource++language-flags/eo.gif",
+        "flag": "languageflag/eo",
     },
     "es": {
         "native": "Español",
         "name": "Spanish",
-        "flag": "/++resource++country-flags/es.gif",
+        "flag": "countryflag/es",
     },
     "et": {
         "native": "Eesti",
         "name": "Estonian",
-        "flag": "/++resource++country-flags/ee.gif",
+        "flag": "countryflag/ee",
     },
     "eu": {
         "native": "Euskara",
         "name": "Basque",
-        "flag": "/++resource++language-flags/eu.gif",
+        "flag": "languageflag/eu",
     },
     "fa": {"native": "فارسی", "name": "Persian"},
     "ff": {"native": "Fulfulde", "name": "Fula"},
     "fi": {
         "native": "Suomi",
         "name": "Finnish",
-        "flag": "/++resource++country-flags/fi.gif",
+        "flag": "countryflag/fi",
     },
     "fj": {
         "native": "Fiji",
         "name": "Fiji",
-        "flag": "/++resource++country-flags/fj.gif",
+        "flag": "countryflag/fj",
     },
     "fo": {
         "native": "Føroyska",
         "name": "Faroese",
-        "flag": "/++resource++country-flags/fo.gif",
+        "flag": "countryflag/fo",
     },
     "fr": {
         "native": "Français",
         "name": "French",
-        "flag": "/++resource++country-flags/fr.gif",
+        "flag": "countryflag/fr",
     },
     "fy": {"native": "Frysk", "name": "Frisian"},
     "ga": {"native": "Gaeilge", "name": "Irish Gaelic"},
@@ -209,36 +209,36 @@ _languagelist = {
     "he": {
         "native": "עברית",
         "name": "Hebrew",
-        "flag": "/++resource++country-flags/il.gif",
+        "flag": "countryflag/il",
     },
     "hi": {
         "native": "हिंदी",
         "name": "Hindi",
-        "flag": "/++resource++country-flags/in.gif",
+        "flag": "countryflag/in",
     },
     "ho": {"native": "Hiri Motu", "name": "Hiri Motu"},
     "hr": {
         "native": "Hrvatski",
         "name": "Croatian",
-        "flag": "/++resource++country-flags/hr.gif",
+        "flag": "countryflag/hr",
     },
     "ht": {"native": "Kreyòl ayisyen", "name": "Haitian"},
     "hu": {
         "native": "Magyar",
         "name": "Hungarian",
-        "flag": "/++resource++country-flags/hu.gif",
+        "flag": "countryflag/hu",
     },
     "hy": {
         "native": "Հայերէն",
         "name": "Armenian",
-        "flag": "/++resource++country-flags/am.gif",
+        "flag": "countryflag/am",
     },
     "hz": {"native": "Otjiherero", "name": "Herero"},
     "ia": {"native": "Interlingua", "name": "Interlingua"},
     "id": {
         "native": "Bahasa Indonesia",
         "name": "Indonesian",
-        "flag": "/++resource++country-flags/id.gif",
+        "flag": "countryflag/id",
     },
     "ie": {"native": "Interlingue", "name": "Interlingue"},
     "ig": {"native": "Asụsụ Igbo", "name": "Igbo"},
@@ -248,24 +248,24 @@ _languagelist = {
     "is": {
         "native": "Íslenska",
         "name": "Icelandic",
-        "flag": "/++resource++country-flags/is.gif",
+        "flag": "countryflag/is",
     },
     "it": {
         "native": "Italiano",
         "name": "Italian",
-        "flag": "/++resource++country-flags/it.gif",
+        "flag": "countryflag/it",
     },
     "iu": {"native": "ᐃᓄᒃᑎᑐᑦ", "name": "Inuktitut"},
     "ja": {
         "native": "日本語",
         "name": "Japanese",
-        "flag": "/++resource++country-flags/jp.gif",
+        "flag": "countryflag/jp",
     },
     "jv": {"native": "Javanese", "name": "basa Jawa"},
     "ka": {
         "native": "ქართული",
         "name": "Georgian",
-        "flag": "/++resource++country-flags/ge.gif",
+        "flag": "countryflag/ge",
     },
     "kg": {"native": "KiKongo", "name": "Kongo"},
     "ki": {"native": "Gĩkũyũ", "name": "Kikuyu"},
@@ -273,33 +273,33 @@ _languagelist = {
     "kk": {
         "native": "ﻗﺎﺯﺍﻗﺸﺎ",
         "name": "Kazakh",
-        "flag": "/++resource++country-flags/kz.gif",
+        "flag": "countryflag/kz",
     },
     "kl": {
         "native": "Greenlandic",
         "name": "Greenlandic",
-        "flag": "/++resource++country-flags/gl.gif",
+        "flag": "countryflag/gl",
     },
     "km": {
         "native": "ខ្មែរ",
         "name": "Cambodian/Khmer",
-        "flag": "/++resource++country-flags/kh.gif",
+        "flag": "countryflag/kh",
     },
     "kn": {
         "native": "ಕನ್ನಡ",
         "name": "Kannada",
-        "flag": "/++resource++country-flags/in.gif",
+        "flag": "countryflag/in",
     },
     "ko": {
         "native": "한국어",
         "name": "Korean",
-        "flag": "/++resource++country-flags/kr.gif",
+        "flag": "countryflag/kr",
     },
     "kr": {"native": "Kanuri", "name": "Kanuri"},
     "ks": {
         "native": "काऽशुर",
         "name": "Kashmiri",
-        "flag": "/++resource++country-flags/in.gif",
+        "flag": "countryflag/in",
     },
     "ku": {"native": "Kurdí", "name": "Kurdish"},
     "kv": {"native": "коми кыв", "name": "Komi"},
@@ -308,12 +308,12 @@ _languagelist = {
     "la": {
         "native": "Latin",
         "name": "Latin",
-        "flag": "/++resource++country-flags/va.gif",
+        "flag": "countryflag/va",
     },
     "lb": {
         "native": "Lëtzebuergesch",
         "name": "Luxemburgish",
-        "flag": "/++resource++country-flags/lu.gif",
+        "flag": "countryflag/lu",
     },
     "lg": {"native": "Luganda", "name": "Ganda"},
     "li": {"native": "Limburgs", "name": "Limburgish"},
@@ -321,54 +321,54 @@ _languagelist = {
     "lo": {
         "native": "ພາສາລາວ",
         "name": "Laotian",
-        "flag": "/++resource++country-flags/la.gif",
+        "flag": "countryflag/la",
     },
     "lt": {
         "native": "Lietuvių",
         "name": "Lithuanian",
-        "flag": "/++resource++country-flags/lt.gif",
+        "flag": "countryflag/lt",
     },
     "lu": {"native": "Tshiluba", "name": "Luba-Katanga"},
     "lv": {
         "native": "Latviešu",
         "name": "Latvian",
-        "flag": "/++resource++country-flags/lv.gif",
+        "flag": "countryflag/lv",
     },
     "mg": {
         "native": "Malagasy",
         "name": "Madagascarian",
-        "flag": "/++resource++country-flags/mg.gif",
+        "flag": "countryflag/mg",
     },
     "mh": {"native": "Kajin M̧ajeļ", "name": "Marshallese"},
     "mi": {"native": "Maori", "name": "Maori"},
     "mk": {
         "native": "Македонски",
         "name": "Macedonian",
-        "flag": "/++resource++country-flags/mk.gif",
+        "flag": "countryflag/mk",
     },
     "ml": {"native": "മലയാളം", "name": "Malayalam"},
     "mn": {
         "native": "Монгол",
         "name": "Mongolian",
-        "flag": "/++resource++country-flags/mn.gif",
+        "flag": "countryflag/mn",
     },
     "mo": {
         "native": "Moldavian",
         "name": "Moldavian",
-        "flag": "/++resource++country-flags/md.gif",
+        "flag": "countryflag/md",
     },
     "mr": {"native": "मराठी", "name": "Marathi"},
     "ms": {"native": "Bahasa Melayu", "name": "Malay"},
     "mt": {
         "native": "Malti",
         "name": "Maltese",
-        "flag": "/++resource++country-flags/mt.gif",
+        "flag": "countryflag/mt",
     },
     "my": {"native": "Burmese", "name": "Burmese"},
     "na": {
         "native": "Nauru",
         "name": "Nauruan",
-        "flag": "/++resource++country-flags/nr.gif",
+        "flag": "countryflag/nr",
     },
     "nb": {"native": "Norsk bokmål", "name": "Norwegian Bokmål"},
     "nd": {"native": "Ndebele (North)", "name": "Ndebele (North)"},
@@ -377,17 +377,17 @@ _languagelist = {
     "nl": {
         "native": "Nederlands",
         "name": "Dutch",
-        "flag": "/++resource++country-flags/nl.gif",
+        "flag": "countryflag/nl",
     },
     "nn": {
         "native": "Nynorsk",
         "name": "Nynorsk",
-        "flag": "/++resource++country-flags/no.gif",
+        "flag": "countryflag/no",
     },
     "no": {
         "native": "Norsk",
         "name": "Norwegian",
-        "flag": "/++resource++country-flags/no.gif",
+        "flag": "countryflag/no",
     },
     "nr": {"native": "IsiNdebele", "name": "Ndebele (South)"},
     "nv": {"native": "Diné bizaad", "name": "Navajo"},
@@ -402,13 +402,13 @@ _languagelist = {
     "pl": {
         "native": "Polski",
         "name": "Polish",
-        "flag": "/++resource++country-flags/pl.gif",
+        "flag": "countryflag/pl",
     },
     "ps": {"native": "پښتو", "name": "Pashto"},
     "pt": {
         "native": "Português",
         "name": "Portuguese",
-        "flag": "/++resource++country-flags/pt.gif",
+        "flag": "countryflag/pt",
     },
     "qu": {"native": "Quechua", "name": "Quechua"},
     "rm": {"native": "Rhaeto-Romance", "name": "Rhaeto-Romance"},
@@ -416,12 +416,12 @@ _languagelist = {
     "ro": {
         "native": "Română",
         "name": "Romanian",
-        "flag": "/++resource++country-flags/ro.gif",
+        "flag": "countryflag/ro",
     },
     "ru": {
         "native": "Русский",
         "name": "Russian",
-        "flag": "/++resource++country-flags/ru.gif",
+        "flag": "countryflag/ru",
     },
     "rw": {"native": "Kinyarwanda", "name": "Kinyarwanda"},
     "sa": {"native": "संस्कृत", "name": "Sanskrit"},
@@ -429,37 +429,37 @@ _languagelist = {
     "sd": {
         "native": "Sindhi",
         "name": "Sindhi",
-        "flag": "/++resource++country-flags/pk.gif",
+        "flag": "countryflag/pk",
     },
     "se": {"native": "Northern Sámi", "name": "Northern Sámi"},
     "sg": {
         "native": "Sangho",
         "name": "Sangho",
-        "flag": "/++resource++country-flags/cf.gif",
+        "flag": "countryflag/cf",
     },
     "sh": {"native": "Serbo-Croatian", "name": "Serbo-Croatian"},
     "si": {"native": "Singhalese", "name": "Singhalese"},
     "sk": {
         "native": "Slovenčina",
         "name": "Slovak",
-        "flag": "/++resource++country-flags/sk.gif",
+        "flag": "countryflag/sk",
     },
     "sl": {
         "native": "Slovenščina",
         "name": "Slovenian",
-        "flag": "/++resource++country-flags/si.gif",
+        "flag": "countryflag/si",
     },
     "sm": {"native": "Samoan", "name": "Samoan"},
     "sn": {"native": "Shona", "name": "Shona"},
     "so": {
         "native": "Somali",
         "name": "Somali",
-        "flag": "/++resource++country-flags/so.gif",
+        "flag": "countryflag/so",
     },
     "sq": {
         "native": "Shqip",
         "name": "Albanian",
-        "flag": "/++resource++country-flags/al.gif",
+        "flag": "countryflag/al",
     },
     "sr": {
         # Note: we support two character sets for this language.
@@ -468,19 +468,19 @@ _languagelist = {
         # In Plone 6.0 native became Latin: Srpski.
         "native": "Srpski",
         "name": "Serbian",
-        "flag": "/++resource++country-flags/cs.gif",
+        "flag": "countryflag/cs",
     },
     "ss": {"native": "SiSwati", "name": "Swati"},
     "st": {"native": "Sesotho", "name": "Southern Sotho"},
     "su": {
         "native": "Sudanese",
         "name": "Sudanese",
-        "flag": "/++resource++country-flags/sd.gif",
+        "flag": "countryflag/sd",
     },
     "sv": {
         "native": "Svenska",
         "name": "Swedish",
-        "flag": "/++resource++country-flags/se.gif",
+        "flag": "countryflag/se",
     },
     "sw": {"native": "Kiswahili", "name": "Swahili"},
     "ta": {"native": "தமிழ", "name": "Tamil"},
@@ -488,30 +488,30 @@ _languagelist = {
     "tg": {
         "native": "Тоҷики",
         "name": "Tadjik",
-        "flag": "/++resource++country-flags/tj.gif",
+        "flag": "countryflag/tj",
     },
     "th": {
         "native": "ไทย",
         "name": "Thai",
-        "flag": "/++resource++country-flags/th.gif",
+        "flag": "countryflag/th",
     },
     "ti": {"native": "ትግርኛ", "name": "Tigrinya"},
     "tk": {
         "native": "түркmенче",
         "name": "Turkmen",
-        "flag": "/++resource++country-flags/tm.gif",
+        "flag": "countryflag/tm",
     },
     "tl": {"native": "Tagalog", "name": "Tagalog"},
     "tn": {
         "native": "Setswana",
         "name": "Tswana",
-        "flag": "/++resource++country-flags/bw.gif",
+        "flag": "countryflag/bw",
     },
     "to": {"native": "Tonga", "name": "Tonga"},
     "tr": {
         "native": "Türkçe",
         "name": "Turkish",
-        "flag": "/++resource++country-flags/tr.gif",
+        "flag": "countryflag/tr",
     },
     "ts": {"native": "Xitsonga", "name": "Tsonga"},
     "tt": {"native": "татарча", "name": "Tatar"},
@@ -521,19 +521,19 @@ _languagelist = {
     "uk": {
         "native": "Українська",
         "name": "Ukrainian",
-        "flag": "/++resource++country-flags/ua.gif",
+        "flag": "countryflag/ua",
     },
     "ur": {"native": "اردو", "name": "Urdu"},
     "uz": {
         "native": "Ўзбекча",
         "name": "Uzbek",
-        "flag": "/++resource++country-flags/uz.gif",
+        "flag": "countryflag/uz",
     },
     "ve": {"native": "Tshivenḓa", "name": "Venda"},
     "vi": {
         "native": "Tiếng Việt",
         "name": "Vietnamese",
-        "flag": "/++resource++country-flags/vn.gif",
+        "flag": "countryflag/vn",
     },
     "vk": {"native": "Ovalingo", "name": "Viking"},
     "vo": {"native": "Volapük", "name": "Volapük"},
@@ -543,19 +543,19 @@ _languagelist = {
     "yi": {
         "native": "ײִדיש",
         "name": "Yiddish",
-        "flag": "/++resource++country-flags/il.gif",
+        "flag": "countryflag/il",
     },
     "yo": {"native": "Yorùbá", "name": "Yorouba"},
     "za": {"native": "Zhuang", "name": "Zhuang"},
     "zh": {
         "native": "中文",
         "name": "Chinese",
-        "flag": "/++resource++country-flags/cn.gif",
+        "flag": "countryflag/cn",
     },
     "zu": {
         "native": "IsiZulu",
         "name": "Zulu",
-        "flag": "/++resource++country-flags/za.gif",
+        "flag": "countryflag/za",
     },
 }
 
@@ -567,13 +567,13 @@ if "sr@Latn" in _zope_i18n_allowed_languages:
     _languagelist["sr"] = {
         "native": "Srpski",
         "name": "Serbian (Latin)",
-        "flag": "/++resource++country-flags/cs.gif",
+        "flag": "countryflag/cs",
     }
 elif "sr@Cyrl" in _zope_i18n_allowed_languages:
     _languagelist["sr"] = {
         "native": "српски",
         "name": "Serbian (Cyrillic)",
-        "flag": "/++resource++country-flags/cs.gif",
+        "flag": "countryflag/cs",
     }
 
 # convert the utf-8 encoded values to unicode
@@ -587,920 +587,920 @@ for code in _languagelist:
 _combinedlanguagelist = {
     "ar-ae": {
         "name": "Arabic (United Arab Emirates)",
-        "flag": "/++resource++country-flags/ae.gif",
+        "flag": "countryflag/ae",
     },
     "ar-bh": {
         "name": "Arabic (Bahrain)",
-        "flag": "/++resource++country-flags/bh.gif",
+        "flag": "countryflag/bh",
     },
     "ar-dz": {
         "name": "Arabic (Algeria)",
-        "flag": "/++resource++country-flags/dz.gif",
+        "flag": "countryflag/dz",
     },
     "ar-eg": {
         "name": "Arabic (Egypt)",
-        "flag": "/++resource++country-flags/eg.gif",
+        "flag": "countryflag/eg",
     },
     "ar-il": {
         "name": "Arabic (Israel)",
-        "flag": "/++resource++country-flags/il.gif",
+        "flag": "countryflag/il",
     },
     "ar-iq": {
         "name": "Arabic (Iraq)",
-        "flag": "/++resource++country-flags/iq.gif",
+        "flag": "countryflag/iq",
     },
     "ar-jo": {
         "name": "Arabic (Jordan)",
-        "flag": "/++resource++country-flags/jo.gif",
+        "flag": "countryflag/jo",
     },
     "ar-kw": {
         "name": "Arabic (Kuwait)",
-        "flag": "/++resource++country-flags/kw.gif",
+        "flag": "countryflag/kw",
     },
     "ar-lb": {
         "name": "Arabic (Lebanon)",
-        "flag": "/++resource++country-flags/lb.gif",
+        "flag": "countryflag/lb",
     },
     "ar-ly": {
         "name": "Arabic (Libya)",
-        "flag": "/++resource++country-flags/ly.gif",
+        "flag": "countryflag/ly",
     },
     "ar-ma": {
         "name": "Arabic (Morocco)",
-        "flag": "/++resource++country-flags/ma.gif",
+        "flag": "countryflag/ma",
     },
     "ar-mr": {
         "name": "Arabic (Mauritania)",
-        "flag": "/++resource++country-flags/mr.gif",
+        "flag": "countryflag/mr",
     },
     "ar-om": {
         "name": "Arabic (Oman)",
-        "flag": "/++resource++country-flags/om.gif",
+        "flag": "countryflag/om",
     },
     "ar-ps": {
         "name": "Arabic (Palestinian West Bank and Gaza)",
-        "flag": "/++resource++country-flags/ps.gif",
+        "flag": "countryflag/ps",
     },
     "ar-qa": {
         "name": "Arabic (Qatar)",
-        "flag": "/++resource++country-flags/qa.gif",
+        "flag": "countryflag/qa",
     },
     "ar-sa": {
         "name": "Arabic (Saudi Arabia)",
-        "flag": "/++resource++country-flags/sa.gif",
+        "flag": "countryflag/sa",
     },
     "ar-sd": {
         "name": "Arabic (Sudan)",
-        "flag": "/++resource++country-flags/ly.gif",
+        "flag": "countryflag/ly",
     },
     "ar-so": {
         "name": "Arabic (Somalia)",
-        "flag": "/++resource++country-flags/so.gif",
+        "flag": "countryflag/so",
     },
     "ar-sy": {
         "name": "Arabic (Syria)",
-        "flag": "/++resource++country-flags/sy.gif",
+        "flag": "countryflag/sy",
     },
     "ar-td": {
         "name": "Arabic (Chad)",
-        "flag": "/++resource++country-flags/td.gif",
+        "flag": "countryflag/td",
     },
     "ar-tn": {
         "name": "Arabic (Tunisia)",
-        "flag": "/++resource++country-flags/ly.gif",
+        "flag": "countryflag/ly",
     },
     "ar-ye": {
         "name": "Arabic (Yemen)",
-        "flag": "/++resource++country-flags/ye.gif",
+        "flag": "countryflag/ye",
     },
     "bn-bd": {
         "name": "Bengali (Bangladesh)",
-        "flag": "/++resource++country-flags/bd.gif",
+        "flag": "countryflag/bd",
     },
     "bn-in": {
         "name": "Bengali (India)",
-        "flag": "/++resource++country-flags/in.gif",
+        "flag": "countryflag/in",
     },
     "bn-sg": {
         "name": "Bengali (Singapore)",
-        "flag": "/++resource++country-flags/sg.gif",
+        "flag": "countryflag/sg",
     },
     "ch-gu": {
         "name": "Chamorro (Guam)",
-        "flag": "/++resource++country-flags/gu.gif",
+        "flag": "countryflag/gu",
     },
     "ch-mp": {
         "name": "Chamorro (Northern Mariana Islands)",
-        "flag": "/++resource++country-flags/mp.gif",
+        "flag": "countryflag/mp",
     },
     "cs-cz": {
         "name": "Czech (Czech republic)",
         "native": "Čeština (Česká republika)",
-        "flag": "/++resource++country-flags/cz.gif",
+        "flag": "countryflag/cz",
     },
     "da-dk": {
         "name": "Danish (Denmark)",
-        "flag": "/++resource++country-flags/dk.gif",
+        "flag": "countryflag/dk",
     },
     "da-gl": {
         "name": "Danish (Greenland)",
-        "flag": "/++resource++country-flags/gl.gif",
+        "flag": "countryflag/gl",
     },
     "de-at": {
         "name": "German (Austria)",
         "native": "Deutsch (Österreich)",
-        "flag": "/++resource++country-flags/at.gif",
+        "flag": "countryflag/at",
     },
     "de-be": {
         "name": "German (Belgium)",
-        "flag": "/++resource++country-flags/de.gif",
+        "flag": "countryflag/de",
     },
     "de-ch": {
         "name": "German (Switzerland)",
-        "flag": "/++resource++country-flags/ch.gif",
+        "flag": "countryflag/ch",
     },
     "de-de": {
         "name": "German (Germany)",
-        "flag": "/++resource++country-flags/de.gif",
+        "flag": "countryflag/de",
     },
     "de-dk": {
         "name": "German (Denmark)",
-        "flag": "/++resource++country-flags/de.gif",
+        "flag": "countryflag/de",
     },
     "de-li": {
         "name": "German (Liechtenstein)",
-        "flag": "/++resource++country-flags/li.gif",
+        "flag": "countryflag/li",
     },
     "de-lu": {
         "name": "German (Luxembourg)",
-        "flag": "/++resource++country-flags/de.gif",
+        "flag": "countryflag/de",
     },
     "el-cy": {
         "name": "Greek (Cyprus)",
-        "flag": "/++resource++country-flags/cy.gif",
+        "flag": "countryflag/cy",
     },
     "el-gr": {
         "name": "Greek (Greece)",
-        "flag": "/++resource++country-flags/gr.gif",
+        "flag": "countryflag/gr",
     },
     "en-ag": {
         "name": "English (Antigua and Barbuda)",
-        "flag": "/++resource++country-flags/ag.gif",
+        "flag": "countryflag/ag",
     },
     "en-ai": {
         "name": "English (Anguilla)",
-        "flag": "/++resource++country-flags/ai.gif",
+        "flag": "countryflag/ai",
     },
     "en-as": {
         "name": "English (American Samoa)",
-        "flag": "/++resource++country-flags/as.gif",
+        "flag": "countryflag/as",
     },
     "en-au": {
         "name": "English (Australia)",
-        "flag": "/++resource++country-flags/au.gif",
+        "flag": "countryflag/au",
     },
     "en-bb": {
         "name": "English (Barbados)",
-        "flag": "/++resource++country-flags/bb.gif",
+        "flag": "countryflag/bb",
     },
     "en-bm": {
         "name": "English (Bermuda)",
-        "flag": "/++resource++country-flags/bm.gif",
+        "flag": "countryflag/bm",
     },
     "en-bn": {
         "name": "English (Brunei)",
-        "flag": "/++resource++country-flags/bn.gif",
+        "flag": "countryflag/bn",
     },
     "en-bs": {
         "name": "English (Bahamas)",
-        "flag": "/++resource++country-flags/bs.gif",
+        "flag": "countryflag/bs",
     },
     "en-bw": {
         "name": "English (Botswana)",
-        "flag": "/++resource++country-flags/bw.gif",
+        "flag": "countryflag/bw",
     },
     "en-bz": {
         "name": "English (Belize)",
-        "flag": "/++resource++country-flags/bz.gif",
+        "flag": "countryflag/bz",
     },
     "en-ca": {
         "name": "English (Canada)",
-        "flag": "/++resource++country-flags/ca.gif",
+        "flag": "countryflag/ca",
     },
     "en-ck": {
         "name": "English (Cook Islands)",
-        "flag": "/++resource++country-flags/ck.gif",
+        "flag": "countryflag/ck",
     },
     "en-cm": {
         "name": "English (Cameroon)",
-        "flag": "/++resource++country-flags/cm.gif",
+        "flag": "countryflag/cm",
     },
     "en-dm": {
         "name": "English (Dominica)",
-        "flag": "/++resource++country-flags/dm.gif",
+        "flag": "countryflag/dm",
     },
     "en-er": {
         "name": "English (Eritrea)",
-        "flag": "/++resource++country-flags/er.gif",
+        "flag": "countryflag/er",
     },
     "en-et": {
         "name": "English (Ethiopia)",
-        "flag": "/++resource++country-flags/et.gif",
+        "flag": "countryflag/et",
     },
     "en-fj": {
         "name": "English (Fiji)",
-        "flag": "/++resource++country-flags/fj.gif",
+        "flag": "countryflag/fj",
     },
     "en-fk": {
         "name": "English (Falkland Islands)",
-        "flag": "/++resource++country-flags/fk.gif",
+        "flag": "countryflag/fk",
     },
     "en-fm": {
         "name": "English (Micronesia)",
-        "flag": "/++resource++country-flags/fm.gif",
+        "flag": "countryflag/fm",
     },
     "en-gb": {
         "name": "English (United Kingdom)",
-        "flag": "/++resource++country-flags/gb.gif",
+        "flag": "countryflag/gb",
     },
     "en-gd": {
         "name": "English (Grenada)",
-        "flag": "/++resource++country-flags/gd.gif",
+        "flag": "countryflag/gd",
     },
     "en-gh": {
         "name": "English (Ghana)",
-        "flag": "/++resource++country-flags/gh.gif",
+        "flag": "countryflag/gh",
     },
     "en-gi": {
         "name": "English (Gibraltar)",
-        "flag": "/++resource++country-flags/gi.gif",
+        "flag": "countryflag/gi",
     },
     "en-gm": {
         "name": "English (Gambia)",
-        "flag": "/++resource++country-flags/gm.gif",
+        "flag": "countryflag/gm",
     },
     "en-gu": {
         "name": "English (Guam)",
-        "flag": "/++resource++country-flags/gu.gif",
+        "flag": "countryflag/gu",
     },
     "en-gy": {
         "name": "English (Guyana)",
-        "flag": "/++resource++country-flags/gy.gif",
+        "flag": "countryflag/gy",
     },
     "en-ie": {
         "name": "English (Ireland)",
-        "flag": "/++resource++country-flags/ie.gif",
+        "flag": "countryflag/ie",
     },
     "en-il": {
         "name": "English (Israel)",
-        "flag": "/++resource++country-flags/gb.gif",
+        "flag": "countryflag/gb",
     },
     "en-io": {
         "name": "English (British Indian Ocean Territory)",
-        "flag": "/++resource++country-flags/io.gif",
+        "flag": "countryflag/io",
     },
     "en-jm": {
         "name": "English (Jamaica)",
-        "flag": "/++resource++country-flags/jm.gif",
+        "flag": "countryflag/jm",
     },
     "en-ke": {
         "name": "English (Kenya)",
-        "flag": "/++resource++country-flags/ke.gif",
+        "flag": "countryflag/ke",
     },
     "en-ki": {
         "name": "English (Kiribati)",
-        "flag": "/++resource++country-flags/ki.gif",
+        "flag": "countryflag/ki",
     },
     "en-kn": {
         "name": "English (St. Kitts-Nevis)",
-        "flag": "/++resource++country-flags/kn.gif",
+        "flag": "countryflag/kn",
     },
     "en-ky": {
         "name": "English (Cayman Islands)",
-        "flag": "/++resource++country-flags/ky.gif",
+        "flag": "countryflag/ky",
     },
     "en-lc": {
         "name": "English (St. Lucia)",
-        "flag": "/++resource++country-flags/lc.gif",
+        "flag": "countryflag/lc",
     },
     "en-lr": {
         "name": "English (Liberia)",
-        "flag": "/++resource++country-flags/lr.gif",
+        "flag": "countryflag/lr",
     },
     "en-ls": {
         "name": "English (Lesotho)",
-        "flag": "/++resource++country-flags/ls.gif",
+        "flag": "countryflag/ls",
     },
     "en-mp": {
         "name": "English (Northern Mariana Islands)",
-        "flag": "/++resource++country-flags/mp.gif",
+        "flag": "countryflag/mp",
     },
     "en-ms": {
         "name": "English (Montserrat)",
-        "flag": "/++resource++country-flags/ms.gif",
+        "flag": "countryflag/ms",
     },
     "en-mt": {
         "name": "English (Malta)",
-        "flag": "/++resource++country-flags/mt.gif",
+        "flag": "countryflag/mt",
     },
     "en-mu": {
         "name": "English (Mauritius)",
-        "flag": "/++resource++country-flags/mu.gif",
+        "flag": "countryflag/mu",
     },
     "en-mw": {
         "name": "English (Malawi)",
-        "flag": "/++resource++country-flags/mw.gif",
+        "flag": "countryflag/mw",
     },
     "en-na": {
         "name": "English (Namibia)",
-        "flag": "/++resource++country-flags/na.gif",
+        "flag": "countryflag/na",
     },
     "en-nf": {
         "name": "English (Norfolk Island)",
-        "flag": "/++resource++country-flags/nf.gif",
+        "flag": "countryflag/nf",
     },
     "en-ng": {
         "name": "English (Nigeria)",
-        "flag": "/++resource++country-flags/ng.gif",
+        "flag": "countryflag/ng",
     },
     "en-nr": {
         "name": "English (Nauru)",
-        "flag": "/++resource++country-flags/nr.gif",
+        "flag": "countryflag/nr",
     },
     "en-nu": {
         "name": "English (Niue)",
-        "flag": "/++resource++country-flags/nu.gif",
+        "flag": "countryflag/nu",
     },
     "en-nz": {
         "name": "English (New Zealand)",
-        "flag": "/++resource++country-flags/nz.gif",
+        "flag": "countryflag/nz",
     },
     "en-pg": {
         "name": "English (Papua New Guinea)",
-        "flag": "/++resource++country-flags/pg.gif",
+        "flag": "countryflag/pg",
     },
     "en-ph": {
         "name": "English (Philippines)",
-        "flag": "/++resource++country-flags/ph.gif",
+        "flag": "countryflag/ph",
     },
     "en-pk": {
         "name": "English (Pakistan)",
-        "flag": "/++resource++country-flags/pk.gif",
+        "flag": "countryflag/pk",
     },
     "en-pn": {
         "name": "English (Pitcairn)",
-        "flag": "/++resource++country-flags/pn.gif",
+        "flag": "countryflag/pn",
     },
     "en-pr": {
         "name": "English (Puerto Rico)",
-        "flag": "/++resource++country-flags/pr.gif",
+        "flag": "countryflag/pr",
     },
     "en-pw": {
         "name": "English (Palau)",
-        "flag": "/++resource++country-flags/pw.gif",
+        "flag": "countryflag/pw",
     },
     "en-rw": {
         "name": "English (Rwanda)",
-        "flag": "/++resource++country-flags/rw.gif",
+        "flag": "countryflag/rw",
     },
     "en-sb": {
         "name": "English (Solomon Islands)",
-        "flag": "/++resource++country-flags/sb.gif",
+        "flag": "countryflag/sb",
     },
     "en-sc": {
         "name": "English (Seychelles)",
-        "flag": "/++resource++country-flags/sc.gif",
+        "flag": "countryflag/sc",
     },
     "en-sg": {
         "name": "English (Singapore)",
-        "flag": "/++resource++country-flags/sg.gif",
+        "flag": "countryflag/sg",
     },
     "en-sh": {
         "name": "English (St. Helena)",
-        "flag": "/++resource++country-flags/sh.gif",
+        "flag": "countryflag/sh",
     },
     "en-sl": {
         "name": "English (Sierra Leone)",
-        "flag": "/++resource++country-flags/sl.gif",
+        "flag": "countryflag/sl",
     },
     "en-so": {
         "name": "English (Somalia)",
-        "flag": "/++resource++country-flags/so.gif",
+        "flag": "countryflag/so",
     },
     "en-sz": {
         "name": "English (Swaziland)",
-        "flag": "/++resource++country-flags/sz.gif",
+        "flag": "countryflag/sz",
     },
     "en-tc": {
         "name": "English (Turks and Caicos Islands)",
-        "flag": "/++resource++country-flags/tc.gif",
+        "flag": "countryflag/tc",
     },
     "en-tk": {
         "name": "English (Tokelau)",
-        "flag": "/++resource++country-flags/tk.gif",
+        "flag": "countryflag/tk",
     },
     "en-to": {
         "name": "English (Tonga)",
-        "flag": "/++resource++country-flags/to.gif",
+        "flag": "countryflag/to",
     },
     "en-tt": {
         "name": "English (Trinidad and Tobago)",
-        "flag": "/++resource++country-flags/tt.gif",
+        "flag": "countryflag/tt",
     },
     "en-ug": {
         "name": "English (Uganda)",
-        "flag": "/++resource++country-flags/ug.gif",
+        "flag": "countryflag/ug",
     },
     "en-us": {
         "name": "English (USA)",
-        "flag": "/++resource++country-flags/us.gif",
+        "flag": "countryflag/us",
     },
     "en-vc": {
         "name": "English (St. Vincent and the Grenadi)",
-        "flag": "/++resource++country-flags/vc.gif",
+        "flag": "countryflag/vc",
     },
     "en-vg": {
         "name": "English (British Virgin Islands)",
-        "flag": "/++resource++country-flags/vg.gif",
+        "flag": "countryflag/vg",
     },
     "en-vi": {
         "name": "English (U.S. Virgin Islands)",
-        "flag": "/++resource++country-flags/vi.gif",
+        "flag": "countryflag/vi",
     },
     "en-vu": {
         "name": "English (Vanuatu)",
-        "flag": "/++resource++country-flags/vu.gif",
+        "flag": "countryflag/vu",
     },
     "en-ws": {
         "name": "English (Western Samoa)",
-        "flag": "/++resource++country-flags/ws.gif",
+        "flag": "countryflag/ws",
     },
     "en-za": {
         "name": "English (South Africa)",
-        "flag": "/++resource++country-flags/za.gif",
+        "flag": "countryflag/za",
     },
     "en-zm": {
         "name": "English (Zambia)",
-        "flag": "/++resource++country-flags/zm.gif",
+        "flag": "countryflag/zm",
     },
     "en-zw": {
         "name": "English (Zimbabwe)",
-        "flag": "/++resource++country-flags/zw.gif",
+        "flag": "countryflag/zw",
     },
     "es-ar": {
         "name": "Spanish (Argentina)",
-        "flag": "/++resource++country-flags/ar.gif",
+        "flag": "countryflag/ar",
     },
     "es-bo": {
         "name": "Spanish (Bolivia)",
-        "flag": "/++resource++country-flags/bo.gif",
+        "flag": "countryflag/bo",
     },
     "es-cl": {
         "name": "Spanish (Chile)",
-        "flag": "/++resource++country-flags/cl.gif",
+        "flag": "countryflag/cl",
     },
     "es-co": {
         "name": "Spanish (Colombia)",
-        "flag": "/++resource++country-flags/co.gif",
+        "flag": "countryflag/co",
     },
     "es-cr": {
         "name": "Spanish (Costa Rica)",
-        "flag": "/++resource++country-flags/cr.gif",
+        "flag": "countryflag/cr",
     },
     "es-cu": {
         "name": "Spanish (Cuba)",
-        "flag": "/++resource++country-flags/cu.gif",
+        "flag": "countryflag/cu",
     },
     "es-do": {
         "name": "Spanish (Dominican Republic)",
-        "flag": "/++resource++country-flags/do.gif",
+        "flag": "countryflag/do",
     },
     "es-ec": {
         "name": "Spanish (Ecuador)",
-        "flag": "/++resource++country-flags/ec.gif",
+        "flag": "countryflag/ec",
     },
     "es-es": {
         "name": "Spanish (Spain)",
-        "flag": "/++resource++country-flags/es.gif",
+        "flag": "countryflag/es",
     },
     "es-gq": {
         "name": "Spanish (Equatorial Guinea)",
-        "flag": "/++resource++country-flags/gq.gif",
+        "flag": "countryflag/gq",
     },
     "es-gt": {
         "name": "Spanish (Guatemala)",
-        "flag": "/++resource++country-flags/gt.gif",
+        "flag": "countryflag/gt",
     },
     "es-hn": {
         "name": "Spanish (Honduras)",
-        "flag": "/++resource++country-flags/hn.gif",
+        "flag": "countryflag/hn",
     },
     "es-mx": {
         "name": "Spanish (Mexico)",
-        "flag": "/++resource++country-flags/mx.gif",
+        "flag": "countryflag/mx",
     },
     "es-ni": {
         "name": "Spanish (Nicaragua)",
-        "flag": "/++resource++country-flags/ni.gif",
+        "flag": "countryflag/ni",
     },
     "es-pa": {
         "name": "Spanish (Panama)",
-        "flag": "/++resource++country-flags/pa.gif",
+        "flag": "countryflag/pa",
     },
     "es-pe": {
         "name": "Spanish (Peru)",
-        "flag": "/++resource++country-flags/pe.gif",
+        "flag": "countryflag/pe",
     },
     "es-pr": {
         "name": "Spanish (Puerto Rico)",
-        "flag": "/++resource++country-flags/pr.gif",
+        "flag": "countryflag/pr",
     },
     "es-py": {
         "name": "Spanish (Paraguay)",
-        "flag": "/++resource++country-flags/py.gif",
+        "flag": "countryflag/py",
     },
     "es-sv": {
         "name": "Spanish (El Salvador)",
-        "flag": "/++resource++country-flags/sv.gif",
+        "flag": "countryflag/sv",
     },
     "es-us": {
         "name": "Spanish (USA)",
-        "flag": "/++resource++country-flags/us.gif",
+        "flag": "countryflag/us",
     },
     "es-uy": {
         "name": "Spanish (Uruguay)",
-        "flag": "/++resource++country-flags/uy.gif",
+        "flag": "countryflag/uy",
     },
     "es-ve": {
         "name": "Spanish (Venezuela)",
-        "flag": "/++resource++country-flags/ve.gif",
+        "flag": "countryflag/ve",
     },
     "fr-ad": {
         "name": "French (Andorra)",
-        "flag": "/++resource++country-flags/ad.gif",
+        "flag": "countryflag/ad",
     },
     "fr-be": {
         "name": "French (Belgium)",
-        "flag": "/++resource++country-flags/be.gif",
+        "flag": "countryflag/be",
     },
     "fr-bf": {
         "name": "French (Burkina Faso)",
-        "flag": "/++resource++country-flags/bf.gif",
+        "flag": "countryflag/bf",
     },
     "fr-bi": {
         "name": "French (Burundi)",
-        "flag": "/++resource++country-flags/bi.gif",
+        "flag": "countryflag/bi",
     },
     "fr-bj": {
         "name": "French (Benin)",
-        "flag": "/++resource++country-flags/bj.gif",
+        "flag": "countryflag/bj",
     },
     "fr-ca": {
         "name": "French (Canada)",
-        "flag": "/++resource++country-flags/ca.gif",
+        "flag": "countryflag/ca",
     },
     "fr-cd": {
         "name": "French (Democratic Republic of Congo)",
-        "flag": "/++resource++country-flags/cd.gif",
+        "flag": "countryflag/cd",
     },
     "fr-cf": {
         "name": "French (Central African Republic)",
-        "flag": "/++resource++country-flags/cf.gif",
+        "flag": "countryflag/cf",
     },
     "fr-cg": {
         "name": "French (Congo)",
-        "flag": "/++resource++country-flags/cg.gif",
+        "flag": "countryflag/cg",
     },
     "fr-ch": {
         "name": "French (Switzerland)",
-        "flag": "/++resource++country-flags/ch.gif",
+        "flag": "countryflag/ch",
     },
     "fr-ci": {
         "name": "French (Cote d'Ivoire)",
-        "flag": "/++resource++country-flags/ci.gif",
+        "flag": "countryflag/ci",
     },
     "fr-cm": {
         "name": "French (Cameroon)",
-        "flag": "/++resource++country-flags/cm.gif",
+        "flag": "countryflag/cm",
     },
     "fr-dj": {
         "name": "French (Djibouti)",
-        "flag": "/++resource++country-flags/dj.gif",
+        "flag": "countryflag/dj",
     },
     "fr-fr": {
         "name": "French (France)",
-        "flag": "/++resource++country-flags/fr.gif",
+        "flag": "countryflag/fr",
     },
     "fr-ga": {
         "name": "French (Gabon)",
-        "flag": "/++resource++country-flags/ga.gif",
+        "flag": "countryflag/ga",
     },
     "fr-gb": {
         "name": "French (United Kingdom)",
-        "flag": "/++resource++country-flags/gb.gif",
+        "flag": "countryflag/gb",
     },
     "fr-gf": {
         "name": "French (French Guiana)",
-        "flag": "/++resource++country-flags/gf.gif",
+        "flag": "countryflag/gf",
     },
     "fr-gn": {
         "name": "French (Guinea)",
-        "flag": "/++resource++country-flags/gn.gif",
+        "flag": "countryflag/gn",
     },
     "fr-gp": {
         "name": "French (Guadeloupe)",
-        "flag": "/++resource++country-flags/gp.gif",
+        "flag": "countryflag/gp",
     },
     "fr-ht": {
         "name": "French (Haiti)",
-        "flag": "/++resource++country-flags/ht.gif",
+        "flag": "countryflag/ht",
     },
     "fr-it": {
         "name": "French (Italy)",
-        "flag": "/++resource++country-flags/it.gif",
+        "flag": "countryflag/it",
     },
     "fr-km": {
         "name": "French (Comoros Islands)",
-        "flag": "/++resource++country-flags/km.gif",
+        "flag": "countryflag/km",
     },
     "fr-lb": {
         "name": "French (Lebanon)",
-        "flag": "/++resource++country-flags/lb.gif",
+        "flag": "countryflag/lb",
     },
     "fr-lu": {
         "name": "French (Luxembourg)",
-        "flag": "/++resource++country-flags/lu.gif",
+        "flag": "countryflag/lu",
     },
     "fr-mc": {
         "name": "French (Monaco)",
-        "flag": "/++resource++country-flags/mc.gif",
+        "flag": "countryflag/mc",
     },
     "fr-mg": {
         "name": "French (Madagascar)",
-        "flag": "/++resource++country-flags/mg.gif",
+        "flag": "countryflag/mg",
     },
     "fr-ml": {
         "name": "French (Mali)",
-        "flag": "/++resource++country-flags/ml.gif",
+        "flag": "countryflag/ml",
     },
     "fr-mq": {
         "name": "French (Martinique)",
-        "flag": "/++resource++country-flags/mq.gif",
+        "flag": "countryflag/mq",
     },
     "fr-nc": {
         "name": "French (New Caledonia)",
-        "flag": "/++resource++country-flags/nc.gif",
+        "flag": "countryflag/nc",
     },
     "fr-pf": {
         "name": "French (French Polynesia)",
-        "flag": "/++resource++country-flags/pf.gif",
+        "flag": "countryflag/pf",
     },
     "fr-pm": {
         "name": "French (St. Pierre and Miquelon)",
-        "flag": "/++resource++country-flags/pm.gif",
+        "flag": "countryflag/pm",
     },
     "fr-re": {
         "name": "French (Reunion)",
-        "flag": "/++resource++country-flags/re.gif",
+        "flag": "countryflag/re",
     },
     "fr-rw": {
         "name": "French (Rwanda)",
-        "flag": "/++resource++country-flags/rw.gif",
+        "flag": "countryflag/rw",
     },
     "fr-sc": {
         "name": "French (Seychelles)",
-        "flag": "/++resource++country-flags/sc.gif",
+        "flag": "countryflag/sc",
     },
     "fr-td": {
         "name": "French (Chad)",
-        "flag": "/++resource++country-flags/td.gif",
+        "flag": "countryflag/td",
     },
     "fr-tg": {
         "name": "French (Togo)",
-        "flag": "/++resource++country-flags/tg.gif",
+        "flag": "countryflag/tg",
     },
     "fr-vu": {
         "name": "French (Vanuatu)",
-        "flag": "/++resource++country-flags/vu.gif",
+        "flag": "countryflag/vu",
     },
     "fr-wf": {
         "name": "French (Wallis and Futuna)",
-        "flag": "/++resource++country-flags/wf.gif",
+        "flag": "countryflag/wf",
     },
     "fr-yt": {
         "name": "French (Mayotte)",
-        "flag": "/++resource++country-flags/yt.gif",
+        "flag": "countryflag/yt",
     },
     "hr-ba": {
         "name": "Croatian (Bosnia-Herzegovina)",
-        "flag": "/++resource++country-flags/ba.gif",
+        "flag": "countryflag/ba",
     },
     "hr-hr": {
         "name": "Croatian (Croatia)",
-        "flag": "/++resource++country-flags/hr.gif",
+        "flag": "countryflag/hr",
     },
     "hu-hu": {
         "name": "Hungarian (Hungary)",
-        "flag": "/++resource++country-flags/hu.gif",
+        "flag": "countryflag/hu",
     },
     "hu-si": {
         "name": "Hungarian (Slovenia)",
-        "flag": "/++resource++country-flags/hu.gif",
+        "flag": "countryflag/hu",
     },
     "it-ch": {
         "name": "Italian (Switzerland)",
-        "flag": "/++resource++country-flags/it.gif",
+        "flag": "countryflag/it",
     },
     "it-hr": {
         "name": "Italian (Croatia)",
-        "flag": "/++resource++country-flags/it.gif",
+        "flag": "countryflag/it",
     },
     "it-it": {
         "name": "Italian (Italy)",
-        "flag": "/++resource++country-flags/it.gif",
+        "flag": "countryflag/it",
     },
     "it-si": {
         "name": "Italian (Slovenia)",
-        "flag": "/++resource++country-flags/it.gif",
+        "flag": "countryflag/it",
     },
     "it-sm": {
         "name": "Italian (San Marino)",
-        "flag": "/++resource++country-flags/sm.gif",
+        "flag": "countryflag/sm",
     },
     "ko-kp": {
         "name": "Korean (Korea, North)",
-        "flag": "/++resource++country-flags/kp.gif",
+        "flag": "countryflag/kp",
     },
     "ko-kr": {
         "name": "Korean (Korea, South)",
-        "flag": "/++resource++country-flags/kr.gif",
+        "flag": "countryflag/kr",
     },
     "ln-cd": {
         "name": "Lingala (Democratic Republic of Congo)",
-        "flag": "/++resource++country-flags/cd.gif",
+        "flag": "countryflag/cd",
     },
     "ln-cg": {
         "name": "Lingala (Congo)",
-        "flag": "/++resource++country-flags/cg.gif",
+        "flag": "countryflag/cg",
     },
     "ms-bn": {
         "name": "Malay (Brunei)",
-        "flag": "/++resource++country-flags/bn.gif",
+        "flag": "countryflag/bn",
     },
     "ms-my": {
         "name": "Malay (Malaysia)",
-        "flag": "/++resource++country-flags/my.gif",
+        "flag": "countryflag/my",
     },
     "ms-sg": {
         "name": "Malay (Singapore)",
-        "flag": "/++resource++country-flags/sg.gif",
+        "flag": "countryflag/sg",
     },
     "nl-an": {
         "name": "Dutch (Netherlands Antilles)",
-        "flag": "/++resource++country-flags/an.gif",
+        "flag": "countryflag/an",
     },
     "nl-aw": {
         "name": "Dutch (Aruba)",
-        "flag": "/++resource++country-flags/aw.gif",
+        "flag": "countryflag/aw",
     },
     "nl-be": {
         "name": "Dutch (Belgium)",
-        "flag": "/++resource++country-flags/be.gif",
+        "flag": "countryflag/be",
     },
     "nl-nl": {
         "name": "Dutch (Netherlands)",
-        "flag": "/++resource++country-flags/nl.gif",
+        "flag": "countryflag/nl",
     },
     "nl-sr": {
         "name": "Dutch (Suriname)",
-        "flag": "/++resource++country-flags/sr.gif",
+        "flag": "countryflag/sr",
     },
     "pt-ao": {
         "name": "Portuguese (Angola)",
         "native": "Português (Angola)",
-        "flag": "/++resource++country-flags/ao.gif",
+        "flag": "countryflag/ao",
     },
     "pt-br": {
         "name": "Portuguese (Brazil)",
         "native": "Português (Brasil)",
-        "flag": "/++resource++country-flags/br.gif",
+        "flag": "countryflag/br",
     },
     "pt-cv": {
         "name": "Portuguese (Ilhas Cabo Verde)",
         "native": "Português (Cabo Verde)",
-        "flag": "/++resource++country-flags/cv.gif",
+        "flag": "countryflag/cv",
     },
     "pt-gw": {
         "name": "Portuguese (Guiné-Bissau)",
         "native": "Português (Guiné-Bissau)",
-        "flag": "/++resource++country-flags/gw.gif",
+        "flag": "countryflag/gw",
     },
     "pt-mz": {
         "name": "Portuguese (Moçambique)",
         "native": "Português (Moçambique)",
-        "flag": "/++resource++country-flags/mz.gif",
+        "flag": "countryflag/mz",
     },
     "pt-pt": {
         "name": "Portuguese (Portugal)",
         "native": "Português (Portugal)",
-        "flag": "/++resource++country-flags/pt.gif",
+        "flag": "countryflag/pt",
     },
     "pt-st": {
         "name": "Portuguese (São Tomé e Príncipe)",
         "native": "Português (São Tomé e Príncipe)",
-        "flag": "/++resource++country-flags/st.gif",
+        "flag": "countryflag/st",
     },
     "sd-in": {
         "name": "Sindhi (India)",
-        "flag": "/++resource++country-flags/in.gif",
+        "flag": "countryflag/in",
     },
     "sd-pk": {
         "name": "Sindhi (Pakistan)",
-        "flag": "/++resource++country-flags/pk.gif",
+        "flag": "countryflag/pk",
     },
     "sr-ba": {
         "name": "Serbian (Bosnia-Herzegovina)",
-        "flag": "/++resource++country-flags/ba.gif",
+        "flag": "countryflag/ba",
     },
     "ss-sz": {
         "name": "Swati (Swaziland)",
-        "flag": "/++resource++country-flags/sz.gif",
+        "flag": "countryflag/sz",
     },
     "ss-za": {
         "name": "Swati (South Africa)",
-        "flag": "/++resource++country-flags/za.gif",
+        "flag": "countryflag/za",
     },
     "sv-fi": {
         "name": "Swedish (Finland)",
-        "flag": "/++resource++country-flags/se.gif",
+        "flag": "countryflag/se",
     },
     "sv-se": {
         "name": "Swedish (Sweden)",
-        "flag": "/++resource++country-flags/se.gif",
+        "flag": "countryflag/se",
     },
     "sw-ke": {
         "name": "Swahili (Kenya)",
-        "flag": "/++resource++country-flags/ke.gif",
+        "flag": "countryflag/ke",
     },
     "sw-tz": {
         "name": "Swahili (Tanzania)",
-        "flag": "/++resource++country-flags/tz.gif",
+        "flag": "countryflag/tz",
     },
     "ta-in": {
         "name": "Tamil (India)",
-        "flag": "/++resource++country-flags/in.gif",
+        "flag": "countryflag/in",
     },
     "ta-sg": {
         "name": "Tamil (Singapore)",
-        "flag": "/++resource++country-flags/sg.gif",
+        "flag": "countryflag/sg",
     },
     "tn-bw": {
         "name": "Tswana (Botswana)",
-        "flag": "/++resource++country-flags/bw.gif",
+        "flag": "countryflag/bw",
     },
     "tn-za": {
         "name": "Tswana (South Africa)",
-        "flag": "/++resource++country-flags/za.gif",
+        "flag": "countryflag/za",
     },
     "tr-bg": {
         "name": "Turkish (Bulgaria)",
-        "flag": "/++resource++country-flags/tr.gif",
+        "flag": "countryflag/tr",
     },
     "tr-cy": {
         "name": "Turkish (Cyprus)",
-        "flag": "/++resource++country-flags/tr.gif",
+        "flag": "countryflag/tr",
     },
     "tr-tr": {
         "name": "Turkish (Turkey)",
-        "flag": "/++resource++country-flags/tr.gif",
+        "flag": "countryflag/tr",
     },
     "ur-in": {
         "name": "Urdu (India)",
-        "flag": "/++resource++country-flags/in.gif",
+        "flag": "countryflag/in",
     },
     "ur-pk": {
         "name": "Urdu (Pakistan)",
-        "flag": "/++resource++country-flags/pk.gif",
+        "flag": "countryflag/pk",
     },
     "zh-cn": {
         "name": "Chinese (China)",
         "native": "简体中文(中国)",
-        "flag": "/++resource++country-flags/cn.gif",
+        "flag": "countryflag/cn",
     },
     "zh-hk": {
         "name": "Chinese (Hongkong)",
         "native": "繁體中文(香港)",
-        "flag": "/++resource++country-flags/hk.gif",
+        "flag": "countryflag/hk",
     },
     "zh-sg": {
         "name": "Chinese (Singapore)",
         "native": "简体中文(新加坡)",
-        "flag": "/++resource++country-flags/sg.gif",
+        "flag": "countryflag/sg",
     },
     "zh-tw": {
         "name": "Chinese (Taiwan)",
         "native": "繁體中文(臺灣)",
-        "flag": "/++resource++country-flags/tw.gif",
+        "flag": "countryflag/tw",
     },
 }
 

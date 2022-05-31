@@ -6,7 +6,7 @@
 # Descriptions for most TLDs a can be found at
 # http://en.wikipedia.org/wiki/List_of_Internet_top-level_domains
 
-from plone.i18n.locales.interfaces import ICcTLDInformation
+from .interfaces import ICcTLDInformation
 from zope.interface import implementer
 
 

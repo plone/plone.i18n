@@ -1,7 +1,7 @@
-from plone.i18n.normalizer.base import baseNormalize
-from plone.i18n.normalizer.interfaces import IFileNameNormalizer
-from plone.i18n.normalizer.interfaces import IIDNormalizer
-from plone.i18n.normalizer.interfaces import IURLNormalizer
+from .base import baseNormalize
+from .interfaces import IFileNameNormalizer
+from .interfaces import IIDNormalizer
+from .interfaces import IURLNormalizer
 from zope.component import queryUtility
 from zope.interface import implementer
 

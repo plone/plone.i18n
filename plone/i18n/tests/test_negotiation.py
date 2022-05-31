@@ -34,7 +34,7 @@ class TestDefaultLanguageNegotiation(LanguageNegotiationTestCase):
             self.portal_path,
             self.basic_auth,
             env={"HTTP_ACCEPT_LANGUAGE": "pt"},
-            handle_errors=False
+            handle_errors=False,
         )
         self.checkLanguage(response, "en")
 
@@ -56,7 +56,7 @@ class TestNoCombinedLanguageNegotiation(LanguageNegotiationTestCase):
             self.portal_path,
             self.basic_auth,
             env={"HTTP_ACCEPT_LANGUAGE": "pt"},
-            handle_errors=False
+            handle_errors=False,
         )
         self.checkLanguage(response, "pt")
 
@@ -64,7 +64,7 @@ class TestNoCombinedLanguageNegotiation(LanguageNegotiationTestCase):
             self.portal_path,
             self.basic_auth,
             env={"HTTP_ACCEPT_LANGUAGE": "de"},
-            handle_errors=False
+            handle_errors=False,
         )
         self.checkLanguage(response, "de")
 
@@ -73,7 +73,7 @@ class TestNoCombinedLanguageNegotiation(LanguageNegotiationTestCase):
             self.portal_path,
             self.basic_auth,
             env={"HTTP_ACCEPT_LANGUAGE": "pt-br"},
-            handle_errors=False
+            handle_errors=False,
         )
         self.checkLanguage(response, "pt")
 
@@ -96,7 +96,7 @@ class TestCombinedLanguageNegotiation(LanguageNegotiationTestCase):
             self.portal_path,
             self.basic_auth,
             env={"HTTP_ACCEPT_LANGUAGE": "pt"},
-            handle_errors=False
+            handle_errors=False,
         )
         self.checkLanguage(response, "pt")
 
@@ -104,7 +104,7 @@ class TestCombinedLanguageNegotiation(LanguageNegotiationTestCase):
             self.portal_path,
             self.basic_auth,
             env={"HTTP_ACCEPT_LANGUAGE": "de"},
-            handle_errors=False
+            handle_errors=False,
         )
         self.checkLanguage(response, "de")
 
@@ -113,7 +113,7 @@ class TestCombinedLanguageNegotiation(LanguageNegotiationTestCase):
             self.portal_path,
             self.basic_auth,
             env={"HTTP_ACCEPT_LANGUAGE": "pt-br"},
-            handle_errors=False
+            handle_errors=False,
         )
         self.checkLanguage(response, "pt-br")
 
@@ -122,7 +122,7 @@ class TestCombinedLanguageNegotiation(LanguageNegotiationTestCase):
             self.portal_path,
             self.basic_auth,
             env={"HTTP_ACCEPT_LANGUAGE": "de-de"},
-            handle_errors=False
+            handle_errors=False,
         )
         self.checkLanguage(response, "de")
 
@@ -169,9 +169,7 @@ class TestContentLanguageNegotiation(LanguageNegotiationTestCase):
         self.assertEqual(doc.Language(), "nl")
         docpath = "/".join(self.portal.portal_url.getRelativeContentPath(doc))
         response = self.publish(
-            vhmBasePath + docpath,
-            self.basic_auth,
-            handle_errors=False
+            vhmBasePath + docpath, self.basic_auth, handle_errors=False
         )
         self.checkLanguage(response, "nl")
 
