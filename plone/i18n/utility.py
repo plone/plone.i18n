@@ -140,10 +140,7 @@ class LanguageUtility:
             # flatten outer dict to list to make it sortable
             new_langs.append(langs[lang])
         new_langs.sort(
-            lambda x, y: cmp(
-                x.get("native", x.get("name")),
-                y.get("native", y.get("name")),
-            )
+            key=lambda x: x.get("native", x.get("name")),
         )
         return new_langs
 
