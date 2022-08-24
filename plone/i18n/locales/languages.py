@@ -713,26 +713,32 @@ _combinedlanguagelist = {
     },
     "de-be": {
         "name": "German (Belgium)",
+        "native": "Deutsch (Belgien)",
         "flag": "countryflag/de",
     },
     "de-ch": {
         "name": "German (Switzerland)",
+        "native": "Deutsch (Schweiz)",
         "flag": "countryflag/ch",
     },
     "de-de": {
         "name": "German (Germany)",
+        "native": "Deutsch (Deutschland)",
         "flag": "countryflag/de",
     },
     "de-dk": {
         "name": "German (Denmark)",
+        "native": "Deutsch (Danmark)",
         "flag": "countryflag/de",
     },
     "de-li": {
         "name": "German (Liechtenstein)",
+        "native": "Deutsch (Liechtenstein)",
         "flag": "countryflag/li",
     },
     "de-lu": {
         "name": "German (Luxembourg)",
+        "native": "Deutsch (Luxemburg)",
         "flag": "countryflag/de",
     },
     "el-cy": {
@@ -1357,22 +1363,27 @@ _combinedlanguagelist = {
     },
     "nl-an": {
         "name": "Dutch (Netherlands Antilles)",
+        "native": "Nederlands (Antillen)",
         "flag": "countryflag/an",
     },
     "nl-aw": {
         "name": "Dutch (Aruba)",
+        "native": "Nederlands (Aruba)",
         "flag": "countryflag/aw",
     },
     "nl-be": {
         "name": "Dutch (Belgium)",
+        "native": "Nederlands (België)",
         "flag": "countryflag/be",
     },
     "nl-nl": {
         "name": "Dutch (Netherlands)",
+        "native": "Nederlands (Nederland)",
         "flag": "countryflag/nl",
     },
     "nl-sr": {
         "name": "Dutch (Suriname)",
+        "native": "Nederlands (Suriname)",
         "flag": "countryflag/sr",
     },
     "pt-ao": {
