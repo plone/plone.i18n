@@ -427,7 +427,7 @@ _languagelist = {
     "sa": {"native": "संस्कृत", "name": "Sanskrit"},
     "sc": {"native": "sardu", "name": "Sardinian"},
     "sd": {
-        "native": "Sindhi",
+        "native": "سنڌي",
         "name": "Sindhi",
         "flag": "countryflag/pk",
     },
@@ -589,102 +589,127 @@ for code in _languagelist:
 _combinedlanguagelist = {
     "ar-ae": {
         "name": "Arabic (United Arab Emirates)",
+        "native": "العربية (الإمارات العربية المتحدة)",
         "flag": "countryflag/ae",
     },
     "ar-bh": {
         "name": "Arabic (Bahrain)",
+        "native": "العربية (البحرين)",
         "flag": "countryflag/bh",
     },
     "ar-dz": {
         "name": "Arabic (Algeria)",
+        "native": "العربية (الجزائر)",
         "flag": "countryflag/dz",
     },
     "ar-eg": {
         "name": "Arabic (Egypt)",
+        "native": "العربية (مصر)",
         "flag": "countryflag/eg",
     },
     "ar-il": {
         "name": "Arabic (Israel)",
+        "native": "العربية (إسرائيل)",
         "flag": "countryflag/il",
     },
     "ar-iq": {
         "name": "Arabic (Iraq)",
+        "native": "العربية (العراق)",
         "flag": "countryflag/iq",
     },
     "ar-jo": {
         "name": "Arabic (Jordan)",
+        "native": "العربية (الأردن)",
         "flag": "countryflag/jo",
     },
     "ar-kw": {
         "name": "Arabic (Kuwait)",
+        "native": "العربية (الكويت)",
         "flag": "countryflag/kw",
     },
     "ar-lb": {
         "name": "Arabic (Lebanon)",
+        "native": "العربية (لبنان)",
         "flag": "countryflag/lb",
     },
     "ar-ly": {
         "name": "Arabic (Libya)",
+        "native": "العربية (ليبيا)",
         "flag": "countryflag/ly",
     },
     "ar-ma": {
         "name": "Arabic (Morocco)",
+        "native": "العربية (المغرب)",
         "flag": "countryflag/ma",
     },
     "ar-mr": {
         "name": "Arabic (Mauritania)",
+        "native": "العربية (موريتانيا)",
         "flag": "countryflag/mr",
     },
     "ar-om": {
         "name": "Arabic (Oman)",
+        "native": "العربية (سلطنة عمان)",
         "flag": "countryflag/om",
     },
     "ar-ps": {
         "name": "Arabic (Palestinian West Bank and Gaza)",
+        "native": "العربية (دولة فلسطين)",
         "flag": "countryflag/ps",
     },
     "ar-qa": {
         "name": "Arabic (Qatar)",
+        "native": "العربية (قطر)",
         "flag": "countryflag/qa",
     },
     "ar-sa": {
         "name": "Arabic (Saudi Arabia)",
+        "native": "العربية (السعودية)",
         "flag": "countryflag/sa",
     },
     "ar-sd": {
         "name": "Arabic (Sudan)",
+        "native": "العربية (السودان)",
         "flag": "countryflag/ly",
     },
     "ar-so": {
         "name": "Arabic (Somalia)",
+        "native": "العربية (الصومال)",
         "flag": "countryflag/so",
     },
     "ar-sy": {
         "name": "Arabic (Syria)",
+        "native": "العربية (سوريا)",
         "flag": "countryflag/sy",
     },
     "ar-td": {
         "name": "Arabic (Chad)",
+        "native": "العربية (تشاد)",
         "flag": "countryflag/td",
     },
     "ar-tn": {
         "name": "Arabic (Tunisia)",
+        "native": "العربية (تونس)",
         "flag": "countryflag/ly",
     },
     "ar-ye": {
         "name": "Arabic (Yemen)",
+        "native": "العربية (اليمن)",
         "flag": "countryflag/ye",
     },
     "bn-bd": {
         "name": "Bengali (Bangladesh)",
+        "native": "বাংলা (বাংলাদেশ)",
         "flag": "countryflag/bd",
     },
     "bn-in": {
         "name": "Bengali (India)",
+        "native": "বাংলা (ভারত)",
         "flag": "countryflag/in",
     },
     "bn-sg": {
         "name": "Bengali (Singapore)",
+        "native": "বাংলা (সিঙ্গাপুর)",
         "flag": "countryflag/sg",
     },
     "ch-gu": {
@@ -1304,7 +1329,7 @@ _combinedlanguagelist = {
     },
     "fr-cm": {
         "name": "French (Cameroon)",
-        "name": "Français (Cameroun)",
+        "native": "Français (Cameroun)",
         "flag": "countryflag/cm",
     },
     "fr-dj": {
@@ -1389,7 +1414,7 @@ _combinedlanguagelist = {
     },
     "fr-nc": {
         "name": "French (New Caledonia)",
-        "name": "Français Nouvelle-Calédonie)",
+        "native": "Français Nouvelle-Calédonie)",
         "flag": "countryflag/nc",
     },
     "fr-pf": {
@@ -1489,30 +1514,37 @@ _combinedlanguagelist = {
     },
     "ko-kp": {
         "name": "Korean (Korea, North)",
+        "native": "한국어 (조선민주주의인민공화국)",
         "flag": "countryflag/kp",
     },
     "ko-kr": {
         "name": "Korean (Korea, South)",
+        "native": "한국어 (대한민국)",
         "flag": "countryflag/kr",
     },
     "ln-cd": {
         "name": "Lingala (Democratic Republic of Congo)",
+        "native": "Lingala (Republíki ya Kongó Demokratíki)",
         "flag": "countryflag/cd",
     },
     "ln-cg": {
         "name": "Lingala (Congo)",
+        "native": "Lingala (Republíki ya Kongó)",
         "flag": "countryflag/cg",
     },
     "ms-bn": {
         "name": "Malay (Brunei)",
+        "native": "Bahasa Melayu (Brunei)",
         "flag": "countryflag/bn",
     },
     "ms-my": {
         "name": "Malay (Malaysia)",
+        "native": "Bahasa Melayu (Malaysia)",
         "flag": "countryflag/my",
     },
     "ms-sg": {
         "name": "Malay (Singapore)",
+        "native": "Bahasa Melayu (Singapura)",
         "flag": "countryflag/sg",
     },
     "nl-an": {
@@ -1577,22 +1609,27 @@ _combinedlanguagelist = {
     },
     "sd-in": {
         "name": "Sindhi (India)",
+        "native": "سنڌي (ڀارت)",
         "flag": "countryflag/in",
     },
     "sd-pk": {
         "name": "Sindhi (Pakistan)",
+        "native": "سنڌي (پاڪستان)",
         "flag": "countryflag/pk",
     },
     "sr-ba": {
         "name": "Serbian (Bosnia-Herzegovina)",
+        "native": "Srpski (Bosna i Hercegovina)",
         "flag": "countryflag/ba",
     },
     "ss-sz": {
-        "name": "Swati (Swaziland)",
+        "name": "Swati (Eswatini)",
+        "native": "SiSwati (Umbuso weSwatini)",
         "flag": "countryflag/sz",
     },
     "ss-za": {
         "name": "Swati (South Africa)",
+        "native": "SiSwati (Ningizimu_Afrika)",
         "flag": "countryflag/za",
     },
     "sv-fi": {
@@ -1607,46 +1644,57 @@ _combinedlanguagelist = {
     },
     "sw-ke": {
         "name": "Swahili (Kenya)",
+        "native": "Kiswahili (Kenya)",
         "flag": "countryflag/ke",
     },
     "sw-tz": {
         "name": "Swahili (Tanzania)",
+        "native": "Kiswahili (Tanzania)",
         "flag": "countryflag/tz",
     },
     "ta-in": {
         "name": "Tamil (India)",
+        "native": "தமிழ (இந்தியா)",
         "flag": "countryflag/in",
     },
     "ta-sg": {
         "name": "Tamil (Singapore)",
+        "native": "தமிழ (சிங்கப்பூர்)",
         "flag": "countryflag/sg",
     },
     "tn-bw": {
         "name": "Tswana (Botswana)",
+        "native": "Setswana (Botswana)",
         "flag": "countryflag/bw",
     },
     "tn-za": {
         "name": "Tswana (South Africa)",
+        "native": "Setswana (Aforika Borwa)",
         "flag": "countryflag/za",
     },
     "tr-bg": {
         "name": "Turkish (Bulgaria)",
+        "native": "Türkçe (Bulgaristan)",
         "flag": "countryflag/tr",
     },
     "tr-cy": {
         "name": "Turkish (Cyprus)",
+        "native": "Türkçe (Kıbrıs Cumhuriyeti)",
         "flag": "countryflag/tr",
     },
     "tr-tr": {
         "name": "Turkish (Turkey)",
+        "native": "Türkçe (Türkiye)",
         "flag": "countryflag/tr",
     },
     "ur-in": {
         "name": "Urdu (India)",
+        "native": "اردو (بھارت)",
         "flag": "countryflag/in",
     },
     "ur-pk": {
         "name": "Urdu (Pakistan)",
+        "native": "اردو (پاکستان)",
         "flag": "countryflag/pk",
     },
     "zh-cn": {
