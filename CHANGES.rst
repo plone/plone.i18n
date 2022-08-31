@@ -8,6 +8,26 @@ Changelog
 
 .. towncrier release notes start
 
+5.0.0b1 (2022-09-01)
+--------------------
+
+New features:
+
+
+- Add some more native names to language-country combinations
+  [erral] (#45)
+- Fix the missing native names for language-country variants
+  [erral] (#46)
+
+
+Bug fixes:
+
+
+- Added native names for German and Dutch country-specific language variants.
+  Then all related language variants are shown together in the language control panel.
+  [maurits] (#824)
+
+
 5.0.0a5 (2022-06-07)
 --------------------
 

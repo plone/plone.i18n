@@ -2,7 +2,7 @@ from setuptools import find_packages
 from setuptools import setup
 
 
-version = "5.0.0a6.dev0"
+version = "5.0.0b1"
 
 setup(
     name="plone.i18n",
