@@ -12,6 +12,7 @@ from plone.registry.interfaces import IRegistry
 from Products.CMFCore.interfaces import IDublinCore
 from Products.SiteAccess.VirtualHostMonster import VirtualHostMonster
 from ZODB.POSException import ConflictError
+from zope.cachedescriptors.property import Lazy as lazy_property
 from zope.component import getMultiAdapter
 from zope.component import getUtility
 from zope.component.hooks import getSite
@@ -79,7 +80,7 @@ class LanguageUtility:
 
     exclude_exts = frozenset(("css", "js", "kss", "xml", "gif", "jpg", "png", "jpeg"))
 
-    @property
+    @lazy_property
     def settings(self):
         registry = getUtility(IRegistry)
         return registry.forInterface(ILanguageSchema, prefix="plone")
