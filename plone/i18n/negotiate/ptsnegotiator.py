@@ -76,7 +76,6 @@ def _false(*a, **kw):
 
 
 class BrowserAccept:
-
     filters = {
         "content-type": (str_lower,),
         "language": (str_lower, lang_normalize, str_strip),
@@ -198,7 +197,6 @@ registerLangPrefsMethod({"klass": BrowserAccept, "priority": 10}, "content-type"
 
 
 class Negotiator:
-
     tests = {"content-type": type_accepted, "language": lang_accepted}
 
     def negotiate(self, choices, request, kind="content-type"):

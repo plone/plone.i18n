@@ -50,7 +50,6 @@ class TestNoCombinedLanguageNegotiation(LanguageNegotiationTestCase):
         self.settings.display_flags = 0
 
     def testLanguageNegotiation(self):
-
         # Test simple supported codes
         response = self.publish(
             self.portal_path,
@@ -90,7 +89,6 @@ class TestCombinedLanguageNegotiation(LanguageNegotiationTestCase):
         self.settings.display_flags = 0
 
     def testLanguageNegotiation(self):
-
         # Test simple supported codes
         response = self.publish(
             self.portal_path,

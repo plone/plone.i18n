@@ -71,7 +71,6 @@ def onRequest(object, event):
 
 @implementer(ILanguageUtility)
 class LanguageUtility:
-
     # resources that must not use language specific URLs
     exclude_paths = frozenset(
         ("portal_css", "portal_javascripts", "portal_kss", "portal_factory")
@@ -166,9 +165,7 @@ class LanguageUtility:
         if langCode not in self.settings.available_languages:
             # If its not in supported langs
             if len(self.settings.available_languages) > 0:
-                self.settings.default_language = self.settings.available_languages[
-                    0
-                ]
+                self.settings.default_language = self.settings.available_languages[0]
             return
         self.settings.default_language = langCode
 
