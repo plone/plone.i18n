@@ -1,18 +1,21 @@
-<configure
-    xmlns="http://namespaces.zope.org/zope">
+<configure xmlns="http://namespaces.zope.org/zope">
 
-    <include package="plone.registry" />
+  <include package="plone.registry" />
 
-    <include package=".locales" />
-    <include package=".normalizer" />
+  <include package=".locales" />
+  <include package=".normalizer" />
 
-    <utility factory=".utility.LanguageUtility"/>
-    <adapter for="* *" factory=".negotiate.negotiate.NegotiateLanguage"/>
+  <utility factory=".utility.LanguageUtility" />
+  <adapter
+      factory=".negotiate.negotiate.NegotiateLanguage"
+      for="*
+           *"
+      />
 
-    <subscriber
-       for="Products.CMFCore.interfaces.ISiteRoot
-            zope.traversing.interfaces.IBeforeTraverseEvent"
-       handler=".utility.onRequest"
-       />
+  <subscriber
+      for="Products.CMFCore.interfaces.ISiteRoot
+           zope.traversing.interfaces.IBeforeTraverseEvent"
+      handler=".utility.onRequest"
+      />
 
 </configure>

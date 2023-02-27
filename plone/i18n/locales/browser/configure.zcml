@@ -1,13 +1,16 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
-    xmlns:browser="http://namespaces.zope.org/browser">
+    xmlns:browser="http://namespaces.zope.org/browser"
+    >
 
-    <browser:resourceDirectory
-        name="country-flags"
-        directory="country-flags" />
+  <browser:resourceDirectory
+      name="country-flags"
+      directory="country-flags"
+      />
 
-    <browser:resourceDirectory
-        name="language-flags"
-        directory="language-flags" />
+  <browser:resourceDirectory
+      name="language-flags"
+      directory="language-flags"
+      />
 
 </configure>
