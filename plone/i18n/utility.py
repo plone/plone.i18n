@@ -43,7 +43,7 @@ def setLanguageBinding(request):
     binding = request.get("LANGUAGE_TOOL", None)
     try:
         settings = getMultiAdapter((getSite(), request), INegotiateLanguage)
-    except:
+    except Exception:
         # We may be on a site before upgrading so return None
         # No registry is registered
         return None
@@ -242,7 +242,7 @@ class LanguageUtility:
                     return item
         except (ConflictError, KeyboardInterrupt):
             raise
-        except:
+        except Exception:
             pass
         return None
 
@@ -287,7 +287,7 @@ class LanguageUtility:
                     return None
         except ConflictError:
             raise
-        except:
+        except Exception:
             pass
         return None
 
@@ -344,7 +344,7 @@ class LanguageUtility:
                         if q.startswith("q="):
                             q = q.split("=", 2)[1]
                             quality = float(q)
-                    except:
+                    except Exception:
                         pass
 
                 if quality == []:
@@ -399,7 +399,7 @@ class LanguageUtility:
         """Returns the sorted list of available countries (code, name)."""
         util = getUtility(ICountryAvailability)
         countries = util.getCountryListing()
-        countries.sort(lambda x, y: cmp(x[1], y[1]))
+        countries = sorted(countries, key=lambda x: x[1])
         return countries
 
     def getNameForCountryCode(self, countryCode):
