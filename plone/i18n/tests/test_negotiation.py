@@ -258,7 +258,7 @@ class TestCcTLDLanguageNegotiation(LanguageNegotiationTestCase):
         self.checkLanguage(response, "nl")
 
     def testAcceptedLanguages(self):
-        # Brazil uses Portugese, which is not in the accepted languages list
+        # Brazil uses Portuguese, which is not in the accepted languages list
         response = self.publish(
             self.portal_path,
             self.basic_auth,
@@ -326,7 +326,7 @@ class TestSubdomainLanguageNegotiation(LanguageNegotiationTestCase):
         self.checkLanguage(response, "nl")
 
     def testAcceptedLanguages(self):
-        # Brazil uses Portugese, which is not in the accepted languages list
+        # Brazil uses Portuguese, which is not in the accepted languages list
         response = self.publish(
             self.portal_path,
             self.basic_auth,

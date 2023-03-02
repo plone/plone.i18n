@@ -23,7 +23,7 @@ def registerLangPrefsMethod(prefs, kind="language"):
     # add chain for kind
     if kind not in _langPrefsRegistry:
         _langPrefsRegistry[kind] = []
-    # backwards compatibilty monkey patch
+    # backwards compatibility monkey patch
     if not hasattr(prefs["klass"], "getAccepted"):
         prefs["klass"].getAccepted = getAcceptedHelper
     # add this pref helper
@@ -33,7 +33,7 @@ def registerLangPrefsMethod(prefs, kind="language"):
 
 
 def getLangPrefs(env, kind="language"):
-    """get higest prio method for kind"""
+    """get highest priority method for kind"""
     for pref in _langPrefsRegistry[kind]:
         handler = pref["klass"](env)
         accepted = handler.getAccepted(env, kind)

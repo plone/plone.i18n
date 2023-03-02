@@ -4,7 +4,7 @@ from zope.interface import implementer
 
 @implementer(ICountryAvailability)
 class CountryAvailability:
-    """A list of available coutries."""
+    """A list of available countries."""
 
     def getAvailableCountries(self):
         """Return a sequence of country tags for available countries."""
@@ -21,7 +21,7 @@ class CountryAvailability:
 
 countries = CountryAvailability()
 
-# This is a dictionary of dictonaries:
+# This is a dictionary of dictionaries:
 #
 # 'country-code' : {
 #     u'name' : 'English name',
