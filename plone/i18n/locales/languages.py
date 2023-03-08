@@ -47,7 +47,7 @@ class MetadataLanguageAvailability(LanguageAvailability):
 
 metadatalanguages = MetadataLanguageAvailability()
 
-# This is a dictionary of dictonaries:
+# This is a dictionary of dictionaries:
 #
 # 'langcode-variation' : {
 #     u'native' : 'Native name',
@@ -562,9 +562,7 @@ _languagelist = {
 # Character sets are a thing now.
 # See https://github.com/collective/plone.app.locales/issues/326
 # At the moment only for Serbian.
-_zope_i18n_allowed_languages = os.environ.get(
-    "zope_i18n_allowed_languages", ""
-)
+_zope_i18n_allowed_languages = os.environ.get("zope_i18n_allowed_languages", "")
 if "sr@Latn" in _zope_i18n_allowed_languages:
     _languagelist["sr"] = {
         "native": "Srpski",

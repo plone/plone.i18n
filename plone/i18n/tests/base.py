@@ -2,13 +2,12 @@ from plone.app.contenttypes.testing import PLONE_APP_CONTENTTYPES_FIXTURE
 from plone.app.testing import bbb
 from plone.app.testing import FunctionalTesting
 from plone.app.testing import PloneSandboxLayer
-from plone.testing import z2
 
 
 # XXX: testing with dependency indirection!
 
-class PloneI18nLayer(PloneSandboxLayer):
 
+class PloneI18nLayer(PloneSandboxLayer):
     defaultBases = (PLONE_APP_CONTENTTYPES_FIXTURE,)
 
     def setUpZope(self, app, configurationContext):

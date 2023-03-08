@@ -10,7 +10,7 @@ TABLE_LEN = len(TABLE)
 
 
 def _gethashed(obj, n):
-    num = hash(obj) % (TABLE_LEN ** n)
+    num = hash(obj) % (TABLE_LEN**n)
     while True:
         d, m = divmod(num, TABLE_LEN)
         num = d

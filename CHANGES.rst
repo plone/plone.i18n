@@ -371,7 +371,7 @@ Fixes:
 ------------------
 
 - In practice the Unidecode data didn't produce good enough results for various
-  languages. We therefor limit the transliteration approach again to latin-like
+  languages. We therefore limit the transliteration approach again to latin-like
   languages and introduce a UNIDECODE_LIMIT. This closes
   http://dev.plone.org/plone/ticket/10107.
   [hannosch]

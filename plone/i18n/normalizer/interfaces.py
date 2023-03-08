@@ -9,7 +9,7 @@ class INormalizer(Interface):
     def normalize(text, locale=None, max_length=None):
         """The normalize method takes and input unicode text and an optional
         locale string and returns a normalized version of the text.
-        If the locale is not None the ouput might differ dependent on the
+        If the locale is not None the output might differ dependent on the
         locale. The max_length argument allows you to override the default
         values used by the normalizers on a case-by-case basis.
         """

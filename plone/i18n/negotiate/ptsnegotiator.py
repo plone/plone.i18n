@@ -23,7 +23,7 @@ def registerLangPrefsMethod(prefs, kind="language"):
     # add chain for kind
     if kind not in _langPrefsRegistry:
         _langPrefsRegistry[kind] = []
-    # backwards compatibilty monkey patch
+    # backwards compatibility monkey patch
     if not hasattr(prefs["klass"], "getAccepted"):
         prefs["klass"].getAccepted = getAcceptedHelper
     # add this pref helper
@@ -33,7 +33,7 @@ def registerLangPrefsMethod(prefs, kind="language"):
 
 
 def getLangPrefs(env, kind="language"):
-    """get higest prio method for kind"""
+    """get highest priority method for kind"""
     for pref in _langPrefsRegistry[kind]:
         handler = pref["klass"](env)
         accepted = handler.getAccepted(env, kind)
@@ -76,7 +76,6 @@ def _false(*a, **kw):
 
 
 class BrowserAccept:
-
     filters = {
         "content-type": (str_lower,),
         "language": (str_lower, lang_normalize, str_strip),
@@ -102,8 +101,8 @@ class BrowserAccept:
         ):
             user_accepts = [a.strip() for a in user_accepts.split(",")]
             http_accepts = [a.strip() for a in http_accepts.split(",")]
-            for l in user_accepts:
-                if l not in http_accepts:
+            for value in user_accepts:
+                if value not in http_accepts:
                     req_accepts = user_accepts + http_accepts
                     break
                 else:
@@ -126,12 +125,12 @@ class BrowserAccept:
             for normalizer in filters:
                 accept = normalizer(accept)
             if accept:
-                ll = accept.split(";", 2)
+                value = accept.split(";", 2)
                 quality = []
 
-                if len(ll) == 2:
+                if len(value) == 2:
                     try:
-                        q = l[1]
+                        q = value[1]
                         if q.startswith("q="):
                             q = q.split("=", 2)[1]
                             quality = float(q)
@@ -141,7 +140,7 @@ class BrowserAccept:
                 if quality == []:
                     quality = float(length - i)
 
-                accepts.append((quality, ll[0]))
+                accepts.append((quality, value[0]))
                 i += 1
 
         # sort and reverse it
@@ -198,7 +197,6 @@ registerLangPrefsMethod({"klass": BrowserAccept, "priority": 10}, "content-type"
 
 
 class Negotiator:
-
     tests = {"content-type": type_accepted, "language": lang_accepted}
 
     def negotiate(self, choices, request, kind="content-type"):

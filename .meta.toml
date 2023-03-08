@@ -1,0 +1,8 @@
+# Generated from:
+# https://github.com/plone/meta/tree/master/config/default
+[meta]
+template = "default"
+commit-id = "25f71b87"
+
+[codespell]
+additional-ignores = "fo,nam,nd,te,ue"
