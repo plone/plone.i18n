@@ -1,0 +1,2 @@
+Correctly specified dependencies.  ``plone.supermodel`` and a few others were missing.
+[plone devs]
