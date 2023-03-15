@@ -35,16 +35,21 @@ setup(
     zip_safe=False,
     python_requires=">=3.8",
     install_requires=[
-        "plone.base",
         "setuptools",
+        "plone.registry",
+        "plone.subrequest",
+        "plone.supermodel",
+        "Products.CMFCore",
         "Unidecode>=1.0.22",
         "zope.globalrequest",
     ],
     extras_require=dict(
         test=[
-            "plone.app.contenttypes[testing]",
+            "plone.app.contenttypes[test]",
+            "plone.app.multilingual",
             "plone.app.testing",
-            "zope.testing",
+            "plone.base",
+            "zope.browserresource",
         ],
     ),
 )

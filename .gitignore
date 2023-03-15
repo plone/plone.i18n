@@ -1,5 +1,6 @@
 *.py?
 .installed.cfg
+.tox
 bin/
 develop-eggs/
 *.egg-info/

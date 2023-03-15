@@ -2,11 +2,11 @@ from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from plone.app.testing import TEST_USER_NAME
 from plone.app.testing import TEST_USER_PASSWORD
+from plone.base.interfaces import ILanguage
 from plone.i18n.interfaces import ILanguageSchema
 from plone.i18n.tests import base
 from plone.registry.interfaces import IRegistry
 from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone.interfaces import ILanguage
 from zope.component import getUtility
 
 
