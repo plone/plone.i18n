@@ -8,6 +8,23 @@ Changelog
 
 .. towncrier release notes start
 
+5.0.1 (2023-03-21)
+------------------
+
+Bug fixes:
+
+
+- Correctly specified dependencies.  ``plone.supermodel`` and a few others were missing.
+  [plone devs] (#49)
+
+
+Internal:
+
+
+- Update configuration files.
+  [plone devs] (25f71b87)
+
+
 5.0.0 (2022-11-30)
 ------------------
 
