@@ -16,7 +16,7 @@ class ICcTLDInformation(Interface):
 
 
 class ICountryAvailability(Interface):
-    """A list of available coutries."""
+    """A list of available countries."""
 
     def getAvailableCountries():
         """Return a sequence of country tags for available countries."""
