@@ -1,14 +1,22 @@
+from pathlib import Path
 from setuptools import find_packages
 from setuptools import setup
 
 
 version = "5.0.2.dev0"
 
+long_description = (
+    f"{Path('README.rst').read_text()}\n{Path('CHANGES.rst').read_text()}"
+)
+
 setup(
     name="plone.i18n",
     version=version,
     description="Advanced i18n/l10n features",
-    long_description=(open("README.rst").read() + "\n" + open("CHANGES.rst").read()),
+    long_description=long_description,
+    long_description_content_type="text/x-rst",
+    # Get more strings from
+    # https://pypi.org/classifiers/
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Environment :: Web Environment",
