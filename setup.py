@@ -22,6 +22,7 @@ setup(
         "Environment :: Web Environment",
         "Framework :: Plone",
         "Framework :: Plone :: 6.0",
+        "Framework :: Plone :: 6.1",
         "Framework :: Plone :: Core",
         "Framework :: Zope :: 5",
         "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
@@ -49,6 +50,7 @@ setup(
         "plone.supermodel",
         "Products.CMFCore",
         "Unidecode>=1.0.22",
+        "Zope",
         "zope.globalrequest",
     ],
     extras_require=dict(
