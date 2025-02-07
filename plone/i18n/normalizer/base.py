@@ -43,7 +43,7 @@ def baseNormalize(text):
       >>> baseNormalize(u"foo\N{LATIN CAPITAL LETTER I WITH CARON}")
       'fooI'
 
-      >>> baseNormalize(u"\u5317\u4EB0")
+      >>> baseNormalize(u"\u5317\u4eb0")
       'Bei Jing'
     """
     if not isinstance(text, str):
