@@ -45,6 +45,7 @@ setup(
     python_requires=">=3.8",
     install_requires=[
         "setuptools",
+        "plone.autoform",
         "plone.registry",
         "plone.subrequest",
         "plone.supermodel",
