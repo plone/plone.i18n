@@ -1,3 +1,4 @@
+from plone.autoform import directives
 from plone.supermodel import model
 from zope import schema
 
@@ -37,6 +38,13 @@ class ILanguageSchema(Interface):
         ],
     )
 
+    directives.widget(
+        "default_language",
+        vocabulary="plone.app.vocabularies.AvailableContentLanguages",
+        frontendOptions={
+            "format": "default_language",
+        },
+    )
     default_language = schema.Choice(
         title=_("heading_site_language", default="Site language"),
         description=_(
