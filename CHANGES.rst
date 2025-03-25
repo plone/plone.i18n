@@ -8,6 +8,23 @@ Changelog
 
 .. towncrier release notes start
 
+5.1.0 (2025-03-25)
+------------------
+
+New features:
+
+
+- Added directives hint for validation of the `default_language` field in languages control panel.
+  [sneridagh] (#73)
+
+
+Bug fixes:
+
+
+- Added missing Zope dependency.
+  [maurits] (#64)
+
+
 5.0.2 (2023-10-07)
 ------------------
 
