@@ -2,7 +2,6 @@ from unidecode import unidecode
 
 import string
 
-
 # On OpenBSD string.whitespace has a non-standard implementation
 # See http://dev.plone.org/plone/ticket/4704 for details
 whitespace = "".join([c for c in string.whitespace if ord(c) < 128])

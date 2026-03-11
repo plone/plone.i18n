@@ -2,7 +2,6 @@ from plone.i18n.normalizer.base import mapUnicode
 from plone.i18n.normalizer.interfaces import INormalizer
 from zope.interface import implementer
 
-
 # Ukrainian character mapping (according to BGN/PCGN romanization system)
 mapping = {
     0x0410: "A",

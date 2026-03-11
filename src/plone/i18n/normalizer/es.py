@@ -2,7 +2,6 @@ from plone.i18n.normalizer.base import mapUnicode
 from plone.i18n.normalizer.interfaces import INormalizer
 from zope.interface import implementer
 
-
 # Spanish character mapping
 mapping = {
     192: "A",

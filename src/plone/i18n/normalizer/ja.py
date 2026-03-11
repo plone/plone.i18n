@@ -2,7 +2,6 @@ from plone.i18n.normalizer.base import allowed
 from plone.i18n.normalizer.interfaces import INormalizer
 from zope.interface import implementer
 
-
 MAX_LENGTH = 6
 
 TABLE = "abcdefghijklmnopqrstuvwxyz0123456789"

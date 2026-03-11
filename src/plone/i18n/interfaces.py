@@ -9,7 +9,6 @@ from zope.i18nmessageid import MessageFactory
 from zope.interface import Attribute
 from zope.interface import Interface
 
-
 _ = PloneMessageFactory = MessageFactory("plone")
 
 
