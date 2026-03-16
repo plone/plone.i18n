@@ -3,7 +3,6 @@ from plone.app.testing import bbb
 from plone.app.testing import FunctionalTesting
 from plone.app.testing import PloneSandboxLayer
 
-
 # XXX: testing with dependency indirection!
 
 

@@ -2,7 +2,6 @@ from plone.i18n.normalizer.base import mapUnicode
 from plone.i18n.normalizer.interfaces import INormalizer
 from zope.interface import implementer
 
-
 # French character mapping
 mapping = {339: "oe"}
 

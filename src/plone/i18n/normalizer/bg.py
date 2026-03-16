@@ -2,7 +2,6 @@ from .base import mapUnicode
 from .interfaces import INormalizer
 from zope.interface import implementer
 
-
 # Bulgarian character mapping
 mapping = {
     1040: "A",

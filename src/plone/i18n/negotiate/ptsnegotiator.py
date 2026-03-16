@@ -3,7 +3,6 @@ from zope.interface import implementer
 
 import operator
 
-
 # this is the negotiator from old PlacelessTranslationService
 # may be cleaned up in future
 

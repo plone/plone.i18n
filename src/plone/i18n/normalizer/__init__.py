@@ -7,7 +7,6 @@ from zope.interface import implementer
 
 import re
 
-
 # Define and compile static regexes
 FILENAME_REGEX = re.compile(r"^(.+)\.(\w{,4})$")
 IGNORE_REGEX = re.compile(r"['\"]")
