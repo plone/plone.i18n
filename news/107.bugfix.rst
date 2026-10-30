@@ -1,0 +1,3 @@
+Let the Japanese normalizer return the same answer for the same id each time.
+This fixes an occasionally failing test.
+[mauritsvanrees]
