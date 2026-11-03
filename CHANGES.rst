@@ -8,6 +8,24 @@ Changelog
 
 .. towncrier release notes start
 
+6.0.1 (2026-11-03)
+------------------
+
+Bug fixes:
+
+
+- Let the Japanese normalizer return the same answer for the same id each time.
+  This fixes an occasionally failing test.
+  [mauritsvanrees] (#107)
+
+
+Internal:
+
+
+- Move package metadata from ``setup.py`` to ``pyproject.toml``.
+  [plone devs]
+
+
 6.0.0 (2026-05-16)
 ------------------
 
