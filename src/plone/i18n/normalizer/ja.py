@@ -8,8 +8,31 @@ TABLE = "abcdefghijklmnopqrstuvwxyz0123456789"
 TABLE_LEN = len(TABLE)
 
 
+def _ord3(s):
+    return f"{ord(s):03d}"
+
+
+def _string_to_int(s):
+    """Turn string into an integer
+
+    Why is this function needed?  Originally we did `hash(s)`.
+    This gave a stable answer on Python 2, but since Python 3.3 you get a
+    different answer when you restart Python, as there is a random factor.
+    Result: one of the doctests below irregularly failed, because
+    the length of the answer could be different.  Usually 6, sometimes 5,
+    occasionally even 3.
+    There is no security involved here, so for us a stable hash is perfect.
+
+    Source - https://stackoverflow.com/a/2511232
+    Posted by Jason Sundram, modified by community.
+    See post 'Timeline' for change history
+    Retrieved 2026-10-30, License - CC BY-SA 2.5
+    """
+    return int("".join(map(_ord3, s)))
+
+
 def _gethashed(obj, n):
-    num = hash(obj) % (TABLE_LEN**n)
+    num = _string_to_int(obj) % (TABLE_LEN**n)
     while True:
         d, m = divmod(num, TABLE_LEN)
         num = d
